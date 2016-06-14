@@ -1,0 +1,33 @@
+a{cursor: pointer;}
+.colorGrey3 { color: #333; }
+.colorGrey6 { color: #666; }
+.colorGrey9 { color: #999; }
+.colorBlack { color: #000!important ;}
+.colorGreen { color: green; }
+.colorGreen { color: blue; }
+.colorY { color: #ff8400; }
+
+.center { text-align: center; }
+.ta-left { text-align: left; }
+.ta-right { text-align: right; }
+.noborder { border-width: 0px !important; }
+
+.d-i { display: inline; }
+.d-hide { display: none; }
+.d-show { display: block; }
+.v-hide{visibility: hidden;}
+.v-show{visibility: visible;}
+
+.ovh{overflow: hidden;}
+.ovv{overflow: visible;}
+
+.va-top { vertical-align: top; }
+.va-middle { vertical-align: middle; }
+.va-bottom { vertical-align: bottom; }
+
+.textover{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ntext { font-style: normal; }
+
+.margin,.v-border{margin: 1px;}
+
+.btn { cursor: pointer; }

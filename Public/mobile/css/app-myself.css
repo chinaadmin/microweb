@@ -1,0 +1,50 @@
+html, body { height: 100%; }
+.view, #content { background-color: #eee; position: relative; }
+header {
+    background-color: #fff;
+}
+header .wrap{
+
+   background: url(../images/myself_00.jpg) no-repeat;
+   background-position: center center;
+   background-size: cover;
+
+    text-align: center;
+      position: relative;
+      padding-bottom: 32px;
+}
+header .welcome-box { font-size: 20px; }
+header .welcome-logo { background-color: #fff; border: 2px solid #fff; border-radius: 128px; box-shadow: 0 0 2px 0 #999; height: 64px; margin: 16px 16px 16px 0; width: 64px; }
+header .btn-box { margin-top: 6%; }
+header .btn-box a { color: #333; padding: 1rem 2rem; border: 1px solid #1b1b1b; }
+header .btn-box .btn-1 { background: #FF8C00; color: #fff; border-color: #FF8C00; margin-left: 4rem; }
+header .order-box {
+   width: 100%; background: none repeat scroll 0 0 #333;
+
+  }
+
+header .order-box > ul { display: flex; display: -webkit-flex; margin: 0; }
+header .order-box li { text-align: center; padding: 6px 0; flex: 1; -webkit-flex: 1; }
+header .order-box li img { max-width: 36px; height: auto; }
+header .order-box li a { color: #fff; display: inline-block; overflow: hidden; vertical-align: middle; }
+header .order-box li p { font-size: 1.5rem; margin: 0; }
+
+.mbox { background-color: #fff; margin: 16px 0; box-shadow: 0 0 2px 0 #ccc; }
+.mbox:first-child{margin-top: 0;}
+.mbox .evaluation { display: block; height: 4rem; line-height: 4rem; color: #666; border-bottom: 1px solid #eee; }
+.mbox .evaluation:last-child { border-bottom-width: 0; }
+.mbox .evaluation .eva-num { font-size: 1.5rem; float: left; padding-left: 1rem; color: #333; }
+.mbox .evaluation .index-img {float: right; background: url(../images/detail_05.png) no-repeat; height: 2.7rem; width: 3rem; margin-top: 0.7rem;  background-size: 72%; }
+.mbox .evaluation .space-bg { border-bottom: 1px solid #a0a0a0; }
+
+.eva-phone { height: 7rem; border: none; padding-top: 1rem; border-bottom: 1px solid #a0a0a0; }
+.eva-phone .eva-num .phone-num { color: #FF8C00; font-size: 2rem; line-height: 2.5rem; background-color: #fff; padding: 8px 12px; }
+.eva-phone .eva-num p { color: #333; font-size: 12px; margin: 0; }
+.eva-phone .img-title { margin-top: 1.2rem; }
+
+#content .nav-box { background-color: #fff; padding-top: 4px; border-top: 0px solid #ccc; box-shadow: 0 -2px 2px #ddd; }
+#content .nav-box p { margin: 0; padding: 4px 0; }
+#content .nav-box ul { font-size: 0; margin: 0; }
+#content .nav-box li { font-size: 12px; display: inline-block; width: 33%; text-align: center; margin: 0; }
+#content .nav-box li a { color: #333; }
+#content .nav-box li img { width: 100%; max-width: 32px; }

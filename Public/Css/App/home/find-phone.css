@@ -1,0 +1,72 @@
+@charset "utf-8";
+.find-text{
+	color:#666;
+}
+.choice-box{
+	width:320px;
+	margin:0 auto;
+	text-align:left;
+}
+.choice-box p{
+	margin-top:10px;
+}
+.choice-box select{
+	width:100%;
+	padding:5px 0;
+	text-indent:5px;
+	margin-top:10px;
+	color:#666;
+	font-family:inherit;
+}
+.choice-box select option{
+	text-indent:10px;
+}
+.choice-box button{
+	width:90px;
+	height:30px;
+	background:#FF8C00;
+	border:0;
+	color:#fff;
+	border-radius:3px;
+	cursor:pointer;
+	font-family:inherit;
+	margin-left:74px;
+}
+/*按钮不可用样式*/
+.choice-box .msgs1{ 
+	background:#b5b5b5;
+}
+.choice-box .code-inp{
+	height:30px;
+	line-height:30px;
+	text-indent:10px;
+	border:1px solid #ccc;
+	margin-left:10px;
+	font-family:inherit;
+}
+.next-action{
+	width:100%;
+	height:40px;
+	background:#FF8C00;
+	border:0;
+	color:#fff;
+	cursor:pointer;
+	margin-top:20px;
+	font-family:inherit;
+}
+.suc-text{
+	color:#FF8C00;
+	display:none;
+}
+.email-code{
+	display:none;
+	margin-top:30px;
+	margin-bottom:80px;
+}
+.code-box{
+	display:block;
+	
+}
+.phone{
+	margin-left:9px;
+}

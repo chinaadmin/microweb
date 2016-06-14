@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+
+#content .text-area {
+	min-height:1080px;
+	}
+#content .text-area ul li{
+	list-style:none;
+	float:left;
+	padding:10px;
+	text-align:center;
+	width:340px;
+	height:270px;
+	}
+#lightbox-image-details-caption{
+	font-size:14px;
+	font-weight:normal;
+	font-family:"微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+	}
+#lightbox-image-details-currentNumber{
+	margin-top:8px;
+	}

@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+#content{
+	min-height:450px; 
+	}
+#content .news-dynamic h3{
+	text-align:center;
+	}
+#content .title{
+	height:99%;
+	}
+	
+#content .news-dynamic .date{
+	text-align:center;
+	margin-top:10px;
+	font-size:12px;
+	}
+#content .news-dynamic p{
+	border-bottom:1px dashed #747474;
+	border-top:1px dashed #747474;
+	margin-top:30px;
+	line-height:30px;
+	padding:30px 0 30px 0;
+	}
+#content .news-dynamic .back-up{
+	margin-top:40px;
+}
+#content .news-dynamic .back-up a{
+	color:#747474;
+	}

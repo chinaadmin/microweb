@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document *//* CSS Document */
+.data_box{
+	background:#eee;
+}
+h5{
+	color: #565656;
+    font-size: 14px;
+    margin-top:22px;
+    margin-left:45px;
+}
+h5 i{
+	color:#ff8c00;
+	font-style:normal;
+}
+.safe-items{
+	 margin-top: 40px;
+	 margin-left:110px;
+	 margin-bottom:40px;
+}
+.safe-item{
+	border-bottom: 1px dashed #d2d2d2;
+    height: 34px;
+    line-height: 34px;
+    padding: 10px 0 10px 35px;
+    position: relative;
+    width: 565px
+}
+.safe-icon{
+	height: 35px;
+    left:16px;
+    position: absolute;
+    top: 15px;
+    width: 35px;
+}
+
+.sprite{
+	background:url("../../Images/home/safe_00.png") no-repeat;
+}
+.safe-icon-uncomplete{
+	background-position:0 -52px;
+}
+.safe-item span{
+	color: #595959;
+    font-size: 14px;
+    margin-left: 30px;
+}
+.safe-item p{
+	border-left: 1px solid #c5c5c5;
+    color: #a3a3a3;
+    display: inline;
+    font-size: 12px;
+    margin-left: 40px;
+    padding-left: 40px;
+}
+.safe-item a{
+	color:#ff8c00;
+	position: absolute;
+    right: 0;
+}
+.safe-item a:hover{
+	text-decoration:underline;
+}

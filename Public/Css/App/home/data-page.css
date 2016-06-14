@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS Document *//* CSS Document */
+body { background: #fff; }
+.s_top a { padding: 0; font-size: 18px; }
+#content { margin-top: 40px; }
+/* 左边列表 */
+.left_list { float: left; width: 165px; }
+.left_list h2 { text-align: center; background: #ba6701; border: 1px solid #CCCCCC; border-bottom: none; height: 30px; line-height: 27px; color: #fff; font-weight: normal; font-size: 18px; height: 40px; line-height: 36px; }
+.left_list ul { padding-bottom: 10px; border: 1px solid #CCCCCC; border-top: none; background: #fff; }
+.left_list li { text-align: center; background: url("../../Images/home/data_01.jpg") no-repeat 19px 7px; }
+.left_list li:hover { background: url("../../Images/home/data_00.jpg") no-repeat 19px 7px #ff8c00; }
+.left_list li a { font-size: 14px; color: #444; height: 30px; display: block; line-height: 30px !important; border-top: 1px solid #fff; }
+.left_list li a:hover { color: #fff; }
+.left_list .slect { background: #ff8c00 url("../../Images/home/data_00.jpg") no-repeat scroll 19px 7px; color: #fff; }
+.left_list .item1, .left_list .item1:hover, .left_list .item1 .slect { background-position: 19px -25px; }
+.left_list .item2, .left_list .item2:hover, .left_list .item2 .slect { background-position: 19px -58px; }
+.left_list .item3, .left_list .item3:hover, .left_list .item3 .slect { background-position: 19px -91px; }
+.left_list .item4, .left_list .item4:hover, .left_list .item4 .slect { background-position: 19px -124px; }
+.left_list .item5, .left_list .item5:hover, .left_list .item5 .slect { background-position: 19px -157px; }
+/* 资料填写 */
+.data_box { width: 820px; float: right; border: 1px solid #eee; background: none; }
+.data_box .data_opt { margin-left: 85px; }
+.data_box .data_opt p { font-size: 14px; color: #444; margin-top: 20px; }
+.data_box .data_opt p a { margin-left: 10px; color: #ff8c00; }
+.data_box .data_opt p a:hover { text-decoration: underline; }
+.data_box .data_opt label { margin-right: 10px; }
+.data_box .data_opt input { border: 1px solid #eee; height: 30px; line-height: 30px; font-size: 14px; color: #aaa; text-indent: 10px; }
+.data_box .data_opt select { padding: 5px; border-color: 1px solid #eee; font-size: 14px; color: #aaa; text-indent: 6px; width: 120px; }
+.data_box .data_opt .btn2, .btn1 { width: 90px; height: 25px; border: none; background: #ff8c00; color: #fff; *line-height: 25px !important; font-size: 16px; font-weight: bolder; cursor: pointer; border-radius: 3px; }
+.data_box .data_opt .btn2:hover, .btn1:hover { background: #ba6701; }
+.data_box .data_opt .btn2 { margin-left: 300px; margin-bottom: 20px; }
+.data_box .data_opt .address { width: 395px; }
+.data_box .data_opt .sex_form, .data_box .data_opt .day_form { margin-left: 15px; }
+.data_box .data_opt .tel_form, .data_box .data_opt .email_form { margin-left: 10px; }
+.data_box .data_opt .name_form, .data_box .data_opt .place_form, .data_box .data_opt .address_from { margin-left: -14px; }
+.data_box input:focus { border-color: #ff8c00; box-shadow: 0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8); -moz-box-shadow: 0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8); -webkit-box-shadow: 0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8); }
+.data_box select:focus { box-shadow: 0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8); -moz-box-shadow: 0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8); -webkit-box-shadow: 0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8); }
+
+
+
+
+/* 左边列表 --v1.1版*/
+.menuList { float: left; width: 165px; border: 1px solid #ccc; background-color: #F8F8F8; padding-bottom: 20px; }
+.menuList h2 {
+	height: 48px;
+	line-height: 48px;
+	color: #000;
+	background-color: #FFF3E8;
+	text-align: center;
+	border-bottom: 1px solid  #ccc;
+	color: #333;
+	font-weight: bold;
+	background-image: url(/Public/Css/Images/home/mybgm.jpg);
+}
+.menuList hr {
+	border-bottom-width: 0;
+	border-top: 1px solid #ccc;
+	margin-bottom: -1px;
+}
+.menuList ul {
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.menuList ul li {
+	padding-left: 48px;
+	position: relative;
+}
+.menuList ul li:hover a, .menuList ul li:hover a:before {
+	color: #ff8c00;
+}
+.menuList ul li.title.active, .menuList ul li.title:hover {
+	background-color: transparent;
+}
+.menuList ul li.title.active a, .menuList ul li.title:hover a {
+	color: #333;
+}
+.menuList ul li.active {
+	background-color: #ff8c00;
+}
+.menuList ul li.active a, .menuList ul li.active a:before {
+	color: #fff;
+}
+.menuList ul li a:before {
+	content: "●";
+	display: inline-block;
+	height: 32px;
+	left: 32px;
+	line-height: 32px;
+	position: absolute;
+	top: 0;
+	font-size: 12px;
+	color: #DCDCDC;
+}
+.menuList ul li.title a:before {
+	content: '';
+}
+.menuList ul li.title a {
+	font-size: 14px;
+	font-weight: 600;
+}
+.menuList ul li.hr {
+	padding-left: 0;
+	margin: 10px 0;
+}
+.menuList ul li a {
+	border: none;
+	color: #444;
+	display: block;
+	font-size: 14px;
+	height: 30px;
+	line-height: 30px !important;
+	cursor: pointer;
+}
+

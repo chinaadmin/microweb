@@ -1,0 +1,11 @@
+@charset "utf-8";
+.table-box{
+	width:200px;
+}
+.return-text{
+	width:100px;
+	font-size:16px;
+	background:url(../../Images/home/ex_01.png) no-repeat 0 -3px;
+	padding-left:30px;
+	}
+	

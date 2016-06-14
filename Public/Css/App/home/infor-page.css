@@ -1,0 +1,148 @@
+@charset "utf-8";
+#content h2 { padding-bottom: 20px; padding-top: 20px; }
+.hd h2 { background-position: 0 17px; padding-bottom: 0; padding-top:; }
+.sersafe-steps .active .step { background: #ff8c00 none repeat scroll 0 0; color: #fff; height: 30px; line-height: 30px; margin-top: 2px; z-index: 5; }
+.sersafe-steps .sprite-bg-1 { background-position: -5px 0; color: #fff; }
+.take-box { border-bottom: 1px solid #000; }
+.take-box h2 { padding-bottom: 20px; }
+.add-address-active { background: url("../../Images/home/app_01.png") no-repeat 0 6px #fef1e0; }
+.add-address { margin-bottom: 20px; font-size: 14px; padding-left: 60px; height: 40px; line-height: 40px; }
+/* 第二次按钮 */
+.add-address-new { display: none; margin-bottom: 20px; font-size: 14px; padding-left: 60px; height: 40px; line-height: 40px; }
+.add-address-new:hover { background: url("../../Images/home/app_01.png") no-repeat 0 11px #fef1e0; }
+.change-box { width: 143px; float: right; }
+.delete-btn { margin-left: 20px; }
+.delete-btn:hover { color: #FF8C00; text-decoration: underline; cursor: pointer; }
+.add-btn-2 { display: none; }
+.add-address i, .add-address-new i { font-style: normal; color: #FF8C00; height: 40px; }
+.add-btn, .add-btn-new { margin-left: 40px; cursor: pointer; }
+.add-btn:hover { color: #FF8C00; text-decoration: underline; }
+.add-btn-2 { padding-left: 131px; font-size: 14px; color: #FF8C00; text-decoration: underline; cursor: pointer; margin-bottom: 20px; }
+.add-btn-2:hover { opacity: 0.8; }
+.delivery-box { padding-bottom: 20px; padding-left: 104px; font-size: 16px; }
+.shop-address { width: 150px; height: 30px; line-height: 30px; text-indent: 10px; font-size: 16px; }
+.shop-address option { text-indent: 20px; }
+.delivery-box .ex-text { margin-left: 10px; }
+/* 支付方式 */
+.pay-box { border: 1px solid #dcdcdc; margin-top: 20px; }
+.pay-box h2 { padding-bottom: 20px; padding-top: 20px; }
+.pay-box .pay-for { margin: 16px; }
+.pay-item { float: left; margin-right: 5px; width: 170px; }
+.change-bank { position: relative; top: -11px; }
+.bank-img { border: 1px solid #DDDDDD; height: 36px; width: 127px; }
+.bank-active { border-color: #FF8C00; }
+.pay-box .active .bank-img { border-color: #FF8C00; }
+.pay-box .active .i-img { display: inline-block; }
+.i-img { position: relative; top: -20px; left: -14px; display: none; }
+/* 发票信息 */
+.bill-box { margin: 20px 0; border: 1px solid #dcdcdc; }
+.bill-box h2 { padding-bottom: 20px; padding-top: 20px; }
+.bill-box p { font-size: 16px; margin: 16px; }
+.bill-box .bill-inpt { position: relative; top: 2px; margin-right: 10px; }
+.bill-hd { height: 40px; background: #eee; margin: 20px 0; line-height: 40px; padding-left: 20px; font-size: 16px; /* display: none;  */ }
+.bill-hd input { margin-top: 13px; margin-right: 20px; }
+.bill-box .bill-head { margin-left: 20px; }
+.bill-box .bill-con { margin-left: 20px; }
+.bill-box .bill-con select { height: 30px; line-height: 30px; font-size: 14px; margin-left: 10px; width: 100px; text-indent: 5px; }
+.bill-box .bill-con select option { text-indent: 11px; }
+.change-box-bill { float: right; width: 140px; }
+.change-btn { color: #FF8C00; font-size: 14px; }
+.change-btn:hover { text-decoration: underline; cursor: pointer; }
+.change-box-bill .delete-btn { color: #FF8C00; font-size: 14px; }
+.bill-change { /* display: none;  */ }
+.bill-change p { padding-left: 20px; margin-top: 20px; }
+.bill-change p i { color: #FF8C00; font-size: 12px; margin-right: 10px; }
+.bill-change p span { margin-left: 20px; }
+.bill-change p select { height: 25px; line-height: 25px; width: 80px; font-size: 14px; }
+.bill-change p .address-bill { height: 25px; line-height: 25px; width: 89px; text-indent: 10px; font-size: 14px; border: 1px solid #ccc; }
+.save-box { background: #FF8C00; color: #fff; width: 100px; height: 30px; line-height: 28px; font-size: 16px; border: none; cursor: pointer; font-family: "Hiragino Sans GB", "Microsoft YaHei", sans-serif; margin-left: 88px; width: 100px; }
+.cancel-box { width: 100px; height: 30px; background: #fff; border: 1px solid #ccc; font-size: 16px; cursor: pointer; font-family: "Hiragino Sans GB", "Microsoft YaHei", sans-serif; line-height: 28px; }
+/* 商品信息 */
+.catbox .price { text-align: center; background-position: 95px 42px; }
+.goods span { font-size: 14px; }
+/* 弹出层 */
+.address-choice { width: 550px; height: 465px; background: #fff; opacity: 1; z-index: 9999; position: absolute; left: 35%; top: 30%; border-radius: 10px; display: none; }
+.address-choice h2 { background: #eee; padding-left: 20px; padding-right: 20px; height: 40px; line-height: 40px; border-radius: 10px 10px 0 0; }
+.choice-content { margin-top: 20px; padding-right: 20px; }
+label { margin-right: 10px; }
+.place_form select { height: 30px; color: #959595; width: 105px; }
+.miaoshu { font-size: 14px; }
+.miaoshu span { color: #FF8C00; margin-right: 20px; }
+.choice-content p { height: 30px; font-size: 14px; padding-left: 20px; }
+.choice-content p i { color: #FF8C00; font-size: 13px; margin-right: 8px; line-height: 30px; height: 30px; }
+.choice-content .user-name { display: block; height: 120px; }
+.user-name textarea { display: inline-block; color: #959595; text-indent: 10px; height: 100px; width: 337px; position: relative; left: 83px; top: -23px; border: 1px solid #ccc; }
+.choice-content input { height: 30px; border: 1px solid #ccc; text-indent: 10px; width: 312px; color: #959595; }
+.choice-content .name-box { padding-left: 10px; font-size: 13px; }
+.choice-content .name-box input { width: 338px; }
+.choice-content .phone-num { margin-top: 20px; padding-left: 18px; }
+.choice-content .phone-num input { width: 339px; }
+.choice-content .tel-num { padding-left: 32px; margin-top: 20px; }
+.choice-content .tel-num .quhao, .choice-content .tel-num .fenji { width: 80px; }
+.choice-content .tel-num .haoma { width: 150px; margin-left: 12px; }
+.choice-content .tel-num .fenji { margin-left: 13px; }
+.choice-content .check-address { width: 18px; position: relative; top: 10px; margin: 0 auto; }
+.choice-content .check-all { text-align: center; }
+.choice-content .btn-new { width: 100px; height: 25px; display: block; line-height: 23px; background: #FF8C00; color: #fff; text-align: center; margin: 0 auto; margin-top: 20px; cursor: pointer; border: 0; text-indent: 0; font-size: 14px; }
+.phone-num  label.error { margin-left: 81px; }
+.name-box label.error { margin-left: 91px; }
+/* 配送方式 */
+.de-box { font-size: 14px; border: 1px solid #dcdcdc; padding-bottom: 20px; padding-top: 20px; }
+.way-box { width: 100%; line-height: 40px; background-position: 0 9px; }
+.add-way-new { color: #FF8C00; text-decoration: underline; cursor: pointer; }
+.change-show { display: none; }
+.way-box span { margin-left: 92px; }
+.way-box .de-bg { height: 40px; display: inline-block; padding-left: 20px; }
+.de-address { margin-top: 20px; padding-left: 76px; }
+.shop-address-new { margin-top: 20px; padding-left: 105px; }
+.shop-address-new span { margin-right: 5px; }
+.shop-address-new select { font-size: 14px; height: 30px; }
+.show-address { margin-left: 6px; display: none; }
+.show-address span { margin-right: 10px; }
+.cus-box { padding-left: 58px; }
+.cus-box p { margin-top: 20px; }
+.cus-box p input { height: 30px; line-height: 30px; text-indent: 10px; font-size: 12px; }
+.cus-box p i { vertical-align: middle; color: #FF8C00; margin-right: 10px; }
+.cus-box .name-box input { margin-left: 2px; border: 1px solid #CCCCCC; }
+.cus-box .name-box label.error { margin-left: 14px; }
+.cus-box .phone-num { padding-left: 13px; }
+.cus-box .phone-num label.error { margin-left: 17px; }
+.cus-box .phone-num input { margin-left: 3px; border: 1px solid #CCCCCC; }
+.cus-box .btn-new { width: 100px; height: 30px; background: #FF8C00; border: none; cursor: pointer; font-size: 14px; font-family: inherit; color: #fff; margin-top: 20px; margin-left: 102px; }
+/* 新地址 */
+.way-box-new { width: 100%; line-height: 40px; }
+.way-box-new span { margin-left: 37px; }
+.way-box-new .de-bg { height: 40px; display: inline-block; padding-left: 20px; }
+.way-box-new .cus-new { margin-left: 20px; }
+.way-box-new .change-box-bill { display: none; width: 164px; }
+.way-box-new .change-btn-new, .de-bg .delete-btn { color: #FF8C00; cursor: pointer; font-size: 14px; }
+.add-way { color: #FF8C00; font-size: 16px; text-decoration: underline; padding-left: 105px; cursor: pointer; }
+.add-address-active .change-box-bill { display: block; }
+.cus-box .btn-clear { background: #fff; border: 1px solid #CCCCCC; color: #666; }
+/* 隐藏按钮 */
+.btn-2 { display: none; }
+.btn-2 input { font-size: 18px; height: 30px; line-height: 15px; margin-left: 10px; text-align: center; width: 130px; cursor: pointer; }
+.btn-2 .anew { background: #ff8c00; border-radius: 3px; color: #fff; border: 0; display: block; float: left; margin-left: 67px; }
+.btn-2 .cancel-btn { background-image: none; border: 1px solid #ccc; border-radius: 3px; margin-right: 54px; }
+.remark-box { background: #EEEEEE; border-top: 1px solid #DDDDDD; padding-left: 20px; height: 50px; font-size: 14px; }
+.remark-box input { height: 30px; line-height: 30px; border: 1px solid #ccc; margin-top: 8px; padding-left: 10px; width: 40%; }
+/************ -  fix bug - **************/
+#content .sersafe-steps { margin-bottom: 36px; margin-top: -55px; top: 0 }
+#content h2.fix { background-color: #eee; line-height: 38px; padding: 0; text-indent: 8px; }
+.catbox { border: 1px solid #dcdcdc; margin: 20px 0; }
+.catbox .checkout { background-color: #f5f5f5; border: medium none; margin: 0; height: auto; padding-bottom: 16px; padding-top: 16px; overflow: hidden; }
+.catbox .checkout div { line-height: 1; }
+.catbox .checkout p { margin: 8px; }
+.catbox .checkout .selected { line-height: 1; }
+.catbox .checkout .total { color: #ff8c00; font-size: 32px; margin-left: 0; }
+.catbox .checkout .numb { margin-right: 78px; }
+.catbox .checkout .total #priceTotal { font-size: 32px; }
+.textLeft { text-align: left; }
+.textRight { text-align: right; }
+.empt { margin: 0 16px; }
+.lh35 { line-height: 35px; }
+#js-pay.btn { height: auto; padding: 8px 16px; line-height: 1; margin-right: 80px; }
+#cartTable .goods img { margin: 16px 32px 16px 16px; }
+.goods > p { text-align: left; }
+.goods p.title { font-size: 16px; margin-bottom: 8px; margin-top: 20px; }
+.goods p.spec { color: #999; }

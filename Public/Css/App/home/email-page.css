@@ -1,0 +1,131 @@
+@charset "utf-8";
+/* CSS Document *//* CSS Document */
+ .clearfix::after{
+	clear:both;
+}
+ .usersafe-tip{
+	height:52px;
+}
+ .usersafe-crumbs{
+	color: #565656;
+    float: left;
+    font-size: 16px;
+    margin:30px 0 0 30px;
+}
+ .usersafe-crumbs a{
+	color:#555;
+}
+ .usersafe-crumbs i{
+	margin: 0 3px;
+}
+ .sersafe-steps{
+ 	float: right;
+    margin:50px 2px 0 0;
+ }
+ ol{
+ 	list-style:none;
+ }
+ .sersafe-steps li{
+ 	float: left;
+    height: 37px;
+    position: relative;
+    width: 155px;
+ }
+ .step-sprite{
+ 	background:url("../../Images/home/safe_01.png") no-repeat;
+ }
+ .sersafe-steps .active .step{
+ 	background-position: 0 0;
+    color: #fff;
+    z-index: 5;
+ }
+ .sersafe-steps i{
+ 	 font-style: normal;
+    margin-left: 15px;
+ }
+.sersafe-steps .step{
+	background-position: -259px 0;
+    color: #555;
+    font-size: 14px;
+    height: 34px;
+    line-height: 34px;
+    position: relative;
+}
+ .sersafe-steps .sprite-bg{
+	background-position:-232px 0;
+}
+.sersafe-steps .step{
+	color:#555;
+}
+.verify-form{
+	margin:100px 20px 20px 115px;
+	font-size: 14px;
+	color: #333;
+}
+.verify-form li{
+	margin-top: 20px;
+    position: relative;
+}
+.verify-email .verify-form span{
+	 color: #565656;
+    display: inline-block;
+    font-size: 12px;
+    text-align: right;
+    width: 80px;
+}
+.verify-form input{
+	border: 1px solid #ccc;
+    height:40px;
+    line-height:40px;
+    padding: 0 5px;
+    vertical-align: middle;
+    width:244px;
+}
+.verify-form .verifyCode{
+	padding: 0 5px;
+    width: 86px;
+}
+.verify-form img{
+	vertical-align:bottom;
+}
+.verify-form .button-code{
+	color: #ff8c00;
+    margin-left: 10px;
+}
+.verify-form .button-code:hover{
+	text-decoration:underline;
+}
+.verify-form .button-next{
+	background-color:#ff8c00;
+    border: medium none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    height: 30px;
+    line-height:28px;
+    margin-left: 82px;
+    text-align: center;
+    width: 80px;
+    font-family:"Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:14px;
+}
+.verify-form .code_box{
+	left:12px;
+}
+.verify-form .phone_btn1{
+	width:107px;
+	height:40px;
+	background:#ba6701;
+	color:#fff;
+	font-family:"Hiragino Sans GB","Microsoft YaHei",sans-serif;
+	text-align:center;
+	cursor:pointer;
+	 left: 337px;
+    position: absolute;
+    top:0;
+    font-size: 14px;
+}
+.email-show{
+	color:#FF8C00;
+	display:none;
+}

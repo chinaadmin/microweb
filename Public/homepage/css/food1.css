@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+#content .text-area{
+	text-align:center;
+	}
+#content .text-area h2{
+	text-align:left;
+	}
+#content .text-area p{
+	text-align:left;
+	padding:0;
+	margin-top:20px;
+	line-height:35px;
+	}
+#content .text-area p span{
+	margin-left:40px;
+	}
+#content .text-area .share{
+	float:right;
+	margin-top:25px;
+}
+#content .text-area .share ul li{
+	float:left;
+	list-style:none;
+	
+}

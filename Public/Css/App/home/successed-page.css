@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+
+ #content{
+	width:700px;
+	margin:0 auto;
+} 
+#content h2{
+	color:#ff8c00;
+	font-weight:bolder;
+	padding-top:40px;
+	padding-bottom:40px;
+
+}
+.massage_box{
+	height:200px;
+	text-align:left;
+	background:#eeeeee;
+}
+.massage_box h3{
+	color:#4dc003;
+	font-size:16px;
+	padding-top:40px;
+	padding-left:170px;
+	background:url(../../Images/home/safe_00.jpg) no-repeat 133px 31px;
+}
+.massage_box p{
+	padding-top:20px;
+	text-indent:170px;
+}
+.massage_box a{
+	color:#ff8c00;
+}
+.massage_box a:hover{
+	text-decoration:underline;
+}
+#content .buy_btn{
+	width:150px;
+	height:35px;
+	line-height:35px;
+	background:#ff8c00;
+	font-size:16px;
+	color:#fff;
+	text-align:center;
+	display:block;
+	margin:0 auto;
+	margin-top:40px;
+	border-radius:5px;
+}
+#footer{
+	top:150px;
+}

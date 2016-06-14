@@ -1,0 +1,440 @@
+html{min-height: 100%;
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body * { 
+  box-sizing: border-box;
+-moz-box-sizing:border-box; /* Firefox */
+-webkit-box-sizing:border-box; /* Safari */
+ }
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 100%;
+  background-color: #fff;
+  margin: 0;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+a,a:active,a:hover,a:focus {
+  outline: none;
+  -webkit-outline: none;
+}
+.flex {
+  display: flex;
+  display: -webkit-flex;
+  display: -webkit-box;
+}
+.flexOne {
+  flex: 1;
+  -webkit-flex: 1;
+  -webkit-box-flex: 1;
+}
+
+
+.clear{clear: both;}
+.btn {
+  -moz-user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.42857;
+  margin-bottom: 0;
+  padding: 6px 12px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.hide{
+  display: none!important;
+}
+.show{
+  display: block!important;
+}
+.hidden{
+  visibility: hidden;
+}
+
+input,textarea{
+  font-size: 14px;
+}
+
+/*******************************************************************/
+
+.box { padding: 0 24px; position: relative;}
+.box .imageView { margin-top: 24px; background-color: #fff; background-position: center; background-size: 100%; position: relative; font-size: 0; }
+.box .imageView img { display: inline-block; width: 100%; background-color: grey; }
+.box .imageView .preview { box-shadow: 0 0 2px 0 #444; border: 1px solid #fff; border-radius: 1px;overflow: hidden; }
+.box .imageView .preview canvas{display: none; }
+.box .imageView .cameraBgi { min-height: 240px; }
+.box .imageView .captureBtn,
+.box .imageView .captureBtn span, 
+.box .imageView .captureBtn form input{
+  height: 100%;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.box .imageView .captureBtn span{
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+}
+.box .imageView .captureBtn form input{
+  z-index: 2;
+  opacity: 0;
+}
+
+
+.descBox {
+  background-color: #fff;
+  padding: 24px 0;
+  color: #999;
+  font-size: 16px;
+}
+.descBox p{
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 16px;
+}
+.descBox input {
+  width: 100%;
+  border: 0 solid #000;
+  box-shadow: 0 -1px 1px 0 #eee inset;
+  line-height: 24px;
+  border-bottom: 1px solid #ccc;
+}
+.cameraBox { margin-top: 16px; margin-bottom:56px ;   text-align: center;}
+.cameraBox .btn {
+  background-color: #ff8400;
+  border: 0 solid #ff8400;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 32px;
+  text-align: center;
+  width: 100%;
+}
+.cameraBox a span {
+  padding: 0 8px;
+}
+
+
+.userBox {
+  line-height: 2;
+  margin-bottom: 20px;
+  margin-top: 16px;
+}
+.userBox .user p { margin: 0; font-size: 16px; color: #999;  }
+.userBox .user p:first-child {color: #333;}
+
+.shareBox {
+  padding: 8px 0 4px 0;
+  margin-top: 0;
+  margin-bottom: 36px;
+  text-align: center;
+  color: #222;
+  font-size: 0;
+}
+.shareBox .item{
+  width: auto;
+  display: inline-block;
+  position: relative;
+}
+.shareBox img {
+  height: 120px;
+  width: 120px;
+  display: inline-block;
+}
+.shareBox span {
+  bottom: 16px;
+  color: #fff;
+  display: inline-block;
+  font-size:18px;
+  font-weight: bold;
+  left: 0;
+  margin-top: 6px;
+  position: absolute;
+  width: 100%;
+}
+.view { padding: 16px 0; padding-bottom: 56px;}
+
+.listBox .item { width: 50%; padding: 0 8px; font-size: 16px; float: left; margin-bottom: 16px; }
+.listBox .item .wrap {
+  box-shadow: 1px 1px 1px 0 #ccc;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  border-radius: 2px;
+
+}
+.listBox .item img.u {
+  width: 100%;
+  background-color: #fff;
+  min-height: 64px;
+  display: inline-block;
+  border-width: 0;
+  box-shadow: 0 0 0 0 #ccc;
+  outline: 0 solid #ccc;
+  border: 4px solid transparent;
+}
+.listBox .item .bar {
+  line-height: 36px;
+  margin-top: 4px;
+  padding-left: 8px;
+  width: 100%;
+  padding-bottom: 4px;
+}
+.listBox .item .bar p{
+  margin: 0;
+  line-height: 1.68;
+  font-size: 14px;
+}
+.listBox .item .bar .info p:first-child{
+  color: #999;
+  font-size: 12px;
+}
+.listBox .item .bar .info p:last-child{
+  color: #ff8400;
+}
+.listBox .item .bar .info .desc{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80px;
+  font-size: 12px;
+}
+.listBox .item .bar .info .desc:before {
+  color: transparent;
+  content: ".";
+}
+
+.listBox .item .bar > a {
+  border-radius: 328px;
+  font-size: 0;
+  padding: 0;
+  text-align: center;
+  width: 64px;
+}
+.listBox .item .bar a img {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+.listBox .item .bar a span { width: 100%; display: inline-block; font-size: 14px; float: left; color: #A0A0A0;}
+.navBox { padding: 8px; position: fixed; width: 100%; left: 0; bottom: 0; background-color: #fff;}
+.navBox .btn {
+  background-color: #f84;
+  width: 100%;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600%;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+
+
+
+
+.view .loginBox input { border: 1px solid #ccc; padding: 12px 8px; border-radius: 0;}
+.view .loginBox input:focus { border: 1px solid #ff8400; }
+.view .loginBox .full { width: 96%; margin: 12px 2%; }
+.view .loginBox .full:first-child{ margin-top: 32px;}
+.view .loginBox p { padding: 0 2%; }
+.view .loginBox a { color: #ff8400; }
+.view .loginBox a.btn { margin-top: 24px; background-color: #ff8400; color: #fff; border-color: #ff8400; }
+.view .loginBox a.btn:hover { background-color: #FFAD51; }
+
+.view .loginBox select.full { border: 1px solid #ccc; padding: 8px; margin-top: 12px; margin-bottom: 12px; }
+.view .loginBox .text { text-indent: 2px; line-height: 24px; }
+
+.view .loginBox .lineGroup {
+  margin-top: 8px;
+  width: 100%;
+  font-size: 0;
+  height: 42px;
+  overflow: hidden;
+  display: block;
+}
+.view .loginBox .lineGroup input.lite {
+  border-radius: 0;
+  width: 60%;
+  display: inline-block;
+  border-width: 1px;  
+  height: 42px;
+  vertical-align: middle;
+  line-height: 18px;
+  font-size: 14px;  
+}
+.view .loginBox .lineGroup .btn {
+  margin-top: 0;
+  border-radius: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-width: 0;
+  vertical-align: middle;
+  width: 40%; 
+  display: inline-block;
+  height: 42px;
+  line-height: 42px;
+  
+}
+.view .loginBox .lineGroup .btn.grey {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #001;
+}
+
+.view .loginBox p.text{
+  font-size: 12px;
+  color: #f84;
+}
+.view .loginBox>a.btn{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 0;
+  box-shadow: 0 0 2px 0 #f84;
+}
+
+
+
+
+.detailBox .imageView{
+  box-shadow:  0 0 2px 0 #ccc;
+  margin-bottom: 16px;
+}
+
+.msgBox {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  display: none;
+}
+.msgBox .tips {
+  position: relative;
+  top: 50%;
+}
+.msgBox .tips span{
+  background-color: rgba(0,0,0,0.64);
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: #fff;
+  min-width: 96px;
+  display: inline-block;
+}
+
+.item.imghide{
+  padding-top:  0;
+  padding-bottom: 0;
+  margin: 0;
+  font-size: 0;
+  height: 1px;
+}
+.item.imghide img{width: 100%;height: 1px;}
+
+
+.themore{
+  padding: 0 8px;
+}
+.themore p {
+  color: #999;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0;
+  padding: 8px 0;
+  text-align: center;
+}
+
+.navTop {
+  background-color: #EEEEEE;
+  height: 48px;
+  width: 100%;
+  position: relative;
+}
+
+.navTop .logo {
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  background-size: auto 20px;
+  color: #333;
+  height: 100%;
+  line-height: 48px;
+  text-align: center;
+}
+
+.navTop .searchBtn,.navTop .homeBtn {
+  font-size: 0;
+  height: 48px;
+  min-width: 48px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+}
+.navTop .homeBtn{
+  min-width: 64px;
+  right: auto;
+  left: 0;
+}
+.navTop .searchBtn img {
+  display: inline-block;
+  height: 100%;
+  padding: 12px;
+  vertical-align: middle;
+  width: 48px;
+}
+.navTop  .logo  input {
+border: 1px solid #ccc;
+border-radius: 3px;
+display: inline-block;
+height: 32px;
+margin: 8px 0 0 24px;
+padding: 0 8px;
+vertical-align: top;
+width: 64%;
+}
+
+.navTop  .logo span{
+  line-height: 48px;
+  font-size: 18px;
+}
+
+.navTop .searchBtn span {
+  background-color: #ff8400;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 32px;
+  margin-right: 8px;
+  margin-top: 8px;
+  padding: 0 8px;
+  text-align: center;
+  width: auto;
+}

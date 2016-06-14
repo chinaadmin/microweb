@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+.check-box{
+	width:500px;
+	min-height:100px;
+
+}
+.check-box .edit-del{
+	display:block;
+	width:58px;
+	margin:2px;
+	float:left;
+	position:relative;
+}
+.check-box .edit-del i.icon-remove{
+	position:absolute;
+	top:-5.5px;
+	right:-3px;
+	cursor:pointer;
+}
+.edit-del .span2{
+	width:58px;
+}
+.check-box .add-in{
+	cursor:pointer;
+}

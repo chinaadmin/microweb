@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="NIM- Responsive One Page Creative Template" />
+<meta name="keywords" content=""/>
+<meta name="author" content="Metrothenes" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="stylesheet" media="screen" href="../css/bootstrap.min.css"/>
+<link rel="stylesheet" media="screen" href="../css/swiper.min.css"/>
+<link rel="stylesheet" media="screen" href="../css/commonExt.css"/>
+<link rel="stylesheet" media="screen" href="../css/commodity.css"/>
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="../js/app-detail.js"></script>
+<!--/*购买数量*/-->
+<script type="text/javascript">
+$(document).ready(function(){$('.spinnerExample').spinner({});});
+
+</script>
+
+<title>详情页</title>
+</head>
+	<body>
+		<div id="content" class="view">
+		<div class=" container content">
+		<div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="../images/detail_00.png"></div>
+            <div class="swiper-slide"><img src="../images/detail_00.png"></div>
+            <div class="swiper-slide"><img src="../images/detail_00.png"></div>
+            <div class="swiper-slide"><img src="../images/detail_00.png"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <div class="back-box"><a href=""><img src="../images/detail_08.png"></a></div>
+        <div class="pName clearfix flex">
+        	<div class="dt J_name_content flexOne"><span class="p-name-content">ZEK 丹麦风味黄油曲奇饼干 454g</span></div>
+	        <div class="share-box">
+	        	<a class="">
+							<img src="../images/detail_01.png" class="star-img">
+							<span>收藏</span>
+							</a>
+	        	<a class="">
+							<img src="../images/detail_02.png" class="share-img">
+							<span>分享</span>
+							</a>
+	        </div>
+      </div>
+    </div>
+    <!--/*图片滑动*/-->
+    	 <script>
+    		var swiper = new Swiper('.swiper-container', {
+        		pagination: '.swiper-pagination',
+        		paginationClickable: true
+    		});
+    	</script>
+    <div class="price-box">
+    	<p>
+				<span class="label-like">
+					好货价：
+				</span>
+				<b class="price-cl">￥00.00</b>
+				<del>$0.01</del>
+			</p>
+    </div>
+
+		<div class="selectBox flex">
+			<a class="flexOne">
+			<span class="label-like">已选择：</span>
+			<span class="product">"草莓味"</span>
+			</a>
+			<a> > </a>
+		</div>
+
+		<div class="moreDrop">
+				<hr>
+				<p><span>继续拖动查看更多详情</span></p>
+		</div>
+
+		<div class="detailTab">
+				<div class="tabItem active"><span>图文详情</span></div>
+				<div class="tabItem"><span>规格参数</span></div>
+		</div>
+		<div class="eva-img-box">
+			<a class="eva-img">
+				<img src="../images/detail_06.jpg"/>
+			</a>
+			<a class="eva-img">
+				<img src="../images/detail_06.jpg"/>
+			</a>
+		</div>
+
+		<div class="vpayControl flex">
+				<a href="#" class="btn flexOne">加入购物车</a>
+				<a href="#" class="btn flexOne btn-Ye">立即购买</a>
+		</div>
+   </div>
+	</body>
+</html>

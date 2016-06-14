@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+#content .news-dynamic .about .text{
+	width:460px;
+	}
+#content .news-dynamic .about .text P{
+	padding:0;
+	line-height:20px;
+	font-size:12px;
+	 margin: 5px 0 0;
+	}
+#content .news-dynamic .about .text P span{
+	float:right;
+}
+#content .news-dynamic .about .text P a{
+	color:#f36523;
+	}
+#content .news-dynamic .about .text h3{
+	color:#f36523;
+	}
+#content .news-dynamic .news-title{
+	margin-top:25px;
+	}

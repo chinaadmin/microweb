@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background:#fff;
+}
+.img_box{
+	width:780px;
+	margin:0 auto;
+	margin-top:60px;
+	min-height:315px;
+
+}
+.img_box img{
+	float:left;
+}
+.img_box .explain_box{
+	padding-top: 122px;
+    text-align: center;
+
+}
+.img_box .explain_box p{
+	font-size:18px;
+}
+.img_box .explain_box .back_home{
+	font-size:14px;
+	margin-top:10px;
+}
+.img_box .explain_box .back_home a{
+	color:#ff8c00;
+	text-decoration:underline;
+	margin:0 5px;
+}
+#footer{
+	top:60px;
+}
+
+#path_box >*{
+	vertical-align: middle;
+	color: #888;
+}
+#path_box #path_cl{color: #000;}

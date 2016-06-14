@@ -1,0 +1,55 @@
+.view .content.container { padding: 0; }
+
+
+.itemBox{
+  background-color: #fff;
+  margin-top: 24px;
+  box-shadow: 0 0 2px 0 #333;
+}
+.itemBox .item,.itemBox .title{
+  line-height: 40px;
+  padding: 0 16px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  display: -webkit-flex;
+}
+.itemBox .item:last-child{
+  border-bottom-width: 0;
+}
+
+
+.itemBox .item span.text{
+  border-left: 16px solid #ff8400;
+  padding-left: 8px;
+  flex: 1;
+  -webkit-flex:1;
+}
+.itemBox .item span.edit{
+  color: #ff8400;
+}
+.itemBox .title span.text{
+  flex: 1;
+  -webkit-flex:1;
+}
+
+.itemBox .title span.tips{
+  color: #999;
+  font-size: 12px;
+}
+.itemBox em{
+  margin-left: 8px;
+  color: #ff8400;
+  font-style: normal;
+}
+
+.submit{
+  margin-top: 24px;
+  padding: 0 16px;
+}
+
+.submit .btn{
+  border-color: #ff8400;
+  width: 100%;
+  background-color: #ff8400;
+  color: #fff;
+}

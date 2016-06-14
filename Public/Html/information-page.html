@@ -1,0 +1,625 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>填写信息</title>
+<link type="text/css" rel="stylesheet" href="../Css/App/home/common.css">
+<link type="text/css" rel="stylesheet" href="../Css/App/home/cats-page.css">
+<link type="text/css" rel="stylesheet" href="../Css/App/home/infor-page.css">
+<script type="text/javascript" src="../Js/App/home/jquery.js"></script>
+<script type="text/javascript" src="../Js/App/home/home-page.js" ></script>
+<script type="text/javascript" src="../Js/App/home/cats-page.js" ></script>
+<script type="text/javascript" src="../Js/App/home/infor-page.js"></script>
+<script src="../Js/App/home/Area.js" type="text/javascript"></script>
+<script src="../Js/App/home/AreaData_min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Js/App/home/jquery.validate.js"></script>
+<script type="text/javascript" src="../Js/App/home/login-page.js"></script>
+<script type="text/javascript">
+$(function (){
+  initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '44', '0', '0');
+});
+
+//得到地区码
+function getAreaID(){
+  var area = 0;          
+  if($("#seachdistrict").val() != "0"){
+    area = $("#seachdistrict").val();                
+  }else if ($("#seachcity").val() != "0"){
+    area = $("#seachcity").val();
+  }else{
+    area = $("#seachprov").val();
+  }
+  return area;
+}
+
+function showAreaID() {
+  //地区码
+  var areaID = getAreaID();
+  //地区名  您选择的地区码：" + areaID + "
+  var areaName = getAreaNamebyID(areaID) ;
+  alert(" 地区名：" + areaName);            
+}
+
+//根据地区码查询地区名
+function getAreaNamebyID(areaID){
+  var areaName = "";
+  if(areaID.length == 2){
+    areaName = area_array[areaID];
+  }else if(areaID.length == 4){
+    var index1 = areaID.substring(0, 2);
+    areaName = area_array[index1] + " " + sub_array[index1][areaID];
+  }else if(areaID.length == 6){
+    var index1 = areaID.substring(0, 2);
+    var index2 = areaID.substring(0, 4);
+    areaName = area_array[index1] + " " + sub_array[index1][index2] + " " + sub_arr[index2][areaID];
+  }
+  return areaName;
+}
+
+</script>
+</head>
+<body style="background-color:#fff;">
+<!--头部开始-->
+<div id="header">
+  <div class="top_box"> 
+   <div class="top_center_box"> 
+   
+    <div class="welcome_box">
+     <p class="m_right">嘿，欢迎来到必好货商城！</p>
+     <div class="login-box-home">
+     <p><a href="login-page.html" class="login-home">请登陆</a> </p>
+     <p class="m_center">|</p>
+     <p> <a href="zhuce-page.html">免费注册</a> </p>
+     </div>
+    </div> 
+    <div class="logo_nav"> 
+     <ul> 
+      <li class="logo_index"><a href="">我的订单</a> 
+       <div class="logo_nav_tow" style="display: none;"> 
+        <p><a href="">已买到的宝贝</a></p> 
+        <p><a href="">我的收藏</a></p> 
+        <p><a href="">待付款</a></p> 
+       </div> </li> 
+      <li class="logo_index"><a href="">我的好货</a> 
+       <div class="logo_nav_tow" style="display: none;"> 
+        <p><a href="">配送说明</a></p> 
+        <p><a href="">配送说明</a></p> 
+        <p><a href="">配送说明</a></p> 
+        <p><a href="">配送说明</a></p> 
+        <p><a href="">配送说明</a></p> 
+       </div> </li>  
+      <li class="phone-app"><a href="">移动客户端</a></li> 
+      <li class="logo_index qr">
+        <img title="微信分享" src="../Css/Images/home/home_01.png">
+      <div id="qr" class="logo_nav_tow" style="display: none;"> 
+        <img src="../Css/Images/home/qr_02.jpg"> 
+       </div> </li>
+       <li class="logo_share"><a href=""><img title="微博分享" src="../Css/Images/home/home_02.png"></a></li>
+       <div class="clearfix"></div>
+    </ul> 
+</div> 
+    
+   </div> 
+  </div> 
+  <!--Logo+搜索-->
+  <div class="search"> 
+   		<div class="logo_img">
+        <a href="home-page.html">
+    	   <img src="../Css/Images/home/logo_00.png">
+        </a>
+      <p>快乐不贵</p>
+   </div> 
+ <div class="search_box"> 
+    <div class="s_top">
+     <input type="text" placeholder="三文鱼油">
+    <button onclick="location.href='search-page.html'"  class="btn-search"><a href="search-page.html" >搜索</a></button>
+    <div class="clearfix"></div>
+    </div> 
+    <div class="s_bottom">
+     <a href="">三文鱼油</a>
+     <a href="">肉松饼</a>
+     <a href="">羊奶粉</a>
+     <a href="">春光</a>
+    </div>
+   </div>  
+   <!--购物车-->
+   <div class="cats-hover" >
+   		<div class="buy_car">
+			<div class="buy_img">
+        	<p><a >我的购物车</a></p>
+        	</div>
+      		 <div class="buy_zero">
+        		<p>0</p>
+        	</div>
+        	<div class="clearfix"></div>
+         </div>
+         
+         	<div class="cats-show">
+        		<h2>最新加入的商品</h2>
+        		<div class="show-list">
+        			<div class="show-img">
+        				<img src="../Css/Images/home/sort_00.jpg" height="50" width="50">
+        			<div class="infor-show"><p>挪威三文鱼油200ML</p><span class="show-price">￥00.00<span></span><span>×1</span> </div><div class="clearfix"></div>
+        		</div>
+        			<div class="delete re-btn">删除</div>
+        			 <div class="clearfix"></div>
+        		</div>
+        		<div class="cats-foot">
+        			<div class="cats-lef">
+        			<p>共<span class="list-num">1</span>件产品</p>
+        			<p>共计<span>￥00.00</span></p>
+        			</div>
+        			<div class="go-buy">
+        				<a href="cats-page.html" class="go-buy-box">去购物车结算</a>
+        			</div>
+        			<div class="clearfix"></div>
+        		</div>
+        	</div>
+      	<div class="clearfix"></div>
+      </div>
+   </div>
+  </div>
+  
+  <!-- 横向导航 -->
+  
+ 
+  <div id="nav_box">
+        <div id="box">
+            <ul id="nav">
+                <li><a href="home-page.html"class="road-sign">首页</a></li>
+                <li><a href="">营养保健</a></li>
+                <li><a href="">生鲜食品</a></li>
+                <li><a href="">粮油副食</a></li>
+                <li><a href="">休闲零食</a></li>
+                <li><a href="">健康护理</a></li>
+                <li><a href="">万能奶粉</a></li>
+                <li><a href="">海外购</a></li>
+                <li class="sort_show"><div class="pro_hover">商品分类</div>
+                    <div id="sort_hover">
+                           <div class="sort_listbox">
+                               <h2><i class="sort_bg"></i><a href="class-page.html">营养保健</a></h2>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+
+                            <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg1"></i><a href="class-page.html">营养保健</a></h2>
+                                <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+                            
+                            <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg2"></i><a href="class-page.html">营养保健</a></h2>
+                                <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+
+                            <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg3"></i><a href="class-page.html">营养保健</a></h2>
+                                <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+
+                            <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg4"></i><a href="class-page.html">营养保健</a></h2>
+                                <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+
+                            <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg5"></i><a href="class-page.html">营养保健</a></h2>
+                                <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+	<!--路径-->
+	 <div class="hd">
+        <h2 class="loginSprite">快乐的购物体验</h2>
+       <div class="sersafe-steps">
+                    <ol>
+                        <li class="active">
+                            <s class="bg"></s>
+                            <div class="step step-sprite">
+                                <i>1、</i>
+                                <span>加入购物车</span>
+                            </div>
+                        </li>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite sprite-bg-1">
+                                <i>2、</i>
+                                <span>填写信息</span>
+                            </div>
+                        </li>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite sprite-bg">
+                                <i>3、</i>
+                                <span>订单支付</span>
+                            </div>
+                        </li>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite">
+                                <i>4、</i>
+                                <span>支付成功</span>
+                            </div>
+                        </li>
+                          <div class="clearfix"></div>
+                    </ol>
+                    
+                </div>
+                 <div class="clearfix"></div>
+           </div>
+  <!-- 收货详情-->
+  	<!--<div class="take-box">
+		<h2>确认收货方式</h2>
+		<div class="add-address add-address-active">
+			
+			<span class="add-btn"><input type="radio"  checked value="'value" >添加地址 </span>
+		</div>
+		
+		<div class="add-address-new add-address-active">
+			<span class="add-btn-new"><input type="radio"  checked value="'value" name="ddd" class="btn-radio">必好货  12345678901  广东省深圳市南山区科伟路东方科技大厦2402室</span>
+			<div class="change-box"><span class="add-btn">修改</span><span class="delete-btn">删除</span></div>
+		</div>
+		
+		<div class="add-address-new">
+			<span class="add-btn-new"><input type="radio"  checked value="'value" name="ddd" class="btn-radio">必好货  12345678901  广东省深圳市南山区科伟路东方科技大厦2402室</span>
+			<div class="change-box"><span class="add-btn">修改</span><span class="delete-btn">删除</span></div>
+		</div>
+		<div class="add-btn-2 add-btn">添加地址</div>
+		<div class="delivery-box"><span>由&nbsp&nbsp</span>
+  <!--选择发货地区-->
+  <!--<select class="shop-address">
+		  <option value="">南山科苑店</option>
+		  <option value="">南山科苑店</option>
+		  <option value="">南山科苑店</option>
+		  <option value="">南山科苑店</option>
+		  <option value="">南山科苑店</option>
+		</select> 
+  
+		
+  <span class="ex-text">提供商品及服务</span>
+  </div>
+  	</div> -->
+  	
+ <!--收货详情-->
+ <h2>配送方式</h2>
+ <div class="de-box">
+ 	
+ 	<div class="way-box add-address-active">
+ 		<div class="de-bg"><span class="change-btn-new add-way-new"><input type="radio" name="fangshi">添加地址</span></div>
+ 	</div>
+ 	<div class="change-show">
+ 	<div class="shop-address-new">
+ 		<span>自提点:</span>
+ 		<select><option>深圳市</option></select>
+ 		<select><option>南山区</option>
+ 				<option>福田区</option>
+ 				<option>盐田区</option>
+ 				<option>宝安区</option>
+ 				<option>龙岗区</option>
+ 				<option>光明新区</option>
+ 				<option>坪山新区</option>
+ 				<option>龙华新区</option>
+ 		</select>
+ 		<select class="field">
+ 			<option>南山科苑店</option>
+ 			<option>南山科苑店</option>
+ 			<option>南山科苑店</option>
+ 			<option>南山科苑店</option>
+ 			<option>南山科苑店</option>
+ 		</select>
+ 	</div>
+ 	
+ 	<div class="de-address">
+ 		
+ 		<div class="show-address"><span>自提点地址:</span>深圳市南山区科苑路16号东方科技大厦2402</div>
+ 	</div>
+ 	<div class="cus-box">
+ 		<form id="signupForm">
+ 		<p class="name-box"><i>*</i><label>收货人姓名:</label><input type="text"placeholder="长度不超过20个字" name="userName" id="userName"></p>
+		<p class="phone-num"><i>*</i><label>手机号码:</label><input type="text" placeholder="请输入手机号" id="telephone" name="telephone"></p>
+		<input type="submit" value="确认" class="btnNextPhone button-next btn-new">
+		</form>
+	</div>
+	</div>
+ </div>
+ <div class="way-box-new add-address-active">
+ 		<span></span>
+ 		<div class="de-bg"><span><input type="radio" name="new" class="btn-radio"></span><span class="cus-new">周杰伦 138****2015深圳市南山区科苑路16号东方科技大厦2402</span></div>
+ 		<div class="change-box-bill  change-way"><span class="change-btn-new">修改</span><span class="delete-btn">删除</span></div>
+ </div>
+ <div class="way-box-new">
+ 		<span></span>
+ 		<div class="de-bg"><span><input type="radio" name="new" class="btn-radio"></span><span class="cus-new">周杰伦 138****2015深圳市南山区科苑路16号东方科技大厦2402</span></div>
+ 		<div class="change-box-bill  change-way" style="display: none;"><span class="change-btn-new">修改</span><span class="delete-btn">删除</span></div>
+ </div>
+   <div class="add-way change-btn-new">添加地址</div>
+<!--  支付方式-->
+<div class="pay-box">
+	<h2>选择支付方式</h2>
+	<div class="pay-for">
+		<span><input type="radio" name="bank" class="change-bank"><img src="../Css/Images/home/bank_00.jpg" class="bank-img bank-active "/><img src="../Css/Images/home/bank_01.png" class="i-img"></span>
+		
+		<span><input type="radio" name="bank" class="change-bank"><img src="../Css/Images/home/bank_00.jpg" class="bank-img"/><img src="../Css/Images/home/bank_01.png" class="i-img" style="display:none;"></span>
+	</div>
+</div>
+<!--发票信息-->
+<div class="bill-box">
+	<h2>发票信息</h2>
+	<p><input type="checkbox" class="bill-inpt">需要发票</p>
+	<div class="bill-hd">
+		<span><input type="radio" name="body">纸质&nbsp;&nbsp;普通发票(个人)</span>
+		<span class="bill-head">发票抬头:必好货</span>
+		<span class="bill-con">发票内容:<select>
+			<option>商品明细</option>
+			<option>商品明细</option>
+			<option>商品明细</option>
+			<option>商品明细</option>
+		</select></span>
+		<div class="change-box-bill"><span class="change-btn">修改</span><span class="delete-btn">删除</span></div>
+	</div>
+	<div class="bill-change">
+		<p><i>*</i>发票类型:<span><input type="radio" name="bill">普通发票</span><!--<span><input type="radio" name="bill">增值税发票</span>--></p>
+		<p><i>*</i>发票抬头:<span><select>
+			<option>个人</option>
+			<option>个人</option>
+			<option>个人</option>
+		</select></span><span><input type="text" placeholder="必好货" class="address-bill"></span></p>
+		<p><span><input type="submit" value="保存" class="save-box closed-box"></span><span><input type="button" value="取消" class="closed-box  cancel-box"></span></p>
+	</div>
+</div>
+  <!-- /*购物车表格*/-->
+          <div class="catbox">
+
+	<table id="cartTable" 	border="0" cellspacing="0" cellpadding="0">
+		<thead class="cats-header">
+			<tr>
+				
+				<th class="pro-massage">商品信息</th>
+				<th>好货价</th>
+				<th>数量</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			
+			<tr>
+				<td class="goods"><a href="detail-page.html"><img src="../Css/Images/home/sort_00.jpg" width="80px" height="80px"/><span>挪威极地三文鱼油200ml</span></a></td>
+				<td class="price">1428.50</td>
+				<td class="count">1</td>
+				
+			</tr>
+			<tr>
+				
+				<td class="goods"><a href="detail-page.html"><img src="../Css/Images/home/sort_00.jpg" width="80px" height="80px"/><span>挪威极地三文鱼油200ml</span></a></td>
+				<td class="price">640.60</td>
+				<td class="count">1</td>
+				
+				
+			</tr>
+		</tbody>
+	</table>
+	<div class="remark-box">
+		<label>补充说明：</label><input type="text" />
+	</div>
+	
+	<div class="foot" id="foot">
+		
+		<a class="fl delete" id="deleteAll" href="javascript:;"></a>
+		<div class="fr closing pay-go">去给钱</div>
+		<div class="fr total">总价（不含运费）：<span>￥</span><span id="priceTotal">0.00</span></br><span class="old-price">已节省:-￥00.00元</span></div>
+		<div class="fr selected" id="selected">已选<span id="selectedTotal">0</span>件商品<!--<span class="arrow up">︽</span><span class="arrow down">︾</span>--></div>
+		<div class="selected-view">
+			<div id="selectedViewList" class="clearfix">
+				<div><img src="images/1.jpg"><span>取消选择</span></div>
+			</div>
+			<span class="arrow">◆<span>◆</span></span>
+		</div>
+	</div>
+
+</div>
+  
+  
+</div>
+
+<!--弹出层-->
+<div class="pop-box">
+</div>
+ <div class="address-choice">
+	<h2>添加地址<i class="close-box"></i></h2>
+	<div class="choice-content">
+	<p class="miaoshu"><span>新增收货地址</span>电话号码、手机号选填一项，其余均为必填项</p>
+	<p class="place_form"><i>*</i><label>所在地区:</label><select id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');"></select>&nbsp;&nbsp;
+		<select id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');"></select>&nbsp;&nbsp;
+		<span id="seachdistrict_div"><select id="seachdistrict" name="seachdistrict"></select></span>	
+		<!--<input type="button"  class="btn1" value="确认选择" onClick="showAreaID()" style="color:#fff;text-indent:0px;"/>-->
+	</p>
+	<p class="user-name"><i>*</i>详细地址:<br>
+		<textarea placeholder="不要重复填写省市区，必须大于5个字符，小于50个字符"></textarea>
+	</p>
+	 <form id="signupForm">
+	<p class="name-box"><i>*</i><label>收货人姓名:</label><input type="text"placeholder="长度不超过20个字" name="userName" id="userName"></p>
+	<p class="phone-num"><i>*</i><label>手机号码:</label><input type="text" placeholder="请输入手机号" id="telephone" name="telephone"></p>
+	<p class="tel-num"><label>电话号码:</label><input type="text" class="quhao" placeholder="区号" ><input type="text" class="haoma" placeholder="电话号码" ><input type="text"class="fenji" placeholder="分机" ></p>
+	<p class="check-all"><input type="checkbox" class="check-address">设为默认地址</p>
+	<input type="submit" value="新增" class="btnNextPhone button-next btn-new">
+	</form>
+	</div>		
+ </div>
+<!-- 删除框-->
+ <div class="comfirm-box">
+ 	<h2>删除<i class="close-box"></i></h2>
+ 	<div class="delete-content">
+ 		<div class="delete-text">
+ 			<i class="delete-bg"></i>
+ 			<div class="delete-write">
+ 			<span>删除商品</span>
+ 			<p>确定要删除该商品吗？</p>
+ 			</div>
+ 		</div>
+ 		<div class="btn-box"><input type="button" class="true-box" value="确定"><input type="button" class="close-box fail-box" value="取消"></div>
+ 		
+ 	</div>
+ </div>
+<!-- 支付框-->
+<div class="pay-wid">
+	<h2>请您在新打开的页面上完成付款<i class="close-box"></i></h2>
+	<div class="pay-content">
+		<div class="btn-box">
+			<a href="cats-suc.html">
+			<input type="button" class="true-box pay-true" value="已完成付款"></a>
+			<input type="button" class="fail-box pay-fail" value="付款遇到问题">
+		</div>
+		<div class="btn-2">
+			<a href="javascript:void"><input type="button"  class="anew close-box" value="重新支付"/></a>
+			<a href="cats-fail.html"><input type="button"  class="cancel-btn" value="取消"/></a>
+		</div>
+		<p>查看<a href="">支付帮助</a>或联系<a href="">在线客服</a></p>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- 底部 -->
+   <div id="footer"> 
+  <!-- 底部标图 -->
+    <div id="footer_pic">
+      
+    </div>  
+  <div class="blackBox"> 
+    
+   <div class="guide"> 
+    <div class="middle"> 
+     <div class="guide-2"> 
+      <p><b>服务保障</b></p> 
+      <p><a href="">品牌真品防伪码</a></p> 
+      <p><a href="">100%正品保证</a></p> 
+      <p><a href="">30天无条件退货</a></p> 
+      <p><a href="">7×24小时客服</a></p> 
+     </div> 
+     <div class="guide-1"> 
+      <p><b>使用帮助</b></p> 
+      <p><a href="">新手指南</a></p> 
+      <p><a href="">常见问题</a></p> 
+      <p><a href="">帮助中心</a></p> 
+      <p><a href="">用户协议</a></p> 
+      <p><a href="">企业用户团购</a></p>
+     </div> 
+     <div class="guide-1"> 
+      <p><b>支付方式</b></p> 
+      <p><a href="">货到付款</a></p> 
+      <p><a href="">在线支付</a></p> 
+      <p><a href="">余额支付</a></p> 
+      <p><a href="">现金卷支付</a></p> 
+     </div> 
+     <div class="guide-1"> 
+      <p><b>配送方式</b></p> 
+      <p><a href="">包邮政策</a></p> 
+      <p><a href="">配送说明</a></p> 
+      <p><a href="">运费说明</a></p> 
+      <p><a href="">验货签收</a></p> 
+     </div> 
+     <div class="guide-1"> 
+      <p><b>售后服务</b></p> 
+      <p><a href="">正品承诺</a></p> 
+      <p><a href="">售后咨询</a></p> 
+      <p><a href="">退货政策</a></p> 
+      <p><a href="">退货办理</a></p> 
+     </div> 
+     <div class="guide-1"> 
+      <p><b>手机必好货</b></p> 
+      <img src="../Css/Images/home/qr_01.jpg">
+      <p><a href=""class="pp">下载移动客户端</a></p> 
+     </div> 
+     <div class="guide-1"> 
+      <p><b>必好货微信</b></p> 
+      <img src="../Css/Images/home/qr_02.jpg"> 
+      <p><a href=""class="qq">必好货官方微信</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="footer_infor">
+      <p class="footer_infor_link">
+        <a href="">关于我们</a> 
+        <a href="">About us</a> 
+        <a href="">媒体报道</a> 
+        <a href="">品牌招商</a> 
+        <a href="">隐私条款</a> 
+        <a href="">友情链接</a> 
+        <a href="">必好货诚聘</a> 
+        <a href="">必好货卡</a>
+        <a href="">必好货地图</a>
+        <a href="">品牌大全</a>
+        <a href="">用户体验计划</a>
+        <a href="">联系我们</a>
+      </p>
+      <p class="footer_infor_txt">
+        COPYRIGHT©2015 深圳市必好货电子商务有限公司 JITUJITUAN.COM 保留一切权利。 客服热线：0755-86704402
+        <br>
+        粤ICP备07050274号 | 食品流通许可证 SP1101051110165515（1-1） | 营业执照 
+      </p>
+    </div>
+ </div>
+</body>
+</html>

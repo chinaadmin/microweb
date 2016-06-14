@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* CSS Document *//* CSS Document */
+
+#list_left{
+	margin-left:20px;
+	margin-top:20px;
+}
+#shop_list{
+	width:750px;
+	float:left;
+	margin-top:20px;
+}
+#shop_list h2{
+	padding-bottom:25px;
+	border-bottom:2px solid #000;
+	font-weight:bold;
+}
+.shop_box{
+	box-shadow:2px 2px 6px #ccc;
+	padding-bottom:30px;
+	margin-bottom:20px;
+	background:#fff;
+}
+.shop_box:hover{
+	box-shadow:4px 4px 6px #ccc;
+}
+.shop_box .brand_title{
+	z-index:1;
+	position:relative;
+	top:-30px;
+	left:20px;
+	border:1px solid #eee;
+}
+.text_box{
+	color:#828282;
+	margin-top:-19px;
+	height:93px;
+	overflow:hidden;
+}
+.text_box h3{
+	font-size:18px;
+	padding-bottom:13px;
+	text-indent:20px;
+}
+.text_box p{
+	text-indent:20px;
+	line-height:25px;
+}
+.more{
+	text-align: center;
+	line-height:13px;
+    margin-top: 13px;
+    width:60px;
+    margin:0 auto;
+    margin-top:10px;
+	display:block;
+}
+ .more:hover{
+	color:#ff8c00;
+}
+#list_left img{
+	width:241px;
+	height:347px;
+}
+#list_left h2{
+	width:250px;
+	background:#fff;
+	text-align:left;
+	text-indent:10px;
+	border:1px solid #dcdcdc;
+	line-height: 36px;
+}
+#list_left .list_show{
+	width:250px;
+	border:1px solid #dcdcdc;
+	background:#fff;
+	border-top:none;
+}
+#list_left .list_box{
+	width:241px;
+	height:347px;
+	overflow:hidden;
+	margin-top:10px;
+	margin:0 auto;
+	padding-bottom:5px;
+	padding-top:5px;
+}
+.list_box p{
+	position:relative;
+	top:-294px;
+	z-index:10;
+	text-align:center;
+	color:#000;
+	font-weight:bold;
+}
+.list_box .list_title{
+	 color: #ff8c00;
+    font-size:25px;
+    margin-bottom:30px;
+    font-weight:normal;
+}
+.list_box .show_price{
+	font-size:30px;
+	font-weight:bold;
+	margin-top:30px;
+}
+.list_box .show_price span{
+	font-size: 18px;
+}
+
+.list_box .show_car{
+ 	background:#ff8c00;
+    border-radius:5px;
+    height:30px;
+    line-height:28px;
+    text-align:center;
+    width: 140px;
+    margin:0 auto;
+    margin-top:30px;
+}
+.list_box .show_car a{
+	color:#fff;
+	font-size:18px;
+	font-weight:normal;
+}
+.list_box .show_car:hover{
+	background:#ba6701;
+	transition:all 0.3s ease-in-out 0s;
+	}

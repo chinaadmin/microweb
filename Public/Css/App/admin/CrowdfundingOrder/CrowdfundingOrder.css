@@ -1,0 +1,108 @@
+@CHARSET "UTF-8";
+.recaddress{
+	padding:2 30px;
+}
+.recaddress .item{
+	display:inline-block;
+	margin-right:6px;
+	margin-top:20px;
+	padding:8px;
+	width:192px;
+	position:relative;
+	border:2px solid #ccc;
+}
+.recaddress .item .title{
+	border-bottom:1px solid #ddd;
+	font-size:16px;
+	line-height:36px;
+}
+.recaddress .item .title span:last-child{
+	float:right;
+	font-size:14px;
+}
+.recaddress .item.active{
+   border:2px solid #ff8400;
+}
+.recaddress .item.active > span{
+	border-color:transparent #ff8400 #ff8400 transparent;
+	border-style:solid;
+	border-width:12px;
+	display:block;
+	position:absolute;
+	width:0;
+	height:0;
+	right:0;
+	bottom:0;
+}
+.recaddress .item p a{
+	visibility:hidden;
+}
+.recaddress .item.active p a{
+	visibility:visible;
+}
+.recaddress .item .addr{
+	color:#333;
+	font-size:13px;
+    height:35px;
+	padding:8px 0;
+}
+.recaddress .item p a{
+	color:#ff8400;
+	cursor:pointer;
+	margin-right:16px;
+}
+.schemes a{
+	margin:0px 3px;
+}
+/**快递单**/
+.order-title h3{
+	text-align:center;
+	font-weight:bolder;
+}
+.order-receipt{
+	border:1px solid #333;
+	width:90%;
+	margin:0 auto;
+}
+.order-receipt p{
+	margin:8px 25px;
+}
+.order-goods{
+	width:90%;
+	margin:0 auto;
+}
+.order-goods h4{
+	background:#efefef;
+	font-weight:700;
+	font-size:13px;
+	padding:3px 2px;
+}
+.goods-body ul{
+	margin:0px;
+	min-width:1250px;
+	margin-top:-9px;
+}
+.goods-body ul li{
+	list-style:none;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	width:16.5%;
+	float:left;
+	border:1px solid #333;
+}
+.goods-body .table th,.table td{
+	text-align:center;
+}
+.order-footer{
+	width:90%;
+	margin:0 auto;
+}
+.print-order{
+	width:90%;
+	margin:0 auto;
+	text-align:right;
+}
+/**快递单**/
+
+

@@ -1,0 +1,26 @@
+.view .content { padding: 0; background-color: #eee; }
+.box { background-color: #fff; }
+.box p { margin: 0; height: 42px; line-height: 42px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: unset; }
+.box .bLeft { float: left; text-align: right; padding: 0 8px; color: #999; }
+.box .bRight > div, .box .bLeft > div { border-bottom: 1px solid #eee; }
+.box .bRight p { text-indent: 16px; }
+.content .btn { background-color: #ff8400; color: #fff; line-height: 24px; width: 100%; }
+.content select { border: none; outline: none; }
+
+.msgBox { background-color: rgba(0, 0, 0, 0.6); height: 100%; left: 0; position: fixed; top: 0; width: 100%; text-align: center; }
+.msgBox .wrap { background-color: #fff; border-radius: 3px; margin: 240px auto 0; width: 240px; }
+.msgBox .wrap h3 { font-size: 16px; margin-bottom: 0; padding: 16px 0; }
+.msgBox .btnBox { border-top: 1px solid #ccc; display: flex; display: -webkit-flex; }
+.msgBox .btnBox .btn { flex: 1; -webkit-flex: 1; border: none; border-right: 1px solid #ccc; border-radius: 0; }
+.msgBox .btnBox .btn:last-child { border-right-width: 0; color: #ff8400; }
+
+
+.content .addressBox { background-color: #fff; padding: 12px; }
+.content .addressBox .addressItem { display: flex; display: -webkit-flex; border-top: 1px solid #eee; padding-top: 10px; }
+.content .addressBox .addressItem .info { flex: 1; }
+.content .addressBox .addressItem .info p:last-child { width: 80%; }
+.content .addressBox .addressItem:first-child { border-top-width: 0px; padding-top: 0; }
+.content .addressBox .addressItem .doEdit { padding: 32px; position: relative; }
+.content .addressBox .addressItem .doEdit span { position: absolute; top: 50%; right: 20%; line-height: 24px; height: 24px; display: inline-block; margin-top: -12px; }
+.userExtract>p { padding: 0 16px; }
+.content .like-btn.btn { border-radius: 0; background-color: #fff; color: #333; border: none; color: #ff8400; line-height: 32px; }

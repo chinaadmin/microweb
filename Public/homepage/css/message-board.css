@@ -1,0 +1,138 @@
+@charset "utf-8";
+/* CSS Document */
+#content .text-area{
+	min-height:570px;
+	}
+#content .text-area p{
+	margin:0;
+	padding:8px;
+	line-height:43px;
+	}
+#content .text-area .web-forms{
+	margin-top:60px;
+}
+#content .text-area .web-forms p{
+	color:#000;
+	font-weight:bold;
+}
+#content .text-area .web-forms p input{
+	border:1px solid #ccc;
+	left: 80px;
+    margin-top: 7px;
+    position: absolute;
+	border-radius:3px;
+	font-family: "微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+	margin-left:10px;
+}
+#content .text-area .web-forms p input:focus{
+	border-color:#ff8c00;
+	box-shadow:0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8);  
+	-moz-box-shadow:0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8);
+	-webkit-box-shadow:0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8);
+	}
+#content .text-area .web-forms .msgg .l-title{
+	font-size:14px;
+	color:#000;
+	font-weight:bold;
+	margin-left:8px;
+}
+#content .text-area .web-forms .msgg p{
+	color:#666;
+	font-weight:normal;
+	}
+#content .text-area .web-forms .msgg .wordage{
+	margin-left:75px;
+	margin-bottom:-13px;
+	margin-top:-13px;
+}
+#content .text-area .web-forms .msgg .wordage span{
+	color:#ff8c00;
+	font-size:18px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-style: italic;
+	}
+#content .text-area .web-forms .msgg p span{
+	color:#666;
+	font-weight:normal;
+	left:0;
+	background:none;
+}
+#content .text-area .web-forms .msgg textarea{
+	border: 1px solid #ccc;
+    font-family: "微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    font-size: 12px;
+    margin-left: 82px;
+    margin-top: -13px;
+	display:inline-block;
+	padding:6px 12px;
+	font-size:18px;
+	font-weight:300;
+	line-height:1.4;
+	color:#666;
+	background:#fff;
+	border:1px solid #ccc;
+	resize:none;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+}
+
+#content .text-area .web-forms .msgg textarea:focus{
+	border-color:#ff8c00;
+	box-shadow:0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8);  
+	-moz-box-shadow:0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8);
+	-webkit-box-shadow:0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8);
+}
+#content .text-area .web-forms p span{
+	color:#666;
+	font-weight: normal;
+	position:relative;
+	left:433px;
+}
+#content .text-area .web-forms p .auth-code{
+	background:url(../images/ma_01.png) no-repeat;
+	background: none;	
+	}
+#content .text-area .web-forms p span a{
+	font-size: 15px;
+    margin-left: 70px;
+	color:#ff8c00;
+}
+#content .text-area .web-forms .btn{
+ 	background: #ff8c00;
+    border-radius: 5px;
+    color: #fff;
+    font-family:"微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    font-size: 18px;
+    height: 35px;
+    width: 150px;
+	margin-top:5px;
+	cursor:pointer;
+	padding-bottom:10px;
+	position:relative;
+	margin-left: -11px;
+	}
+
+
+#content .text-area .web-forms .star{
+	left:-4px;
+	top:4px;
+	color:#ff8c00;
+	font-size:18px;
+}
+
+#content .text-area .web-forms .att{
+	position:relative;
+	top:-55px;
+	left: 300px;
+}
+#content .text-area .web-forms .att span{
+	color:#ff8c00;
+	top:0;
+	left:0;
+	font-size:18px;
+}

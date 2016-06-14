@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+.main h2{
+	border-bottom:2px solid #000;
+	padding-bottom:15px;
+}
+.main h2 span{
+	float:right;
+	font-size:14px;
+}
+#show_box{ 
+	width:1020px; 
+	margin-top:50px;
+	margin:0 auto;
+	margin-top:30px;
+	box-shadow:2px 2px 6px #ccc;
+	height:335px;
+	border:1px solid #ccc;
+	overflow:hidden;
+	}
+#show_box:hover{
+	border:1px solid #ff8c00;
+}
+#show_box .depict_box{
+	width:40%;
+	height:340px;
+	float: left;
+	background:#fff;
+}
+#show_box .depict_box .show_title{
+	font-family:Arial,Helvetica,sans-serif;font-size:100%;
+	color:#ff8c00;
+	font-size:40px;
+	text-align: center; 
+	margin-top:17px;
+	font-weight:700;
+}
+#show_box .depict_box p{
+	font-size: 25px;
+	text-align: center;
+	padding-top:20px;
+}
+#show_box .depict_box .show_price{
+	font-size:25px;
+	font-weight:normal;
+}
+#show_box .depict_box .show_price span{
+	font-size:30px;
+	margin-right:5px;
+	margin-left:5px;
+	color:#ff8c00;
+}
+#show_box .depict_box .show_car{
+	background:#ff8c00;
+	width:140px;
+	height:25px;
+	line-height:3px;
+	text-align:center;
+	font-size:20px;
+	margin-left:32%;
+	margin-top:13px;
+	border-radius:5px;
+}
+#show_box .depict_box .show_car:hover{
+	background:#ba6701;
+	transition:all 0.3s ease-in-out 0s;
+}
+#show_box .depict_box .show_car a{
+	color:#fff;
+}
+
+#show_box a img{
+	width:60%;
+	display:block;
+	height:auto;
+}

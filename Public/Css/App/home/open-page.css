@@ -1,0 +1,136 @@
+@charset "utf-8";
+#content h1{
+	margin-top:35px;
+}
+input{
+	line-height:40px;
+}
+.login_box{
+	width:1020px;
+	border:1px solid #CCCCCC;
+	margin-top:30px;
+	padding-bottom:20px;
+}
+.login_box p input{
+	height:40px;
+	width:320px;
+}
+.login_box p{
+	width:460px;
+}
+.login_box p i{
+	color:#FF8C00;
+	margin-right:5px;
+}
+.login_box label{
+	margin-right:10px;
+	font-size:16px;
+}
+.login-inp{
+	margin-left:20px;
+	width:420px;
+	float:left;
+}
+.login-inp h3{
+	line-height:30px;
+	margin-top:10px;
+}
+.user-name{
+	margin-left:47px;
+}
+.phone-num{
+	margin-left:32px;
+}
+.phone-box{
+	
+}
+label.error{
+	margin-left:120px;
+	color:#ff8c00
+}
+.user-name label.error{
+	margin-left:73px;
+}
+.phone-num label.error{
+	margin-left: 89px;
+}
+.login-inp p a{
+	margin-left:89px;
+}
+.login-inp button{
+	width:320px;
+	height:40px;
+	margin-left:93px;
+}
+.login-box-sm{
+	width:350px;
+	float:right;
+	border:1px solid #CCCCCC;
+	text-align: center;
+	padding:20px 0;
+	margin-right:20px;
+	margin-top:20px;
+}
+.login-box-sm h2{
+	color:#333;
+	font-size: 18px;
+    margin-left: 15px;
+    text-align: left;
+}
+.login-box-sm p{
+	width:100%;
+}
+.use-name-new{
+	
+}
+.login-box-sm label{
+	float: left;
+	margin-left:14px;
+	font-size:16px;
+	color:#989898;
+}
+.login-box-sm input{
+	margin-top:10px;
+}
+
+.login-box-sm .user{
+	margin-top:20px;
+}
+.login_box .code{
+	float:none;
+	margin-right:12px;
+}
+.code_img{
+	top:15px;
+	position: relative;
+}
+.login_box .code{
+	width:170px;
+}
+.login-box-sm .binding-btn{
+	width:170px;
+	float:left;
+	margin-left:15px;
+	margin-top:0;
+}
+.login-box-sm a{
+	line-height:40px;
+}
+.login-box-sm  .wenzi{
+	font-size:14px;
+	color:#989898;
+}
+.login_box .stext{
+	background: url("../../Images/home/login_03.jpg") no-repeat scroll 0 0;
+	text-indent:40px;
+}
+.login_box .use-password{
+	background-position:0 -78px;
+	
+}
+.use-password{
+	margin-top:0;
+}
+.login_box input{
+	padding:0;
+}

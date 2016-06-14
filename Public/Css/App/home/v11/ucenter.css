@@ -1,0 +1,32 @@
+body{
+	position: relative;
+}
+.table-box { width: 100%; }
+.table-box .sort-box-or { margin-top: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 310px; }
+.table-box tr td.sortable-box-ar, .table-box tr td.text, .table-box tr td.pay-box-table { padding: 12px 0; }
+.table-box .sort-box-or img { margin: 0 16px; padding-bottom: 0; }
+.table-box .sort-box-or > p { line-height: 27px; white-space: nowrap; }
+.table-box td.text >* { height: 81px; }
+
+
+#logisticBox { position: absolute; background-color: #fff; padding: 16px; left: 0; top: 0; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 0 2px 0 #ccc; }
+#logisticBox:after, #logisticBox:before { border: solid transparent; content: ' '; height: 0; right: 0; position: absolute; width: 0; }
+#logisticBox:after { border-bottom-color: #fff; border-width: 14px; right: 14px; top: -28px; }
+#logisticBox:before { border-bottom-color: #ccc; border-width: 16px; right: 12px; top: -32px; }
+
+#logisticBox .hd { border-bottom: 1px solid #ccc; }
+#logisticBox .hd div { display: inline-block; padding-bottom: 8px; }
+#logisticBox .hd .name{padding-right: 8px;}
+#logisticBox .content ul { padding-left: 16px; }
+#logisticBox .content li { list-style: outside; padding-bottom: 8px; color: #333; }
+#logisticBox .content li:first-child { color: #f84; padding-top: 8px; }
+
+#logisticBox .footer {
+	border-top: 1px solid #ccc;
+	color: #999;
+	margin-top: 4px;
+	padding-top: 8px;
+}
+
+
+ 

@@ -1,0 +1,150 @@
+.table-box{
+display:table;
+}
+
+.table-space{
+	background:#f3f3f3;
+    height:30px;
+    width:775px;
+ 	line-height:30px;
+ 	border:1px solid #ccc;
+ 	border-bottom:none;
+ 	font-size:12px;
+}
+.table-head{
+	display:table;
+	width:775px;
+	border:1px solid #ccc;
+	line-height:40px;
+}
+.table-head tr{
+	border-right:0;
+	border-left:0;
+}
+.table-box{
+
+}
+.table-box tbody{
+	display:table;
+	width:775px;
+	margin-top:10px;
+	border:none;
+}
+.table-head th{
+	border-bottom:none;
+	font-size:14px;
+	font-weight:normal;
+}
+.table-box tr td{
+	height:30px;
+}
+.id-num{
+	float:left;
+	color:#999;
+	margin-left:10px;
+}
+.id-num span{
+	color:#000;
+}
+
+.date-eva{
+	float:left;
+	color:#999;
+	margin-left:20px;
+}
+.date-eva input{
+	margin-right:10px;
+}
+.sortable-box-ar{
+	width:250px;
+	border-left:1px solid #ccc;
+	padding-left:10px;
+}
+.sort-box-or{
+	text-align:left;
+}
+.sort-box-or{
+	margin-top:20px;
+}
+.sort-box-or img{
+	float:left;
+	padding-bottom:16px;
+}
+
+.sort-box-or span{
+	float: left;
+    height: 35px;
+    margin-left: 10px;
+    margin-top: 20px;
+    overflow:hidden;
+    text-align: left;
+    width: 160px;
+}
+.pay-box-table{
+	text-align:center;
+	width:100px;
+	padding-right:10px;
+	padding-left:10px;
+	border-left:1px solid #CCCCCC;
+	border-right:1px solid  #ccc;
+}
+.table-box a{
+    cursor: pointer;
+	display: block;
+}
+.table-box .sort-box-or a{
+	display: inline;
+}
+.table-box .pay-back{
+	display:block;
+	background:#FF8C00;
+	color:#fff;
+	width:100px;
+	height:26px;
+	line-height:26px;
+	text-align: center;
+	margin:0 auto;
+	margin-top:20px;
+
+}
+.table-box .pay-back-1{
+	background:#FF0000;
+}
+.table-box .pay-back:hover{
+	color:#fff;
+}
+
+.id-num a{
+    display: inline-block;
+    color:#999;
+}
+.table-box .flow{
+	color:#FF8C00;
+}
+.shanchu{
+	background:url(../../Images/home/order_00.png) no-repeat -29px -2px;
+	float:right;
+	height:30px;
+	width:30px;
+	margin-right:20px;
+}
+.pay-content .btn-box input{
+	margin-top:20px;
+}
+.pay-content .btn-box .bank-use{
+	width:auto;
+}
+.pay-content .btn-box p{
+	margin-top:0;
+}
+.pay-content .btn-box .fail-box{
+	color:#fff;
+	background:#FF8C00;
+}
+.sort-box-or span.cats-format{
+	color:#999;
+	margin-top:0;
+	padding-left:0;
+	font-size:12px;
+	color:#999;
+}

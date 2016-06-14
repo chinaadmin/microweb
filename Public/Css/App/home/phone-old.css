@@ -1,0 +1,33 @@
+@charset "utf-8";
+.verify-form{
+	margin:26px 20px 20px 115px;
+}
+.verify-form .phone_btn1{
+	background:#FF8C00;
+	width:120px;
+	height:30px;
+	line-height:30px;
+	border-radius:3px;
+	position:inherit;
+	margin-left:20px;
+	font-size: 14px;
+}
+.usersafe-crumbs{
+	width:95%;
+}
+.old-text{
+	float:right;
+	color:#FF8C00;
+	background:url("../../Images/home/ex_01.png") no-repeat -5px -6px;
+	padding-left:23px;
+}
+.verify-form .msgs1{
+	background:#ba6701 ;
+}
+.send-succ{
+	position:inherit;
+	float:none;
+}
+.code-suc{
+	color: #FF8C00;
+}

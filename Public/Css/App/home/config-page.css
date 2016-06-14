@@ -1,0 +1,165 @@
+@charset "utf-8";
+.data_box{
+	padding-bottom:20px;
+}
+
+
+.address-choice h2{
+	padding-left:20px;
+	padding-right:20px;
+	height:40px;
+	line-height:40px;
+}
+
+.choice-content{
+	margin-top:20px;
+	padding-right:20px;
+}
+label{
+	margin-right:10px;
+}
+.place_form select{
+	padding:5px;
+	color:#959595;
+	width:105px;
+}
+.miaoshu{
+	font-size:14px;
+	
+}
+.miaoshu span{
+	color:#FF8C00;
+	margin-right:20px;
+}
+.choice-content p{
+	height:30px;
+	font-size:14px;
+	padding-left:20px;
+}
+.choice-content p i{
+	color:#FF8C00;
+	font-size:13px;
+	margin-right:8px;
+	line-height:30px;
+	height:30px;
+}
+
+.choice-content .user-name{
+	display:block;
+	height:120px;
+}
+.user-name textarea{
+	display:inline-block;
+	color:#959595;
+	text-indent:10px;
+	height:100px;
+	width:337px;
+	position:relative;
+	left:83px;
+	top:-23px;
+	border:1px solid #ccc;
+}
+.choice-content input{
+	height:30px;
+	line-height:30px;
+	border:1px solid #ccc;
+	text-indent:10px;
+	width:312px;
+	color:#959595;
+}
+.choice-content .name-box{
+	padding-left:10px;
+	font-size:13px;
+}
+.choice-content .name-box input{
+	width:338px;
+}
+.choice-content .phone-num{
+	margin-top:20px;
+	padding-left:18px;
+}
+.choice-content .phone-num input{
+	width:339px;
+}
+.choice-content .tel-num{
+	padding-left:32px;
+	margin-top:20px;
+}
+.choice-content .tel-num .quhao,.choice-content .tel-num .fenji{
+	width: 80px;
+}
+.choice-content .tel-num .haoma{
+	width:150px;
+	margin-left:12px;
+}
+.choice-content .tel-num .fenji{
+	margin-left:13px;
+}
+.choice-content .check-address{
+	width:18px;
+	position:relative;
+	top:10px;
+	margin:0 auto;
+	border:0;
+}
+.choice-content .check-all{
+	text-align:left;
+	padding-left:100px;
+}
+.choice-content .btn-new{
+	width:100px;
+	height:25px;
+	display:block;
+	line-height:23px;
+	background:#FF8C00;
+	color:#fff;
+	text-align: center;
+	margin-top:20px;
+	cursor:pointer;
+	border:0;
+	text-indent:0;
+	font-size:14px ;
+	margin-left:100px;
+}
+.phone-num  label.error{
+	margin-left:10px;
+}
+.name-box label.error{
+	margin-left:10px;
+}
+.address-table{
+	margin-top:20px;
+	
+}
+.address-table-box{
+	display: table;
+	width:95%;
+	margin:0 auto;
+	border:1px solid #E3E3E3;
+	
+}
+.address-table-box thead{
+	background:#EEEEEE;
+	border:1px solid #e3e3e3;
+	height:40px;
+	line-height:40px;
+	width:100%;
+	
+}
+.address-table-box tbody{
+	text-align: center;
+	width:100%;
+	
+}
+.address-table-box tbody tr{
+	height:40px;
+	line-height:40px;
+}
+.address-table-box tbody tr td span{
+	cursor:pointer;
+
+}
+
+.address-table-box tbody tr td span:hover{
+		color:#FF8C00;
+}

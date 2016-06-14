@@ -1,0 +1,15 @@
+.nopayorder { border-top: 1px solid #ccc; padding-top: 32px; }
+.nopayorder img { min-width: 120px; min-height: 120px; display: inline-block; background-color: green; border-radius: 160px; }
+.nopayorder span { display: inline-block; width: 100%; margin: 24px 0; }
+.nopayorder a.btn { border-radius: 0; border: 1px solid #ccc; min-width: 96px; }
+
+
+
+body { height: 100%; background-color: #eee; }
+.invoice .selectBox { margin: 16px 0; background-color: #fff; }
+.invoice .selectBox p { line-height: 48px; margin: 0; }
+.invoice .selectBox p .text { margin-left: 16px; }
+.invoice .selectBox p input { padding: 0 8px; width: 100%; border: 1px solid #ccc; }
+.invoice .selectBox .select { border-left: 14px solid #ff8400; }
+.invoice .btnBox { display: flex; display: -webkit-flex; }
+.invoice .btnBox a.btn { flex: 1; -webkit-flex: 1; margin: 16px; border: 0 solid #ff8400; background-color: #ff8400; color: #fff; line-height: 2;}

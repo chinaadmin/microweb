@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+.refund-upload{
+	margin-left:64px;
+}
+.plupload .browse{
+	background:#ff8c00;
+}
+.plupload .browse_progress .progress-info p{
+	margin-top:0px;
+}

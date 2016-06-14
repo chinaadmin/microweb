@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+#content .text-area img{
+	margin-left:19px;
+	}
+#content .text-area  p {
+	margin-top:25px;
+	display: block;
+    margin-left: 18px;
+    margin-top: 25px;
+    width: 730px;
+	}

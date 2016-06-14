@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+#content{
+	min-height:750px;
+	}
+#content .text{
+	width:362px;
+    position: relative;
+    top: -182px;
+	left: 388px;
+	}
+#content .text h3 a{
+	color:#ff8c00;
+	}
+#content .text h3 span{
+	font-size:12px;
+	font-weight:normal;
+	margin-left:30px;
+	}
+#content .news-dynamic .news-title{
+	margin:0px;
+	}
+
+#content .page-num{
+	top:50px;
+	}

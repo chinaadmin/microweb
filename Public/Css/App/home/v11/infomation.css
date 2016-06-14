@@ -1,0 +1,13 @@
+.data_box { background: rgba(0, 0, 0, 0) none repeat scroll 0 0; border: 1px solid #eee; float: right; width: 820px; padding-bottom: 48px; }
+.data_box h3 { background-color: #eee; font-size: 17px; line-height: 42px; padding-left: 16px; }
+.data_box form p { line-height: 36px; padding-top: 12px; }
+.data_box form p label { width: 96px; text-align: right; display: inline-block; padding-right: 8px; }
+.data_box form p select { padding: 6px; width: 120px; border: 1px solid #ccc; }
+.data_box form p input { border: 1px solid #ccc; padding: 6px; width: 240px; }
+.data_box form p input:focus { border-color: #ff8400; }
+.data_box form p input[type=radio] { width: 24px; display: inline-block; }
+.data_box form p.sex_form span { margin-left: 4px; margin-right: 8px; }
+.data_box form p em { display: inline-block; font-style: normal; text-align: center; width: 24px; }
+.data_box form p img { background-color: #cef; display: inline-block; height: 96px; vertical-align: middle; width: 96px; }
+.data_box form p i.btn { display: inline-block; font-style: normal; padding: 0 8px; width: 48px; cursor: pointer;}
+.data_box form p button { background-color: #ff8400; border-width: 0; color: #fff; padding: 6px 0; width: 120px; }

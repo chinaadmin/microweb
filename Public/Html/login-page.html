@@ -1,0 +1,77 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>登录页</title>
+<link type="text/css" rel="stylesheet" href="../Css/App/home/common.css">
+<link type="text/css" rel="stylesheet" href="../Css/App/home/login-page.css">
+<script type="text/javascript" src="../Js/App/home/jquery.js"></script>
+<script type="text/javascript" src="../Js/App/home/jquery.validate.js"></script>
+<script type="text/javascript" src="../Js/App/home/login-page.js"></script>
+<script type="text/javascript" src="../Js/App/home/placeholder.js"></script>
+<script type="text/javascript">
+   $(function() {
+    $('input, textarea').placeholder();
+   });
+  </script>
+</head>
+<body>
+  <div id="header">
+    <div class="search"> 
+        <div class="logo_img">
+        <a href="home-page.html">
+          <img src="../Css/Images/home/logo_00.png" />
+        </a>
+          <p>快乐不贵</p>
+        </div> 
+        <div class="welcome"> 
+          欢迎来到必好货商城!
+        </div>
+    </div>
+  </div>
+
+
+  <div id="content">
+    <img src="../Css/Images/home/login_00.jpg" class="img_box">
+     <div class="login_box">
+    <h2>登录必好货<span>还没有账号？<a href="zhuce-page.html">30秒注册</a></span></h2>
+    <form id="signupForm" method="post" action="">
+      <p class="user"><span class="in_bg"></span><input class="stext" type='text' name="userName" id="userName" value="" placeholder="已验证手机/邮箱/用户名" /></p>
+      <p class="user"><input id="passWord" class="stext use-password" type="password" name="passWord" value="" placeholder="请输入密码" / ></p>
+      <p class="user"><span class="in_bg pss_bg"></span><input class="code" type="text" name="" id="" value="" placeholder="请输入验证码"/><img src="../Css/Images/home/login_02.jpg" id="code_img"><a href="">换一张</a></p>
+      <p><input type="checkbox" class="check-log" ><span>自动登录<a href="find-page.html">忘记密码？</a></span></p>
+       <button type="submit">登录</button>
+       <p>你也可以使用以下账号登录</p>
+       <p class="num_box">
+        <a href="open-page.html" class="qq" title="QQ"></a>
+        <a href="open-page.html" class="sina" title="新浪微博"></a>
+        <a href="open-page.html" class="taobao" title="淘宝"></a>
+        </p>
+    </form>    
+  </div>
+  </div>
+ 
+ <!--底部-->
+   <div id="footer"> 
+  <!-- 底部标图 -->
+    <div id="footer_pic">
+      
+    </div>  
+  
+  <div class="footer_infor">
+    
+      <p class="footer_infor_txt">
+        COPYRIGHT©2015 深圳市必好货电子商务有限公司 JITUJITUAN.COM 保留一切权利。 客服热线：0755-86704402
+        <br>
+        粤ICP备07050274号 | 食品流通许可证 SP1101051110165515（1-1） | 营业执照 
+      </p>
+    </div>
+ </div>
+ 
+
+
+ 
+
+
+</body>
+</html>

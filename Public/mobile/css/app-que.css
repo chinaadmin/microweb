@@ -1,0 +1,39 @@
+@charset "utf-8";
+#content{
+	background:#f1f0f6;
+	padding:0;
+}
+header{
+	background:#fff;
+	text-align: center;
+	margin:0;
+}
+.title-box{
+	text-align:left;
+	margin:0;
+	padding-left:1rem;
+}
+#content p{
+	margin:0;
+	height:5rem;
+	line-height:5rem;
+	background:#fff;
+	font-size:3em;
+	padding-left:5rem;
+	border-bottom: 1px solid #F1F0F6;
+}
+#content textarea{
+    width: 100%;
+    height: 20rem;
+    line-height: 4.5rem;
+    font-size:2.5rem
+}
+#content .sel{
+    background:#ddd ;
+}
+#content p input{
+	margin-right:2rem;
+}
+.btn-sta{
+	margin-top:4rem;
+}

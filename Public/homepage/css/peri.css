@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+#content{
+	min-height:670px;
+	}
+#content .grid_wrapper{
+	position:relative;
+	left:107px;
+	top:50px;
+	}
+#content .grid_wrapper .grid li{
+	width:180px;
+	min-height:240px;
+	}
+#content .grid li a, .grid li a:visited{
+	width:170px;
+	height:220px;
+	border:none;
+	}
+#content .grid_wrapper .grid li a .detail{
+	width:155px;
+	position: relative;
+	top:-45px;
+	font-size:12px;
+}
+#content .page-num{
+	top:0;
+	}

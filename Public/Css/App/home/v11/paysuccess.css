@@ -1,0 +1,52 @@
+.empty{
+	margin: 0 16px;
+}
+#content .hd { overflow: hidden; width: 100%; padding: 16px 0; }
+.sersafe-steps { position: relative; font-size: 0; }
+.sersafe-steps ol {background-color: #e4e4e4;}
+.sersafe-steps ol li { background-color: #E4E4E4; height: 30px; line-height: 30px; width: 154px; display: inline-block; }
+.sersafe-steps ol li:last-child { background-color: transparent; }
+.sersafe-steps ol li .step-sprite { background: url("../../../Images/home/safe_01.png") no-repeat; }
+.sersafe-steps ol li.active .step { background-position: -1px -2px; color: #fff; z-index: 5; }
+.sersafe-steps ol li.pass { background-color: #FF8B00; }
+.sersafe-steps ol li.pass .step { background-image: none; color: #fff; }
+.sersafe-steps ol li i { font-style: normal; margin-left: 15px; }
+.sersafe-steps ol li .step { background-position: -259px -2px; color: #555; font-size: 14px; }
+.sersafe-steps ol li .sprite-bg { background-position: -232px 0; }
+
+.box { padding: 36px; border-top: 1px solid #ccc; background-color: #eee; font-size: 14px; line-height: 48px; text-align: center; min-height: 240px; margin-top: 24px; }
+.box p:first-child span { font-size: 24px; color: #333; vertical-align: middle; }
+.box p img { vertical-align: middle; margin: 0 16px; }
+.box p a { color: #333; margin: 0 16px; }
+.box p a.btn { background-color: #FF8B00; padding: 4px 16px; color: #fff; }
+.box p.fail a { margin: 0 8px; }
+.box p.fail a.m { border-left: 1px solid #ccc; border-right: 1px solid #ccc; color: #333; margin: 0; padding: 0 8px; }
+.box p a:hover, .box p.fail a:hover, .box p.fail a.m:hover { color: #FF8B00; }
+
+
+
+.pay .box { border-top: 4px solid #444; padding: 0; line-height: 32px; text-align: left; font-size: 13px;}
+.pay .box .msg { background-color: #fff; padding: 16px; }
+.pay .box .msg hr { border-width: 0; border-bottom: 1px solid #ccc; margin: 8px 0; }
+.pay .box .msg h3 span:last-child { float: right; vertical-align: middle; }
+.pay .box .msg h3 span:last-child a { color: #ff8400; font-size: 24px; line-height: 24px; cursor: pointer; }
+.pay .box .msg p.tips span:last-child { float: right; }
+.pay .box .msg p a { color: #FF8B00; cursor: pointer; }
+
+.pay .box .platform { margin-top: 16px; background-color: #fff; padding: 8px 16px; }
+.pay .box .platform span { border: 1px solid #ccc; padding: 0 12px; display: inline-block; margin-right: 16px; margin-bottom: 8px; cursor: pointer; }
+.pay .box .platform span input { vertical-align: middle; }
+.pay .box .platform span img { background-color: #ccc; display: inline-block; vertical-align: middle; margin-right: 0; width: 108px; text-align: center; margin-left: 8px; line-height: 36px; }
+.pay .box .platform p em { font-style: normal; color: #999; }
+.pay .box .platform p a { color: #FF8B00; vertical-align: middle; }
+
+.pay .box .btnbox { background-color: #fff; padding: 16px; margin-top: 16px; }
+.pay .box .btnbox .btn { background-color: #ff8400; color: #fff; padding: 8px 48px; border-radius: 4px; font-size: 18px; font-weight: bold; }
+
+
+/* 隐藏按钮 */
+.btn-2 { display: none; }
+.btn-2 input { font-size: 18px; height: 30px; line-height: 15px; margin-left: 10px; text-align: center; width: 130px; cursor: pointer; }
+.btn-2 .anew { background: #ff8c00; border-radius: 3px; color: #fff; border: 0; display: block; float: left; margin-left: 67px; }
+.btn-2 .cancel-btn { background-image: none; border: 1px solid #ccc; border-radius: 3px; margin-right: 54px; }
+

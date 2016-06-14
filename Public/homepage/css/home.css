@@ -1,0 +1,218 @@
+@charset "utf-8";
+h2{
+color:#F36523;
+height:25px;
+padding-left:30px;
+padding-top:9px;
+font-size:18px;
+font-weight:normal;
+}
+#content{
+margin:0 auto;
+width:1000px;
+}
+/*轮播*/
+#main{
+width:100%;
+height:auto;
+overflow:hidden;
+margin:0 auto;
+position: relative;
+}
+#img_box{
+width:100%;
+height:440px;
+box-shadow:0px 0px 5px #ddd;
+margin:0 auto;
+overflow:hidden;
+position: relative;
+}
+#img_box a{
+position:absolute;
+width:100%;
+height:auto;
+left:0px;
+top:0px;
+opacity:0;
+filter:alpha(opacity=0);
+}
+#img_box img{
+width: 100%;
+height:440px;
+}
+@media (max-width:1600px){
+	#img_box{width:100%;height:400px;}
+	#img_box img{width:100%;height:400px;}
+}
+@media (max-width:1200px){
+	#img_box{width:100%;height:400px;}
+	#img_box img{width:100%;height:400px;}
+}
+@media (max-width:1100px){
+	#img_box{width:100%;height:300px;}
+	#img_box img{width:100%;height:300px;}
+}
+@media (max-width:800px){
+	#img_box{width:100%;height:200px;}
+	#img_box img{width:100%;height:200px;}
+}
+@media (max-width:400px){
+	#img_box{width:100%;height:100px;}
+	#img_box img{width:100%;height:100px;}
+}
+
+#main .page{
+width:132px;
+height:auto;
+position:relative;
+bottom:47px;
+right:50px;
+margin:0 auto;
+z-index: 1;
+}
+#main .page a{
+display:inline-block;
+width:auto;
+height:40px;
+float:left;
+color:#FFF;
+color:#898989;
+font-size: 80px;
+}
+#main .page a.active{
+color: #F36523;
+}
+/**/
+#content .explain{
+width:1010px;
+margin:50px 0 0 0;
+}
+#content .explain .introduction{
+width:675px;
+border: 1px solid #ddd;
+overflow:hidden;
+float:left;
+min-height:304px;
+}
+#content .explain .introduction h2{
+background: url("images/home_13.jpg") no-repeat -19px -4px ;
+font-size:18px;
+}
+#content .explain .introduction h2 img{
+width:20px;
+height:18px;
+float:right;
+padding-right:10px;
+}
+#content .explain .introduction p{
+font-size:13px;
+line-height:30px;
+margin:11px 10px 0 10px;
+height:96px;
+overflow:hidden;
+display: block;
+
+}
+#content .explain .introduction p a{
+	color:#5a5a5a;
+}
+#content .explain .introduction .text_box{
+margin:0;
+height: 24px;
+line-height: 24px;
+width: 654px;
+}
+#content .explain .introduction .text_box a{
+	color:#ff8c00;
+}
+#content .explain .introduction .text_box a:hover{
+	text-decoration:underline;
+}
+/*五个滚动图*/
+#content .explain .introduction .sort{
+margin:29px 0 0 0;
+}
+#content .explain .introduction .sort ul li{
+float:left;
+list-style:none;
+padding-left:45px;
+height:109px;
+width:83px;
+text-align:center;
+display:inherit;
+}
+#content .explain .introduction .sort ul li img{
+-webkit-transition: 0.6s;
+-webkit-transition: -webkit-transform 0.6s ease-out;
+transition: transform 0.6s ease-out;
+-moz-transition: -moz-transform 0.6s ease-out;
+}
+#content .explain .introduction .sort ul li :hover{
+transform: rotateY(360deg);
+-webkit-transform: rotateY(360deg);
+-moz-transform: rotateY(360deg);
+}
+#content .explain .introduction .sort ul li p{
+display:block;
+margin-top:10px;
+width:64px;
+overflow: hidden;
+}
+#content .explain .introduction .sort ul li p a{
+font-size:16px;
+font-family:微软雅黑;
+color:#5a5a5a;
+}
+#content .explain .introduction .sort ul li p a:hover{
+color:#F36523;
+}
+/**/
+#content .explain .dynamic{
+border: 1px solid #ddd;
+width:310px;
+min-height:304px;
+overflow:hidden;
+position:relative;
+left:10px;
+}
+#content .explain .dynamic h2{
+background: url("images/home_14.jpg") no-repeat -10px -4px ;
+}
+#content .explain .dynamic h2 img{
+width:20px;
+height:18px;
+float:right;
+padding-right:10px;
+}
+#content .explain .dynamic ul{
+}
+#content .explain .dynamic .news{
+float: left;
+height: 265px;
+margin-left: 18px;
+overflow: hidden;
+position: relative;
+width: 270px;
+}
+#content .explain .dynamic .news ul li{
+padding:10px 0 0 0;
+height:100%;
+margin-left:19px;
+}
+#content .explain .dynamic .news ul li:hover{
+color:#F36523;
+}
+#content .explain .dynamic .news ul li a{
+color:#747474;
+font-size:14px;
+}
+#content .explain .dynamic .news ul li a:hover{
+color: #F36523;
+}
+#content .explain .dynamic .news ul li span{
+display:block;
+float:right;
+font-size:13px;
+cursor:pointer;
+margin-top:2px;
+}

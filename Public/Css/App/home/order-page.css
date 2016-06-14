@@ -1,0 +1,198 @@
+@charset "utf-8";
+/* CSS Document *//* CSS Document */
+
+.data_box{
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+	width:800px;
+}
+.data_box h2{
+	height:50px;
+	line-height:50px;
+	border-bottom:1px dashed #eee;
+	margin-bottom:20px;
+	
+}
+.data_box h2 span{
+	margin-left:20px;
+}
+.data_box h2 i{
+	color:#FF8C00;
+	font-style:normal;
+}
+.data_box p{
+	color:#9c9c9c;
+	font-size: 14px;
+}
+
+
+.order-fllow{
+	margin-top:50px;
+}
+
+.table-box{
+	width:100%;
+	text-align: left;
+}
+.table-box th{
+	font-size:14px;
+	color:#444444;
+}
+.table-box tr{
+	
+	color:#989898;
+	font-size:14px;
+	line-height:30px;
+}
+.send-bond{
+	color:#989898;
+	margin-top:20px;
+	font-size:14px;
+}
+.order-mage{line-height: 2em;}
+.order-mage h2{
+	margin-bottom:0;
+}
+.con-mage h3{
+	margin-top:20px;
+	margin-bottom:6px;
+}
+.table-con{
+
+}
+.table-con ul{
+	background:#EEEEEE;
+	display: table;
+	height:30px;
+	line-height:30px;
+	border:1px solid #e3e3e3;
+	width:768px;
+}
+.table-con li{
+	float:left;
+	text-align: center;
+	font-weight:bold;
+	font-size:14px;
+}
+.list-mage{
+	border:1px solid #E3E3E3;
+	border-top:none;
+	width:749px;
+	padding-left:19px;
+	padding-bottom:10px;
+}
+.list-mage ul{
+	padding-top:10px;
+	width:749px;
+}
+.list-mage li{
+	float:left;
+}
+.list-mage .mage-box{
+	width:267px;
+	height:80px;
+}
+.mage-box p,.mage-box img{
+	float:left;
+}
+.mage-box p{
+	margin-left:20px;
+	margin-top:16px;
+	width:150px;
+	overflow:hidden;
+	height:38px;
+}
+.price-tab{
+	width:188px;
+	color:#FF8C00;
+	text-align: center;
+	font-size:18px;
+	margin-top:20px;
+}
+.buy-num{
+	text-align: center;
+	width:140px;
+	margin-top:20px;
+}
+.back-box{
+	text-align: center;
+	width:128px;
+	margin-top:10px;
+}
+.back-box a{
+	color:#444;
+    cursor: pointer;
+}
+.buy-new{
+	display:block;
+	width:80px;
+	height:30px;
+	border-radius:3px;
+	border:1px solid #ccc;
+	background:#ededed;
+	line-height:30px;
+	text-align:center;
+	margin-left:13px;
+	background:url("../../Images/home/buycar_01.png") no-repeat 10px 0;
+	padding-left:20px;
+	margin-top:5px;
+}
+.all-price{
+	width:275px;
+
+	float:right;
+	text-align:right;
+	margin-top:20px;
+	margin-right:30px;
+	padding-bottom:20px;
+}
+.all-price p{
+	color:#444;
+	line-height:30px;
+}
+.all-price .send-price{
+	border-bottom:1px solid #000;
+	padding-bottom:20px;
+}
+.all-price .pay-all{
+	font-size:18px;
+	margin-top:20px;
+	}
+.all-price .pay-all span{
+	color:#FF8C00;
+	font-size:29px;
+}
+.th-0{
+	width:267px;
+}
+.th-1{
+	width:210px;
+}
+.th-2{
+	width:140px;
+}
+.th-3{
+	width:128px;
+}
+.mage-box p.cats-format{
+    margin-top:-8px;
+    font-size:12px;
+    color:#999;	
+}
+
+ 
+.data_box .colorGrey3 { color: #333; }
+.data_box .colorGrey6 { color: #666; }
+.data_box .colorGrey9 { color: #999; }
+.data_box  .mage-box p{
+	margin: 0;
+	height: auto;
+	width:184px;
+	text-indent: 8px;
+}
+
+.data_box .mage-box p.colorGrey3{
+	margin-top: 8px;
+	line-height: 36px;
+}

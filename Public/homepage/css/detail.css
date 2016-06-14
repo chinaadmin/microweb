@@ -1,0 +1,161 @@
+@charset "utf-8";
+/* CSS Document */
+html { overflow-y:scroll; }
+li { list-style:none; }
+img { vertical-align:top; }
+h1,h3,h4{font-weight:normal;}
+#content{
+	position:relative;
+	top:20px;
+	}
+/* 商品放大镜*/
+#content .pro-pic{
+	width:300px;
+	float:left;
+	vertical-align:center;
+	text-align:center;
+}
+.tb-pic a { 
+	display:table-cell; 
+	text-align:center; 
+	vertical-align:middle; 
+	}
+.tb-pic a img {
+	vertical-align:middle; 
+	}
+.tb-pic a {
+	*display:block;
+	*font-family:Arial;
+	*line-height:1;
+	}
+.tb-thumb {
+	margin:10px 0 0; 
+	overflow:hidden; 
+	}
+.tb-thumb li {
+	background:none;
+	float:left; 
+	height:42px; 
+	margin:0 6px 0 0; 
+	overflow:hidden; 
+	padding:1px; 
+	}
+.tb-s310, .tb-s310 a { 
+	height:300px; 
+	width:300px; 
+	}
+.tb-s310, .tb-s310 img {
+	max-height:300px; 
+	max-width:300px; 
+	}
+.tb-s310 a { 
+	*font-size:271px;
+	}
+.tb-s40 a { 
+	*font-size:35px;
+	}
+.tb-s40, .tb-s40 a { 
+	height:40px; 
+	width:40px; 
+	}
+.tb-booth { 
+	border:1px solid #ff8c00; 
+	position:relative; 
+	z-index:1; 
+	}
+.tb-thumb .tb-selected { 
+	background:none repeat #ff8c00; 
+	height:40px; 
+	padding:2px; 
+	}
+.tb-thumb .tb-selected div { 
+	background-color:#FFFFFF; 
+	border:medium none; 
+	heght:40px;
+	width:40px;
+	overflow:hidden;
+	}
+.tb-thumb li div { 
+	border:1px solid #ccc; 
+	}
+div.zoomDiv { 
+	z-index:999; 
+	position:absolute; 
+	top:0px; 
+	left:0px; 
+	width:200px; 
+	height:200px; 
+	background:#ffffff; 
+	border:1px solid #CCCCCC; 
+	display:none; 
+	text-align:center; 
+	overflow:hidden; 
+	}
+div.zoomMask { 
+	position:absolute; 
+	background:url("images/mask.png") repeat transparent; 
+	cursor:move; 
+	z-index:1; 
+}
+
+/* 产品概述*/
+#content .pro-depict{
+	position:relative;
+	left:40px;
+	top:35px;
+	}
+#content .pro-depict h1{
+	color:#ff8c00;
+	}
+#content .pro-depict h3{
+	margin-top:10px;
+	font-size:26px;
+}
+#content .pro-depict .det-are{
+	margin-top:25px;
+	}
+#content .pro-depict .det-are h4{
+	color:#999;
+	}
+#content .pro-depict .det-are ul li{
+	font-size:14px;
+	padding:3px;
+	}
+#content .pro-depict .det-are ul li span{
+	color:#999;
+	}
+/* 产品详情*/
+#content .pro-details{
+}
+#content .pro-details .pro-title{
+	margin-top:150px;
+	border-bottom:1px dashed #ff8c00;
+	}
+#content .pro-details .pro-title h4{
+	font-size:26px;
+	color:#fff;
+	background:#ff8c00;
+	width:190px;
+	height:45px;
+	line-height:45px;
+	text-align:center;
+	}
+#content .pro-details h1{
+	color:#ff8c00;
+	font-size:29px;
+	margin-top:10px;
+	margin-bottom:10px;
+	}
+#content .pro-details .pro-text{
+	width:700px;
+	float:left;
+	margin-top:20px;
+	}
+#content .pro-details .pro-text p{
+	line-height:30px;
+	letter-spacing:1px;
+	font-size:14px;
+	}
+#content .pro-details .pro-text ul li{
+	padding-top:10px;
+	}

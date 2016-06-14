@@ -1,0 +1,65 @@
+.view .content { padding: 0; border-top: 1px solid #eee; }
+
+.view .content .sort-box .sort-item { display: flex; display: -webkit-flex; border-bottom: 1px solid #eee; font-size: 0; padding: 8px 0; }
+.view .content .sort-box .sort-img { max-width: 142px; display: inline-block; margin: 0; width: 44%; vertical-align: middle; padding-left: 8px; }
+.view .content .sort-box .sort-img img { max-width: 120px; display: inline-block; }
+.view .content .sort-box .sort-title { flex: 1; -webkit-flex: 1; display: inline-block; width: 52%; font-size: 14px; vertical-align: middle; margin: 0 2%; }
+.view .content .sort-box .sort-title h4 { margin-bottom: 16px; margin-left: 6px; font-size: 16px; }
+.view .content .sort-box .sort-title h4 a { text-decoration: none; color: #333; }
+.view .content .sort-box .sort-title .sort-price p { color: #ff8400; font-size: 20px; margin-bottom: 4px; line-height: 1; }
+.view .content .sort-box .sort-title .sort-price s { margin-left: 5px; color: #999; }
+
+.view .content .sort-box .checked-box img { width: 96px; }
+.view .content .sort-box .checked-box .check-item { display: inline-block; vertical-align: middle; position: relative; padding: 12px 8px; }
+.view .content .sort-box .checked-box .check-item span { border: 1px solid #ccc; display: inline-block; padding: 7px; border-radius: 16px; }
+.view .content .sort-box .checked-box .check-item span.checked { border: 1px solid #eee; background-color: #ff8400; }
+
+.view .content .sort-box .sort-title h4 { margin: 6px auto; height: 40px; overflow: hidden; }
+.view .content .sort-box .sort-title .sort-price p.opera { font-size: 14px; line-height: 18px; position: relative; }
+.view .content .sort-box .sort-title .sort-price p.opera span { display: inline-block; line-height: 14px; position: absolute; right: 4px; }
+.view .content .sort-box .sort-title .sort-price p.opera input { display: inline-block; margin-left: 6px; border: 1px solid  #ff8400; width: 48px; text-align: center; }
+
+div.like-footer{
+  padding-top: 64px;
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-shadow:0 0 2px 0 #ccc;
+}
+footer .wrap.container{
+  display: flex;
+  display: -webkit-flex;
+  padding: 0;
+  background-color: #fff;
+}
+footer p{margin: 0;}
+footer .check-item{
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 56px;
+  margin-left: 16px;
+}
+
+footer .check-item span{
+  padding: 7px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  border-radius: 16px;
+  vertical-align: text-bottom;
+}
+
+footer .inf{
+  flex: 1;
+  -webkit-flex:1;
+  padding:8px 16px;
+}
+footer a.btn{
+  background-color: #ff8400;
+border: medium none;
+border-radius: 0;
+line-height: 43px;
+min-width: 96px;
+}

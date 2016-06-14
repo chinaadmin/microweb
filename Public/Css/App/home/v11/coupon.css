@@ -1,0 +1,57 @@
+.scorebox { background: rgba(0, 0, 0, 0) none repeat scroll 0 0; float: right; width: 820px; padding-bottom: 48px; }
+.scorebox h3 { background-color: #eee; font-size: 17px; line-height: 42px; padding-left: 16px; }
+.scorebox h3 span { float: right; font-size: 14px; margin-right: 16px; color: #999; }
+.scorebox > p { line-height: 36px; padding: 16px; border: 1px solid #eee; font-size: 14px;}
+.scorebox > p i { font-style: normal; color: #ff8400; font-size: 24px; vertical-align: sub; }
+
+.scorebox .list { border: 1px solid #eee; }
+.scorebox .list .hd { border-bottom: 1px solid #eee; position: relative; }
+.scorebox .list .hd ul { width: 240px; }
+.scorebox .list .hd li ,.scorebox .list .hd li a{ width: 72px; display: inline-block; text-align: center; line-height: 48px; cursor: pointer; color: #000;}
+.scorebox .list .hd li.active { border-bottom: 4px solid #ff8400; }
+.scorebox .list .hd span { height: 100%; padding-right: 16px; position: absolute; right: 0; text-align: right; top: 0; width: 240px; }
+.scorebox .list .hd span select { padding: 6px 16px; border: 1px solid #eee; border-radius: 4px; margin-top: 11px; width: 160px }
+
+.scorebox .list .content { padding: 32px 16px; color: #333; overflow: hidden; }
+.scorebox .list .content li { font-size: 0px; cursor: pointer; }
+.scorebox .list .content li span { width: 25%; text-align: center; display: inline-block; font-size: 14px; box-sizing: border-box; -moz-box-sizing: border-box; line-height: 36px; }
+.scorebox .list .content li.item span:first-child { background-color: #C9C9C9; border-right: 1px dashed #fff; }
+.scorebox .list .content li:first-child span { border-top: 1px solid #eee; background-color: #eee; }
+
+
+.scorebox .list .content li.item { border-bottom: 1px solid #eee; }
+.scorebox .list .content li.item span { line-height: 20px; vertical-align: middle;padding: 6px 0; }
+.scorebox .list .content li.item span:first-child * { width: 100%; display: inline-block; font-style: normal; }
+
+
+
+
+.popBox { background-color: rgba(0, 0, 0, 0.5); height: 100%; left: 0; opacity: 1; position: fixed; top: 0; width: 100%; z-index: 9998; }
+.popBox .box { background-color: #B5B5B5; padding: 8px; width: 480px;margin: 0 auto;}
+.popBox .wrap { background-color: #fff; }
+.popBox .wrap h3 { background-color: #eee; line-height: 36px; padding: 0 12px; font-size: 16px; }
+.popBox .wrap .content { padding: 24px 12px; }
+.popBox .wrap .content p { line-height: 36px; font-size: 0;}
+.popBox .wrap .content p * { font-size: 13px;}
+.popBox .wrap .content p i { color: red; margin-right: 8px; }
+.popBox .wrap .content p span:first-child { width: 96px; display: inline-block; text-align: right; padding-right: 8px; }
+.popBox .wrap .content p span:last-child { text-align: left; }
+.popBox .wrap .content p input { border: 1px solid #ccc; padding: 4px; }
+.popBox .wrap .content p select { padding: 4px; border: 1px solid #ccc; margin-right: 8px; }
+.popBox .wrap .content p.select span:last-child { font-size: 0; }
+.popBox .wrap .footer { padding: 0 12px 24px; font-size: 0;}
+.popBox .wrap .footer span:first-child { width: 96px; display: inline-block; padding-right: 8px; }
+.popBox .wrap .footer .btn { line-height: 36px; background-color: #ff8400; color: #fff; display: inline-block; width: 96px; margin-right: 16px; text-align: center; font-size: 14px; cursor: pointer; }
+
+.popBox .adderss-add { margin-top: 64px; }
+.popBox .adderss-add .wrap .content p input {width: 320px; }
+.popBox .adderss-add .wrap .content p select { width: 96px; }
+
+
+
+
+
+
+
+
+

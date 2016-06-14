@@ -1,0 +1,117 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#content{
+	position:relative;
+	top:20px;
+	min-height:950px;
+}
+
+#content .product{
+	min-width:750px;
+	padding: 0 0 0 230px;
+}
+/*商品列表*/
+#content  .grid_wrapper{
+	width: 755px;
+	height: 620px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:20px;
+	}
+#content .grid_wrapper h4{
+	background:url(images/pro_03.jpg) no-repeat;
+	padding-left:30px;
+	color:#ff8c00;
+	margin-left:15px;
+	}
+#content .grid_wrapper .grid{
+	margin-left:-10px;
+	margin-top: 5px;
+	list-style-type:none;
+	}
+#content .grid_wrapper .grid:after{
+	content: ".";
+	display: block;
+	line-height: 0;
+	width:0;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	overflow: hidden;
+	}
+#content .grid_wrapper .grid li{
+	float:left;
+	line-height:35px;
+	padding-left: 5px;
+    padding-top: 5px;
+	text-align:center;
+	display:block;
+	width:250px;
+	min-height:290px;
+	overflow:hidden;
+	height:auto;
+	}
+#content .grid_wrapper .grid li img{
+	padding-top:15px;
+	vertical-align: middle;
+	text-align: center;
+}
+.grid li a,.grid li a:visited{
+    display:block;
+	border: 1px solid #ccc;
+    width: 240px;
+    height: 295px;
+	text-align: center;
+	margin-left:5px;
+	margin-top:5px;
+	position: relative;
+	z-index: 1;
+	box-shadow:2px 2px 6px #ccc;
+}
+#content .grid_wrapper .grid li a:hover{
+  	z-index: 2;
+	box-shadow:4px 4px 6px #ccc;
+}
+#content .grid_wrapper .grid li a p{
+	height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    padding-top: 5px;
+    width: 240px;
+	}
+#content .grid_wrapper .grid li a p:hover{
+
+	color:#ff8c00;
+}
+#content .grid_wrapper .grid li a p span{
+	color:#ff8c00;
+	font-size:14px;
+	font-weight:bold;
+	line-height:24px;
+	width:240px;
+	overflow:hidden;               
+	height:30px;
+	display:block;
+	height:24px;
+	margin-top:5px;
+	}
+
+#content .grid_wrapper .grid li a .detail{
+	background:#ff8c00;
+	width:70px;
+	height:30px;
+	margin: 0 auto;
+	border-radius:5px;
+	color:#fff;
+	margin-top:8px;
+}
+#content .grid_wrapper .grid li a .detail:hover{
+	color:#F8EE03;
+	}
+/*页码*/
+#content .page-num{
+	top:20px;
+	right:20px;
+	}

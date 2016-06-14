@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+#btn{background:url(btn.png) no-repeat;width:183px;height:21px;border:none;cursor:pointer}
+#btn_jobArea
+{
+	/* background:url(btn.png) no-repeat; */
+	width:250px;height:21px;border:none;cursor:pointer
+}
+/* 选择工作地区 */
+[name=jobAreaAlpha]{padding:10px 4px}
+[name=jobAreaAlpha] h4{color:#F90;font-size:14px;}
+[name=jobAreaAlpha] dl{zoom:1;overflow:hidden;line-height:25px}
+[name=jobAreaAlpha] dt{float:left;width:80px;font-weight:bold}
+[name=jobAreaAlpha] dd{float:left;width:492px}
+[name=jobAreaAlpha] dd li{float:left;width:82px;cursor:pointer;text-indent:16px;height:25px;overflow:Hidden}
+[name=jobAreaAlpha] dd li.over{background-color:#f90;color:#fff}
+
+[name="jobAreSelected"]{border-bottom:1px dashed #ccc;margin-bottom:10px;padding-bottom:6px}
+[name="jobAreSelected"] dt{font-size:14px;color:#f90}
+[name=maincity2] li,[name="jobAreSelected"] li{background-image:url(chk_off.gif);background-repeat:no-repeat;background-position:2px 6px}
+[name=maincity2] li.chkON,[name="jobAreSelected"] li.chkON{background-image:url(chk_on.gif)}
+/**#allProv2{border-top:1px dashed #ccc;margin-top:6px;padding-top:10px}*/
+/* 工作地区 悬浮子菜单 */
+[name=sub_jobArea]{border:1px solid #f60;line-height:25px;text-align:left}
+[name=sub_jobArea] h4{border-bottom:1px dashed #ccc}
+[name=sub_jobArea] ul{overflow:hidden;zoom:1}
+[name=sub_jobArea] ul li{float:left;width:80px;}
+[name=sub_jobArea] ul a{
+		display:block;color:#000;
+		text-decoration:none;text-indent:16px;
+		background-image:url(chk_off.gif);
+		background-repeat:no-repeat;
+		background-position:2px 6px;
+	}
+[name=sub_jobArea] ul a:hover{background-color:#f90;color:#fff}
+[name=sub_jobArea] ul a.chkON{background-image:url(chk_on.gif)}
+

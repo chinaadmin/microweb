@@ -1,0 +1,118 @@
+@charset "utf-8";
+/* CSS Document */
+
+#content{
+	margin-top:30px;	
+}
+.content_title{
+	border-bottom:2px solid #a0a0a0;
+	padding-bottom:20px;
+}
+.content_title h2{
+	width:100px;
+	border-bottom:2px solid #ff8c00;
+	display:inline;
+	padding-bottom:21px;
+	
+}
+.side_list{
+	width:190px;
+	border:1px solid #ccc;
+	margin-top:25px;
+	border-radius:5px 0 0 0;
+	padding-bottom:40px;
+	background:#fff;
+	float:left;
+}
+.side_list h2{
+	margin-top:15px;
+	margin-left:10px;
+	background:url(../../Images/home/help_01.png);	
+	font-size: 17px;
+    left: -15px;
+    padding-left: 30px;
+    position: relative;
+    width:165px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border: 1px solid #ccc;
+    border-right:none;
+}
+.side_title{
+	font-size:16px;
+	margin-left:10px;
+	border-bottom:1px solid #ccc;
+	height:40px;
+	line-height:40px;
+	width:168px;
+	background:url(../../Images/home/help_00.png) no-repeat -2px 16px;
+	background-position:-2px -101px;
+	}
+.side_normal{
+	background-position:-2px 16px;
+}
+
+.obtn{
+	cursor:pointer;
+	margin-left:16px;
+}
+.list_detail{
+	display:none;
+	z-index:10;
+	border-bottom:1px solid #ccc;
+	padding-bottom:10px;
+	width:168px;
+	margin-left:10px;
+}
+.list_detail  a{
+	font-size:14px;
+	color:#000;
+	margin-left:30px;
+	display:block;
+	padding-top:10px;
+	
+}
+.list_detail  a:hover{
+	color:#ff8c00;
+}
+.list_detail li .current {
+    color: #ff8c00;
+}
+.text_box{
+	width:820px;
+	border:1px solid #ccc;
+	float:right;
+	margin-top:25px;
+	background:#fff;
+}
+.text_box h2{
+	background: none repeat scroll 0 0 #f7f7f7;
+    height: 50px;
+    line-height: 47px;
+    margin-top: 12px;
+    padding-left: 15px;
+}
+.text_area{
+	margin-left: 25px;
+    width: 770px;
+    overflow:hidden;
+}
+.text_area h3{
+	margin-top:20px;
+}
+.text_area p{
+	line-height:25px;
+	/*text-indent:2em;*/
+}
+.text_area img{
+	margin:20px auto 20px -8px;
+	display:block;
+
+}
+.text_area p span{
+	/*margin-left:-24px;*/
+}
+.list_detail .bg-active{
+	background:url(../../Images/home/help_02.png)no-repeat 129px 14px;
+	color:#FF8C00;
+}

@@ -1,0 +1,179 @@
+#content{
+	padding-bottom:85px;
+}
+.swiper-slide{
+	height:auto;
+}
+.swiper-container{
+	height:auto;
+}
+.swiper-slide img{
+	display:block;
+	height:auto;
+	max-width:100%;
+}
+.swiper-container-horizontal > .swiper-pagination{
+	bottom:90%;
+}
+.swiper-pagination-bullet-active{
+	background:#FF8C00;
+}
+.back-box{
+	display:block;
+	position:absolute;
+	bottom:89%;
+	background:#cfcfcf;
+	border-radius:50%;
+	opacity:0.5;
+	z-index:1;
+	margin-left:1rem;
+}
+.pName{
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    height: 7rem;
+    position:absolute;
+    width: 100%;
+    z-index:1;
+    }
+.pName .dt{
+	color: #ffffff;
+    float: left;
+    margin: 0.428em 0 0.428em 0.714em;
+    overflow: hidden;
+    padding-right: 1.25em;
+    position: relative;
+    height:6rem;
+    width:80%;
+}
+.p-name-content{
+	font-size:2rem;
+}
+.share-box{
+	width:19%;
+	float:right;
+	text-align:center;	
+	position:relative;
+	padding-top:1rem;
+	padding-bottom:1rem;
+}
+@media(max-width:455px){
+	.share-box{
+	position:relative;
+	bottom:63%;
+	padding:0;
+}
+}
+.share-box a img{
+	display:inline-block;
+	max-width:40%;
+	height:auto;
+	
+}
+.price-box{
+	padding-left:1rem;
+	padding-bottom:1rem;
+	border-bottom:1px solid #ccc;
+}
+.price-box p{
+	font-size:2rem;
+}
+
+.price-box p .price-cl{
+	color:#ff8c00;
+}
+.adress-choice{
+	max-width:200px;
+	margin-left:6rem;
+	font-size:1.5rem;
+}
+.address-box{
+	margin-top:2rem;
+	padding-left:1rem;
+}
+.address-box p span{
+	position:absolute;
+	font-size:2rem;
+}
+.spinner{
+	margin-left:6rem;
+	margin-top:2rem;	
+	}
+.buy-num{
+	height:3rem;
+	width:8rem;
+	font-size:2rem;
+	font-weight:normal;
+	text-align:center;
+}
+.decrease{
+	background:url(../images/detail_03.png) no-repeat 0 1px;
+	height:45px;
+	width:30px;
+	border:none;
+	font-size:0;
+	outline:none;
+}
+
+.increase{
+	outline:none;
+	height:45px;
+	width:30px;
+	border:none;
+	background:url(../images/detail_04.png) no-repeat 0 1px;
+	font-size:0;
+}
+.evaluation{
+	height:6rem;
+	line-height:6rem;
+	color:#666;
+}
+.eva-num{
+	font-size:2rem;
+	float:left;
+	padding-left:1rem;
+	color:#333333;
+}
+.index-img{
+	float:right;
+	background:url(../images/detail_05.png) no-repeat;
+	height:30px;
+	width:3rem;
+	margin-top:1rem;
+}
+.message-box{
+	padding-left:1rem;
+	padding-right:1rem;
+}
+
+.message-box p{
+	font-size:2rem;
+}
+.message-box p span{
+	display:block;
+	color:#ccc;
+}
+.message-box .user-name{
+	float:left;
+	font-size:1.5rem;
+}
+.message-box .date-eva{
+	float:right;
+	font-size:1.5rem;
+}
+.eva-img-box h2{
+	font-size:2rem;
+	padding-bottom:1.5rem;
+	border-bottom:1px solid #666;
+	margin-bottom:0;
+	padding-left:1rem;
+}
+.eva-img  img{
+	margin-top:1rem;
+	display:block;
+	height:auto;
+	max-width:100%;
+}
+
+
+

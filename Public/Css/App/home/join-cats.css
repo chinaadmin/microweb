@@ -1,0 +1,88 @@
+@charset "utf-8";
+.data-box{
+	background:none;
+}
+.data-box h1{
+	background-position:32px 20px;
+	width:274px;
+	float:left;
+	margin-left:100px;
+}
+.cats-content{
+	width:490px;
+	float:right;
+	height:100px;
+	line-height:100px;
+	text-align: left;
+}
+.cats-content .cats-btn{
+	color:#fff;
+	background:#FF8C00;
+	width:130px;
+	height:30px;
+	padding:13px;
+	margin-right:20px;
+	font-size:18px;
+}
+.cats-content a{
+	color:#FF8C00;
+	margin-left:10px;
+	font-size:14px;
+}
+.cats-content a:hover{
+	text-decoration: underline;
+}
+.sort-box{
+	text-align:left;
+}
+.sort-head{
+	height:30px;
+	line-height:30px;
+	background:#EEEEEE;
+	font-size:14px;
+	padding-left:20px;
+	border:1px solid #e3e3e3;
+}
+.sort-con{
+	border:1px solid #CCC;
+	border-top:none;
+	padding:20px 0;
+}
+.sort-show{
+	width:310px;
+	float:left;
+	margin-left:23px;
+}
+.sort-massage{
+	width:220px;
+	float:right;
+	
+}
+.sort-massage p{
+	font-size:14px;
+	height:19px;
+	overflow:hidden;
+}
+.price-cl{
+	color:#FF8C00;
+	margin-top:11px;
+}
+.sort-massage a{
+	color:inherit;
+}
+.sort-massage .join-cat{
+	display:block;
+	background:#FF8C00;
+	color:#fff;
+	width:80px;
+	height:20px;
+	line-height: 20px;
+	text-align: center;
+	margin-top:11px;
+}
+#footer{
+	top:0;
+}
+.data-box h1{
+	margin-bottom:50px;
+}

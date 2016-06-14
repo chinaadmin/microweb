@@ -1,0 +1,72 @@
+.view .content{ border-top:1px solid #999; padding: 0; background-color: #eee;}
+.view .content p{margin: 0}
+
+
+.box{ background-color: #fff; }
+.box p { height: 42px; line-height: 42px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: unset; }
+.box .bLeft { float: left; text-align: right; padding: 0 8px; color: #ccc; }
+.box .bRight > div,.box .bLeft > div{ border-bottom: 1px solid #eee; }
+
+.payInf .box { margin-top: 12px; }
+
+.view .content .orderItem.sort-box { background-color: #fff; margin-top: 12px; }
+
+.view .content .sort-box .sort-item { display: flex; display: -webkit-flex; border-bottom: 1px solid #eee; font-size: 0; padding: 8px 0; }
+.view .content .sort-box .sort-img { max-width: 142px; display: inline-block; margin: 0; width: 44%; vertical-align: middle; padding-left: 8px; }
+.view .content .sort-box .sort-img img { max-width: 120px; display: inline-block; }
+.view .content .sort-box .sort-title { flex: 1; -webkit-flex: 1; display: inline-block; width: 52%; font-size: 14px; vertical-align: middle; margin: 0 2%; }
+.view .content .sort-box .sort-title h4 { margin-bottom: 16px; margin-left: 6px; font-size: 16px; }
+.view .content .sort-box .sort-title h4 a { text-decoration: none; color: #333; }
+.view .content .sort-box .sort-title .sort-price p { color: #ff8400; font-size: 20px; margin-bottom: 4px; line-height: 1; }
+.view .content .sort-box .sort-title .sort-price s { margin-left: 6px; color: #999; }
+.view .content .sort-box .sort-title .sort-price .standard { font-size: 14px; color: #666; display: flex; display: -webkit-flex; padding: 6px; }
+.view .content .sort-box .sort-title .sort-price .standard em { font-style: normal; }
+.view .content .sort-box .sort-title .sort-price .standard em:first-child { flex: 1; -webkit-flex: 1; }
+
+.view .content .sort-box .sort-topbar p { display: flex; display: -webkit-flex; line-height: 48px; padding: 0 16px; border-bottom: 1px solid #ccc; color: #999;margin: 0;}
+.view .content .sort-box .sort-topbar p>span:first-child { flex: 1; -webkit-flex: 1; }
+.view .content .sort-box .sort-topbar p>span:last-child a { background-color: #ff8400; color: #fff; padding: 4px 8px; }
+
+.view .content .sort-box .sort-footer { line-height: 48px; padding: 0 16px; }
+.view .content .sort-box .sort-footer .btn { border-radius: 0; border: 1px solid #ccc; margin: 0 0 0 16px; }
+.view .content .sort-box .sort-footer .btn.btn-Ye{ border: 1px solid #ff8411; background-color: #ff8400; color: #fff; }
+
+
+.view .content .statistics { background-color: #fff; line-height: 42px; margin-top: 12px; padding-right: 16px; text-align: right; }
+.view .content .statistics span{ color: #999; margin: 0 8px 0 16px; }
+
+.view .content .orderControl { background-color: #fff; border-top: 1px solid #ccc; padding: 16px 0; text-align: center; }
+.view .content .orderControl .btn{ margin: auto 32px; border-radius: 0; border: 1px solid #ccc; }
+.view .content .orderControl .btn.btn-Ye{ border: 1px solid #ff8411; background-color: #ff8400; color: #fff; }
+
+.view .content.orderlist .navBox { line-height: 48px; background-color: #fff; display: flex; display: -webkit-flex; box-shadow: 0 1px 2px 0 #ccc }
+.view .content.orderlist .navBox span { flex: 1; -webkit-flex: 1; text-align: center; }
+.view .content.orderlist .navBox span a { width: 100%; }
+
+.view .content.checkOrder .box .boxTitle { font-size: 18px; }
+.view .content.checkOrder .box p { border-bottom: 1px solid #ccc; padding: 0 16px; }
+.view .content.checkOrder .box p:last-child { border-bottom-width: 0; }
+.view .content.checkOrder .box p select { border: none; width: 100%; margin-left: -4px; }
+.view .content.checkOrder .box .pays { padding-left: 32px; }
+.view .content.checkOrder .box .pays p { padding-left: 0; line-height: 40px; }
+.view .content.checkOrder .box .pays img { background-color: #ff8400; height: 32px; width: 32px; display: inline-block; margin-right: 8px; box-shadow: 0 0 3px 0 #333; border-radius: 48px; vertical-align: middle; }
+.view .content.checkOrder .box.invoice p { display: flex; display: -webkit-flex; }
+.view .content.checkOrder .box.invoice span { flex: 1; -webkit-flex: 1; }
+.view .content.checkOrder .box.invoice select { width: auto; text-align: right; margin: 0; padding-right: 8px; border-right: 24px solid #ff8400; color: #ff8400; }
+.view .content.checkOrder .box.total p { display: flex; display: -webkit-flex; text-align: right; }
+.view .content.checkOrder .box.total p span { display: inline-block; width: 56px; }
+.view .content.checkOrder .box.total p em { flex: 1; -webkit-flex: 1; padding-right: 8px; font-size: 18px; font-style: normal; color: #ff8400; }
+
+.view .content.checkOrder .payto { display: flex; display: -webkit-flex; line-height: 48px; background-color: #eee; }
+.view .content.checkOrder .payto span { flex: 1; -webkit-flex: 1; padding-left: 16px; }
+.view .content.checkOrder .payto span em { font-style: normal; font-size: 18px; color: #ff8400; }
+.view .content.checkOrder .payto .btn { background-color: #ff8400; border-radius: 0; line-height: 48px; padding: 0 16px; color: #fff; }
+
+.view .content .failBox { text-align: center; padding: 16px; background-color: #fff; margin-top: 16px; box-shadow: 0 0 2px 0 #333; }
+.view .content .failBox img { width: 64px; height: 64px; background-color: #FF0000; display: inline-block; border-radius: 64px; margin-bottom: 16px; }
+.view .content .failBox p { text-align: center; }
+
+.view .content .sort-box .sort-footer.btnline { padding: 0 0 0 8px; }
+.view .content .sort-box .sort-footer.btnline p { display: flex; display: -webkit-flex; }
+.view .content .sort-box .sort-footer.btnline p span { flex: 1; -webkit-flex: 1; }
+.view .content .sort-box .sort-footer.btnline p .btn { background-color: #ff0000; border: none; color: #fff; padding: 0 16px; line-height: 48px; }

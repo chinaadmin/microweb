@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../css/comPassword.css"/>
+  <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+  <title>手机验证</title>
+</head>
+<body>
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="#" class="btnBack backNoText"><i class="icon icon-back marR4"></i></a>
+          <span class="title">
+            找回密码
+          </span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content">
+        <div class="inputBox">
+            <br>
+            <p class="text colorGrey9"><span>必好货用户*****，您好。</span></p>
+            <p class="text"><span>选择找回密码方式</span></p>
+            <select class="full" name="">
+              <option value="option">已验证邮箱</option>
+            </select>
+            <p class="text"><span>jitu****@163.com</span></p>
+            <p class="text colorYe d-hide msg" style="margin-top: 8px; margin-bottom: -12px;"><span>验证邮件已经发送到您的邮箱，若未收到验证邮件，请点击重新发送验证邮件</span></p>
+            <a href="#" class="btn full">发送验证邮件</a>
+        </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    (function () {
+      $(".lineGroup").on('click', '.btn', function(event) {
+        event.preventDefault();
+        $("p.msg").removeClass('d-hide')
+        /* Act on the event */
+      });
+    })();
+  </script>
+</body>
+</html>

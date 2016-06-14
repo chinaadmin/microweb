@@ -1,0 +1,483 @@
+@CHARSET "UTF-8";
+*{
+	margin:0px;
+	padding:0px;
+}
+li{
+	list-style:none;
+}
+.order-code{
+	position:relative;
+}
+.row-fluid .goods-info{
+	position:absolute;
+	bottom:25px;
+	left:0px;
+	width:800px;
+	display:none;
+}
+.info-left{
+	
+}
+.info-left  .info-action{
+	width:100%;
+}
+.info-left  .info-action li{
+	float:left;
+	margin-right:10px;
+}
+.info-left .info-base{
+	width:49.5%;
+	display:inline-block;
+}
+.info-base h4{
+	font-weight:bolder;
+	font-size:14px;
+	display:inline-block;
+	width:24%;
+	text-align:center;
+	padding:5px 0px;
+	border:1px solid #d1d1d1;
+}
+ .info-base p{
+	display:inline-block;
+	text-align:center;
+	width:74%;
+}
+.info-left .info-sum{
+	font-weight:bolder;
+	height:30px;
+}
+.info-left .info-sum p{
+	float:right;
+	margin-left:100px;
+}
+.info-mark{
+	margin-top:15px;
+}
+.info-mark p .btn{
+	margin-left:22px;
+}
+/***打印预览***/
+.print{
+	width:90%;
+	margin:0 auto;
+}
+.print .print-title h3{
+	text-align:center;
+	font-weight:700;
+}
+.print .print-title li{
+	float:left;
+	width:33%;
+	margin:2px 0px;
+}
+.print .print-footer{
+	text-align:right;
+	padding-right:20px;
+}
+/**打印预览结束**/
+
+/**编辑订单**/
+.order-edit{
+	width:100%;
+	height:700px;
+}
+.order-edit ul{
+	float:left;
+	width:100%;
+}
+.order-edit li{
+	float:left;
+	width:33%;
+	margin:3px 0px;
+	height:44px;
+}
+.order-edit li.big-size{
+	width:100%;
+}
+.order-edit li span{
+	display:inline-block;
+	text-align:center;
+}
+.order-edit li span.title{
+	border:1px solid #d1d1d1;
+	padding:5px 15px;
+	margin-right:10px;
+	width:89px;
+	font-weight:bolder;
+	font-size:14px;
+}
+.order-edit .order-invoice{
+	margin-left:35px;
+}
+.order-edit .invoice-footer{
+	text-align:right;
+	padding-right:20px;
+}
+/**编辑订单结束**/
+
+/**退款退货**/
+.row-fluid .refund-info{
+	background:#fff;
+	width:500px;
+	top:30px;
+	height:auto;
+	z-index:1000;
+}
+.refund-info ul{
+	margin:0px;
+	padding:0px;
+	padding-top:15px;
+	padding-bottom:15px;
+	background:#fff;
+	border:1px solid #d1d1d1;
+}
+.refund-info li.in-line{
+	border-bottom:1px solid #d1d1d1;
+	margin-bottom:10px;
+}
+.refund-info li{
+	padding:3px 0px;
+}
+.refund-info li p{
+	display:inline-block;
+	font-weight:bold;
+	padding-left:25px;
+}
+.refund-info li p.m-left{
+	margin-left:100px;
+}
+.info-line{
+	width:100%;
+	border-top:1px solid #eee;
+	margin:8px 0px;
+}
+/**退款退货结束**/
+#tab_1 .portlet.box .portlet-title{
+	background:#dfeeff;
+}
+#tab_1 .portlet-title .caption{
+	font-weight:500;
+	color:#000;
+}
+#tab_1 .btn.blue{
+	background-color:#dfeeff;
+	color:#000;
+}
+
+/**物流订单**/
+.logistics-title{
+	border:1px solid #a7d093;
+	padding:3px 10px;
+	background:#ddffd5;
+	margin-bottom:5px;
+}
+.order-goods{
+  display:block;
+  width:220px;
+  height:30px;	
+  position:relative;
+}
+.goods-title{
+  display:block;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  width:100%;
+  cursor:pointer;
+}
+.goods-alt{
+	display:none;
+	position:absolute;
+	top:30px;
+	left:-24px;
+	border:1px solid #666;
+	width:100%;
+}
+.goods-alt li{
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  width:100%;
+  text-align:center;
+}
+/**物流订单结束**/
+
+/**销售发货单**/
+.order-receipt{
+	border:1px solid #ddd;
+	padding:20px;
+	border-bottom:none;
+}
+.order-receipt p.inline{
+	display:inline-block;
+	margin-right:20px;
+}
+p.footer-inline{
+	display:inline-block;
+	width:33%;
+	text-align:left;
+}
+/**销售发货单结束**/
+
+.goods-left{
+	border-right:1px solid #eee;
+	float:left;
+	width:75%;
+	height:80px;
+	padding:5px 0px;
+}
+.goods-left img{
+	width:80px;
+	height:80px;
+	float:left;
+}
+.goods-left span{
+	display:block;
+	max-width:40%;
+	padding-left:10px;
+	float:left;
+}
+.goods-right{
+	text-align:center;
+	line-height:80px;
+	font-weight:bolder;
+	font-size:20px;
+	color:#ffd075;
+}
+/**订单列表**/
+.index-ul{
+	width:100%;
+}
+.index-ul li{
+	width:100%;
+	height:32px;
+	float:left;
+	margin-bottom:10px;
+	min-width:1340px;
+}
+.index-ul li .index-ul-group{
+	float:left;
+}
+.order-top{
+	width:100%;
+	border:1px solid #d7d7d7;
+	border-left:none;
+	border-right:none;
+	height:33px;
+	line-height:33px;
+	background:#f2f2f2;
+}
+.lists-table{
+	min-width:1170px;
+}
+.lists-table td{
+	padding:8px 0px;
+}
+.order-info{
+	overflow:hidden;
+	border:1px solid #f2f2f2;
+}
+.order-info .order-body{
+	display:inline-block;
+	text-align:left;
+	vertical-align:top;
+	float:left;
+}
+.body1{
+	width:27%;
+}
+.body2{
+	width:10%;
+}
+.body3{
+	width:15%;
+}
+.body4{
+	width:20%;
+}
+.order-body ul{
+	margin:0px;
+	width:100%;
+	overflow:hidden;
+}
+.order-body ul li{
+	height:80px;
+	position:relative;
+	padding:5px 2px;
+	border-bottom:1px solid #f2f2f2;
+}
+.order-body ul li img{
+	display:inline-block;
+	height:80px;
+	width:80px;
+	margin-left:1px;
+}
+.order-body ul li p{
+	word-break:break-all;
+	width:auto;
+	padding-right:13px;
+}
+.order-body ul li p.goods-name{
+	position:absolute;
+	top:3px;
+	left:90px;
+	height:55px;
+	overflow:hidden;
+}
+.order-body ul li p.goods-norms{
+	position:absolute;
+	top:58px;
+	left:90px;
+}
+/**订单列表结束**/
+
+/**订单详情**/
+.base-info{
+	min-width:836px;
+}
+.base-info .base-info-top{
+	height:30px;
+	line-height:30px;
+	background:#f9f9f9;
+	border:1px solid #e8e8e8;
+}
+.base-info .base-info-top li{
+	float:left;
+	text-align:center;
+	min-width:200px;
+	line-height:30px;
+}
+.base-info-body{
+	height:320px;
+	margin:0px;
+    margin-left:5px;
+	margin-top:5px;
+}
+.base-info-body .info-body1{
+        width:30%;
+		border:1px solid #e4e4e4;
+		height:320px;
+		float:left;
+}
+.base-info-body .info-body1 p{
+	padding-left:20px;
+	vertical-align:middle;
+	padding-top:15px;
+}
+.base-info-body .info-body1 .p1{
+	border-bottom:1px dashed #e4e4e4;
+	height:50px;
+}
+.base-info-body .info-body1 .p2{
+	border-bottom:1px dashed #e4e4e4;
+	height:90px;
+}
+.base-info-body .info-body2{
+        width:40%;
+		border:1px solid #e4e4e4;
+		height:320px;
+		float:left;
+		border-left:none;
+		position:relative;
+}
+.base-info-body .info-body2 .order-base{
+	width:70%;
+	height:160px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-90px;
+	margin-left:-35%;
+	font-family:"微软雅黑";
+}
+.base-info-body .info-body2 .order-base h4{
+	font-weight:bolder;
+}
+.base-info-body .info-body3{
+        width:29%;
+		height:270px;
+		border:1px solid #e4e4e4;
+		float:left;
+		border-left:none;
+		padding-top:50px;
+}
+.base-info-body .info-body3 p{
+	text-align:center;
+}
+.base-info .base-info-footer{
+	width:99%;
+	margin-left:5px;
+	margin-top:10px;
+}
+/**订单详情**/
+.order-search ul{
+	border-bottom:2px solid #3333ff;
+	height:25px;
+	margin:-15px 0 10px 0px;
+}
+.order-search li a{
+	display:block;
+	float:Left;
+	line-height:25px;
+	width:110px;
+	text-align:center;
+	padding:0px 5px;
+}
+.order-search li a:hover{
+	background:#3333ff;
+	color:#fff;
+}
+.order-search li a.add-check{
+	background:#3333ff;
+	color:#fff;
+}
+ #refund-img{
+	margin-left: 50px;
+	margin-bottom: 10px;
+	display: inline;
+}
+#refund-img>div{
+	float: left;
+}
+#refund2{
+	margin-left:-4px;
+}
+#refund4{
+	margin-left: -4px;
+}
+#refund5{
+	margin-left:-4px;
+}
+#refund7{
+	margin-left:-4px;
+}
+#refund8{
+	margin-left:-4px;
+}
+#refund10{
+	margin-left:-4px;
+}
+#refund11{
+	margin-left:-4px;
+}
+#refund13{
+	margin-left: -4px;
+}
+#text1{
+	margin-left: -20px;
+}
+#text2>p{
+	text-align: center;
+}
+#text3>p{
+	text-align: center;
+}
+#text4>p{
+	text-align: center;
+}
+#text5>p{
+	margin-right: -5px;
+	text-align: right;
+}

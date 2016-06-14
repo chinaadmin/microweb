@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document *//* CSS Document */
+body { background: #fff; }
+.s_top a { padding: 0; font-size: 18px; }
+
+.center{text-align: center;}
+
+#content { margin-top: 40px; }
+/* 左边列表 */
+.left_list { float: left; width: 165px; }
+.left_list h2 { text-align: center; background: #ba6701; border: 1px solid #CCCCCC; border-bottom: none; height: 30px; line-height: 27px; color: #fff; font-weight: normal; font-size: 18px; height: 40px; line-height: 36px; }
+.left_list ul { padding-bottom: 10px; border: 1px solid #CCCCCC; border-top: none; background: #fff; }
+.left_list li { text-align: center; background: url("../../../Images/home/data_01.jpg") no-repeat 19px 7px; }
+.left_list li:hover { background: url("../../../Images/home/data_00.jpg") no-repeat 19px 7px #ff8c00; }
+.left_list li a { font-size: 14px; color: #444; height: 30px; display: block; line-height: 30px !important; border-top: 1px solid #fff; }
+.left_list li a:hover { color: #fff; }
+.left_list .slect { background: #ff8c00 url("../../../Images/home/data_00.jpg") no-repeat scroll 19px 7px; color: #fff; }
+.left_list .item1, .left_list .item1:hover, .left_list .item1 .slect { background-position: 19px -25px; }
+.left_list .item2, .left_list .item2:hover, .left_list .item2 .slect { background-position: 19px -58px; }
+.left_list .item3, .left_list .item3:hover, .left_list .item3 .slect { background-position: 19px -91px; }
+.left_list .item4, .left_list .item4:hover, .left_list .item4 .slect { background-position: 19px -124px; }
+.left_list .item5, .left_list .item5:hover, .left_list .item5 .slect { background-position: 19px -157px; }

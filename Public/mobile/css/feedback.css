@@ -1,0 +1,21 @@
+.view .content.container { padding: 0; }
+.view .content p { margin: 0; }
+.view .content >* { padding: 0 16px; }
+.view .content h3 { color: #666; font-size: 16px; }
+
+.view .content .proposalBox { padding: 0; padding-bottom: 16px; background-color: #fff; box-shadow: 0 0 2px 0 #999; }
+.view .content .proposalBox div { margin: 0 auto; }
+.view .content .proposalBox span { padding: 0 12px; display: block; text-align: center; margin-top: 16px; width: 32%; float: left; }
+.view .content .proposalBox span:first-child { margin-left: 2%; }
+.view .content .proposalBox span:last-child { margin-right: 2%; }
+.view .content .proposalBox span a { border: 1px solid #ccc; height: 100%; width: 100%; padding: 4px 0; display: inline-block; color: #333; }
+.view .content .proposalBox span.active a { background-color: #ff8400; border-color: #ff8400; color: #fff; }
+
+.view .content .fbContent { background-color: #fff; box-shadow: 0 0 2px 0 #999; }
+.view .content .fbContent textarea { width: 100%; height: 96px; resize: none; padding: 8px 0; border: none; }
+
+.view .content .contact { background-color: #fff; box-shadow: 0 0 2px 0 #999; }
+.view .content .contact input { width: 100%; resize: none; padding: 8px 0; border: none; }
+
+.view .content .submit { background-color: #fff; box-shadow: 0 0 2px 0 #999; margin-top: 16px; background-color: #ff8400; }
+.view .content .submit a.btn { width: 100%; resize: none; padding: 8px 0; border: none; color: #fff;border-radius: 0;}

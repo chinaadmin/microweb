@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+#content{
+	min-height:600px;
+	}
+#content .text-area p{
+	margin-top: 110px;
+    width:auto;
+	}
+#content .text-area p span{
+	padding-left:150px;
+	}
+#content .text-area p .btn{
+	background: #ff8c00;
+    border-radius: 5px;
+    color: #fff;
+    font-family:"微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    font-size: 18px;
+    height: 30px;
+    width: 150px;
+	margin-top:5px;
+	cursor:pointer;
+	padding-bottom:10px;
+	position:relative;
+	border:0;
+	}
+#content .text-area p input{
+	border:1px solid #ccc;
+	border-radius:3px;
+	font-family: "微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+#content .text-area p input:focus{
+	border-color:#ff8c00;
+	box-shadow:0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8);  
+	-moz-box-shadow:0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8);
+	-webkit-box-shadow:0 1px rgba(255, 204, 153, 0.15), 0 1px rgba(255, 204, 153, 0.8), 0 0 14px rgba(255, 204, 153, 0.8);
+	}

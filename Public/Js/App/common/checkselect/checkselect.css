@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+.link-select,.checked-select{
+	width:44%;
+	height:300px;
+	border:1px solid #4b8df8;
+	float:left;
+	overflow-y:auto;
+}
+.link{
+	display:block;
+	width:6%;
+	height:300px;
+	background:url(./switch.png) no-repeat;
+	line-height:300px;
+	float:left;
+	background-position:center;
+}
+.link-select ul,.checked-select ul{
+	margin:0px;
+}
+.link-select ul li,.checked-select ul li{
+	list-style:none;
+	width:100%;
+	float:left;
+	text-align:center;
+	background:#ddd;
+	margin:0.5px 0px;
+	cursor:pointer;
+	height:24px;
+	line-height:25px;
+	color:#0d638f;
+}
+.link-select ul li input,.checked-select ul li input{
+	width:60px;
+	height:10px;
+	margin-top:-3px;
+}
+.link-select ul li span,.checked-select ul li span{
+	margin-right:5px;
+}
+.form-horizontal .search-controls{
+	margin-left:110px;
+}
+.form-horizontal .search-label{
+	width:auto;
+}
+.form-horizontal .input-append .search-select{
+	float:left;
+	margin-right:5px;
+}
+

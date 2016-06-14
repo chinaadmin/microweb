@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>填写信息</title>
+  <link type="text/css" rel="stylesheet" href="../../Css/App/home/common.css">
+  <link type="text/css" rel="stylesheet" href="../../Css/App/home/commonExt.css">
+  <link type="text/css" rel="stylesheet" href="../../Css/App/home/v11/paysuccess.css">
+
+  <script type="text/javascript" src="../../Js/App/home/jquery.js"></script>
+  <script type="text/javascript" src="../../Js/App/home/Area.js" type="text/javascript"></script>
+  <script type="text/javascript" src="../../Js/App/home/AreaData_min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="../../Js/App/home/jquery.validate.js"></script>
+  <script type="text/javascript" src="../../Js/App/home/login-page.js"></script>
+  <script type="text/javascript">
+    $(function (){
+      initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '44', '0', '0');
+    });
+
+    //得到地区码
+    function getAreaID(){
+      var area = 0;          
+      if($("#seachdistrict").val() != "0"){
+        area = $("#seachdistrict").val();                
+      }else if ($("#seachcity").val() != "0"){
+        area = $("#seachcity").val();
+      }else{
+        area = $("#seachprov").val();
+      }
+      return area;
+    }
+
+    function showAreaID() {
+      //地区码
+      var areaID = getAreaID();
+      //地区名  您选择的地区码：" + areaID + "
+      var areaName = getAreaNamebyID(areaID) ;
+      alert(" 地区名：" + areaName);            
+    }
+
+    //根据地区码查询地区名
+    function getAreaNamebyID(areaID){
+      var areaName = "";
+      if(areaID.length == 2){
+        areaName = area_array[areaID];
+      }else if(areaID.length == 4){
+        var index1 = areaID.substring(0, 2);
+        areaName = area_array[index1] + " " + sub_array[index1][areaID];
+      }else if(areaID.length == 6){
+        var index1 = areaID.substring(0, 2);
+        var index2 = areaID.substring(0, 4);
+        areaName = area_array[index1] + " " + sub_array[index1][index2] + " " + sub_arr[index2][areaID];
+      }
+      return areaName;
+    }
+  </script>
+</head>
+<body style="background-color:#eee;">
+  <!--头部开始-->
+  <div id="header">
+    <div class="top_box">
+      <div class="top_center_box">
+        <div class="welcome_box">
+          <p class="m_right">嘿，欢迎来到必好货商城！</p>
+          <div class="login-box-home">
+            <p>
+              <a href="/i/index.html">Hi，user1</a>
+            </p>
+            <p>
+              <a href="/passport/logout.html">退出</a>
+            </p>
+          </div>
+        </div>
+        <div class="logo_nav">
+          <ul>
+            <li class="logo_index">
+              <a href="">我的好货</a>
+              <div style="display: none;" class="logo_nav_tow">
+                <p>
+                  <a href="/order/index.html">我的订单</a>
+                </p>
+                <p>
+                  <a href="/refund/index.html">退款/退货</a>
+                </p>
+                <p>
+                  <a href="/i/baseinfo.html">个人资料</a>
+                </p>
+                <p>
+                  <a href="/i/usersafe.html">账户安全</a>
+                </p>
+                <p>
+                  <a href="/i/opinion.html">意见反馈</a>
+                </p>
+              </div>
+            </li>
+            <li class="d-hide">
+              <a href="">移动客户端</a>
+            </li>
+            <li class="logo_index qr d-hide">
+              <img src="/Public/Css/Images/home/home_01.png" title="">
+              <div style="display: none;" class="logo_nav_tow" id="qr">
+                <img src="/Public/Css/Images/home/qr_02.jpg" title=""></div>
+            </li>
+            <li class="logo_share d-hide">
+              <a href="">
+                <img src="/Public/Css/Images/home/home_02.png" title="微博分享"/>
+              </a>
+            </li>
+            <li class="noborder v-border">
+              <a href="/article/index/id/27.html">帮助中心</a>
+            </li>
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!--Logo+搜索-->
+    <div class="search" style="padding:24px 0;">
+      <div class="logo_img">
+        <a href="/">
+          <img src="/Uploads/Image/20150423/5538e213730f7.jpg"/>
+        </a>
+      </div>
+      <!--购物车--> </div>
+
+  </div>
+
+
+
+
+
+
+  <div id="content" class="pay">
+    <!--路径--><!-- 
+    <div class="hd">
+    </div> -->
+
+    <div class="box">
+        <div class="msg">
+          <h3>
+            <span>订单提交成功，请您尽快付款！订单号：9759788072</span>
+            <span>
+              应付金额
+              <a>100.00</a>
+              元
+            </span>
+          </h3>
+          <p class="tips">
+            <span>
+              请您在提交订单后
+              <a>24小时</a>
+              内完成支付，否则订单会自动取消。
+            </span>
+            <span>
+              <a>查看订单</a>
+            </span>
+          </p>
+          <hr />        
+          <p>
+            <span>送货至：积土  广东省深圳市南山区科苑路东方科技大厦2402室  135*****654</span>
+          </p>
+        </div>
+
+        <div class="platform">
+          <h3>支付平台</h3>
+          <p>
+            <span><input type="radio" name="zhi" /><img src="" alt="支付宝" /></span>
+          </p>
+          <h3>网银支付</h3>
+          <p>
+            <span><input type="radio" name="bank" /><img src="#" alt="国际银行" /></span>
+            <span><input type="radio" name="bank" /><img src="#" alt="国际银行" /></span>
+            <span><input type="radio" name="bank" /><img src="#" alt="国际银行" /></span>
+            <span><input type="radio" name="bank" /><img src="#" alt="国际银行" /></span>
+            <span><input type="radio" name="bank" /><img src="#" alt="国际银行" /></span>
+            <span><input type="radio" name="bank" /><img src="#" alt="国际银行" /></span>
+            <span><input type="radio" name="bank" /><img src="#" alt="国际银行" /></span>
+          </p>
+
+          <p>网上银行 <em>(需要开通网银，跳转银行页面)</em> <a>选择银行></a></p>
+
+        </div>
+
+        <div class="btnbox">
+          <a class="btn">
+            立即支付
+          </a>
+        </div>
+    </div>
+
+    <!-- /*购物车表格*/-->
+
+  </div>
+
+
+  <!-- 底部 -->
+  <div id="footer">
+    <!-- 底部标图 -->
+    <div id="footer_pic"></div>
+    <div class="blackBox">
+
+      <div class="guide">
+        <div class="middle">
+          <div class="guide-2">
+            <p> <b>服务保障</b>
+            </p>
+            <p>
+              <a href="">品牌真品防伪码</a>
+            </p>
+            <p>
+              <a href="">100%正品保证</a>
+            </p>
+            <p>
+              <a href="">30天无条件退货</a>
+            </p>
+            <p>
+              <a href="">7×24小时客服</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>使用帮助</b>
+            </p>
+            <p>
+              <a href="">新手指南</a>
+            </p>
+            <p>
+              <a href="">常见问题</a>
+            </p>
+            <p>
+              <a href="">帮助中心</a>
+            </p>
+            <p>
+              <a href="">用户协议</a>
+            </p>
+            <p>
+              <a href="">企业用户团购</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>支付方式</b>
+            </p>
+            <p>
+              <a href="">货到付款</a>
+            </p>
+            <p>
+              <a href="">在线支付</a>
+            </p>
+            <p>
+              <a href="">余额支付</a>
+            </p>
+            <p>
+              <a href="">现金卷支付</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>配送方式</b>
+            </p>
+            <p>
+              <a href="">包邮政策</a>
+            </p>
+            <p>
+              <a href="">配送说明</a>
+            </p>
+            <p>
+              <a href="">运费说明</a>
+            </p>
+            <p>
+              <a href="">验货签收</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>售后服务</b>
+            </p>
+            <p>
+              <a href="">正品承诺</a>
+            </p>
+            <p>
+              <a href="">售后咨询</a>
+            </p>
+            <p>
+              <a href="">退货政策</a>
+            </p>
+            <p>
+              <a href="">退货办理</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>手机必好货</b>
+            </p>
+            <img src="../Css/Images/home/qr_01.jpg">
+            <p>
+              <a href=""class="pp">下载移动客户端</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>必好货微信</b>
+            </p>
+            <img src="../Css/Images/home/qr_02.jpg">
+            <p>
+              <a href=""class="qq">必好货官方微信</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_infor">
+      <p class="footer_infor_link">
+        <a href="">关于我们</a>
+        <a href="">About us</a>
+        <a href="">媒体报道</a>
+        <a href="">品牌招商</a>
+        <a href="">隐私条款</a>
+        <a href="">友情链接</a>
+        <a href="">必好货诚聘</a>
+        <a href="">必好货卡</a>
+        <a href="">必好货地图</a>
+        <a href="">品牌大全</a>
+        <a href="">用户体验计划</a>
+        <a href="">联系我们</a>
+      </p>
+      <p class="footer_infor_txt">
+        COPYRIGHT©2015 深圳市必好货电子商务有限公司 JITUJITUAN.COM 保留一切权利。 客服热线：0755-86704402
+        <br>粤ICP备07050274号 | 食品流通许可证 SP1101051110165515（1-1） | 营业执照</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+.login_box{
+	float: none;
+    margin: 0 auto;
+    width: 329px;
+    margin-bottom:180px;
+    margin-top:60px;
+}
+.hd{
+	border-bottom: 1px solid #dcdcdc;
+}
+.hd h2{
+	
+  	font-size:17px;
+    line-height: 37px;
+    padding-left: 36px;
+    padding-top:40px;
+    padding-bottom:10px;
+    font-weight:700;
+    background:url("../../Images/home/find_00.png") no-repeat 0px 41px ;
+}
+.loginSprite{
+
+}
+ ol{
+ 	list-style:none;
+ }
+  .sersafe-steps{
+  	float:right;
+  }
+ .sersafe-steps li{
+ 	float: left;
+    height: 37px;
+    position: relative;
+    width: 154px;
+    top:-48px;
+ }
+ .step-sprite{
+ 	background:url("../../Images/home/safe_01.png") no-repeat;
+ }
+ .sersafe-steps .active .step{
+ 	background-position: 0 0;
+    color: #fff;
+    z-index: 5;
+ }
+ .sersafe-steps i{
+ 	 font-style: normal;
+    margin-left: 15px;
+ }
+.sersafe-steps .step{
+	background-position: -259px 0;
+    color: #555;
+    font-size: 14px;
+    height: 34px;
+    line-height: 34px;
+    position: relative;
+}
+.sersafe-steps .sprite-bg{
+	background-position:-232px 0;
+}
+.in_title{
+	position:absolute;
+}
+.login_box .code{
+	padding-left:30px;
+	text-indent:0;
+}
+.login_box .stext{
+	padding-left:30px;
+	text-indent:0;
+}
+/*找回失败*/
+.find-text{
+		height:400px;
+		color:#FF8C00;
+		text-align: center;
+		padding-top:60px;
+	}
+	.find-text i{
+		background:url("../../Images/home/ex_01.png") no-repeat;
+		display:inline-block;
+		height:30px;
+		width:30px;
+		position: relative;
+		top: 10px;
+	}
+	.sersafe-steps  .step-new{
+		background:url("../../Images/home/safe_02.png") no-repeat -2px 2px;
+		color:#fff;
+	}
+	.sersafe-steps .active .sprite-new{
+		background-position:-4px 0;
+	}
+/*设置密码*/
+.find-text .find-inp{
+		width:400px;
+		margin:0 auto;	
+}
+.find-text p{
+	margin-top:20px;
+	color:#666666;
+}
+.find-text .address_from{
+	color:#666666;
+}
+.find-text .address_from input{
+	width:320px;
+	height:40px;
+	line-height:40px;
+	background:url("../../Images/home/login_03.jpg") no-repeat scroll 0 -78px;
+	text-indent:30px;
+	border:1px solid #ccc;
+	margin-left:10px;
+}
+.find-text .address_from label.error{
+	margin-left:-54px;
+}
+.find-text .btn2{
+	width:320px;
+	height:40px;
+	margin-left:69px;
+	background:#FF8C00;
+	border:0;
+	color:#fff;
+	cursor:pointer;
+	font-size:16px;
+	margin-top:40px;
+}
+.find-text .find-inp .btn2{
+	margin-top:0;
+}
+/*邮件发送成功 */
+.email-suc-box{
+	font-size:24px;
+}
+.find-text .btn-dd{
+	width:150px;
+}

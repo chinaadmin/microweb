@@ -1,0 +1,53 @@
+.avatarbox { background: rgba(0, 0, 0, 0) none repeat scroll 0 0; float: right; width: 820px; padding-bottom: 16px; 
+border: 1px solid #ccc;
+}
+.avatarbox h3 { background-color: #eee; font-size: 17px; line-height: 42px; padding-left: 16px; }
+.avatarbox h3 span { float: right; font-size: 14px; margin-right: 16px; color: #999; }
+.avatarbox .upbox { font-size: 0; padding: 16px; }
+.avatarbox .upbox .left { width: 64%; display: inline-block; font-size: 14px; vertical-align: top; }
+.avatarbox .upbox .right { width: 36%; display: inline-block; font-size: 14px; vertical-align: top; }
+.avatarbox .upbox .btn { display: inline-block; line-height: 36px; background-color: #eee; padding: 0 8px; color: #333; text-align: center; }
+.avatarbox .upbox .left .xwrap { margin-right: 16px; border-right: 1px solid #ccc; padding-right: 16px; }
+.avatarbox .upbox .left p:first-child a { width: 160px; }
+.avatarbox .upbox .left p span { line-height: 48px; color: #999; font-size: 13px; vertical-align: middle; }
+.avatarbox .upbox .left p.img { text-align: center; padding: 16px; background-color: #eee; margin-bottom: 16px; height: 160px; }
+.avatarbox .upbox .left p.img img { vertical-align: middle; }
+.avatarbox .upbox .left p.img i { display: inline-block; height: 100%; vertical-align: middle; width: 1px; }
+.avatarbox .upbox .left p.save a.btn { background-color: #ff8400; color: #fff; width: 96px; border-radius: 4px; font-size: 18px; margin-right: 16px; vertical-align: middle; }
+.avatarbox .upbox .right p span { line-height: 36px; color: #999; font-size: 13px; }
+.avatarbox .upbox .right p span.msg { display: inline-block; line-height: 1.6; margin: 8px 0; }
+
+
+
+
+
+
+.popBox { background-color: rgba(0, 0, 0, 0.5); height: 100%; left: 0; opacity: 1; position: fixed; top: 0; width: 100%; z-index: 9998; }
+.popBox .box { background-color: #B5B5B5; padding: 8px; width: 480px;margin: 0 auto;}
+.popBox .wrap { background-color: #fff; }
+.popBox .wrap h3 { background-color: #eee; line-height: 36px; padding: 0 12px; font-size: 16px; }
+.popBox .wrap .content { padding: 24px 12px; }
+.popBox .wrap .content p { line-height: 36px; font-size: 0;}
+.popBox .wrap .content p * { font-size: 13px;}
+.popBox .wrap .content p i { color: red; margin-right: 8px; }
+.popBox .wrap .content p span:first-child { width: 96px; display: inline-block; text-align: right; padding-right: 8px; }
+.popBox .wrap .content p span:last-child { text-align: left; }
+.popBox .wrap .content p input { border: 1px solid #ccc; padding: 4px; }
+.popBox .wrap .content p select { padding: 4px; border: 1px solid #ccc; margin-right: 8px; }
+.popBox .wrap .content p.select span:last-child { font-size: 0; }
+.popBox .wrap .footer { padding: 0 12px 24px; font-size: 0;}
+.popBox .wrap .footer span:first-child { width: 96px; display: inline-block; padding-right: 8px; }
+.popBox .wrap .footer .btn { line-height: 36px; background-color: #ff8400; color: #fff; display: inline-block; width: 96px; margin-right: 16px; text-align: center; font-size: 14px; cursor: pointer; }
+
+.popBox .adderss-add { margin-top: 64px; }
+.popBox .adderss-add .wrap .content p input {width: 320px; }
+.popBox .adderss-add .wrap .content p select { width: 96px; }
+
+
+
+
+
+
+
+
+

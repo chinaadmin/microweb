@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+.pro_left{
+	margin:25px 0px;;
+}
+.pro_left h4{
+	font-size:14px;
+	font-weight:700;
+}
+.pro_left ul{
+	border-bottom:1px solid #d1d1d1;
+	margin:0px 30px;
+}
+.pro_left ul.no_line{
+	border:none;
+}
+.pro_left ul li{
+	list-style:none;
+	display:inline-block;
+	height:30px;
+	width:33%;
+}
+.pro_right ul li{
+	width:24%;
+}
+ul li span.li_num{
+	color:#ff8c00;
+}

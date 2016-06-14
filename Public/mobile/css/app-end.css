@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.title-box{
+	margin-left:0;
+	background:#fff;
+	padding-left:1rem;
+}
+#content{
+	margin:0;
+	padding:0 1rem;
+	background:#f1f0f6;
+	font-size:3em;
+	text-align: center;
+}
+#content img{
+	display:block;
+	max-width:100%;
+	margin:0 auto;
+}
+#content p{
+	font-weight:700;
+}
+.btn-sta{
+	font-size:inherit;
+}

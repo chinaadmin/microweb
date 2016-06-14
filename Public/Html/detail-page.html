@@ -1,0 +1,559 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>详情页</title>
+<link type="text/css" rel="stylesheet" href="../Css/App/home/home-page.css">
+<link type="text/css" rel="stylesheet" href="../Css/App/home/common.css">
+<link type="text/css" rel="stylesheet" href="../Css/App/home/list-page.css"/>
+
+<link type="text/css" rel="stylesheet" href="../Css/App/home/detail-page.css"/>
+<script src="../Js/App/home/jquery.js"type="text/javascript"></script>
+<script src="../Js/App/home/home-page.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Js/App/home/common.js"></script>
+<script type="text/javascript" src="../Js/App/home/parabola.js"></script>
+<script type="text/javascript" src="../Js/App/home/quick_links.js"></script>
+<script type="text/javascript" src="../Js/App/home/jquery.spinner.js"></script>
+<script type="text/javascript" src="../Js/App/home/jquery.validate.js"></script>
+<script type="text/javascript" src="../Js/App/home/login-page.js"></script>
+<script type="text/javascript">
+//规格选择
+	$(document).ready(function(){
+		var span=$(".spec-box span");
+		span .click(function(){
+			$(this).parent().find("span").removeClass("spec-active");
+			$(this).addClass("spec-active");
+		})
+		$(".img-spec").click(function(){
+			$(this).parent().find("span").removeClass("spec-img-active");
+			$(this).addClass("spec-img-active");
+		})
+	});
+	
+</script>
+</head>
+<body>
+
+
+
+<!--头部开始-->
+<div id="header">
+  <div class="top_box"> 
+   <div class="top_center_box"> 
+   
+    <div class="welcome_box">
+     <p class="m_right">嘿，欢迎来到必好货商城！</p>
+     <div class="login-box-home">
+     <p><a href="">Hi，必好货123</a> </p>
+     <p class="m_center">|</p>
+     <p> <a href="zhuce-page.html">退出</a> </p>
+     </div>
+    </div> 
+    <div class="logo_nav"> 
+     <ul> 
+      <li class="logo_index"><a href="">我的订单</a> 
+       <div class="logo_nav_tow" style="display: none;"> 
+        <p><a href="">已买到的宝贝</a></p> 
+        <p><a href="">我的收藏</a></p> 
+        <p><a href="">待付款</a></p> 
+       </div> </li> 
+      <li class="logo_index"><a href="">我的好货</a> 
+       <div class="logo_nav_tow" style="display: none;"> 
+        <p><a href="">配送说明</a></p> 
+        <p><a href="">配送说明</a></p> 
+        <p><a href="">配送说明</a></p> 
+        <p><a href="">配送说明</a></p> 
+        <p><a href="">配送说明</a></p> 
+       </div> </li>  
+      <li class="phone-app"><a href="">移动客户端</a></li> 
+      <li class="logo_index qr">
+        <img title="微信分享" src="../Css/Images/home/home_01.png">
+      <div id="qr" class="logo_nav_tow" style="display: none;"> 
+        <img src="../Css/Images/home/qr_02.jpg"> 
+       </div> </li>
+       <li class="logo_share"><a href=""><img title="微博分享" src="../Css/Images/home/home_02.png"></a></li>
+       <div class="clearfix"></div>
+    </ul> 
+</div> 
+    
+   </div> 
+  </div> 
+  <!--Logo+搜索-->
+  <div class="search"> 
+   		<div class="logo_img">
+        <a href="home-page.html">
+    	   <img src="../Css/Images/home/logo_00.png">
+        </a>
+      <p>快乐不贵</p>
+   </div> 
+ <div class="search_box"> 
+    <div class="s_top">
+     <input type="text" placeholder="三文鱼油">
+    <button onclick="location.href='search-page.html'"  class="btn-search"><a href="search-page.html" >搜索</a></button>
+    <div class="clearfix"></div>
+    </div> 
+    <div class="s_bottom">
+     <a href="">三文鱼油</a>
+     <a href="">肉松饼</a>
+     <a href="">羊奶粉</a>
+     <a href="">春光</a>
+    </div>
+   </div>  
+   <!--购物车-->
+   <div class="cats-hover" >
+   		<div class="buy_car">
+			<div class="buy_img">
+        	<p><a >我的购物车</a></p>
+        	</div>
+      		 <div class="buy_zero">
+        		<p>0</p>
+        	</div>
+        	<div class="clearfix"></div>
+         </div>
+         
+         	<div class="cats-show">
+        		<h2>最新加入的商品</h2>
+        		<div class="show-list">
+        			<div class="show-img">
+        				<img src="../Css/Images/home/sort_00.jpg" height="50" width="50">
+        			<div class="infor-show"><p>挪威三文鱼油200ML</p><span class="show-price">￥00.00<span></span><span>×1</span> </div><div class="clearfix"></div>
+        		</div>
+        			<div class="delete re-btn">删除</div>
+        			 <div class="clearfix"></div>
+        		</div>
+        		<div class="cats-foot">
+        			<div class="cats-lef">
+        			<p>共<span class="list-num">1</span>件产品</p>
+        			<p>共计<span>￥00.00</span></p>
+        			</div>
+        			<div class="go-buy">
+        				<a href="cats-page.html" class="go-buy-box">去购物车结算</a>
+        			</div>
+        			<div class="clearfix"></div>
+        		</div>
+        	</div>
+      	<div class="clearfix"></div>
+      </div>
+   </div>
+  </div>
+  
+  <!--横向导航-->
+  
+ 
+  <div id="nav_box">
+  		<div id="box">
+       		<ul id="nav">
+            	<li><a href="home-page.html">首页</a></li>
+                <li><a href=""class="road-sign">营养保健</a></li>
+                <li><a href="">生鲜食品</a></li>
+                <li><a href="">粮油副食</a></li>
+                <li><a href="">休闲零食</a></li>
+                <li><a href="">健康护理</a></li>
+                <li><a href="">万能奶粉</a></li>
+                <li><a href="">海外购</a></li>
+                <li class="sort_show"><div class="pro_hover">商品分类</div>
+                    <div id="sort_hover">
+                             <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg0"></i><a href="class-page.html">营养保健</a></h2>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+
+                            <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg1"></i><a href="class-page.html">营养保健</a></h2>
+                                <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+                            
+                            <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg2"></i><a href="class-page.html">营养保健</a></h2>
+                                <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+
+                            <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg3"></i><a href="class-page.html">营养保健</a></h2>
+                                <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+
+                            <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg4"></i><a href="class-page.html">营养保健</a></h2>
+                                <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+
+                            <div class="sort_listbox">
+                               <h2><i class="sort_bg box_bg5"></i><a href="class-page.html">营养保健</a></h2>
+                                <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <p><a href="">调节免疫</a></p>
+                               <div style="clear:both"></div>
+                            </div>
+
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+	<div class="pop-box">
+	</div>
+  <div class="comfirm-box">
+ 	<h2>必好货欢迎您<i class="close-box"></i></h2>
+ 	<div class="delete-content">
+ 		<div class="delete-text">
+ 			<form id="signupForm" method="post" action="">
+      <p class="user"><span class="in_bg"></span><input class="stext" type='text' name="userName" id="userName" value="" placeholder="已验证手机/邮箱/用户名" /></p>
+      <p class="user"><input id="passWord" class="stext" type="password" name="passWord" value="" placeholder="请输入密码" / ></p>
+     
+      <p><button type="submit">登录</button><a href="find-page.html" class="password-bg">忘记密码？</a><a href="zhuce-page.html">立即注册</a></p>
+       
+ 		</div>
+ 	
+ 	</div>
+ </div>
+  
+  <!-- 放大镜 jquery.spinner.js控制-->
+
+<div class="preview">
+  <div id="path_box">
+    <a href="home-page.html">首页</a>><a href="">营养保健</a>><a href="" id="path_cl">三文鱼油</a>
+  </div>
+  <div id="vertical" class="bigImg">
+    <img src="../Css/Images/home/300-300.jpg"  data-big="../Css/Images/home/750-750.jpg" width="400" height="400" alt="" id="midimg" />
+    <div style="display:none;" id="winSelector"></div>
+  </div>
+  
+  <div class="smallImg">
+    <div class="scrollbutton smallImgUp disabled"></div>
+    <div id="imageMenu">
+      <ul>
+    
+    <li id="onlickImg"><img src="../Css/Images/home/52-52.jpg" data-mid="../Css/Images/home/300-300.jpg" data-big="../Css/Images/home/750-750.jpg" width="52" height="52"/></li>
+     <li><img src="../Css/Images/home/fish1-52-52.jpg" data-mid="../Css/Images/home/fish1-300-300.jpg" data-big="../Css/Images/home/fish1-750-750.jpg" width="52" height="52" /></li>
+     <li><img src="../Css/Images/home/52-52.jpg" data-mid="../Css/Images/home/300-300.jpg" data-big="../Css/Images/home/750-750.jpg" width="52" height="52" /></li>
+     <li><img src="../Css/Images/home/fish1-52-52.jpg" data-mid="../Css/Images/home/fish1-300-300.jpg" data-big="../Css/Images/home/fish1-750-750.jpg" width="52" height="52" /></li>
+    <li><img width="52" height="52" data-big="../Css/Images/home/750-750.jpg" data-mid="../Css/Images/home/300-300.jpg" src="../Css/Images/home/52-52.jpg"></li>
+      </ul>
+    </div>
+    <div class="scrollbutton smallImgDown"></div>
+  </div><!--smallImg end-->
+  
+  <div id="bigView" style="display:none;"><img width="800" height="800" alt="" src="" /></div>
+  
+</div>
+
+
+<!-- 产品详情 jquery.spinner.js控制-->
+<div class="detail_box">
+  <h2>挪威极地三文鱼油</h2>
+  <!--<div class="detail-intro">BIOFORM(必好货)三文鱼油是精选生活在冰冷而纯净的挪威三文鱼作为最佳原材料加工而成的</div>-->
+  <div class="detail-massage">
+  <p>价格<span class="old_price">￥000.00</span></p>
+  <p>促销价<span class="detail_price"><i>￥</i>00.00</span></p>
+  <p>优惠<span>满0000元,包邮</span></p>
+  </div>
+  <div class="fre_charge">
+  <div class="delivery-box">送至 <span>由&nbsp&nbsp</span>
+  <!--选择发货地区-->
+  <select class="shop-address">
+		  <option value="">南山科苑店</option>
+		  <option value="">南山科苑店</option>
+		  <option value="">南山科苑店</option>
+		  <option value="">南山科苑店</option>
+		  <option value="">南山科苑店</option>
+		</select> 
+  
+		
+  <span class="ex-text">提供商品及服务</span>
+  </div>
+  <div class="spec-box">
+  	<i>净含量</i>
+  	<span class="spec-active">500ml</span>
+  	<span >500ml</span>
+  </div>
+  <div class="spec-box">
+  	<i>净含量</i>
+  	<span class="spec-active">500ml</span>
+  	<span>500ml</span>
+  </div>
+  <div class="spec-box-img">
+  	<i>净含量</i>
+  	<span class="img-spec spec-img-active"><img src="../Css/Images/home/52-52.jpg" width="52" height="52"></span>
+  	<span class="img-spec"><img src="../Css/Images/home/52-52.jpg" width="52" height="52"></span>
+  </div>
+  <p class="buy-num">数量<span class="stock">件<i>库存:0000000件</i></span><input type="text" class="spinnerExample"/></p>
+  
+  <p class="buy-btn"><a href="javascript:;" class="btn-buy delete-btn">立即购买</a><a href="javascript:;" class="btnCart delete-btn">加入购物车</a><div class="clearfix"></div></p>
+  <div class="share-box"><div class="share-title">分享到：</div><div class="qr-ico"></div><div class="share-ico"></div><div class="clearfix"></div></div>
+  <script type="text/javascript">
+    $('.spinnerExample').spinner({});
+  </script>
+  
+</div>
+
+</div>
+ <div class="clearfix"></div>
+
+
+ 
+
+  <!-- 选项卡 -->
+  <div class="buy-content">
+  	<!-- 侧边产品 -->
+  	<div class="sort_box">
+    <div class="sort_title">
+      猜你喜欢<span><img src="../Css/Images/home/sort_03.jpg" class="">换一批</span>
+    </div>
+    <div class="sort_menu">
+    <ul>
+      <li class="sort">
+      <a href="detail-page.html"><img src="../Css/Images/home/sort_00.jpg"width="130px"height="130px"></a>
+      <div class="price-box">￥00.00</div>
+      <p><a href="detail-page.html">挪威极地纯三文鱼油挪威极地纯三文鱼油挪威极地纯三文鱼油</a></p>
+    </li>
+      <li class="sort">
+      <a href="detail-page.html"><img src="../Css/Images/home/sort_00.jpg"width="130px"height="130px"></a>
+      <div class="price-box">￥00.00</div>
+      <p><a href="detail-page.html">买一送一 正宗友臣肉松饼挪威极地纯三文鱼油挪威极地纯三文鱼油</a></p>
+    </li>
+    <li class="sort">
+      <a href="detail-page.html"><img src="../Css/Images/home/sort_00.jpg"width="130px"height="130px"></a>
+      <div class="price-box">￥00.00</div>
+       <p><a href="detail-page.html">买一送一 正宗友臣肉松饼挪威极地纯三文鱼油挪威极地纯三文鱼油</a></p>
+    </li>
+    <li class="sort">
+      <a href="detail-page.html"><img src="../Css/Images/home/sort_00.jpg"width="130px"height="130px"></a>
+      <div class="price-box">￥00.00</div>
+      <p><a href="detail-page.html">挪威极地纯三文鱼油挪威极地纯三文鱼油挪威极地纯三文鱼油</a></p>
+    </li>
+    </ul>
+  </div>
+  </div>
+  <div class="tabPanel">
+    <ul class="tab_box">
+      <li class="hit tab_btn">商品介绍</li>
+     <!-- <li class="tab_btn">评价</li>-->
+      <li class="tab_btn">商品咨询</li>
+      <li class="tab_btn">关于我们</li>
+      <div class="clearfix"></div>
+    </ul>
+    <div class="panes">
+      <div style="display: block;" class="pane"><h2>参数规格</h2>
+        <ul>
+          <li>品牌名称&nbsp:&nbsp必好货</li>
+          <li>储存方法&nbsp:&nbsp低温、避光、干燥</li>
+          <li>使用人群&nbsp:&nbsp不限</li>
+          <li>规格(粒/袋/ml/g)&nbsp:&nbsp50ml</li>
+          <li>商品名称&nbsp:&nbsp挪威三文鱼油</li>
+          <li>保质期&nbsp:&nbsp36个月</li>
+          <li>适用性别&nbsp:&nbsp通用</li>
+          <li>产地&nbsp:&nbsp挪威</li>
+        </ul>
+        <div class="pane_img">
+        <img src="../Css/Images/home/banner1.jpg" width="750px" height="290px">
+      </div>
+      </div>
+      <!--<div class="pane" style="display: none;"><h2>评价</h2><p>评价内容</p></div>-->
+      <div class="pane" style="display: none;"><h2>商品咨询</h2><p>咨询内容</p></div>
+      <div class="pane" style="display: none;"><h2>关于我们</h2><p>关于我们</p></div>
+      
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+    
+    
+
+<!--右侧贴边导航quick_links.js控制-->
+<div class="mui-mbar-tabs">
+  <div class="quick_link_mian">
+    <div class="quick_links_panel">
+      <div id="quick_links" class="quick_links">
+        <li>
+          <a href="#" class="my_qlinks"><i class="setting"></i></a>
+          <div class="ibar_login_box status_login">
+            <div class="avatar_box">
+              <p class="avatar_imgbox"><img src="../Css/Images/home/no-img_mid_.jpg" /></p>
+              <ul class="user_info">
+                <li>用户名：sl19931003</li>
+                <li>级&nbsp;别：普通会员</li>
+              </ul>
+            </div>
+            <div class="login_btnbox">
+              <a href="#" class="login_order">我的订单</a>
+              <a href="#" class="login_favorite">我的收藏</a>
+            </div>
+            <i class="icon_arrow_white"></i>
+          </div>
+        </li>
+        <li id="shopCart">
+          <a href="#" class="message_list" ><i class="message"></i><div class="span">购物车</div><span class="cart_num">0</span></a>
+        </li>
+        <li>
+          <a href="#" class="history_list"><i class="view"></i></a>
+          <div class="mp_tooltip" style=" visibility:hidden;">我的资产<i class="icon_arrow_right_black"></i></div>
+        </li>
+        <li>
+          <a href="#" class="mpbtn_histroy"><i class="zuji"></i></a>
+          <div class="mp_tooltip">我的足迹<i class="icon_arrow_right_black"></i></div>
+        </li>
+        <li>
+          <a href="#" class="mpbtn_wdsc"><i class="wdsc"></i></a>
+          <div class="mp_tooltip">我的收藏<i class="icon_arrow_right_black"></i></div>
+        </li>
+        <li>
+          <a href="#" class="mpbtn_recharge"><i class="chongzhi"></i></a>
+          <div class="mp_tooltip">我要充值<i class="icon_arrow_right_black"></i></div>
+        </li>
+      </div>
+      <div class="quick_toggle">
+        <li>
+          <a href="#"><i class="kfzx"></i></a>
+          <div class="mp_tooltip">客服中心<i class="icon_arrow_right_black"></i></div>
+        </li>
+        <li>
+          <a href="#none"><i class="mpbtn_qrcode"></i></a>
+          <div class="mp_qrcode" style="display:none;"><img src="../Css/Images/home/weixin_code_145.png" width="148" height="175" /><i class="icon_arrow_white"></i></div>
+        </li>
+        <li><a href="#top" class="return_top"><i class="top"></i></a></li>
+      </div>
+    </div>
+        <!-- 购物车弹出菜单 -->
+    <!-- <div id="quick_links_pop" class="quick_links_pop hide"></div> -->
+  </div>
+</div>
+  <div id="flyItem" class="fly_item"><img src="../Css/Images/home/item-pic.jpg" width="40" height="40"></div>
+</div>
+
+
+
+  <!--底部-->
+   <div id="footer"> 
+  <!-- 底部标图 -->
+    <div id="footer_pic">
+      
+    </div>  
+  <div class="blackBox"> 
+    
+   <div class="guide"> 
+    <div class="middle"> 
+     <div class="guide-2"> 
+      <p><b>服务保障</b></p> 
+      <p><a href="">品牌真品防伪码</a></p> 
+      <p><a href="">100%正品保证</a></p> 
+      <p><a href="">30天无条件退货</a></p> 
+      <p><a href="">7×24小时客服</a></p> 
+     </div> 
+     <div class="guide-1"> 
+      <p><b>使用帮助</b></p> 
+      <p><a href="">新手指南</a></p> 
+      <p><a href="">常见问题</a></p> 
+      <p><a href="">帮助中心</a></p> 
+      <p><a href="">用户协议</a></p> 
+      <p><a href="">企业用户团购</a></p>
+     </div> 
+     <div class="guide-1"> 
+      <p><b>支付方式</b></p> 
+      <p><a href="">货到付款</a></p> 
+      <p><a href="">在线支付</a></p> 
+      <p><a href="">余额支付</a></p> 
+      <p><a href="">现金卷支付</a></p> 
+     </div> 
+     <div class="guide-1"> 
+      <p><b>配送方式</b></p> 
+      <p><a href="">包邮政策</a></p> 
+      <p><a href="">配送说明</a></p> 
+      <p><a href="">运费说明</a></p> 
+      <p><a href="">验货签收</a></p> 
+     </div> 
+     <div class="guide-1"> 
+      <p><b>售后服务</b></p> 
+      <p><a href="">正品承诺</a></p> 
+      <p><a href="">售后咨询</a></p> 
+      <p><a href="">退货政策</a></p> 
+      <p><a href="">退货办理</a></p> 
+     </div> 
+     <div class="guide-1"> 
+      <p><b>手机必好货</b></p> 
+      <img src="../Css/Images/home/qr_01.jpg">
+      <p><a href=""class="pp">下载移动客户端</a></p> 
+     </div> 
+     <div class="guide-1"> 
+      <p><b>必好货微信</b></p> 
+      <img src="../Css/Images/home/qr_02.jpg"> 
+      <p><a href=""class="qq">必好货官方微信</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="footer_infor">
+      <p class="footer_infor_link">
+        <a href="">关于我们</a> 
+        <a href="">About us</a> 
+        <a href="">媒体报道</a> 
+        <a href="">品牌招商</a> 
+        <a href="">隐私条款</a> 
+        <a href="">友情链接</a> 
+        <a href="">必好货诚聘</a> 
+        <a href="">必好货卡</a>
+        <a href="">必好货地图</a>
+        <a href="">品牌大全</a>
+        <a href="">用户体验计划</a>
+        <a href="">联系我们</a>
+      </p>
+      <p class="footer_infor_txt">
+        COPYRIGHT©2015 深圳市必好货电子商务有限公司 JITUJITUAN.COM 保留一切权利。 客服热线：0755-86704402
+        <br>
+        粤ICP备07050274号 | 食品流通许可证 SP1101051110165515（1-1） | 营业执照 
+      </p>
+    </div>
+ </div>
+ 
+
+
+</body></html>

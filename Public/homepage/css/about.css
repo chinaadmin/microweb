@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+/*当前页面状态*/
+/**/
+#content{
+	position:relative;
+	top:20px;
+	min-height:710px;
+}
+
+#content .title .name h3{
+	text-align:center;
+}
+#content .place{
+	width:750px;
+	height:28px;
+	border-bottom:1px solid #ABB1AF;
+	float:right;
+	background:url(images/contact_06.jpg) no-repeat 0 3px;
+	padding-left:20px;
+	font-size:14px;
+	}
+#content .place a{
+	color:#747474;
+	}
+#content .place a:hover{
+	color:#f36523;
+	}
+
+#content .text-area{
+	float:right;
+	width:750px;
+	}
+#content .text-area h2{
+	margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: right;
+	color:#ff8c00;
+}
+
+
+#content .text-area  p{
+	padding:5px;
+	font-size:14px;
+	line-height:30px;
+	}

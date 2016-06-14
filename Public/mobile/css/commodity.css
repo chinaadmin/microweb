@@ -1,0 +1,48 @@
+#content { padding-bottom: 85px; }
+
+.content.container{
+	padding: 0;
+}
+
+.swiper-slide { height: auto; }
+.swiper-container { height: auto; background-color: #fff; }
+.swiper-container .swiper-wrapper .swiper-slide img { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+.swiper-container .swiper-pagination { bottom: 90%; }
+.swiper-container .swiper-pagination .swiper-pagination-bullet-active { background: #FF8C00; }
+
+
+.swiper-container .back-box { display: block; position: absolute; bottom: 89%; background: #cfcfcf; border-radius: 50%; opacity: 0.5; z-index: 1; margin-left: 1rem; }
+.swiper-container .pName { background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5); bottom: 0; position: absolute; width: 100%; z-index: 1; height: 56px; overflow: hidden; color: #ffffff; }
+.swiper-container .pName .dt { padding-left: 16px; font-size: 14px; vertical-align: middle; }
+.swiper-container .pName .dt span { vertical-align: middle; padding-top: 6px; }
+.swiper-container .pName .share-box { text-align: center; vertical-align: middle; }
+.swiper-container .pName .share-box a { display: inline-block; margin-right: 8px; color: #fff; width: 36px; }
+.swiper-container .pName .share-box a img { display: inline-block; width: 32px; vertical-align: middle; }
+.swiper-container .pName .share-box a span { display: inline-block; width: 100%; }
+
+.price-box{background-color:#fff;padding:16px;box-shadow:0 2px 2px 0 #ccc}
+.price-box p{font-size:16px;margin:0}
+.price-box p .price-cl { color: #ff8c00; }
+.price-box p del{font-size:13px;color:#999;margin-left:8px}
+
+.selectBox{padding:16px;background-color:#fff;margin:16px 0;box-shadow:0 0 2px 0 #999}
+.selectBox a:last-child{background-color:#ff8400}
+
+.moreDrop{position:relative;height:41px;line-height:41px;overflow:hidden}
+.moreDrop hr{border-color:#ccc}
+.moreDrop p{position:absolute;top:0;left:0;width:100%;text-align:center;height:100%}
+.moreDrop p span{background-color:#eee;padding:0 10px;font-size:18px;font-weight:500;color:#999}
+
+.detailTab { padding: 0 16px; background-color: #fff; font-size: 0; border-bottom: 1px solid #ccc; }
+.detailTab .tabItem { font-size: 16px; display: inline-block; margin-right: 12px; padding: 16px 0; height: 100%; }
+.detailTab .tabItem.active { border-bottom: 1px solid #ff8400; margin-bottom: -1px; }
+.detailTab .tabItem span { border-right: 1px solid #ccc; padding-right: 12px; }
+.detailTab .tabItem:last-child { border-right-width: 0; }
+.eva-img-box { background-color: #fff; overflow: hidden; }
+.eva-img-box a img { margin-top: 16px; display: block; height: auto; max-width: 100% }
+.eva-img-box a:last-child img { margin-bottom: 16px; }
+
+
+.view .content .vpayControl { background-color: #fff; border-top: 1px solid #ccc; padding: 16px 0; text-align: center; }
+.view .content .vpayControl .btn { margin: auto 16px; border: 1px solid #ccc; border-radius: 0; }
+.view .content .vpayControl .btn.btn-Ye{ border: 1px solid #ff8411; background-color: #ff8400; color: #fff; }

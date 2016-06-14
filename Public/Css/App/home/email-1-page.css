@@ -1,0 +1,15 @@
+@charset "utf-8";
+.sersafe-steps .active .step{
+	color:#555;
+	background-position:-156px 0;
+}
+.sersafe-steps .sprite-bg{
+	background-position:-1px 0;
+	color:#fff;
+}
+.verify-form .code_box{
+	left:0;
+}
+.verify-form li{
+	font-size:16px;
+}

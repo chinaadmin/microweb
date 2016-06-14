@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>填写信息</title>
+  <link type="text/css" rel="stylesheet" href="../../Css/App/home/common.css">
+  <link type="text/css" rel="stylesheet" href="../../Css/App/home/commonExt.css">
+  <link type="text/css" rel="stylesheet" href="../../Css/App/home/v11/paysuccess.css">
+
+  <script type="text/javascript" src="../../Js/App/home/jquery.js"></script>
+  <script type="text/javascript" src="../../Js/App/home/Area.js" type="text/javascript"></script>
+  <script type="text/javascript" src="../../Js/App/home/AreaData_min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="../../Js/App/home/jquery.validate.js"></script>
+  <script type="text/javascript" src="../../Js/App/home/login-page.js"></script>
+  <script type="text/javascript">
+    $(function (){
+      initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '44', '0', '0');
+    });
+
+    //得到地区码
+    function getAreaID(){
+      var area = 0;          
+      if($("#seachdistrict").val() != "0"){
+        area = $("#seachdistrict").val();                
+      }else if ($("#seachcity").val() != "0"){
+        area = $("#seachcity").val();
+      }else{
+        area = $("#seachprov").val();
+      }
+      return area;
+    }
+
+    function showAreaID() {
+      //地区码
+      var areaID = getAreaID();
+      //地区名  您选择的地区码：" + areaID + "
+      var areaName = getAreaNamebyID(areaID) ;
+      alert(" 地区名：" + areaName);            
+    }
+
+    //根据地区码查询地区名
+    function getAreaNamebyID(areaID){
+      var areaName = "";
+      if(areaID.length == 2){
+        areaName = area_array[areaID];
+      }else if(areaID.length == 4){
+        var index1 = areaID.substring(0, 2);
+        areaName = area_array[index1] + " " + sub_array[index1][areaID];
+      }else if(areaID.length == 6){
+        var index1 = areaID.substring(0, 2);
+        var index2 = areaID.substring(0, 4);
+        areaName = area_array[index1] + " " + sub_array[index1][index2] + " " + sub_arr[index2][areaID];
+      }
+      return areaName;
+    }
+  </script>
+</head>
+<body style="background-color:#fff;">
+  <!--头部开始-->
+  <div id="header">
+    <div class="top_box">
+      <div class="top_center_box">
+        <div class="welcome_box">
+          <p class="m_right">嘿，欢迎来到必好货商城！</p>
+          <div class="login-box-home">
+            <p>
+              <a href="/i/index.html">Hi，user1</a>
+            </p>
+            <p>
+              <a href="/passport/logout.html">退出</a>
+            </p>
+          </div>
+        </div>
+        <div class="logo_nav">
+          <ul>
+            <li class="logo_index">
+              <a href="">我的好货</a>
+              <div style="display: none;" class="logo_nav_tow">
+                <p>
+                  <a href="/order/index.html">我的订单</a>
+                </p>
+                <p>
+                  <a href="/refund/index.html">退款/退货</a>
+                </p>
+                <p>
+                  <a href="/i/baseinfo.html">个人资料</a>
+                </p>
+                <p>
+                  <a href="/i/usersafe.html">账户安全</a>
+                </p>
+                <p>
+                  <a href="/i/opinion.html">意见反馈</a>
+                </p>
+              </div>
+            </li>
+            <li class="d-hide">
+              <a href="">移动客户端</a>
+            </li>
+            <li class="logo_index qr d-hide">
+              <img src="/Public/Css/Images/home/home_01.png" title="">
+              <div style="display: none;" class="logo_nav_tow" id="qr">
+                <img src="/Public/Css/Images/home/qr_02.jpg" title=""></div>
+            </li>
+            <li class="logo_share d-hide">
+              <a href="">
+                <img src="/Public/Css/Images/home/home_02.png" title="微博分享"/>
+              </a>
+            </li>
+            <li class="noborder v-border">
+              <a href="/article/index/id/27.html">帮助中心</a>
+            </li>
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--Logo+搜索-->
+    <div class="search">
+      <div class="logo_img">
+        <a href="/">
+          <img src="/Uploads/Image/20150423/5538e213730f7.jpg"/>
+        </a>
+      </div>
+      <div class="search_box">
+        <div class="s_top">
+          <form id="home-search" method="post" action="/search/search.html">
+            <input type="text" value="" placeholder="搜索您需要的商品" name="searchKeywords">
+            <p>
+              <button type="submit">搜索</button>
+            </p>
+          </form>
+        </div>
+        <div class="s_bottom d-hide">
+          <a href="#">三文鱼油</a>
+          <a href="#">肉松饼</a>
+          <a href="#">羊奶粉</a>
+          <a href="#">春光</a>
+        </div>
+      </div>
+      <!--购物车--> </div>
+    <!--横向导航-->
+    <div id="nav_box">
+      <div id="box">
+        <ul id="nav">
+          <li>
+            <a target="_top" href="/list/6.html">营养保健</a>
+          </li>
+          <li>
+            <a target="_top" href="/list/7.html">生鲜食品</a>
+          </li>
+          <li>
+            <a target="_top" href="/list/8.html">粮油副食</a>
+          </li>
+          <li>
+            <a target="_top" href="/list/9.html">休闲零食</a>
+          </li>
+          <li>
+            <a target="_top" href="/list/10.html">健康护理</a>
+          </li>
+          <li>
+            <a target="_top" href="/list/11.html">万能奶粉</a>
+          </li>
+          <li>
+            <a target="_top" href="/list/12.html">海外购</a>
+          </li>
+          <li class="sort_show">
+            <div class="pro_hover">商品分类</div>
+            <div id="sort_hover" style="display: none;">
+              <div class="sort_listbox"> <i class="sort_bg box_bg4"></i>
+                <h2>
+                  <a href="/list/6/type/1.html">营养保健</a>
+                </h2>
+                <p>
+                  <a href="/list/14/type/1.html">美容养颜</a>
+                </p>
+                <p>
+                  <a href="/list/17/type/1.html">蛋白质粉</a>
+                </p>
+                <p>
+                  <a href="/list/18/type/1.html">1级蛋白质</a>
+                </p>
+                <p>
+                  <a href="/list/19/type/1.html">有机食品</a>
+                </p>
+                <div style="clear:both"></div>
+              </div>
+              <div class="sort_listbox"> <i class="sort_bg "></i>
+                <h2>
+                  <a href="/list/20/type/1.html">膨化零食</a>
+                </h2>
+                <p>
+                  <a href="/list/21/type/1.html">生活用品</a>
+                </p>
+                <div style="clear:both"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div id="content">
+    <!--路径-->
+    <div class="hd">
+      <div class="sersafe-steps">
+        <ol>
+          <li class="pass">
+            <s class="bg"></s>
+            <div class="step step-sprite">
+              <i>1、</i>
+              <span>加入购物车</span>
+            </div>
+          </li>
+          <li class="pass">
+            <s class="bg"></s>
+            <div class="step step-sprite">
+              <i>2、</i>
+              <span>填写信息</span>
+            </div>
+          </li>
+          <li class="pass">
+            <s class="bg"></s>
+            <div class="step step-sprite sprite-bg">
+              <i>3、</i>
+              <span>订单支付</span>
+            </div>
+          </li>
+          <li class="active">
+            <s class="bg"></s>
+            <div class="step step-sprite">
+              <i>4、</i>
+              <span>支付成功</span>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="box">
+        <p><img src="/Public/Css/Images/home/right_00.png" alt="" /><span>付款成功！</span></p>
+        <p>
+          <span>本次交易的订单号为：2021240</span>
+          <span class="empty"></span>
+          <span>
+            本次交易金额为： <i class="ntext colorY">$200</i>
+          </span>
+        </p>
+        <p>
+          <span>您可能需要：</span>
+          <a href="#" class="btn">查看订单</a>
+          <a href="#">返回首页</a>
+        </p>
+
+    </div>
+
+    <!-- /*购物车表格*/-->
+
+  </div>
+
+
+  <!-- 底部 -->
+  <div id="footer">
+    <!-- 底部标图 -->
+    <div id="footer_pic"></div>
+    <div class="blackBox">
+
+      <div class="guide">
+        <div class="middle">
+          <div class="guide-2">
+            <p> <b>服务保障</b>
+            </p>
+            <p>
+              <a href="">品牌真品防伪码</a>
+            </p>
+            <p>
+              <a href="">100%正品保证</a>
+            </p>
+            <p>
+              <a href="">30天无条件退货</a>
+            </p>
+            <p>
+              <a href="">7×24小时客服</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>使用帮助</b>
+            </p>
+            <p>
+              <a href="">新手指南</a>
+            </p>
+            <p>
+              <a href="">常见问题</a>
+            </p>
+            <p>
+              <a href="">帮助中心</a>
+            </p>
+            <p>
+              <a href="">用户协议</a>
+            </p>
+            <p>
+              <a href="">企业用户团购</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>支付方式</b>
+            </p>
+            <p>
+              <a href="">货到付款</a>
+            </p>
+            <p>
+              <a href="">在线支付</a>
+            </p>
+            <p>
+              <a href="">余额支付</a>
+            </p>
+            <p>
+              <a href="">现金卷支付</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>配送方式</b>
+            </p>
+            <p>
+              <a href="">包邮政策</a>
+            </p>
+            <p>
+              <a href="">配送说明</a>
+            </p>
+            <p>
+              <a href="">运费说明</a>
+            </p>
+            <p>
+              <a href="">验货签收</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>售后服务</b>
+            </p>
+            <p>
+              <a href="">正品承诺</a>
+            </p>
+            <p>
+              <a href="">售后咨询</a>
+            </p>
+            <p>
+              <a href="">退货政策</a>
+            </p>
+            <p>
+              <a href="">退货办理</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>手机必好货</b>
+            </p>
+            <img src="../Css/Images/home/qr_01.jpg">
+            <p>
+              <a href=""class="pp">下载移动客户端</a>
+            </p>
+          </div>
+          <div class="guide-1">
+            <p>
+              <b>必好货微信</b>
+            </p>
+            <img src="../Css/Images/home/qr_02.jpg">
+            <p>
+              <a href=""class="qq">必好货官方微信</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_infor">
+      <p class="footer_infor_link">
+        <a href="">关于我们</a>
+        <a href="">About us</a>
+        <a href="">媒体报道</a>
+        <a href="">品牌招商</a>
+        <a href="">隐私条款</a>
+        <a href="">友情链接</a>
+        <a href="">必好货诚聘</a>
+        <a href="">必好货卡</a>
+        <a href="">必好货地图</a>
+        <a href="">品牌大全</a>
+        <a href="">用户体验计划</a>
+        <a href="">联系我们</a>
+      </p>
+      <p class="footer_infor_txt">
+        COPYRIGHT©2015 深圳市必好货电子商务有限公司 JITUJITUAN.COM 保留一切权利。 客服热线：0755-86704402
+        <br>粤ICP备07050274号 | 食品流通许可证 SP1101051110165515（1-1） | 营业执照</p>
+    </div>
+  </div>
+</body>
+</html>

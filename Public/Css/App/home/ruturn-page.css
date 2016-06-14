@@ -1,0 +1,145 @@
+@charset "utf-8";
+/* 选项卡 */
+
+.tabPanel{
+    margin-bottom:50px;
+    padding-bottom:20px;
+   	width:822px;
+    float:right;
+    border:1px solid #DDDDDD;
+    border-top:none;
+}
+.tabPanel .tab_box{
+	height:50px;
+	border-bottom:1px solid #aaa;
+	border:1px solid #DDDDDD;
+	background:#EEEEEE;
+	border-right:0;
+	border-left:0;
+}
+.tabPanel .tab_btn{
+	border-right:1px solid #666;
+	float:left;
+	font-size:11px;
+	height:50px;
+	line-height:50px;
+	width:111px;
+	text-align:center;
+	cursor:pointer;
+	font-size:14px;
+	border-right:1px solid #ddd;
+}
+.tabPanel .tab_btn a{
+    height:100%;
+    width:100%;
+	color:inherit;
+    display: block;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+       	-ms-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.tabPanel .hit a{
+	border-bottom:3px solid #FF8C00;
+	cursor:pointer;
+	/* background:-webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#fff));
+	background:-moz-linear-gradient(top, #e1e1e1, #fff); */
+}
+
+
+.pane{
+	
+	display:none;
+	width:100%;
+	margin-left:1px;
+	margin-top:20px;
+	height:auto;
+}
+.serch-inp{
+	 border: 1px solid #eeeeee;
+    color: #666666;
+    font-family: inherit;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 0;
+    text-indent: 5px;
+    width: 258px;
+    float:left;
+}
+#refund-index .serch-inp{margin-left: 22px;}
+.btn-panes{
+	height:32px;
+	width:75px;
+	background:#EEEEEE;
+	border:1px solid #EEEEEE;
+	cursor: pointer;
+	font-family: inherit;
+	text-align: center;
+	float:left;
+}
+.panes-box{
+	clear:both;
+	position:relative;
+	top:20px;
+}
+
+.table-box{
+	display:none;
+	width:775px;
+	margin:0 auto;
+	margin-top:20px;
+	border-bottom:none;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+}
+.table-head{
+	background:#EEEEEE;
+	border:1px solid #ccc;
+	height:40px;
+	font-size:14px;
+}
+.table-head th{
+	border-bottom:1px solid #CCCCCC;
+}
+
+.table-box tbody{
+	border:1px solid  #ccc;
+}
+.table-box tr{
+	text-align:center;
+	font-size:14px;
+	
+}
+.table-box tr td{
+	height:60px;
+	border-bottom:1px solid #CCCCCC;
+}
+
+.table-box  .price-cl{
+	color:#FF8C00;
+}
+.table-box a{
+	color:#444;
+}
+.table-box a:hover{
+	color:#FF8C00;
+	text-decoration:underline;
+}
+.pane h2{
+	padding:15px 15px 0 10px;
+	font-size:18px;
+	font-weight:normal;
+}
+
+#refund-index .table-box tr td {
+  line-height: 60px;
+}
+#refund-index .table-box tbody {
+  margin: 0;
+}
+#refund-index .table-box tbody td p{
+  overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+width: 320px;
+}

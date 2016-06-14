@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+/**上传样式**/
+#plupload{
+	margin:5px 0px;
+}
+#plupload #browse{
+	cursor:pointer;
+	display:inline-block;
+	border:1px solid red;
+	height:25px;
+	width:70px;
+	text-align:center;
+	line-height:25px;
+}
+#plupload #start_upload{
+	border:1px solid red;
+	display:inline-block;
+	height:25px;
+	width:50px;
+	line-height:25px;
+	text-align:center;
+	cursor:pointer;
+}
+#plupload #progress .progress-info{
+	width:150px;
+	height:8px;
+	border:1px solid red;
+	margin-top:5px;
+	position:relative;
+	border-radius:5px;
+}
+#plupload #progress .progress-info p{
+	height:100%;
+	background:blue;
+	position:absolute;
+	top:-16px;
+	left:0px;
+	border-radius:5px;
+}
+#plupload #progress .progress-info span{
+	position:absolute;
+	top:-5px;
+	left:152px;
+	font-size:13px;
+}
+#plupload .images{
+	margin-top:10px;
+}
+/**上传样式结束**/

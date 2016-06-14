@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../css/comPassword.css"/>
+  <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+  <title>手机验证</title>
+</head>
+<body>
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="#" class="btnBack backNoText"><i class="icon icon-back marR4"></i></a>
+          <span class="title">
+            找回密码
+          </span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content">
+        <div class="msgBox">
+          <p class="colorYe text-center d-hide">密码设置成功！</p>
+          <p class="colorYe text-center">
+            验证邮件已发送
+          </p>
+          <p class="colorYe text-center">请前往邮箱验证</p>
+        </div>
+        <div class="inputBox">
+            <p class="text colorYe d-hide msg" style="margin-top: 8px; margin-bottom: -12px;"><span>短信已经发送到您的手机，若120秒内还未收到短信验证码，请重新获取验证码</span></p>
+            <a href="#" class="btn full">返回登陆页面</a>
+        </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    (function () {
+      $(".lineGroup").on('click', '.btn', function(event) {
+        event.preventDefault();
+        $("p.msg").removeClass('d-hide')
+        /* Act on the event */
+      });
+    })();
+  </script>
+</body>
+</html>

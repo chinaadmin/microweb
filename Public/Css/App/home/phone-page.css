@@ -1,0 +1,22 @@
+	label.error{
+	margin-left:55px
+}
+.phone_btn1{
+	border:0;
+}
+form .msgs1{
+	background:#E6E6E6;
+	color:#818080;
+	border:1px solid #CCCCCC;
+	}
+.send-succ{
+	color:#FF8C00;
+	position:relative;
+	float:right;
+	top:-31px;
+	right:140px;
+	display:none;
+}
+.em-suc{
+	display:none;
+}

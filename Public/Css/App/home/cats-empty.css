@@ -1,0 +1,30 @@
+@charset "utf-8";
+.img_box{
+	background:#fff;
+}
+.img_box img{
+	float:left;
+}
+.img_box .explain_box{
+	padding-top:0;
+	width:400px;
+	float:left;
+	margin-left:60px;
+	margin-top:40px;
+}
+.img_box .explain_box .back_home{
+	margin-top:30px;
+	margin-left:25px;
+}
+.img_box .explain_box .back_home a{
+	display:block;
+	height:30px;
+	line-height:30px;
+	width:120px;
+	text-align:center;
+	color:#fff;
+	background:#FF8C00;
+	float:left;
+	text-decoration:none;
+	margin-left:30px;
+}

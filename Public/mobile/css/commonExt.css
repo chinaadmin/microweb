@@ -1,0 +1,63 @@
+@charset "utf-8";
+body { height: 100%; background-color: #eee; }
+a { outline: none; -moz-outline: none; cursor: pointer; color: #333;}
+a:focus, a:hover { text-decoration: none; color: #333;}
+ul, li { list-style-type: none; padding: 0; }
+input, select { -webkit-appearance: none; }
+input, select, textarea { outline: none; }
+
+.flex { display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; }
+.flexOne { -webkit-flex: 1; -moz-flex: 1; -ms-flex: 1; -o-flex: 1; flex: 1; }
+
+.noMar { margin: 0; }
+.marL4 { margin-left: 4px; }
+.marR4 { margin-right: 4px; }
+.marT16 { margin-top: 16px; }
+.marT32 { margin-top: 32px; }
+
+.d-hide { display: none; }
+.d-show { display: block; }
+.v-hide { visibility: hidden; }
+.v-show { visibility: visible; }
+
+.fr { float: right; }
+.fl { float: left; }
+
+.colorBlack { color: #000; }
+.colorGrey9 { color: #999; }
+.colorYe { color: #ff8400; }
+.bgcWhite { background-color: #fff; }
+
+.text-noline { text-decoration: none; }
+.text-normal{
+  font-style: normal;
+}
+.clear { clear: both; }
+
+.icon { background-repeat: no-repeat; vertical-align: middle; }
+.icon:before { content: ' '; width: 0.8em; display: inline-block; }
+
+.header-box .icon.icon-back { background-size: auto 100%; background-image: url(../images/back_00.png); background-position: left center; }
+.header-box { padding: 16px 0; text-align: center; background-color: #fff; box-shadow: 0 0 2px 0 #333; }
+.header-box .container { padding: 0 8px; }
+
+.activebar { text-align: left; }
+.activebar .backNoText { color: #333; padding: 8px; }
+.activebar .title { font-size: 16px; left: 0; position: absolute; text-align: center; width: 100%; }
+
+
+.msgBox { background-color: rgba(0, 0, 0, 0.6); height: 100%; left: 0; position: fixed; top: 0; width: 100%; text-align: center; }
+.msgBox .wrap { background-color: #fff; border-radius: 3px; margin: 240px auto 0; width: 240px; }
+.msgBox .wrap h3 { font-size: 16px; margin-bottom: 0; padding: 16px; }
+.msgBox .btnBox { border-top: 1px solid #ccc; display: flex; display: -webkit-flex; }
+.msgBox .btnBox .btn { flex: 1; -webkit-flex: 1; border: none; border-right: 1px solid #ccc; border-radius: 0; }
+.msgBox .btnBox .btn:last-child { border-right-width: 0; color: #ff8400; }
+
+
+
+
+.btn { color: #333; }
+.btn.noborder{
+  border: none;
+  border-radius: 0;
+}

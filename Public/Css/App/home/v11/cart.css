@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document *//* CSS Document */
+.s_top a { padding: 0; font-size: 18px; }
+body { background: #fff none repeat scroll 0 0; }
+ol { list-style: none; }
+input:focus, textarea:focus { box-shadow: 0 0 0 0 #ff8400 inset; }
+.in_title { position: absolute; }
+/* 购物车 */
+.fl { float: left; }
+.fr { float: right; }
+.textLeft { text-align: left; }
+.textRight { text-align: right; }
+.mr4 { margin-right: 4px; }
+.mr16 { margin-right: 16px }
+.colorY { color: #ff8400 }
+
+
+
+#content .hd { overflow: hidden; width: 100%; padding: 16px 0; }
+.sersafe-steps { position: relative; font-size: 0; }
+.sersafe-steps li { background-color: #E4E4E4; height: 30px; line-height: 30px; width: 154px; display: inline-block; }
+.sersafe-steps li:last-child { background-color: transparent; }
+.sersafe-steps li .step-sprite { background: url("../../../Images/home/safe_01.png") no-repeat; }
+.sersafe-steps li.active .step { background-position: 0 -2px; color: #fff; z-index: 5; }
+.sersafe-steps li i { font-style: normal; margin-left: 15px; }
+.sersafe-steps li .step { background-position: -259px -2px; color: #555; font-size: 14px; }
+.sersafe-steps li .sprite-bg { background-position: -232px 0; }
+
+
+
+/***************************************************************/
+.tableBox { width: 100%; display: inline-block; }
+.tableBox .th { line-height: 48px; background-color: #eee; border: 1px solid #ccc;}
+.tableBox .tr .td ul { font-size: 0;}
+.tableBox .tr .td li { display: inline-block; vertical-align: middle; font-size: 16px; }
+.tableBox .tr .td li.select { width: 8%; }
+.tableBox .tr .td li.name { width: 50%; text-align: center; }
+.tableBox .tr .td li.price { width: 12%; text-align: center; }
+.tableBox .tr .td li.number { width: 15%; text-align: center; }
+.tableBox .tr .td li.opera { width: 15%; text-align: center; }
+.tableBox .tr .td li.select input { margin-left: 16px; }
+
+.tableBox .tbody .tr .td ul {
+	font-size: 0;
+	background-color: #f9f9f9;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+.tableBox .tbody .tr .td ul:last-child {
+	border-bottom: 1px solid #ccc;
+}
+.tableBox .tbody .tr .td li { font-size: 14px; padding: 16px 0; vertical-align: top; }
+.tableBox .tbody .tr .td li.select { vertical-align: middle; }
+.tableBox .tbody .tr .td li a { color: #333; }
+.tableBox .tbody .tr .td li.name { text-align: left; }
+.tableBox .tbody .tr .td li.name img { float: left; padding-right: 16px; }
+.tableBox .tbody .tr .td li.name a p:last-child { color: #999; }
+.tableBox .tbody .tr .td li.price { color: #ff8400; }
+.tableBox .tbody .tr .td li.number {font-size: 0}
+.tableBox .tbody .tr .td li.number >* { font-size: 14px; display: inline-block; padding: 4px; }
+.tableBox .tbody .tr .td li.number input { width: 36px; border: 1px solid #ddd; }
+.tableBox .tbody .tr .td li.number span { width: 20px; border: 1px solid #ddd; background-color: #ddd; cursor: pointer; font-weight: bold; }
+
+.tableBox .tbody .tr .td .item { line-height: 42px; font-size: 14px; }
+.tableBox .tbody .tr .td .item input { margin-left: 16px; vertical-align: middle; }
+.tableBox .tbody .tr .td .item b { vertical-align: middle; margin: 0 8px; }
+.tableBox .tbody .tr .td .item span { vertical-align: middle; color: #999; }
+
+.foot { padding: 16px; margin-top: 48px; background-color: #f9f9f9; font-size: 14px; border: 1px solid #ccc; }
+.foot .select { float: left; line-height: 32px; }
+.foot .select input { vertical-align: sub; }
+.foot .select span { vertical-align: middle; margin-left: 8px; font-size: 12px; }
+.foot .pay { text-align: right; line-height: 32px; }
+.foot .pay span { display: inline-block; min-width: 64px; }
+.foot .pay span:last-child { text-align: left; width: 128px; }
+.foot .pay p.num span:last-child { color: #ff8400; font-size: 18px; }
+.foot .pay a.btn {
+	background-color: #ff8400;
+	color: #fff;
+	display: inline-block;
+	font-size: 24px;
+	line-height: 50px;
+	margin-right: 40px;
+	margin-top: 6px;
+	text-align: center;
+	width: 160px;
+}

@@ -1,0 +1,34 @@
+@charset "utf-8";
+#content{
+	margin-top:0;
+}
+#content h2{
+	background: url(../../Images/home/buycar_00.png) no-repeat;
+	height:40px;
+	line-height:40px;
+	padding-left:56px;
+	margin-top: 20px;
+}
+.data-box {
+	text-align:center;
+	background:#F5F5F5;
+	padding-bottom:60px;
+	padding-top:33px;
+	margin-top:20px;
+}
+.data-box h1{
+	background:url(../../Images/home/right_00.png) no-repeat 303px 0;
+	height:100px;
+	line-height:100px;
+	padding-left:100px;
+	color:#4dc001;
+}
+.jump-box{
+	margin-top:20px;
+	font-size:14px;
+}
+.jump-box a{
+	color:#FF8C00;
+	font-size:14px;
+	margin-left:10px;
+}
