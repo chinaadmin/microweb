@@ -1,0 +1,321 @@
+<extend name="Common:base" />
+<block name='css'>
+<style>
+@import url('__JS__/Pulgins/city/css.css');
+@import url('__JS__/Pulgins/city/alpha.css');
+.my-control-group input{
+    vertical-align:middle !important;
+    margin-right:5px;
+    width:60px;
+}
+.toggle_show{
+    display:none;
+}
+.myFloat{
+    float:right;
+}
+.summaryList li{
+    float:left;    
+    margin-top:5px;
+}
+.summaryList li span{
+    color:#4b8df8;
+}
+#summaryList{
+   border: 1px solid #4b8df8;
+   background:rgb(175,198,229);
+   color:rgb(255,255,255);
+   padding: 5px;
+}
+</style>
+</block>
+<block name="content">
+<div class="row-fluid">
+  <div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+          <notempty name = 'info'>编辑<else/>新增</notempty>运费模板
+        </div>
+      </div>
+      <div class="portlet-body form">
+        <form id="form_validate" action="{:U('update')}" method="post" class="form-horizontal">
+          <div class="control-group">
+            <label class="control-label">模板名称<span class="required">*</span></label>
+            <div class="controls">
+              <input type="text" name="ft_name" class="m-wrap"  value="{$info.ft_name}"/>
+             <!--  <div class="checkbox">
+                <label>
+                  <input type="checkbox"  data-id = 'ft_default_status' <eq name ='info.ft_default_status'  value = '1'>checked</eq> > 默认
+                </label>
+              </div> -->
+  		      </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">不包邮设置</label>
+            <div class="controls">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"  class = 'js_toggle_show'   data-id = 'ft_freight_status'   <eq name = 'info.ft_freight_status' value = '1'>checked</eq> > 启用
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group my-control-group toggle_show">
+            <label class="control-label">设置指定地区的邮费模板</label>
+              <div class="controls">
+                <table class="table table-hover table-condensed table-bordered">
+                  <thead>
+                    <tr>
+                      <td colspan = '6'>
+                                      默认邮费：<input type="text" class="m-wrap" name ='ft_freight_inner_weight' value = '{$info.ft_freight_inner_weight}'>
+                                      kg内，收运费
+                                      <input type="text" class="m-wrap" name = 'ft_freight_inner_charge' value ='{$info.ft_freight_inner_charge}'>元，每增加
+                                      <input type="text" class="m-wrap" name = 'ft_freight_out_per_weight' value = '{$info.ft_freight_out_per_weight}'>kg，增加运费
+                                      <input type="text" class="m-wrap" name = 'ft_freight_out_per_charge' value = '{$info.ft_freight_out_per_charge}'>元
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>运送到</th>
+                      <th>首重（kg）</th>
+                      <th>首费（元）</th>
+                      <th>续重（kg）</th>
+                      <th>续费（元）</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id = 'addFreightTbody'>
+                    <volist name = 'info.freight_detail_data'  id = 'vo'>
+                      <tr>
+                        <td>
+                          <span id = 'btn_jobArea{$vo.fd_id}freight'>
+                            <ul class='summaryList'>
+                              <volist name='vo.fd_county_name_formate' id='vo_fd_name_formate'>
+                                <li data-countyidstr = '{$vo_fd_name_formate.countyIdStr}' data-provinceid='{$vo_fd_name_formate.provinceid}'>{$vo_fd_name_formate.provinceName}<span>（{$vo_fd_name_formate.positionCityCount}）</span></li>
+                              </volist>
+                            </ul>
+                          </span> 
+                          <a class="btn blue-stripe myFloat jobAreaSelect"  data-idsuffix = '{$vo.fd_id}freight'  href="javascript:void(0);" >编辑</a>
+                          <input id='jobAreaID{$vo.fd_id}freight'  type = 'hidden' value = '{$vo.fd_county_id}'  name = 'fd_county_id[]' />
+                          <input type = 'hidden'  value='{$vo.fd_id}' name = 'fd_id[]'/>
+                        </td>
+                        <td><input type="text" class="m-wrap" value = '{$vo.fd_first_weight}' name = 'fd_first_weight[]'></td>
+                        <td><input type="text" class="m-wrap" value = '{$vo.fd_first_charge}'  name = 'fd_first_charge[]'></td>
+                        <td><input type="text" class="m-wrap" value = '{$vo.fd_continue_weight}'  name = 'fd_continue_weight[]'></td>
+                        <td><input type="text" class="m-wrap" value = '{$vo.fd_continue_charge}' name = 'fd_continue_charge[]'></td>
+                        <td>
+                          <a data-parentselector = 'tr'  class="btn red-stripe js-del" url="{:U('del',['model'=>'FreightDetail','id'=>$vo['fd_id']])}">删除</a>
+                        </td>
+                      </tr>
+                    </volist>
+                  </tbody>
+                </table> 
+                <a href='javascript:void(0);' id = "addFreight">增加指定区域</a>
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label">指定地区包邮</label>
+              <div class="controls">
+    						<div class="checkbox">
+    							<label> 
+                    <input  type="checkbox"  class = 'js_toggle_show'   data-id = 'ft_free_shipping_status'  <eq name = 'info.ft_free_shipping_status'  value = '1' >checked</eq> > 启用
+    							</label>
+    						</div>
+              </div>
+            </div>
+
+            <div class="control-group my-control-group toggle_show">
+				      <label class="control-label"></label>
+				      <div class="controls">
+                <table class="table table-hover table-condensed table-bordered">
+                  <thead>
+                    <tr>
+                      <td colspan = '3'>
+		                              全国满 <input type="text" class="m-wrap" name = 'ft_free_shipping_egt_total' value = '{$info.ft_free_shipping_egt_total}'>
+                                    元包邮<!-- ,未满足指定金额付邮费
+		                          <input type="text" class="m-wrap"  name = 'ft_free_shipping_out_postage'   value = '{$info.ft_free_shipping_out_postage}'>元 -->
+		                  </td>
+                    </tr>
+                    <tr>
+                      <th>运送到</th>
+                      <th>条件</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id = 'addFreeTbody'>
+                    <volist name = 'info.free_freight_detail_data' id = 'vo_free' >
+                      <tr>
+                        <td>
+                          <span id='btn_jobArea{$vo_free.fsd_id}free'>
+                            <ul class='summaryList'>
+                              <volist name = 'vo_free.fsd_county_name_formate'  id = 'vo_fsd_name_formate'>
+                                <li data-provinceid = '{$vo_fsd_name_formate.provinceid}' data-countyidstr = '{$vo_fsd_name_formate.countyIdStr}'>{$vo_fsd_name_formate.provinceName}<span>（{$vo_fsd_name_formate.positionCityCount}）</span></li>
+                              </volist>
+                            </ul>
+                          </span>
+                          <input id='jobAreaID{$vo_free.fsd_id}free'  type = 'hidden'  value='{$vo_free.fsd_county_id}' name = 'fsd_county_id[]'/>
+                          <input type = 'hidden'  value='{$vo_free.fsd_id}' name = 'fsd_id[]'/>      						      
+						              <a class="btn blue-stripe myFloat jobAreaSelect" href="javascript:void(0);" data-idsuffix = '{$vo_free.fsd_id}free'  >编辑</a>
+                        </td>
+                        <td>
+                          满 <input type="text" class="m-wrap" value = "{$vo_free.fsd_egt_money}" name='fsd_egt_money[]' >元包邮<!-- ,未满足付邮费
+							   <input type="text" class="m-wrap" value = "{$vo_free.fsd_charge}"  name='fsd_charge[]' >元 -->
+						            </td>
+                        <td>
+                          <a data-parentselector = 'tr' class="btn red-stripe js-del" url="{:U('del',['model' =>'FreeFreightDetail','id'=>$vo_free['fsd_id']])}">删除</a>
+						            </td>
+                      </tr>
+						        </volist>
+                  </tbody>
+                </table>
+                <a href='javascript:void(0);'  id = 'addFree'>增加指定区域</a>
+              </div>
+            </div>
+
+            <!-- 不配送区域设置 begin -->
+            <div class="control-group">
+              <label class="control-label">不配送区域设置</label>
+              <div class="controls">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" class="js_toggle_show" data-id="ft_no_delivery_status"  <eq name="info.ft_no_delivery_status" value="1" >checked</eq> > 启用
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="control-group my-control-group toggle_show">
+              <label class="control-label"></label>
+              <div class="controls">
+                <table class="table table-hover table-condensed table-bordered">
+                  <thead>
+                    <tr>
+                      <th>不配送区域</th>
+                    </tr>
+                  </thead>
+                  <tbody id="addNoDeliveryTbody">
+                    <tr>
+                      <td>
+                        <span id="btn_jobAreaAddNoDelivery">
+                          <ul class="summaryList">
+                            <volist name="info.no_delivery_detail_data.ndd_county_name_formate" id="vo_no_delivery_formate">
+                                <li data-provinceid="{$vo_no_delivery_formate.provinceid}" data-countyidstr="{$vo_no_delivery_formate.countyIdStr}">
+                                  {$vo_no_delivery_formate.provinceName}<span>（{$vo_no_delivery_formate.positionCityCount}）</span>
+                                </li>
+                            </volist>
+                          </ul>
+                        </span> 
+                        <a href="javascript:void(0);" data-idsuffix="AddNoDelivery" class="btn blue-stripe myFloat jobAreaSelect">编辑</a>
+                        <input type="hidden" name="ndd_county_id" value="{$info.no_delivery_detail_data.ndd_county_id}" id="jobAreaIDAddNoDelivery">
+                        <input type="hidden" name="ndd_id" value="{$info.no_delivery_detail_data.ndd_id}">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 不运送区域设置 end -->
+
+      			<div class="control-group">
+              <label class="control-label">快兔配送设置</label>
+              <div class="controls">
+                <div class="checkbox">
+                  <label> 
+                    <input type="checkbox"   class = 'js_toggle_show'   data-id = 'ft_home_delivery_status'  <eq name = 'info.ft_home_delivery_status' value = '1'>checked </eq> /> 启用
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="control-group my-control-group toggle_show">
+              <label class="control-label"></label>
+              <div class="controls">
+                       门店区域 <input type='text'  class="m-wrap" name = 'ft_home_delivery_elt_distance' value = '{$info.ft_home_delivery_elt_distance}'/>km&nbsp;&nbsp;
+                       且重量在
+                       <input type='text' name = 'ft_home_delivery_weight_one'  value = '{$info.ft_home_delivery_weight_one}'  class="m-wrap"/>kg以内,&nbsp;&nbsp;
+                       <input type='text' name = 'ft_home_delivery_price_one'  value = '{$info.ft_home_delivery_price_one}'  class="m-wrap"/>元/单,
+                       超出指定重量 <input type='text' name = 'ft_home_delivery_price_two'  value = '{$info.ft_home_delivery_price_two}'  class="m-wrap"/> 元/kg,
+                       超出指定距离不配送
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">模板说明</label>
+              <div class="controls">
+						    <textarea rows="" cols="" name = 'ft_remak'>{$info.ft_remak}</textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <input type="hidden" name="ft_id" value="{$info.ft_id}"/>
+              <input type="hidden" value="{$info.ft_default_status}" id="ft_default_status" name ='ft_default_status' >
+              <input type="hidden" value="{$info.ft_free_shipping_status}"  id='ft_free_shipping_status' name='ft_free_shipping_status'>
+              <input type="hidden" value="{$info.ft_home_delivery_status}" id="ft_home_delivery_status" name="ft_home_delivery_status">
+              <input type="hidden" value="{$info.ft_freight_status}" id="ft_freight_status" name="ft_freight_status">
+
+              <input type="hidden" value="{$info.ft_no_delivery_status}" id="ft_no_delivery_status" name="ft_no_delivery_status"><!-- 不配送区域状态 -->
+
+
+              <button type="submit" class="btn blue">提交</button>
+              <a class="btn" href="{:U('index')}">返回</a>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+<!-- maskLayer start -->
+<div id="maskLayer" name='maskLayer' style="display:none">
+<iframe id="maskLayer_iframe" frameBorder=0 scrolling=no style="filter:alpha(opacity=50)"></iframe>
+<div id="alphadiv"  name="alphadiv"  style="filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5"></div>
+    <div id="drag"  name="drag">
+        <h3 id="drag_h"  name="drag_h" ></h3>
+        <div id="drag_con"  name="drag_con"></div><!-- drag_con end -->
+    </div>
+</div>
+<!-- maskLayer end -->
+<div id="sublist" name='sublist' style="display:none"></div>
+<script type="text/html" id="free">
+    <tr>
+   <td>
+      <span id="btn_jobArea<%=count%>addFree"><ul class="summaryList"></ul></span>
+      <input type="hidden" name="fsd_county_id[]" value="" id="jobAreaID<%=count%>addFree">
+     <input type="hidden" name="fsd_id[]" value="">                                  
+     <a data-idsuffix="<%=count%>addFree" href="javascript:void(0);" class="btn blue-stripe myFloat jobAreaSelect">编辑</a></td>
+   <td>
+       满 <input type="text" name="fsd_egt_money[]" value="" class="m-wrap">元包邮<!-- ,未满足付邮费
+       <input type="text" name="fsd_charge[]" value="" class="m-wrap">元 -->
+   </td>
+    <td>
+          <a href="javascript:void(0);" class="btn red-stripe js-remove">删除</a>
+    </td>
+</tr>
+</script>
+
+<script type="text/html" id="freight">
+    <tr>
+    <td>
+       <span id="btn_jobArea<%=count%>addFreight"><ul class="summaryList"></ul></span> 
+       <a href="javascript:void(0);" data-idsuffix="<%=count%>addFreight" class="btn blue-stripe myFloat jobAreaSelect">编辑</a>
+       <input type="hidden" name="fd_county_id[]" value="" id="jobAreaID<%=count%>addFreight">
+       <input type="hidden" name="fd_id[]" value="">
+    </td>
+    <td><input type="text" name="fd_first_weight[]" value="" class="m-wrap"></td>
+    <td><input type="text" name="fd_first_charge[]" value="" class="m-wrap"></td>
+    <td><input type="text" name="fd_continue_weight[]" value="" class="m-wrap"></td>
+    <td><input type="text" name="fd_continue_charge[]" value="" class="m-wrap"></td>
+    <td>
+      <a  href='javascript:void(0);' class="btn red-stripe js-remove">删除</a>
+    </td>
+</tr>
+</script>
+
+<div id = 'summaryList'  style = 'display:none;z-index:21000' >
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+    seajs.use(['controller/FreightTemplate/FreightTemplateController'],function(FreightTemplate){
+        FreightTemplate.add();
+    });
+    </script>
+</block>

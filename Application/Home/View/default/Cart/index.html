@@ -1,0 +1,144 @@
+<extend name="Common:base"/>
+<block name="css">
+<empty name="cart_lists">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/unfind-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/cats-empty.css">
+<else/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/App/home/cats-page.css" />
+    <link rel="stylesheet" type="text/css" href="__CSS__/App/home/commonExt.css" />
+</empty>
+</block>
+<block name="nav"><include file="Common:welt_nav" /></block>
+<block name="content">
+<empty name="cart_lists">
+<div class="img_box">
+    <img src="__IMG__/home/cat_00.jpg">
+    <div class="explain_box">
+        <p class="">您的购物车还是空的,赶紧行动吧!您可以:</p>
+        <div class="back_home"><a href="{:U('/')}">回到首页</a><a href="{:U('Order/index')}">我的订单</a><div class="clearfix"></div></div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+<else/>
+<div class="hd">
+    <h2 class="loginSprite">快乐的购物体验</h2>
+    <div class="sersafe-steps">
+        <ol>
+            <li class="active">
+                <s class="bg"></s>
+                <div class="step step-sprite">
+                    <i>1、</i>
+                    <span>加入购物车</span>
+                </div>
+            </li>
+            <li>
+                <s class="bg"></s>
+                <div class="step step-sprite sprite-bg">
+                    <i>2、</i>
+                    <span>填写信息</span>
+                </div>
+            </li>
+            <li>
+                <s class="bg"></s>
+                <div class="step step-sprite sprite-bg">
+                    <i>3、</i>
+                    <span>订单支付</span>
+                </div>
+            </li>
+            <li>
+                <s class="bg"></s>
+                <div class="step step-sprite">
+                    <i>4、</i>
+                    <span>支付成功</span>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /*购物车表格*/-->
+<div class="catbox fix">
+    <table id="cartTable" border="0" cellspacing="0" cellpadding="0">
+        <thead class="cats-header">
+        <tr>
+            <th>
+                <label><input class="check-all check check-box" type="checkbox" />&nbsp;全选</label>
+            </th>
+            <th>商品信息</th>
+            <th>好货价</th>
+            <th>数量</th>
+            <th>小计</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="cart_lists" id="vo">
+        <tr class="js-cart-lists" data-id="{$vo['cart_id']}" data-market_price="{$vo['market_price']}">
+            <td class="checkbox">
+                <input class="check-one check check-box" type="checkbox" value="{$vo['cart_id']}" />
+            </td>
+            <td class="goods">
+                <a href="{:U('Detail/index',['id'=>$vo['goods_id']])}">
+                    <img src="{$vo['pic']}" width="80px" height="80px" />
+                    <p class="title">{$vo['name']}</p>
+                    <p class="colorGrey9">
+                        <notempty name="vo.norms_value">
+                            <volist name="vo.norms_value" id="norms">
+                                {$norms.name}：{$norms.value}&nbsp;&nbsp;
+                            </volist>
+                        </notempty>
+                    </p>
+
+                </a>
+            </td>
+            <td class="price">{$vo['goods_price']}</td>
+            <td class="count"><span class="reduce <gt name='vo.number' value='1'>colorBlack</gt>">-</span>
+                <input class="count-input" type="text" value="{$vo['number']}" /><span class="add">+</span>
+            </td>
+            <td class="subtotal">{$vo['price']}</td>
+            <td class="operation"><span class="delete"><img src="__IMG__/home/delete_00.png"></span>
+            </td>
+        </tr>
+        </volist>
+        </tbody>
+    </table>
+
+    <div class="foot" id="foot">
+        <label class="fl select-all">
+            <input type="checkbox" class="check-all check check-box" />&nbsp;全选</label>
+        <a class="fl delete" id="deleteAll" href="javascript:;"></a>
+        <div class="fr closing js-shopping">结 算</div>
+        <div class="fr box textRight">
+
+            <div class="numb fr textLeft mr16">
+                <p id="priceTotal">0.00</p>
+                <p id="oldPriceTotal">0.00</p>
+            </div>
+            <div class="des fr mr4">
+                <div class="selected" id="selected">
+                    已选
+                    <span id="selectedTotal">0</span>
+                    件商品 
+                    <span class="mr4"> 总价（不含运费）：</span><a class="colorY">￥</a>
+                </div>
+                <p class="old-price"><span class="mr4">已节省 :</span>-￥</p>
+            </div>
+        </div>        
+        <div class="selected-view">
+            <div id="selectedViewList" class="clearfix">
+                <div>
+                    <!--<img src="images/1.jpg"><span>取消选择</span>-->
+                </div>
+            </div>
+            <span class="arrow">◆<span>◆</span></span>
+        </div>
+    </div>
+</div>
+</empty>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/cartController'],function(cart){
+            cart.cart();
+        });
+    </script>
+</block>

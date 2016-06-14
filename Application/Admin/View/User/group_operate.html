@@ -1,0 +1,638 @@
+<extend name="Common:base" />
+<block name="css"> <load
+	href="__CSS__/App/admin/index/index.css" />
+<style>
+.portlet_span {
+	margin-left: 0 !important;
+}
+
+.leftMenu ul {
+	margin: 0;
+}
+
+.leftMenu ul li {
+	list-style: none;
+	height: 40px;
+	line-height: 40px;
+	background-color: white;
+	margin-top: 2px;
+}
+
+.leftMenu .active, .leftMenu li:hover {
+	background-color: rgb(211, 231, 243);
+}
+
+.operate i:hover {
+	cursor: pointer
+}
+
+.myRadius {
+	-moz-border-radius: 5px !important;
+	-khtml-border-radius: 5px !important;
+	-webkit-border-radius: 5px !important;
+	border-radius: 5px !important;
+}
+
+.step-part {
+	display: inline-block;
+	height: 157px;
+}
+
+.step-part.arrow {
+	margin: 0 15px;
+	vertical-align: sub;
+	font-size: 50px;
+	color: #4B8DF8;
+}
+
+.step-title {
+	font-size: 30px;
+	color: #4B8DF8;
+	height: 66px;
+	line-height: 60px;
+	text-align: center;
+}
+
+.step-title span {
+	color: #FFA132;
+	margin-left: 5px;
+}
+
+.step-body {
+	color: white;
+	text-align: center;
+	padding: 10px;
+	font-size: 20px;
+	line-height: 26px;
+	width: 125px;
+	background-color: #4B8DF8;
+}
+
+.attribute-block {
+	border: 1px solid #999999;
+	text-align: center;
+	height: 50px;
+	width: 50px;
+	padding: 5px;
+	margin-bottom: 10px !important;
+	margin-left: 17px;
+	display: inline-block;
+	line-height: 25px;
+}
+
+.attribute-block:hover {
+	cursor: pointer;
+	box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #7aba7b;
+}
+.attribute-block.active{
+    background-color: #4B8DF8;
+}
+.oneLine {
+	vertical-align: 25px;
+}
+
+.myClose {
+	margin-top: 7px !important;
+}
+.attrRmark .portlet{
+    display:none;
+}
+.shadow{
+    box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px red;
+}
+
+.js-pagination a.active{
+    background-color:#f5f5f5
+}
+</style>
+</block>
+<block name="nav"> </block>
+<block name="content">
+<ul class="breadcrumb">
+	<li><a href="javascript:void(0);">会员分组</a></li>
+</ul>
+<div class="row-fluid">
+	<div class="span2 portlet_span">
+		<div class="portlet box blue">
+			<div class="portlet-title" style = 'padding:0px;margin:0px;height:37px'>
+				<div class="caption operate" style = 'pading:0px;margin: 0px;padding-left: 5px;'>
+					<i style="font-size: 11px;font-size:14px;height:37px;line-height:37px;padding:0px;margin:0px;" class="icon-plus add">新增
+						&nbsp;&nbsp;&nbsp;</i> 
+						<i style="font-size: 11px;font-size:14px;height:37px;line-height:37px;padding:0px;margin:0px;" class="icon-edit edit <notempty name = 'Think.get.id'>shadow</notempty>">编辑 &nbsp;&nbsp;&nbsp;
+						</i> <i style="font-size: 11px;font-size:14px;height:37px;line-height:37px;padding:0px;margin:0px;" class="icon-trash del" url = "{:U('delGroup',['id' => $_GET['id']])}">删除</i>
+				</div>
+			</div>
+			<div class="portlet-body"
+				style='height: 500px; padding-left: 0; padding-right: 0'>
+				<div class="leftMenu">
+					&nbsp;&nbsp;所有会员分组
+					<ul>
+						<volist name='lists' id='lists_vo'>
+						<li
+							class="<eq name = 'lists_vo.id' value = '$Think.get.id'>active</eq>">&nbsp;&nbsp;&nbsp;&nbsp;<a
+							href="{:U('group_operate',['id' => $lists_vo['id']])}">{$lists_vo.name}</a></li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<form id = 'saveGroup' class="form-horizontal" action='{:U("saveGroup")}' >
+		<div class="span6 portlet_span">
+			<div class="portlet box blue" style='margin-bottom: 0px;'>
+				<div class="portlet-title">
+					<div class="caption">分组信息</div>
+				</div>
+				<div class="portlet-body" style='height: 100px'>
+					<div class='control-group'>
+						<label class="control-label">分组名称:</label>
+						<div class='controls'>
+						    <input type = 'hidden' name = 'id' value = '{$Think.get.id}'/>
+							<input type='text' name='name' value='{$info.name}' /> <span
+								class="help-inline"><font color='red' id = 'infoCount'>{$info.count|default = '0'}</font>&nbsp;人</span>
+						</div>
+					</div>
+					<div class='control-group'>
+						<label class='control-label'>属性联合关系:</label>
+						<div class='controls controls-row'>
+							<label class='radio'> 
+							     <input type='radio' name='combineWay' value='and' <eq name = 'info.combineWay' value = 'and'>checked</eq> />并且
+							</label> 
+							<label class='radio'> 
+						      	<input type='radio' name='combineWay' value='or'  <eq name = 'info.combineWay' value = 'or'>checked</eq>/>或者
+							</label>
+							<button type="submit" class="btn blue myRadius">
+								<i class='icon-save'>保存</i>
+							</button>
+							<button type="button" class="btn myRadius calCount">获取人数</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">属性信息</div>
+				</div>
+				<div class="portlet-body" style='height: 341px;overflow-y:scroll;overflow-x:hidden'>
+					<empty name='Think.get.id'>
+					<div style='margin: 80px'>
+						<div class='step-part'>
+							<div class='step-title'>
+								step<span>1</span>
+							</div>
+							<div class='step-body myRadius'>
+								<div>新建分组</div>
+								<div>(界面左边)</div>
+							</div>
+						</div>
+						<div class='step-part arrow'>
+							<i class='icon-arrow-right'></i>
+						</div>
+						<div class='step-part'>
+							<div class='step-title'>
+								step<span>2</span>
+							</div>
+							<div class='step-body myRadius'>
+								<div>点选属性项</div>
+								<div>(界面右边)</div>
+							</div>
+						</div>
+						<div class='step-part arrow'>
+							<i class='icon-arrow-right'></i>
+						</div>
+						<div class='step-part'>
+							<div class='step-title'>
+								step<span>3</span>
+							</div>
+							<div class='step-body myRadius'>
+								<div>选择属性值</div>
+								<div>(界面中间)</div>
+							</div>
+						</div>
+					</div>
+					<else/>
+					<div class = 'attrRmark'>
+					<div class="portlet box blue sex"  data-triggerbock = 'sex'  style = "<notempty name = 'info.sex'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">性别</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+							<div class="control-group">
+								<label class="control-label">性别:</label>
+								<div class="controls">
+								    <select class = 'span4' name = 'sex'>
+								        <option value = '1'  <eq name = 'info.sex' value = '1'>selected</eq> >男</option>
+								        <option value = '2' <eq name = 'info.sex' value = '2'>selected</eq> >女</option>
+								    </select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="portlet box blue age"  data-triggerbock = 'age' style = "<notempty name = 'info.age'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">年龄</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+							<div class="control-group">
+								<label class="control-label">从</label>
+								<div class="controls">
+									<input type="text" name="old_start"  class="span4" value="{$info.age.old_start}"> &nbsp;&nbsp;&nbsp;到&nbsp;&nbsp;&nbsp;
+										<input type="text" name="old_end"  class="span4"
+										value="{$info.age.old_end}">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="portlet box blue birthday"  data-triggerbock = 'birthday' style = "<notempty name = 'info.birthday'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">生日</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+                            <div class="control-group">
+                                <label class="control-label">从</label>
+                                <div class="controls">
+                                    <input type="text" name="user_birthday_start" 
+                                        class="span4 startTime"
+                                        value="{$info.birthday.user_birthday_start}"> &nbsp;&nbsp;&nbsp;到&nbsp;&nbsp;&nbsp;
+                                        <input type="text" name="user_birthday_end"  class="endTime span4"
+                                        value="{$info.birthday.user_birthday_end}">
+                                </div>
+                            </div>
+						</div>
+					</div>
+					<div class="portlet box blue area"  data-triggerbock = 'area' style = "<notempty name = 'info.area'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">地区</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+						         <volist name = 'info.area' id = 'areaVo' key = 'areaKey'>
+						          <div class="control-group">
+						          <label class="control-label"> <i
+										class="icon-plus-sign addLocation" style='color: green'></i>&nbsp;&nbsp;
+										<i class="icon-minus-sign delLocation" style='color: red'></i>&nbsp;&nbsp;
+										省:
+									</label>
+								    <div class="controls">
+							            <div id="area-select-{$areaKey-1}">
+					                        <select id="provice-{$areaKey-1}" data-id="{$areaVo.provice}" class = 'span4'>
+					                        </select>
+					                        <select id="city-{$areaKey-1}" data-id="{$areaVo.city}" class = 'span4'>
+					                        </select>
+					                        <select id="county-{$areaKey-1}" data-id="{$areaVo.county}" class = 'span4'>
+					                        </select>
+					                    </div>
+					                   </div>
+					                   </div>
+				                    </volist>
+				                  <empty name = 'info.area'>
+				                    <div class = 'control-group'>
+				                        <label class="control-label"> <i
+                                        class="icon-plus-sign addLocation" style='color: green'></i>&nbsp;&nbsp;
+                                        <i class="icon-minus-sign delLocation" style='color: red'></i>&nbsp;&nbsp;
+                                        省:
+                                    </label>
+                                    <div class = 'controls'>
+				                         <div id="area-select-0">
+                                            <select id="provice-0" data-id="" class = 'span4'>
+                                            </select>
+                                            <select id="city-0" data-id="" class = 'span4'>
+                                            </select>
+                                            <select id="county-0" data-id="" class = 'span4'>
+                                            </select>
+                                           </div>
+                                       </div> 
+                                      </div> 
+				                  </empty>
+							</div>
+						</div>
+					<div class="portlet box blue buyedGoods" data-triggerbock = 'buyedGoods'  style = "<notempty name = 'info.buyedGoods'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">购买过某商品</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+							<div class="control-group">
+							<button type="button" class="btn myRadius blue" id = 'choose_goods'>选择商品</button>
+							<input type = 'text' name = 'goods_ids' value = '{$info.buyedGoods}'  style = 'position:fixed;left:-1000px'/>
+							</div>
+						</div>
+					</div>
+					<div class="portlet box blue lastPayTime" data-triggerbock = 'lastPayTime' style = "<notempty name = 'info.lastPayTime'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">最近付款时间</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+						<label class="control-label">从</label>
+				       <div class="controls">
+                                 <input type="text" name="lastPayTimeStart" 
+                                     class="span4 startTime"
+                                     value="{$info.lastPayTime.lastPayTimeStart}"> &nbsp;&nbsp;&nbsp;到&nbsp;&nbsp;&nbsp;
+                                     <input type="text" name="lastPayTimeEnd"  class="endTime span4"
+                                     value="{$info.lastPayTime.lastPayTimeEnd}">
+                       </div>
+						</div>
+					</div>
+					<div class="portlet box blue lastBuyTime"  data-triggerbock = 'lastBuyTime' style = "<notempty name = 'info.lastBuyTime'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">最近下单时间</div>
+							<i class='close myClose'></i>
+						</div>
+                        <div class="portlet-body">
+	                        <label class="control-label">从</label>
+	                       <div class="controls">
+	                                 <input type="text" name="lastBuyTimeStart" 
+	                                     class="span4 startTime"
+	                                     value="{$info.lastBuyTime.lastBuyTimeStart}"> &nbsp;&nbsp;&nbsp;到&nbsp;&nbsp;&nbsp;
+	                                     <input type="text" name="lastBuyTimeEnd"  class="endTime span4"
+	                                     value="{$info.lastBuyTime.lastBuyTimeEnd}">
+	                       </div>
+                        </div>
+					</div>
+					<div class="portlet box blue payCount"  data-triggerbock = 'payCount'  style = "<notempty name = 'info.payCount'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">付款次数</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+							<div class="control-group">
+							      <label class="control-label">从</label>
+		                           <div class="controls">
+		                                     <input type="text" name="payCountStart" 
+		                                         class="span4"
+		                                         value="{$info.payCount.payCountStart}"> &nbsp;&nbsp;&nbsp;到&nbsp;&nbsp;&nbsp;
+		                                         <input type="text" name="payCountEnd"  class="span4"
+		                                         value="{$info.payCount.payCountEnd}">
+		                           </div>
+							</div>
+						</div>
+					</div>
+					<div class="portlet box blue buyCount" data-triggerbock = 'buyCount'  style = "<notempty name = 'info.buyCount'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">下单次数</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+							<div class="control-group">
+								<label class="control-label">从</label>
+								<div class="controls">
+									<input type="text" name="buyCountStart" class="span4" value="{$info.buyCount.buyCountStart}">
+									&nbsp;&nbsp;&nbsp;到&nbsp;&nbsp;&nbsp; <input type="text"
+										name="buyCountEnd" class="span4" value="{$info.buyCount.buyCountEnd}">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="portlet box blue payAmount"  data-triggerbock = 'payAmount'  style = "<notempty name = 'info.payAmount'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">付款总金额</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+						      <div class="control-group">
+                                  <label class="control-label">从</label>
+                                   <div class="controls">
+                                             <input type="text" name="payAmountStart" 
+                                                 class="span4"
+                                                 value="{$info.payAmount.payAmountStart}"> &nbsp;&nbsp;&nbsp;到&nbsp;&nbsp;&nbsp;
+                                                 <input type="text" name="payAmountEnd"  class="span4"
+                                                 value="{$info.payAmount.payAmountEnd}">
+                                   </div>
+                            </div>
+						</div>
+					</div>
+					<div class="portlet box blue payToNow" data-triggerbock = 'payToNow'   style = "<notempty name = 'info.payToNow'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">付款距今天数</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+						      <div class="control-group">
+                                  <label class="control-label">从</label>
+                                   <div class="controls">
+                                             <input type="text" name="payToNowStart" 
+                                                 class="span4"
+                                                 value="{$info.payToNow.payToNowStart}"> &nbsp;&nbsp;&nbsp;到&nbsp;&nbsp;&nbsp;
+                                                 <input type="text" name="payToNowEnd"  class="span4"
+                                                 value="{$info.payToNow.payToNowEnd}">
+                                   </div>
+                            </div>
+						</div>
+					</div>
+					<div class="portlet box blue buyToNow" data-triggerbock = 'buyToNow'   style = "<notempty name = 'info.buyToNow'>display:block</notempty>">
+						<div class="portlet-title">
+							<div class="caption">下单距今天数</div>
+							<i class='close myClose'></i>
+						</div>
+						<div class="portlet-body">
+						     <div class="control-group">
+                                  <label class="control-label">从</label>
+                                   <div class="controls">
+                                       <input type="text" name="buyToNowStart"  class="span4"  value="{$info.buyToNow.buyToNowStart}"> &nbsp;&nbsp;&nbsp;到&nbsp;&nbsp;&nbsp; <input type="text" name="buyToNowEnd"  class="span4" value="{$info.buyToNow.buyToNowEnd}">
+                                   </div>
+                            </div>
+						</div>
+					</div>
+					</div>
+				</empty>	
+				</div>
+			</div>
+		</div>
+
+		<div class="span4 portlet_span">
+			<div class="portlet box blue" style='margin-bottom: 0;'>
+				<div class="portlet-title">
+					<div class="caption">基础属性</div>
+				</div>
+				<div class="portlet-body" style="height: 220px">
+					<div class='attribute-block myRadius  oneLine <notempty name = "info.sex">active</notempty>'  classremark = 'sex'>性别</div>
+					<div class='attribute-block myRadius  oneLine <notempty name = "info.age">active</notempty>'  classremark = 'age'>年龄</div>
+					<div class='attribute-block myRadius  oneLine <notempty name = "info.birthday">active</notempty>'  classremark = 'birthday'>生日</div>
+					<div class='attribute-block myRadius  oneLine <notempty name = "info.area">active</notempty>'   classremark = 'area'>地区</div>
+					<div class='attribute-block myRadius  <notempty name = "info.buyedGoods">active</notempty>'   classremark = 'buyedGoods'>购买过某商品</div>
+				</div>
+			</div>
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">RFM属性</div>
+				</div>
+				<div class="portlet-body" style="height: 221px">
+					<div class='attribute-block myRadius <notempty name = "info.lastPayTime">active</notempty>'   classremark = 'lastPayTime'>最近付款时间</div>
+					<div class='attribute-block myRadius <notempty name = "info.lastBuyTime">active</notempty>'  classremark = 'lastBuyTime'>最近下单时间</div>
+					<div class='attribute-block myRadius <notempty name = "info.payCount">active</notempty>' classremark = 'payCount'>付款次数</div>
+					<div class='attribute-block myRadius <notempty name = "info.buyCount">active</notempty>'  classremark = 'buyCount'>下单次数</div>
+					<div class='attribute-block myRadius  <notempty name = "info.payAmount">active</notempty>'  classremark = 'payAmount'>付款总金额</div>
+					<div class='attribute-block myRadius <notempty name = "info.payToNow">active</notempty>' classremark = 'payToNow'>付款距今</div>
+					<div class='attribute-block myRadius <notempty name = "info.buyToNow">active</notempty>'  classremark = 'buyToNow'>下单距今</div>
+				</div>
+			</div>
+		</div>
+		 <input type = 'hidden' value = '' name = 'availableNameStr'/>
+	</form>
+</div>
+
+<div id="member-modal" class="modal hide fade" tabindex="-1" style="width: 860px; ">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3>选择成员</h3>
+    </div>
+    <div class="modal-body" style="max-height: 600px">
+		<form class="form-horizontal" id="addDialog" action = "{:U('addGroup')}">
+			<div class="control-group">
+				<label class="control-label">分组名称:</label>
+				<div class="controls">
+					<input name="group_name" type="text" value="" />
+				</div>
+			</div>
+		</form>
+	</div>
+    <div class="modal-footer modal-center">
+        <button class="btn blue js-confirm" type="button">确定</button>
+        <button class="btn" data-dismiss="modal" type="button">取消</button>
+    </div>
+</div>
+
+<div id="goods-modal" class="modal hide fade" tabindex="-1" style="width: 70%; left:30% ;  ">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3>选择商品</h3>
+    </div>
+    <div class="modal-body" style="">
+        <div class="row-fluid">
+        <div class = 'span3'>
+            <div class = 'portlet blue box' style = 'height:781px'>
+                <div class = 'portlet-title'>
+                    <div class = 'caption'>已选商品</div>
+                </div>
+                <div class = 'portlet-body' style = 'height:722px'>
+                    <table class = 'table tabbable-custom'>
+                        <thead>
+                            <tr>
+									<th>
+										<div class="input-append">
+											<a class="btn blue span4 clearGoodsList">清空列表</a> 
+											 <input placeholder="商品名" class="span5 m-wrap" name = 'goods_key'>
+											<a class="btn green"  id = 'serach_goods'>搜索</a>
+										</div>
+									</th>
+								</tr>
+                        </thead>
+                        <tbody id = 'choosed_list_body'>
+                          <volist name = 'goodsChoosedList' id = 'voGoodsChoosedListVo'>
+                                <tr class="goodsRemoveLeft{$voGoodsChoosedListVo.goods_id}">
+                                        <td>
+                                               <img style="width:64px;" src="{$voGoodsChoosedListVo.src}" class="span5" title="{$voGoodsChoosedListVo.name}">
+                                                <span class="span8">
+                                                    <div style="width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                                                      {$voGoodsChoosedListVo.name}                                                                    
+                                                    </div>
+                                                    <div>￥{$voGoodsChoosedListVo.old_price}</div>        
+                                                </span>
+                                            <i class="close boxClose"></i>
+                                          </td>
+                                 </tr>
+                          </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class = 'span9' style = "margin:0px;">
+				<div class="portlet box blue" style = 'height:781px'>
+					<div class="portlet-title">
+						<div class="caption">选择商品</div>
+					</div>
+					<div class="portlet-body" style = 'height:722px'>
+						<div class="clearfix">
+							<form style="margin-right: 15px;" method="GET"
+								action="" class="form-search pull-right">
+								<div class = 'input-append'>
+								    <label class="checkbox" >
+								    <input type="checkbox" name = 'onlyChoosed' id = 'onlyChoosed'>
+                                        只显示已选的商品
+                                    </label> 
+								</div>
+								<div class="input-append">
+									<select class = 'm-wrap'  name = 'cat_id'>
+									   <option value = '0'>选择商品分类</option>
+									   <volist name = 'goodsClassifyList' id = 'goodsClassifyListVo'>
+    									   <option value = '{$goodsClassifyListVo.cat_id}'>{$goodsClassifyListVo.name}</option>
+									   </volist>
+									</select>
+								</div>
+								<div class="input-append">
+									<input type="text" value="" class="m-wrap"
+										placeholder="商品名" name="goods_name">
+									<a class="btn green"  id = 'serach_choose'>搜索</a>
+								</div>
+							</form>
+						</div>
+						<div class="tabbable tabbable-custom">
+							<div class="tab-content">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th id = 'checkAll'><!-- <input style = 'display:none;' type = 'checkbox' value = ''  class = 'goodsListCheckAll'> --></th>
+											<th>商品名称</th>
+											<th>价格(元)</th>
+											<th>库存</th>
+											<th>品牌</th>
+										</tr>
+									</thead>
+									<tbody id = 'goodsList'>
+							        </tbody>
+								</table>
+								<div class="row-fluid">
+									<div class="pagination pull-right" id = 'goodsListPage'></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		</div>
+	</div>
+    <div class="modal-footer modal-center">
+        <button class="btn blue js-goods-confirm" type="button">确定</button>
+        <button class="btn" data-dismiss="modal" type="button">取消</button>
+    </div>
+</div>
+
+</block>
+<block name="js"> 
+<script id = 'goodsListPageTpl' type = 'text/template'>
+<% for(var i = 0;i < items.length;i++){%>
+       <tr>
+                                            <td><input class = 'goodsListCheckOne goodsRemoveRight<%= items[i]['goods_id']%>' type = 'checkbox' value = "<%= items[i]['goods_id']%>"/></td>
+                                            <td>
+                                               <img title = "<%= items[i]['name']%>" class = 'span5' src = "<%=items[i]['src']%>" style = "width:64px;"/>
+                                               <a href= "<%= items[i]['href']%>" target = '_blank'>		
+                                                <span class="span8" style = "margin-left:10px">
+                                                    <div style="width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                                                      <%= items[i]['name']%>                                                                      
+                                                    </div>
+                                                    <div >￥<%= items[i]['old_price']%></div>        
+                                                </span>
+												</a>
+                                            </td>
+                                            <td><%= items[i]['old_price']%></td>
+                                            <td><%= items[i]['goods_norms_number']%></td>
+                                            <td><%= items[i]['brandname']%></td>
+      </tr>
+<%}%>
+<% if(items.length <= 0){ %>
+    <tr>
+    <td colspan = '5' style ='text-align:center'>暂无数据</td>
+</tr>
+<% } %>
+</script>
+<script type="text/javascript">
+	seajs.use(['controller/user/group_operate_action'], function(main) {
+		var condition = '{$info.condition}';
+		main.init(condition,'{$areaKey}');
+	});
+</script> </block>

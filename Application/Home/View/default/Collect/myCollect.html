@@ -1,0 +1,75 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/safe-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/baseinfo.html.css">
+	<link type="text/css" rel="stylesheet" href="__CSS__/App/home/v11/fav.css">
+</block>
+<block name="content">
+<include file="I/common"/>
+  <div class="favbox">
+      <h3>我的收藏</h3>
+      <div class="list">
+
+        <div class="wrap">
+          <div class="tableBox">
+            <div class="th">
+              <div class="tr">
+                <div class="td">
+                  <ul>
+                    <li class="name"  >商品信息</li>
+                    <li class="price" >价格</li>
+                    <li class="number" >收藏时间</li>
+                    <li class="sum" >操作</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="tbody">
+              <div class="tr">
+                <div class="td">
+               <volist name="lists" id="vo">
+                  <ul>
+                    <li class="name">
+                      <a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}" target='_blank'>
+                        <img src="{$vo.thumb}" width="80px" height="80px"/>
+                        <p>{$vo.name}</p>
+						<notempty name="vo.norms_value">
+                         <p class="cats-format">
+                         <volist name='vo.norms_value' id='v'>
+                         	{$v.name}:{$v.value}&nbsp;&nbsp;
+                         </volist>	
+						 </p>
+						</notempty>
+                      </a>
+                    </li>
+                    <li class="price" >
+                      <span>￥{$vo.price}</span>
+                    </li>
+                    <li class="number">
+                      <span>{$vo.add_time|date='Y-m-d H:i:s',###}</span>
+                      >
+                    </li>
+                    <li class="sum" >
+                      <p class="btn btnCart" norms-data="{$vo.norms_data|default=''}" data-id="{$vo.goods_id}">加入购物车</p>
+                      <p><a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}" target='_blank'>查看详情</a></p>
+                      <p><a href="javascript:void(0);" class="del-collect" data-id="{$vo.goods_id}">取消收藏</a></p>
+                    </li>
+                  </ul>
+				  </volist>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		seajs.use('controller/collectController',function(main){
+			main.init();
+		});
+	</script>
+</block>

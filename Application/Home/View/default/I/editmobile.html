@@ -1,0 +1,54 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/email-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/phone-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/phone-old.css">
+    <style>
+     .code-suc {
+        display:none;
+     }
+     label.error{
+        margin-left:1px;
+     }
+    </style>
+</block>
+<block name="content">
+<div id="content">
+  <include file="I/common"/>
+     <div class="data_box">
+      <div class="usersafe-tip clearfix">
+      <div class="usersafe-crumbs">
+          <a href="safe-page.html">账户安全</a><i>&gt;</i><span style="color:#ff8c00;">原手机验证</span><div class="old-text">如无法修改绑定手机，请联系客服4007777927</div>
+      </div>
+      
+            </div>
+      <div class="verify-form modify-email">
+                <ul>
+                    <li><p>账户名:{$user.uid|showUserName}</p></li>
+                    <li>
+                        <p><span>原手机号：</span>{$user.mobile|hideStr = 'mobile'}<button type="submit" class="phone_btn1 msgs" value="获取手机验证码">获取手机验证码</button>
+                        <span class="send-succ">验证码发送成功</span></p>
+                     </li>
+                     <form id = 'signupForm' action = '{:U("doEditMobile")}'>
+		                    <li class="code_box" style="left:9px;">
+		                        <span>验证码：</span>
+		                        <input type="text" class="verifyCode"  name  = 'verifyCode'>
+		                       <span class="code-suc">验证码验证成功</span>
+		                    </li>
+		                    <li>
+		                        <input type="submit" value="下一步" class="btnNextPhone button-next">
+		                    </li>
+                    </form>
+                </ul>
+            </div>
+    </div>
+</div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		seajs.use('controller/usersafeController.js',function(main){
+			main.editmobile();
+		});
+	</script>
+</block>

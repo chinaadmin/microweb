@@ -1,0 +1,63 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/v11/score.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/v11/usercommon.css">
+</block>
+<block name="content">
+    <include file="I/common"/>
+    <div class="scorebox">
+        <h3>我的好货币</h3>
+        <p><span>可用好货币:</span> <i>{$credits}</i></p>
+        <div class="list">
+            <div class="hd">
+                <ul>
+                    <li <eq name="type" value="0">class="active"</eq>><a href="{:U('I/Integral')}">全部</a></li>
+                    <li <eq name="type" value="1">class="active"</eq>><a href="{:U('I/Integral',['type'=>1])}">收入明细</a></li>
+                    <li <eq name="type" value="2">class="active"</eq>><a href="{:U('I/Integral',['type'=>2])}">消耗明细</a></li>
+                </ul>
+            <span>
+            <!--<select name="" id="">
+              <option value="1">最近一个月</option>
+              <option value="2">最近一周</option>
+              <option value="3">最近三天</option>
+            </select>-->
+            </span>
+            </div>
+
+            <div class="content">
+                <ul>
+                    <li>
+                        <span>时间</span>
+                        <span>好货币(收入/支出)</span>
+                        <span style="width: 60%">变更来源</span>
+                        <!--<span>涉及订单号</span>
+                        <span>过期时间</span>-->
+                    </li>
+                    <empty name="account_log_lists">
+                    <li>
+                        <span style="width: 100%">暂无相关信息</span>
+                    </li>
+                    <else/>
+                    <volist name="account_log_lists" id="account_log_vo">
+                    <li>
+                        <span>{$account_log_vo.add_time|dateFormat=###,'Y-m-d H:i:s'}</span>
+                        <span>{$account_log_vo.credits|intval}</span>
+                        <span style="width: 60%">{$account_log_vo.remark}</span>
+                        <!--<span>2014070702</span>
+                        <span>2015-07-24 15:51:29</span>-->
+                    </li>
+                    </volist>
+                    </empty>
+                </ul>
+            </div>
+            <div class="pagination" style="margin-bottom: 30px;">
+                <gt name="totalPages" value="1">
+                    {$_page}
+                </gt>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+</block>

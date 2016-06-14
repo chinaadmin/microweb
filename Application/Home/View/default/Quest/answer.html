@@ -1,0 +1,55 @@
+<extend name="Quest:base"/>
+<block name="css">
+    <link rel="stylesheet" media="screen" href="__PUBLIC__/mobile/css/app-con.css?{$style_version}"/>
+    <link rel="stylesheet" media="screen" href="__PUBLIC__/mobile/css/app-que.css?{$style_version}"/>
+    <link rel="stylesheet" media="screen" href="__PUBLIC__/mobile/css/common.css?{$style_version}"/>
+</block>
+<block name="content">
+    <div class="view">
+        <div id="js-answer-con">
+
+        </div>
+        <!--/*尾部*/-->
+        <input type="hidden" id="uid" name="uid" value="{$uid}">
+        <footer>
+        </footer>
+    </div>
+</block>
+<block name="js">
+    <script id="tpl-answer" type="text/template">
+        <!--头部-->
+        <header>
+            <div class="title-box">
+                <%=info.id%>.<%=info.title%>
+            </div>
+            <div class="clearfix"></div>
+        </header>
+        <!--内容-->
+        <div id="content">
+            <%
+            if (info.type == 1){
+                for (var i=0;i<info.options.length;i++) {
+            %>
+            <p class="js-radio"><input type="radio" name="option" value="<%=i+1%>"/><%=info.options[i]%></p>
+            <%}
+            }else if(info.type == 2){
+                for (var i=0;i<info.options.length;i++) {%>
+            <p class="js-checkbox"><input type="checkbox" name="option" value="<%=i+1%>"/><%=info.options[i]%></p>
+            <%}
+            }else if(info.type == 3){%>
+            <textarea name="option"></textarea>
+            <%
+            }%>
+            <%if(is_finish){%>
+            <input type="button" class="btn-sta js-finish" value="完成">
+            <%}else{%>
+            <input type="button" class="btn-sta js-next" value="下一题">
+            <%}%>
+        </div>
+    </script>
+    <script type="text/javascript">
+        seajs.use(['controller/quest/questController'],function(quest){
+            quest.answer();
+        });
+    </script>
+</block>

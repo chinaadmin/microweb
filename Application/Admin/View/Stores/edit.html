@@ -1,0 +1,108 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.uid">添加<else/>编辑</empty>门店</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="user_edit" action="{:U('Stores/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">门店名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">地址<span class="required">*</span></label>
+                <div class="controls">
+                    <div id="area-select">
+                        <select name="provice" id="provice" data-id="{$info.provice}">
+                        </select>
+                        <select name="city" id="city" data-id="{$info.city}">
+                        </select>
+                        <select name="county" id="county" data-id="{$info.county}">
+                        </select>
+                    </div>
+                    <input type="text" name="address" class="m-wrap span4" style="margin-top: 5px;" value="{$info.address}"/>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">经纬度<span class = 'required'>*</span></label>
+                <div class="controls">
+                    <input type="text" name="lat_lon" class="m-wrap" value="{$info.lat_lon}"/>
+                    <span class = 'help-inline'>用逗号隔开</span>
+                    <a id="queryLatLong" class="green btn">获取经纬度</a>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">联系电话<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="phone" class="m-wrap" value="{$info.phone}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.stores_id">checked<else/><eq name="info.status" value="1">checked</eq></empty>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">描述</label>
+                <div class="controls">
+                    <textarea wrap = 'hard' class="span6 m-wrap" rows="3" name="remark">{$info.remark}</textarea>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">门店配送区域</label>
+                <div class="controls">
+                	<div>
+                	<input class="span3 m-wrap addressSearch" placeholder = '搜索' />
+                	<button id="enterSearch" class = 'green btn' >搜索</button>
+                	</div>
+                   <div id = 'address_list' contenteditable="true" style="border:#CCCCCC 1px solid;margin-left:0px;" class="span6 m-wrap" >{$info.address_list}</div>
+                   <input name="address_list" type = 'hidden'  value = '{$info.address_list}'/>
+                    <span class = 'help-inline'>每个区域换行隔开</span>
+                </div>
+            </div>
+			 
+			<div class="control-group">
+				<label class = 'control-label'>配送时间段:</label>
+				<div class = 'controls'>
+					上午:&nbsp;<input class = 'span1' readonly = 'true' type = 'text' name = 'am_start_time' value = "{$info.am_start_time}"/>~<input  class = 'span1'   value = "{$info.am_end_time}"  readonly = 'true'  type = 'text' name = 'am_end_time'/>&nbsp;&nbsp;
+					下午:&nbsp;<input class = 'span1'  readonly = 'true'  type = 'text' name = 'pm_start_time'  value = "{$info.pm_start_time}"/>~<input  class = 'span1'  value = "{$info.pm_end_time}" readonly = 'true'  type = 'text' name = 'pm_end_time'/>
+					<span class="help-inline">非本店人员或管理员无法修改</span>
+				</div>
+			</div> 	
+	
+            <div class="form-actions">
+                <input type="hidden" name="stores_id" value="{$info.stores_id}"/>
+                <button type="submit" class="btn blue"  id = 'beforeSubmit'>提交</button>
+                <a class="btn" href="{:U('Stores/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/stores/storesController'],function(stores){
+        	var addressList = '{$info.address_list}',permission_delivery = '{$permission_delivery}';
+            stores.edit(addressList,permission_delivery);
+        });
+    </script>
+</block>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>试一口，找真爱</title>
+    <link rel="stylesheet" href="__CSS__/wxapp.css?r={:time()}" charset="utf-8">
+	 <script src="__ROOT__/Public/Activity/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="__ROOT__/Public/Activity/bower_components/angular-ui-router/release/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__JS__/teContronller.js?r={:time()}" type="text/javascript" charset="utf-8" ></script>
+    <script src="__JS__/teServices.js?r={:time()}" type="text/javascript" charset="utf-8" ></script>
+    <script src="__JS__/application.js?r={:time()}" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      var defaultImage = "__IMG__/default.jpg";
+    </script>
+  </head>
+  <body ng-app="tryEat" ng-controller="detailControllers">
+        <div class="navTop">
+              <a href="http://www.bihaohuo.cn/" class="homeBtn"></a>
+              <div class="logo" style="background-image: url(__IMG__/logo.png);">
+                  <span ng-bind="title"></span>
+              </div>
+              <a class="searchBtn">
+                <span ng-click="home()">照片墙</span>
+              </a>
+            </div>
+      <div class="box detailBox">         
+
+        <div class="imageView">
+          <img ng-src="{{detailInfo.photo}}" id="cameraImage" err-src="__IMG__/default.jpg" ng-click="wxPreview()">
+
+          </div>
+
+        <div class="userBox">
+            <div class="user">
+            <p>用<span class="hidden">客户</span>户：<span ng-bind="detailInfo.nick"></span></p>
+              <p>照片编号：<span ng-bind="detailInfo.number"></span></p>
+              <p><span class="desc">照片描述：<span ng-bind="detailInfo.title"></span></span></p>
+            </div>
+        </div>
+
+        <div class="shareBox">
+          <div class="item {{isOwner?'hide':''}}" ng-click="detailInfo.checked='1';vote()"><img ng-src="{{detailInfo.checked=='1'?'__IMG__/like-dg.png':'__IMG__/like-dh.png'}}"alt=""><span ng-bind="detailInfo.vote_num"></span></div>
+
+        </div>
+        <div class="cameraBox {{isOwner?'':'hide'}}">
+                <a class="btn " ng-click="logout()">退<span></span>出</a>
+            </div>
+      </div>
+
+      <div class="msgBox {{msgPopup.hide?'hide':'show'}}">
+        <div class="tips"><span ng-bind="msgPopup.msg"></span></div>
+      </div>
+
+  </body>
+</html>

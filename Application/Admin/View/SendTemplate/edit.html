@@ -1,0 +1,87 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.pk_temp">添加<else/>编辑</empty>发送模板</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="from_edit" action="{:U('__CONTROLLER__/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">模板名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="temp_name" class="m-wrap" value="{$info.temp_name}"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">模板代码<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="temp_code" class="m-wrap" value="{$info.temp_code}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">模板类型</label>
+                <div class="controls">
+                    <select name="temp_type" class="m-wrap">
+                        <option value="">请选择</option>
+                        <option value="1" <eq name = 'info.temp_type'  value = '1'>selected</eq>>短信模板</option>
+                        <option value="2" <eq name = 'info.temp_type'  value = '2'>selected</eq>>邮件模板</option>
+                        </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">标题</label>
+                <div class="controls">
+                    <input type="text" name="temp_title" class="m-wrap" value="{$info.temp_title}"/>
+                </div>
+            </div>
+
+				<div class="control-group">
+					<label class="control-label">模板变量</label>
+					<div class="controls">
+					    <span class="help-inline"> 
+						    <switch name = 'info.temp_type'>
+						    <case value = '1'>
+						    <a href="javascript:void(0);"  name = 'insertCode'  code = '<literal>{$mobile_code}</literal>'>验证码</a>
+						    </case>
+						    <case value = '2'>
+						      <a href="javascript:void(0);"  name = 'insertCode'  code = '<literal>{$userName}</literal>'>用户名</a>
+						      &nbsp;&nbsp;
+						      <a href="javascript:void(0);"  name = 'insertCode'  code = '<literal><a href = "{$checkEmailUrl}" target="_blank" >{$checkEmailUrl}</a></literal>'>验证地址</a>
+						    </case>
+						    <default  />
+						      <a href="javascript:void(0);"  name = 'insertCode'  code = '<literal>{$mobile_code}</literal>'>验证码</a>
+                            &nbsp;&nbsp;
+                            <a href="javascript:void(0);"  name = 'insertCode'  code = '<literal>{$userName}</literal>'>用户名</a>
+						    </switch>
+						</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+                <label class="control-label">内容<span class="required">*</span></label>
+                <div class="controls">
+                         <MyTag:editor height="200" width="800" name="temp_content"  id="editor">{$info.temp_content}</MyTag:editor>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" id="pk_temp" name="pk_temp" value="{$info.pk_temp}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('__CONTROLLER__/index')}">返回</a>
+                <a class="btn" href="javascript:void(0);" id = 'delEdit'>删除编辑器</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+	    seajs.use(['controller/admin/sendtemplate'],function(sendtemplate){
+	    	   sendtemplate.update();
+	    });
+    </script>
+</block>

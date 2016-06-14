@@ -1,0 +1,312 @@
+<extend name="Common:base" />
+<block name="css">
+    <load href="__CSS__/App/admin/order/order.css"/>
+    <style>
+.leftMenu {
+	float:left;width:19%;margin-right:1%
+}
+
+.leftMenu ul {
+	margin: 0;
+}
+
+.leftMenu ul li {
+    padding-left:5px;
+	height: 45px;
+	line-height: 45px;
+	margin: 1px;
+	background-color: rgb(211, 231, 243);
+}
+.leftMenu ul li:first-child{
+    background-color:white;
+}
+.leftMenu ul span {
+	background-color: rgb(129, 178, 207);
+	float: right;
+	margin-right: 5%;
+	padding: 0px 5px;
+	height:35px;
+	line-height:35px;
+	margin-top:5px;
+	border:1px solid white
+}
+.breadcrumb li{
+    display:inline;
+}
+.breadcrumb{
+    background-color:rgb(255,255,255) !important;
+}
+.headerUl li{
+    float:left;
+    margin-right:5%;
+}
+
+.headerUl{
+    margin-left:8px !important;
+    display:inline-block;
+    width:100%
+}
+.btn-group{
+    font-size:14px;
+}
+</style>
+</block>
+<block name="content">
+<div class="row-fluid">
+	<div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$title}</div>
+        </div>
+        <div class="portlet-body">
+            <div class = 'leftMenu' >
+                <ul>
+                <li><b>全部门店</b><span>{$totalCount}</span></li>
+                 <volist name = 'storesList'  id = 'vo_storesList'>
+                    <li><i  class="icon-tasks"></i>&nbsp;&nbsp;<a href = '{:U("index",["stores_id" => $vo_storesList["stores_id"]])}'>{$vo_storesList.name}</a><span>{$vo_storesList.membercount}</span></li>
+                 </volist>                   
+                </ul>
+            </div>
+             <div style="float:left;width:80%">
+                 <ul class="headerUl">
+                    <li>{$storeDetail.name} {$storeDetail.status|getStatus}</li>
+                    <li>{$storeDetail.phone}</li>
+                    <li>{$storeDetail.localtion}&nbsp;{$storeDetail.address}&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" class = 'js-store' data-type = '3'><i style="font-size: 18px;" class="icon-wrench"></i></a></li>
+                    <li><b>店长</b>:&nbsp;&nbsp;{$storeDetail.store_admin}&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" class = 'js-manager' data-type = '1'><i style="font-size: 18px;" class="icon-wrench"></i></a></li>
+                    <li><b>店助</b>:&nbsp;&nbsp;{$storeDetail.store_assistant}&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" class = 'js-manager'  data-type = '2'><i style="font-size: 18px;" class="icon-wrench"></i></a></li>
+                 </ul>
+                 <input type='hidden' id = 'stores_id' value = '{$stores_id}'/>
+                 <div class = 'clearfix'></div>
+				<ul class="breadcrumb">
+								<li>
+									<button class="btn green"  onClick = "javascript:location.href = '{:U(add_mod)}'" >新增店员</button> 
+								</li>
+								<li>
+								    <button class="btn green js-changeStore" >转店</button> 
+								</li>
+								<li>
+								 <button class="btn green check-del" url="{:U('del')}">删除</button> 
+								</li>
+								<li>
+									<form class="form-search pull-right" action="{:U('index')}"
+										method="GET" style="margin-right: 15px;">
+										<div class="pull-left" style="margin-right: 3px;">
+											<input type="text" name="key" placeholder="帐号/真实姓名"
+												class="m-wrap" value="{$Think.get.key|default=''}">
+										</div>
+										<button type="submit" class="btn green"
+											style="margin-right: -13px;">搜索</button>
+									</form>
+					           </li>
+				</ul>
+	            <table class="table table-hover">
+	                <thead>
+	                    <tr>
+	                        <th><input type='checkbox' id='check_all'/></th>
+	                        <empty name="stores_id"><th>所属门店</th></empty>
+							<th>帐号</th>
+							<th>真实姓名</th>
+							<th>性别</th>
+	                        <th>联系电话</th>
+	                        <th>操作</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                	<empty  name="lists">
+	                		<tr>
+						      <td colspan="11" style="text-align:center;">暂无搜索数据</td>
+						    </tr>
+	                	<else/>
+	                    <volist name="lists" id="vo">
+	                    <tr>
+	                        <td><input type='checkbox' value="{$vo.id}" name='uid[]'  data-uid ='{$vo.uid}' class='check_single'/></td>
+	                        <empty name="stores_id"><td>{$vo.name}</td></empty>
+	                        <td>{$vo.username}</td>
+	                        <td>{$vo.nickname}</td>
+	                        <td>{$vo.sex|getTypeText = ###,['1' => '男','2' => '女']}</td>
+	                        <td>{$vo.mobile}</td>
+	                        <td><a href="{:U('add_mod',['id' => $vo['id']])}" class="btn blue-stripe">编辑</a>  </td>
+	                    </tr>
+	                    </volist>
+						</empty>
+						
+	                </tbody>
+	            </table>
+	           <div class="row-fluid">
+	                <div class="pagination pull-right">
+	                    <ul>{$_page}</ul>               
+				     </div>
+	            </div>
+            </div>            
+            <div class='clearfix'></div>
+        </div>
+    </div>
+</div>
+
+    <script id="tpl-member-list" type="text/template">
+        <%for(var i=0;i<items.length;i++){%>
+        <tr>
+            <td><%=items[i].username%></td>
+            <td><input type = 'checkbox' data-userid = '<%=items[i].uid%>' name = 'managerBox'/></td>
+        </tr>
+        <%}%>
+        <%if(items.length==0){%>
+        <tr><td colspan="3" style="text-align:center">暂无相关成员</td></tr>
+        <%}%>
+    </script>
+
+<div id="set-manager-modal" class="modal hide fade" tabindex="-1" style="width: 860px; ">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3 id = 'title'>设置店长</h3>
+    </div>
+    <div class="modal-body" style="max-height: 600px">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="clearfix">
+                    <div class="btn-group" id="js-list-filter">
+                        <input type="text" name="url" class="m-wrap js-kwd" name="name" data-param="name" />
+                        <button class="btn green js-searchBtn">
+                            搜索
+                        </button>
+                        &nbsp;&nbsp;<span id = 'tips'>一个店只允许有一个店长</span>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>真实姓名</th>
+                        <th id = 'operate' >设为店长</th>
+                    </tr>
+                    </thead>
+                    <tbody id="member-list">
+                    </tbody>
+                </table>
+                <div class="row-fluid">
+                    <div class="pagination pull-right" id="pagebar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn blue js-confirm">确定</button>
+        <button type="button" data-dismiss="modal" class="btn">关闭</button>
+    </div>
+</div>
+
+<form id="change_store" action="{:U('changeStore')}" method="post"  class="form-horizontal">
+	<div id="change-modal" class="modal hide fade" tabindex="-1" style="width: 860px; ">
+	    <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+	        <h3 id = 'title'>店员转店</h3>
+	    </div>
+	    <div class="modal-body" style="max-height: 600px">
+	        <div class="row-fluid">
+		             <div class="control-group">
+		                <label class="control-label">当前门店<span class="required">*</span></label>
+		                <div class="controls">
+		                    <input type="text" value="{$storeDetail.name}" class="span5 m-wrap"  disabled >
+		                    <input type = 'hidden'  value = '{$stores_id}'  name = 'yum_store_id' />
+		                </div>
+		            </div>
+		             <div class="control-group">
+		                <label class="control-label">转入门店<span class="required">*</span></label>
+		                <div class="controls">
+							<select class="span5 m-wrap"  name="new_stores_id">
+								<option value="" selected="">选择门店</option>
+								<volist name = 'storesList'  id = 'vo_change_store'>
+									<option value="{$vo_change_store.stores_id}">{$vo_change_store.name}</option>
+								</volist>
+							</select>
+						</div>
+		            </div>
+	        </div>
+	    </div>
+	    <div class="modal-footer">
+	       <input type = 'hidden'  name = 'uidStr' value = ''/>
+	        <button type="submit" class="btn blue js-confirm">确定</button>
+	        <button type="button" data-dismiss="modal" class="btn">关闭</button>
+	    </div>
+	</div>
+</form>
+
+<form id="store_edit" action="{:U('storeUpdate')}" method="post"
+			class="form-horizontal">
+	<div id="js-store" class="modal hide fade" tabindex="-1" style="width: 860px; ">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h3>修改门店信息</h3>
+			</div>
+			<div class="modal-body" style="max-height: 600px">
+				<div class="row-fluid">
+					<div class="control-group">
+						<label class="control-label">门店名称<span class="required">*</span></label>
+						<div class="controls">
+							<input type="text" name="name" class="m-wrap"
+								value="{$editStore.name}" />
+						</div>
+					</div>
+	
+					<div class="control-group">
+						<label class="control-label">地址<span class="required">*</span></label>
+						<div class="controls">
+							<div id="area-select">
+								<select name="provice" id="provice"
+									data-id="{$editStore.provice}">
+								</select> <select name="city" id="city" data-id="{$editStore.city}">
+								</select> <select name="county" id="county" data-id="{$editStore.county}">
+								</select>
+							</div>
+							<input type="text" name="address" class="m-wrap span4"
+								style="margin-top: 5px;" value="{$editStore.address}" />
+						</div>
+					</div>
+	
+					<div class="control-group">
+						<label class="control-label">联系电话<span class="required">*</span></label>
+						<div class="controls">
+							<input type="text" name="phone" class="m-wrap"
+								value="{$editStore.phone}" />
+						</div>
+					</div>
+	
+					<div class="control-group">
+						<label class="control-label">状态</label>
+						<div class="controls">
+							<label class="radio"> <input type="radio" name="status"
+								value="0"
+							<eq name="editStore.status" value="0">checked</eq>/> 禁用
+							</label> <label class="radio"> <input type="radio" name="status"
+								value="1"
+							<empty name="editStore.stores_id">checked<else />
+								<eq name="editStore.status" value="1">checked</eq></empty>/> 启用
+							</label>
+						</div>
+					</div>
+	
+					<div class="control-group">
+						<label class="control-label">描述</label>
+						<div class="controls">
+							<textarea class="span6 m-wrap" rows="3" name="remark">{$editStore.remark}</textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+			     <input type = 'hidden' name ='stores_id'  value = '{$stores_id}'/>
+				<button type="submit" class="btn blue js-confirm">确定</button>
+				<button type="button" data-dismiss="modal" class="btn">关闭</button>
+			</div>
+	</div>
+</form>
+
+<include file="Order/send"/>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/stores/StoresMemberController'],function(main){
+          main.index();
+        });
+    </script>
+</block>

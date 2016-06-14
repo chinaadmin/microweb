@@ -1,0 +1,284 @@
+<extend name="Common:base"/>
+<block name="css">
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/cats-page.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/infor-page.css" />
+</block>
+<block name="nav"><include file="Common:welt_nav" /></block>
+<block name="content">
+<div id="js-shopping-content">
+<!--路径-->
+<div class="hd">
+    <h2 class="loginSprite">快乐的购物体验</h2>
+    <div class="sersafe-steps">
+        <ol>
+            <li class="active">
+                <s class="bg"></s>
+                <div class="step step-sprite">
+                    <i>1、</i>
+                    <span>加入购物车</span>
+                </div>
+            </li>
+            <li>
+                <s class="bg"></s>
+                <div class="step step-sprite sprite-bg-1">
+                    <i>2、</i>
+                    <span>填写信息</span>
+                </div>
+            </li>
+            <li>
+                <s class="bg"></s>
+                <div class="step step-sprite sprite-bg">
+                    <i>3、</i>
+                    <span>订单支付</span>
+                </div>
+            </li>
+            <li>
+                <s class="bg"></s>
+                <div class="step step-sprite">
+                    <i>4、</i>
+                    <span>支付成功</span>
+                </div>
+            </li>
+            <div class="clearfix"></div>
+        </ol>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="de-box-wrap" style="border: 1px solid #dcdcdc;">
+    <h2 class="fix">确认提货地址</h2>
+    <div class="de-box" id="js-stores-address"></div>
+</div>
+<!--  支付方式-->
+<div class="pay-box">
+    <h2 class="fix">选择支付方式</h2>
+    <div class="pay-for">
+        <volist name="payment_lists" id="vo">
+        <div class="pay-item <eq name="i" value="1">active</eq>" >
+            <input type="radio" name="payment" value="{$vo.code}" <eq name="i" value="1">checked</eq> class="change-bank">
+            <img src="{$vo.photo}" class="bank-img"/><img src="__IMG__/home/bank_01.png" class="i-img">
+        </div>
+        </volist>
+        <div style="clear: both"></div>
+    </div>
+</div>
+<!--发票信息-->
+<div class="bill-box">
+    <h2 class="fix">发票信息</h2>
+    <p id="js-invoice"><input type="checkbox" id="js-needs-invoice" name="needs_invoice" class="bill-inpt">需要发票</p>
+    <div id="js-invoice-div">
+    </div>
+</div>
+<!-- /*购物车表格*/-->
+<div class="catbox">
+    <table id="cartTable" 	border="0" cellspacing="0" cellpadding="0">
+        <thead class="cats-header">
+        <tr>
+            <th class="pro-massage">商品信息</th>
+            <th>好货价</th>
+            <th>数量</th>
+            <th>小计</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="cart_lists" id="vo">
+        <tr>
+            <td class="goods">
+                <a href="{:U('Detail/index',['id'=>$vo['goods_id']])}" target="_blank">
+                    <img src="{$vo['pic']}" width="80px" height="80px" />
+                </a>
+                <p class="title">
+                    <a href="{:U('Detail/index',['id'=>$vo['goods_id']])}" target="_blank">{$vo['name']}</a>
+                </p>
+				<notempty name='vo.norms_value'>
+				<volist name="vo.norms_value" id="norms">
+                <p class="spec">{$norms.name}：{$norms.value}</p>
+				</volist>
+				</notempty>
+            </td>
+            <td class="price" style="background:none">￥{$vo['goods_price']}</td>
+            <td class="count">{$vo['number']}</td>
+            <td class="subtotal">{$vo['price']}</td>
+        </tr>
+        </volist>
+        </tbody>
+    </table>
+    <div class="remark-box">
+		<label>补充说明：</label><input type="text" name="postscript" placeholder="选填，对本次交易有什么特别要说的吗？" />
+
+	</div>
+    <div class="foot checkout" id="foot">
+            
+        <div class="textRight">
+
+            <div class="numb fr textLeft">
+                <p class="a">{$cart_all['price']}</p>
+                <p class="a">0.00</p>
+                <!--<p class="a">
+                    <neq name="cart_all['thrift_price']" value="0">-￥{$cart_all['thrift_price']}</neq>
+                </p>-->
+                <p class="a total">￥<span id="priceTotal">{$cart_all['price']}</span></p>
+            </div>
+            <div class="desc fr ">                
+                <p class="a"><i id="selectedTotal">{$cart_all['number']}</i>件商品 <s class="empt"></s>应付金额：</p>
+                <p class="a">运费：</p>
+                <!--<p class="a">折后优惠：</p>-->
+                <p class="a lh35">实付金额：</p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <p class="textRight"><a id="js-pay" class="fr closing btn">提交订单</a></p>
+    </div>
+</div>
+</div>
+<form id="js-form" action="" method="post" target="_blank"></form>
+<!-- 支付框-->
+<div id="js-pay-mask" class="pop-box"></div>
+<div id="js-pay-content" class="pay-wid">
+    <h2 style="padding:0 10px">请您在新打开的页面上完成付款<i class="close-box"></i></h2>
+    <div class="pay-content">
+        <div class="btn-box">
+            <input type="button" class="true-box pay-true js-pay-finish" value="已完成付款">
+            <input type="button" class="fail-box pay-fail js-pay-problem" value="付款遇到问题">
+        </div>
+        <div class="btn-2">
+            <input type="button"  class="anew close-box js-pay-again" value="重新支付"/>
+            <input type="button" class="cancel-btn js-pay-cancel" value="取消"/>
+        </div>
+        <p>查看<a href="">支付帮助</a>或联系<a href="">在线客服</a></p>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script id="tpl-stores" type="text/template">
+        <%if(items.length==0){%>
+        <div class="way-box add-address-active js-stores-add-address-div">
+            <div class="de-bg">
+                <span class="change-btn-new add-way-new js-stores-add-address">
+                    <input type="radio" name="fangshi">添加地址
+                </span>
+            </div>
+        </div>
+        <%}else{%>
+        <%for(var i=0;i<items.length;i++){
+            var info = items[i];
+        %>
+        <div class="way-box-new js-stores-address-lists" data-id="<%=info['delivery_id']%>">
+            <span></span>
+            <div class="de-bg">
+                <span>
+                    <input type="radio" name="delivery_id" class="btn-radio" value="<%=info['delivery_id']%>">
+                </span>
+                <span class="cus-new"><%=info['username']%> <%=info['mobile']%> <%=info['localtion']%> <%=info['address']%></span>
+            </div>
+            <div class="change-box-bill change-way">
+                <a class="change-btn-new js-update">修改</a>
+                <a class="delete-btn js-del">删除</a>
+            </div>
+        </div>
+        <%}%>
+        <div class="add-way change-btn-new js-stores-add-address js-stores-add-address-div" style="float: left; margin-top: 10px;">添加地址</div>
+        <div style="clear: both"></div>
+        <%}%>
+        <div class="change-show" id="js-stores-add">
+        </div>
+    </script>
+    <script id="tpl-stores-add" type="text/template">
+        <form id="signupForm" action="{:U('affiliated/updatedelivery')}" method="post">
+        <div class="shop-address-new" id="area-select">
+            <span>自提点:</span>
+            <select name="provice" id="provice">
+            </select>
+            <select name="city" id="city">
+            </select>
+            <select name="county" id="county">
+            </select>
+            <select name="stores" id="stores">
+            </select>
+        </div>
+        <div class="de-address">
+            <div class="show-address" id="js-address"><span>自提点地址:</span><span class="address"></span></div>
+        </div>
+        <div class="cus-box">
+            <p class="name-box"><i>*</i><label>收货人姓名:</label><input type="text" placeholder="请输入收货人姓名" name="name" id="name" value="<%=info.username%>"></p>
+            <p class="phone-num"><i>*</i><label>手机号码:</label><input type="text" placeholder="请输入手机号" id="telephone" name="telephone" value="<%=info.mobile%>"></p>
+            <input name="delivery_id" type="hidden" value="<%=info.delivery_id%>">
+            <input type="submit" value="确认" class="btnNextPhone button-next btn-new">
+            <input type="button" value="取消" class="btnNextPhone button-next btn-new js-cancel-but btn-clear" style="margin-left:20px">
+        </div>
+        </form>
+    </script>
+    <script id="tpl-invoice" type="text/template">
+        <%for(var i=0;i<items.length;i++){
+        var info = items[i];
+        %>
+        <div class="bill-hd js-invoice-lists" data-id="<%=info['invoice_id']%>">
+            <span>
+                <input type="radio" name="invoice_id" value="<%=info['invoice_id']%>">纸质&nbsp;&nbsp;普通发票
+            </span>
+            <span class="bill-head">发票抬头: <%=info['invoice_payee']%></span>
+            <span class="bill-con">发票内容:商品明细
+                <input type="hidden" name="invoice_content" value="1"/>
+            </span>
+            <div class="change-box-bill">
+                <span class="change-btn js-update">修改</span>
+                <span class="delete-btn js-del">删除</span>
+            </div>
+        </div>
+        <%}%>
+        <div id="js-invoice-add-div"></div>
+    </script>
+    <script id="tpl-invoice-add" type="text/template">
+        <form id="invoice_form" action="{:U('affiliated/updateinvoice')}" method="post">
+        <div class="bill-change">
+            <p>
+                <i>*</i>发票类型:<span>
+                <input type="radio" name="type" value="0" checked>普通发票</span>
+            </p>
+            <p>
+                <i>*</i>发票抬头:
+                <span>
+                    个人
+                    <input type = "hidden"  name="invoice_type" value="个人"/>
+                </span>
+                <span>
+                    <input type="text" name="invoice_payee" class="address-bill" value="<%=info['invoice_payee']%>">
+                </span>
+            </p>
+            <p>
+                <input name="invoice_id" type="hidden" value="<%=info.invoice_id%>">
+                <span><input type="submit" value="保存" class="save-box closed-box"></span>
+                <span><input type="button" value="取消" class="closed-box cancel-box js-cancel-but"></span>
+            </p>
+        </div>
+        </form>
+    </script>
+    
+    
+      <script id="tpl-invoice-copy" type="text/template">
+        <%for(var i=0;i<items.length;i++){
+        var info = items[i];
+        %>
+        <div class="bill-hd js-invoice-lists" data-id="<%=info['invoice_id']%>">
+            <span>
+                <input type="radio" name="invoice_id" value="<%=info['invoice_id']%>">纸质&nbsp;&nbsp;普通发票(<%=info['invoice_type']%>)
+            </span>
+            <span class="bill-head">发票抬头: <%=info['invoice_payee']%></span>
+            <span class="bill-con">发票内容:
+                <select name="invoice_content">
+                    <option value="1">商品明细</option>
+                </select>
+            </span>
+            <div class="change-box-bill">
+                <span class="change-btn js-update">修改</span>
+                <span class="delete-btn js-del">删除</span>
+            </div>
+        </div>
+        <%}%>
+        <div id="js-invoice-add-div"></div>
+    </script>
+    <script type="text/javascript">
+        seajs.use(['controller/shoppingController'],function(cart){
+            cart.shopping();
+        });
+    </script>
+</block>

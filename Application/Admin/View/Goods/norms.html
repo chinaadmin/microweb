@@ -1,0 +1,110 @@
+ <!--商品规格-->
+<div id="norms" style="display:none;">	
+ </div>
+   <script type='text/html' id="add-norms">
+			         	<%if(data){%>
+						<% for(i in data){%>
+			         	 <div class="control-group norms-group">
+                        <label class="control-label"><%=data[i]['norms_name']%></label>
+                        <div class="controls">
+                        	<% for(j in data[i]['norms_values']){%>
+                            <label class="checkbox">
+                                <input parent-value="<%=data[i]['norms_name']%>" type="checkbox" <%if(data[i]['norms_values'][j]['checked']){%><%=data[i]['norms_values'][j]['checked']%><%}%> data-edit="<%=data[i]['norms_values'][j]['norms_edit']%>" data-value="<%=data[i]['norms_values'][j]['norms_value']%>" data-parent="<%=data[i]['norms_id']%>" data-type="<%=data[i]['norms_type']%>" name="norms[]" class='add-norms' value="<%=data[i]['norms_values'][j]['norms_value_id']%>"/>
+								<%if(data[i]['norms_values'][j]['pic']){%>
+								<img src="<%=data[i]['norms_values'][j]['pic']%>" width='20' height='20'/>
+								<%}%>
+								<%=data[i]['norms_values'][j]['norms_value']%>
+                            </label>
+							<%}%>
+                        </div>
+                    </div>
+				<!--规格商品图片-->
+			  <%if(data[i]['norms_type']==2){%>
+			   <div class="control-group norms-table" style="display:none;">
+				 <label class="control-label" style="width:87px;"></label>
+               <div class="span5">
+						<!-- BEGIN SAMPLE TABLE PORTLET-->
+						<div class="portlet box purple">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-comments"></i>上传图片大小</div>
+							</div>
+							<div class="portlet-body">
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th><%=data[i]['norms_name']%></th>
+											<th>图片（可选）</th>
+										</tr>
+									</thead>
+									<tbody class='append-data'>
+										<% for(j in data[i]['norms_values']){%>
+										 <tr class="norms_<%=data[i]['norms_values'][j]['norms_value_id']%>  norms_type_2" style="display:none;">
+											<td><img src="<%=data[i]['norms_values'][j]['pic']%>" width='20' height='20'/>
+											<%=data[i]['norms_values'][j]['norms_value']%>
+											<!--<input type='text' class='span2' name="value[<%=data[i]['norms_values'][j]['norms_value_id']%>]" value="<%=data[i]['norms_values'][j]['norms_value']%>"/>-->
+											</td>
+											<td class='mytag'>
+												<div id="plupload_browse_<%=data[i]['norms_values'][j]['norms_value_id']%>" class="plupload" data-id="browse" data-name="norms_attr[<%=data[i]['norms_values'][j]['norms_value_id']%>]" style="position: relative;" type="one" use="upload" thumb="false">
+	                                                 <botton id="browse_<%=data[i]['norms_values'][j]['norms_value_id']%>" class="browse" style="background: none repeat scroll 0% 0% green; position: relative; z-index: 1;">选择文件</botton>
+	                                                 <div id="progress_browse_<%=data[i]['norms_values'][j]['norms_value_id']%>" class="browse_progress"></div>
+		                                             	<div class='images'>
+														<%if(data[i]['norms_values'][j]['attr']){%>
+														<div class="img-box">
+		                                             		<img width="75" height="75" src="<%=data[i]['norms_values'][j]['attr']['path']%>" att_id="<%=data[i]['norms_values'][j]['attr']['att_id']%>">
+															<input type="hidden" name="norms_attr[<%=data[i]['norms_values'][j]['norms_value_id']%>]" value="<%=data[i]['norms_values'][j]['attr']['att_id']%>">
+															<span>
+																<s data="<%=data[i]['norms_values'][j]['attr']['path']%>" att_id="<%=data[i]['norms_values'][j]['attr']['att_id']%>" class="del"></s>
+																</span>
+																<a class="lightbox" href="<%=data[i]['norms_values'][j]['attr']['path']%>">预览</a>
+														</div>
+														<%}%>
+														</div>
+											    </div>
+											</td>
+										</tr>
+										<% } %>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- END SAMPLE TABLE PORTLET-->
+					</div>
+              </div>
+			   <%}%>
+					<!--规格商品图片结束-->
+					<%}%>
+					<!--商品规格组合-->
+					 <div class="control-group norms_group">
+				 <label class="control-label"  style="width:87px;"></label>
+               <div class="span8">
+						<!-- BEGIN SAMPLE TABLE PORTLET-->
+						<div class="portlet box purple">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-comments"></i></div>
+							</div>
+							<div class="portlet-body">
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<% for(i in data){%>
+											<%if(data[i]['norms_name']){%>
+											<th class="norms_th_value"><%=data[i]['norms_name']%></th>
+											<%}%>
+										    <%}%>
+											<th>价格</th>
+											<th>数量</th>
+											<th>商品编码</th>
+										</tr>
+									</thead>
+									<tbody id='add-norms-group'>
+										
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- END SAMPLE TABLE PORTLET-->
+					</div>
+              </div>
+					<!--商品规格组个结束-->
+					<%}%>
+			         </script>

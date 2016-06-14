@@ -1,0 +1,66 @@
+<extend name="Common:base" />
+<block name="css">
+<link type="text/css" rel="stylesheet"
+    href="__CSS__/App/home/login-page.css">
+<link type="text/css" rel="stylesheet"
+    href="__CSS__/App/home/find-page.css">
+<link type="text/css" rel="stylesheet"
+    href="__CSS__/App/home/find-phone.css">
+</block>
+<block name="top">
+    <include file="Common:login_top" />
+</block>
+<block name="bottom">
+    <include file="Common:login_bottom" />
+</block>
+
+<block name="content">
+<div id="content">
+    <div class="hd">
+        <h2 class="loginSprite">找回密码</h2>
+       <div class="sersafe-steps">
+                    <ol>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite step-new">
+                                <i>1、</i>
+                                <span>填写账户名</span>
+                            </div>
+                        </li>
+                        <li class="active">
+                            <s class="bg"></s>
+                            <div class="step step-sprite sprite-bg sprite-new">
+                                <i>2、</i>
+                                <span>验证身份</span>
+                            </div>
+                        </li>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite sprite-bg">
+                                <i>3、</i>
+                                <span>设置新密码</span>
+                            </div>
+                        </li>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite">
+                                <i>4、</i>
+                                <span>完成</span>
+                            </div>
+                        </li>
+                        <div class="clearfix"></div>
+                    </ol>
+                </div>
+                </div>
+                <div class="find-text">
+                    <p class="email-suc-box">已发送邮件至:{$email}</p>
+                    <a target = '_blank'  href = '{$goEmail}'><button class="btn2 btn-dd">登录邮箱</button></a>
+                </div>
+    
+  </div>
+</block>
+<block name="js"> <script type="text/javascript">
+    seajs.use('controller/passportController', function(passport) {
+        passport.findPassport.passwordWay();
+    });
+</script> </block>

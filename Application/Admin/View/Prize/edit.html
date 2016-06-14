@@ -1,0 +1,137 @@
+<extend name="Common:base" />
+<block name="content">
+	<div class="row-fluid">
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption">
+					<empty name="info.as_id">添加<else/>编辑</empty>奖品</div>
+			</div>
+			<div class="portlet-body form">
+				<form autocomplete="off" id="form1" action="{:U('prize/update')}" method="post" class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label">奖品名称<span class="required">*</span></label>
+						<div class="controls">
+							<input type="text" name="as_name" class="m-wrap" value="{$info.as_name}" />
+							<input type="hidden" name="model" class="m-wrap" value="prize" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">有效期<span class="required">*</span></label>
+						<div class="controls">
+							<div class="input-append date form_datetime">
+								<input name="as_start_time" type="text" id="start_time" class="span9 end_time m-wrap m-ctrl-medium" size="20" type="text" value="<empty name='info.as_start_time'>{:date('Y-m-d H:i:s')}<else/>{$info.as_start_time|date='Y-m-d H:i:s',###}</empty>" readonly>
+								<span class="add-on"><i data-time-icon="icon-calendar" data-date-icon="icon-calendar"></i></span>
+							</div>
+							至
+							<div class="input-append date end_datetime">
+								<input name="as_end_time" type="text" id="end_time" class="span9 end_time m-wrap m-ctrl-medium" readonly="" size="20" value="<notempty name='info.as_end_time'>{$info.as_end_time|date='Y-m-d H:i:s',###}</notempty>">
+								<span class="add-on"><i data-time-icon="icon-calendar" data-date-icon="icon-calendar"></i></span>
+							</div>
+							<input type="hidden" name="sel_time">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">奖品类型<span class="required">*</span></label>
+						<div class="controls">
+							<select class="m-wrap" name="as_type" id="select-prize-type">
+								<option value="0">请选择</option>
+								<volist name="category" id="vo">
+									<option value="{$key}" <eq name="info.as_type" value="$key">selected</eq>>{$vo.name}</option>
+								</volist>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-group" id="prize-item-show">
+						<notempty name="info.as_id">
+							<label class="control-label">奖品</label>
+							<div class="controls">
+							<eq name="info.as_type" value="1">
+								<select class="m-wrap" name="as_coupon_id">
+									<option value="0">请选择赠品</option>
+									<option value="1">测试</option>
+								</select>
+							</eq>
+
+							<eq name="info.as_type" value="2">
+							<eq name="info.as_type" value="2">
+								<select class="m-wrap" name="as_coupon_id" id="as_coupon_id">
+									<option value="0">请选择优惠券</option>
+									<volist name="coupon" id="vo">
+										<option value="{$vo.id}" <eq name="vo.id" value="$info.as_coupon_id">selected</eq>>{$vo.name}</option>
+									</volist>
+								</select>
+								<br />
+								<a href="{:U('coupon/edit')}" target="_blank">添加</a>|<a href="javascript:;" id="refesh_option">刷新</a>
+							</eq>
+							<in name="info.as_type" value="3,4">
+								<input type="text" name="as_hongbao_amount" class="m-wrap" id="as_hongbao_amount" value="{$info.as_hongbao_amount}" >
+								<span style="line-height:30px;"><eq name="info.as_type" value="3">元</eq>
+								<eq name="info.as_type" value="4">分</eq></span>
+							</in>
+							</div>
+						</notempty>
+					</div>
+					<div class="control-group">
+						<label class="control-label">状态</label>
+						<div class="controls">
+							<label class="radio">
+								<input type="radio" name="status" value="1" <empty name="info.id">checked
+								<else/>
+								<eq name="info.status" value="1">checked</eq>
+								</empty>/> 启用
+							</label>
+							<label class="radio">
+								<input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/> 禁用
+							</label>
+						</div>
+					</div>
+
+					<div class="form-actions">
+						<input type="hidden" name="id" value="{$info.as_id}" />
+						<button type="submit" class="btn blue">提交</button>
+						<a class="btn" href="{:U('prize/index')}">返回</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</block>
+<block name="js">
+	<script type="text/html" id="prize_item_tpl">
+		<label class="control-label">奖品</label>
+		<div class="controls">
+		<%if(type == 1){%>
+			<select class="m-wrap" name="as_coupon_id">
+				<option value="0">请选择赠品</option>
+				<option value="1">测试</option>
+			</select>
+		<%}else if(type == 2){%>
+			<select class="m-wrap" name="as_coupon_id" id="as_coupon_id">
+				<option value="0">请选择优惠券</option>
+				<option value="1">测试</option>
+			</select>
+			<br />
+			<a href="<%=addUrl%>" target="_blank">添加</a>|<a href="javascript:;" id="refesh_option">刷新</a>
+		<%}else{%>
+			<input type="text" name="as_hongbao_amount" class="m-wrap" id="as_hongbao_amount" value="" >
+			<br />
+			<span><% if(type == 3){%>元<%}else{%>分<%}%></span>
+		<%}%>
+		</div>
+	</script>
+	<script type="text/html" id="option_tpl">
+		<option value="0">请选择优惠券</option>
+		<%for(var i = 0; i < data.length;i++){%>
+			<option value="<%=data[i]['id']%>"><%=data[i]['name']%></option>
+		<%}%>
+	</script>
+	<script type="text/javascript">
+		seajs.use(['controller/prize/prizeController'], function(main) {
+			main.edit();
+		});
+	</script>
+</block>

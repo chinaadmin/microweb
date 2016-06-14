@@ -1,0 +1,113 @@
+<!--物流发货-->
+<div class="modal hide fade" id="doorModel" tabindex="-1" aria-hidden='true' role="dialog" aria-labelledby="myModalLabel" style="width:1300px;">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        <h4 class="modal-title">上门送货</h4>
+      </div>
+	  <form action="{:U('SendGoods/sendDoor')}" method='post' class="form-horizontal" id='send-doors'>
+      <div class="modal-body">
+		  <div class="logistics-body">
+				<div class="span12" style="margin-left:0px;">
+						<!-- BEGIN CONDENSED TABLE PORTLET-->
+						<div class="portlet box green">
+							<div class="portlet-title">
+								<div class="caption">Condensed Table</div>
+							</div>
+							<div class="portlet-body">
+								<table class="table table-condensed table-hover">
+									<thead>
+										<tr>
+											<th>订单号</th>
+											<th>商品名称</th>
+											<th>收货地址</th>
+											<th class="hidden-480">门店名称</th>
+											<th>配送员</th>
+											<th>联系电话</th>
+											<!-- <th>发货状态说明</th> -->
+										</tr>
+									</thead>
+									<tbody id='door-order'>
+										<script type='text/html' id="add-door">
+										<%if(data){%>
+										  <%for(j in data){%>
+											<tr>
+												<td><%=data[j].order_sn%></td>
+												<td>
+													<div class="order-goods">
+											 		<div class='goods-title'>
+														<%for(x in data[j].rec){%>
+														  <%=data[j]['rec'][x].name%>
+														  <%if(data[j]['rec'][x].norms_value){%>
+														   .<%=data[j]['rec'][x].norms_value%>
+														  <%}%>&nbsp;&nbsp;
+														  <input type='hidden' name="door[<%=data[j].order_id%>][rec][]" value="<%=data[j]['rec'][x].rec_id%>"/>
+														<%}%>
+													</div>
+													<ul class="goods-alt">
+													 <%for(x in data[j].rec){%>
+														 <li>
+															  <%=data[j]['rec'][x].name%>
+															  <%if(data[j]['rec'][x].norms_value){%>
+															   .<%=data[j]['rec'][x].norms_value%>
+															   <%}%>
+														 </li> 
+												    <%}%>
+													</ul>
+													</div>
+												</td>
+												<td><%=data[j].address%></td>
+												<td>
+													<!--门店名称-->
+													<select name="door[<%=data[j].order_id%>][stores]" class='stores-name'>
+														<%if(stores){%>
+														  <%for(i in stores){%>
+															   <%if(data[j].stores_id ==stores[i].stores_id){%>
+															   <option selected="selected" value="<%=stores[i].stores_id%>"><%=stores[i].name%></option>
+															   <%}else{%>
+															   <option value="<%=stores[i].stores_id%>"><%=stores[i].name%></option>
+															   <%}%>
+														  <%}%>
+														<%}%>
+													</select>
+													<!--门店名称-->
+												</td>
+												<td>
+													<!--配送员-->
+													<%if(user[data[j].stores_id]){%>
+													<select name="door[<%=data[j].order_id%>][user]" class='stores-user'>
+													 <option value="">配送员</option>
+													  <%for(k in user[data[j].stores_id]){%>
+												         <option value="<%=user[data[j].stores_id][k].uid%>" data-mobile="<%=user[data[j].stores_id][k].mobile%>"><%=user[data[j].stores_id][k].username%></option>
+													  <%}%>
+													 </select>
+													<%}%>
+													<!--配送员-->
+												</td>
+												<td><input type='text' class='user-mobile' name='door[<%=data[j].order_id%>][mobile]' value=''/></td>
+												<!-- <td class='for-error'></td> -->
+											</tr>
+											<%}%>
+										<%}%>
+										</script>
+									</tbody>
+
+								</table>
+							</div>
+						</div>
+						<!-- END CONDENSED TABLE PORTLET-->
+					</div>	 
+					 
+		  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary do-send-door">确认发货</button>
+		<button type="button" class="btn btn-primary d-send-print-sales">发货并打印发货单</button>
+		<!--<button type="button" class="btn btn-primary">发货并打印快递单</button>-->
+		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="not-ie">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="NIM- Responsive One Page Creative Template" />
+    <meta name="keywords" content=""/>
+    <meta name="author" content="Metrothenes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{$seo_title}</title>
+    <meta name="keywords" content="{$seo_keyword}" />
+    <meta name="description" content="{$seo_description}" />
+
+    <link rel="stylesheet" media="screen" href="__PUBLIC__/mobile/css/bootstrap.min.css"/>
+    <block name="css"></block>
+
+    <load href='__JS__/Lib/seajs/2.3.0/sea.js' />
+    <load href="__JS__/Lib/seajs/2.3.0/seajs-css.js"/>
+    <script type="text/javascript">
+        window.JTCONFIG = {
+            //上传中心url
+            jtUpload : '{$url_upload}',
+            urlGroup : '{$url_group}',
+            urlModule : '{$url_model}',
+            urlAction : '{$url_action}',
+            urlDepr : '{:C('URL_PATHINFO_DEPR')}',
+            urlHtmlSuffix : '{:C('URL_HTML_SUFFIX')}'
+        };
+        window.home = {};
+        //全局变量
+        window.requireJs = [];
+        window.UEDITOR_HOME_URL= "__JS__/Pulgins/ueditor/1.4.3/";
+        //seajs config
+        seajs.config({
+            base: '__JS__/App/home/',
+            debug: true,
+            charset: 'utf-8',
+            alias: {
+                'json2': '__JS__/App/base/json2.js',
+                'ecma5': '__JS__/App/base/ecma5.js',
+                'common': '__JS__/App/base/common.1.2.0.js',
+                'jquery': '__JS__/Lib/jquery/1.9.1/jquery-1.9.1.min.js',
+                'jquery_validate': '__JS__/Pulgins/jquery-validate/1.11/jquery.validate.min.js',
+                'respond':'__JS__/Pulgins/respond/respond.js',
+                'artDialog': '__JS__/Pulgins/artDialog/src/dialog.js',
+                'template': '__JS__/Pulgins/artTemplate/3.0/template.js',
+                'fancyapps':'__JS__/Pulgins/fancyapps/2.1.5/source/jquery.fancybox.js',
+                "plupload":"__JS__/Pulgins/plupload/2.1.2/js/plupload.full.min.js",
+                "tool":"__JS__/App/admin/model/tool.js"
+            },
+            paths: {
+                'model' : '__JS__/App/home/model',
+                'base' : '__JS__/App/base',
+                'pulgins' : '__JS__/Pulgins',
+                'ueditorPath':"__JS__/Pulgins/ueditor/1.4.3",
+            },
+            // 变量配置
+            vars: {},
+            // 映射配置
+            map: [
+                [/^(.*\/Public\/Js\/App\/.*\.(?:css|js))(?:.*)$/i, '$1?'+{$style_version}]
+            ],
+            plugins: [],
+            preload: [
+                //ie<8
+                this.JSON ? '' : 'json2',
+                //ie<9
+                Function.prototype.bind ? '' : 'ecma5',
+                //ie8 support
+                Function.prototype.bind ? '' : 'respond',
+                '/Public/Js/App/base/base.js'
+            ]
+        });
+    </script>
+</head>
+<body>
+    <block name="content"></block>
+    <block name="js"></block>
+</body>
+</html>

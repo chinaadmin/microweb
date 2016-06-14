@@ -1,0 +1,159 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/App/home/list-page.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/App/home/class-page.css"/>
+</block>
+<block name="nav">
+    <include file="Common:welt_nav" />
+</block>
+<block name="content">
+    <div class="main">
+        <!-- 左边产品说明 --><!-- 左边分类 -->
+        <div id="wrapper-250">
+            <ul class="accordion">
+                <volist name="cats" id="vo">
+                    <li class="files">
+                        <if condition="($cat_id==$vo['cat_id'])OR(in_array($cat_id,array_column($vo['child'],'cat_id')))">
+                            <i class="sort_bg active {$vo.icon}"></i>
+                            <a href="{:U('List/goodsLists',array('catId'=>$vo['cat_id'],'type'=>$catType))}" class="active">{$vo.name}</a>
+                            <else/>
+                            <i class="sort_bg {$vo.icon}"></i>
+							<a href="{:U('List/goodsLists',array('catId'=>$vo['cat_id'],'type'=>$catType))}">{$vo.name}</a>
+                        </if>
+                        <notempty name="vo.child">
+                            <ul class="sub-menu" <eq name = 'vo.selected' value = '1'>style = 'display:block;'</eq>>
+                                <volist name="vo.child" id="v">
+                                    <li>
+                                        <a <eq name='cat_id' value='$v.cat_id'><assign name="selectOne" value="1" /> style="color:red;"</eq> href="{:U('List/goodsLists',array('catId'=>$v['cat_id'],'type'=>$catType))}">
+                                            {$v.name}
+                                        </a>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </notempty>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+        <div id="plist">
+            <div class="plist_title">
+            		<a href="{:U('List/goodsLists',array('catId'=>$cat_id,'feat'=>$_GET['feat'],type=>$catType))}">
+                        <div class="price_btn <notempty name='Think.get.time'>sale_asc</notempty>" style="background-size:0 15px;">
+                            默认
+                        </div>
+                    </a>
+                <empty name="Think.get.totalsales">
+                    <a href="{:U('goodsLists',array('totalsales'=>'desc','catId'=>$cat_id,type=>$catType))}">
+                        <div class="price_btn" style="background-image:none;">
+                            销量
+                        </div>
+                    </a>
+                    <else/>
+                    <eq name="Think.get.totalsales" value="desc">
+                        <a href="{:U('goodsLists',array('totalsales'=>'asc','catId'=>$cat_id,type=>$catType))}">
+                            <div class="price_btn sale_asc">
+                                销量
+                            </div>
+                        </a>
+                    </eq>
+                    <eq name="Think.get.totalsales" value="asc">
+                        <a href="{:U('goodsLists',array('totalsales'=>'desc','catId'=>$cat_id,type=>$catType))}">
+                            <div class="price_btn sale_bg">
+                                销量
+                            </div>
+                        </a>
+                    </eq>
+                </empty>
+                <empty name="Think.get.price">
+                    <a href="{:U('goodsLists',array('price'=>'desc','catId'=>$cat_id,type=>$catType))}">
+                        <div class="price_btn price-btn" style="background-image:none;">
+                            价格
+                        </div>
+                    </a>
+                    <else/>
+                    <eq name="Think.get.price" value="desc">
+                        <a href="{:U('goodsLists',array('price'=>'asc','catId'=>$cat_id,type=>$catType))}">
+                            <div class="price_btn sale_asc price-btn">
+                                价格
+                            </div>
+                        </a>
+                    </eq>
+                    <eq name="Think.get.price" value="asc">
+                        <a href="{:U('goodsLists',array('price'=>'desc','catId'=>$cat_id,type=>$catType))}">
+                            <div class="price_btn sale_bg price-btn">
+                                价格
+                            </div>
+                        </a>
+                    </eq>
+                </empty>
+                <empty name="Think.get.winsdate">
+                    <a href="{:U('goodsLists',array('winsdate'=>'desc','catId'=>$cat_id,type=>$catType))}">
+                        <div class="price_btn" style="background-image:none;">
+                            上架时间
+                        </div>
+                    </a>
+                    <else/>
+                    <eq name="Think.get.winsdate" value="desc">
+                        <a href="{:U('goodsLists',array('winsdate'=>'asc','catId'=>$cat_id,type=>$catType))}">
+                            <div class="price_btn sale_asc" style="background-position:78px 8px;">
+                                上架时间
+                            </div>
+                        </a>
+                    </eq>
+                    <eq name="Think.get.winsdate" value="asc">
+                        <a href="{:U('goodsLists',array('winsdate'=>'desc','catId'=>$cat_id,type=>$catType))}">
+                            <div class="price_btn sale_bg" style="background-position:78px 14px;">
+                                上架时间
+                            </div>
+                        </a>
+                    </eq>
+                </empty>
+            </div>
+            <ul id="plist_pro">
+                <volist name="lists" id="vo">
+                    <li>
+                        <div class="lh_wrap">
+                            <div class="p-img">
+                                <a href="{:U('detail/index',array('catId'=>$cat_id,'id'=>$vo['goods_id']))}"><img alt="{$vo.name}" src="{$vo.thumb}" title="{$vo.name}" width="220px" height="220px"></a>
+                            </div>
+                            <div class="p-name">
+                                <a href="{:U('detail/index',array('catId'=>$cat_id,'id'=>$vo['goods_id']))}">{$vo.name}</a>
+                            </div>
+                            <div class="extra">
+                                <a href="{:U('detail/index',array('catId'=>$cat_id,'id'=>$vo['goods_id']))}"><span>￥</span>{$vo.price}</a>
+                                <gt name="vo.old_price" value='0'>
+                                    <i>￥{$vo.old_price}</i>
+                                </gt>
+                            </div>
+                            <!--      <div class="btns">
+                            <a href="javascript:;" class="add_cart_large btnCart">加入购物车</a>
+                            <a href="{:U('detail/index',array('id'=>$vo['goods_id']))}" class="add_cart_large btnCart">查看详情</a>
+                            </div> -->
+                        </div>
+                    </li>
+                </volist>
+                <div class="clearfix">
+                </div>
+            </ul>
+            <div class="page_num">
+                <gt name="totalPages" value="1">
+                    {$_page}
+                </gt>
+                <div style="clear:both;">
+                </div>
+            </div>
+        </div>
+        <div id="flyItem" class="fly_item">
+            <img src="__IMG__/home/item-pic.jpg" width="40" height="40">
+        </div>
+    </div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        //本页变量
+        var selectOne = '{$selectOne}' || '';//是否有选中的子分类
+        seajs.use(['controller/searchController'], function(index){
+            
+        });
+    </script>
+</block>

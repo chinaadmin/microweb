@@ -1,0 +1,51 @@
+<table class="table lists-table table-advance table-hover">
+    <thead>
+        <tr>
+            <th width="15%">用户名</th>
+            <th width="15%">参与时间</th>
+            <th width="">活动名称</th>
+            <th width="20%">奖品</th>
+            <th width="15%">领取状态</th>
+            <th width="15%">发货状态</th>
+            <th width="10%">收货人信息</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    	<empty  name="lists">
+    		<tr>
+    			<td colspan="9" style="text-align:center;">暂无搜索数据</td>
+    		</tr>
+        <else/>
+		    <volist name="lists" id='vo'>
+				<tr>
+					<td>{$vo.username}</td>
+					<td>{$vo.ar_draw_time|date="Y-m-d H:i", ###}</td>
+                    <td>{$vo.awardplanname}</td>
+					<td>{$vo.as_name}</td>
+					<td>
+						<if condition="$vo.as_type eq 2">
+							<if condition="$vo.use_time gt 0">已使用<else /><span style='color:red'>未使用</span></if>
+						<else />
+							<if condition="$vo.ar_is_reveive neq 0">已领取<else /><span style='color:red;'>未领取</span></if>
+						</if>
+					</td>
+                    <if condition="$vo.as_type eq 1">
+					   <td><if condition="$vo.ar_is_send neq 0">已发货<else /><span style='color:red;'>未发货</span></if></td>
+					   <td>
+						  <a type="button" class="btn <notempty name = 'vo.localtion'> blue <else/>disabled</notempty>" data-toggle="tooltip" data-placement="top" <notempty name="vo.localtion">title="{$vo.localtion}{$vo.address}&nbsp;&nbsp;&nbsp;&nbsp;{$vo.awardreceiptname}&nbsp;&nbsp;&nbsp;&nbsp;{$vo.tel}&nbsp;&nbsp;&nbsp;&nbsp;{$vo.awardreceiptmobile}"<else />title=""</notempty>>详情</a>
+					   </td>
+					   <td>
+						  <a class = "btn <notempty name = 'vo.ar_is_send' > green print_express_bill<else/>disabled</notempty>"  target="_blank">打印快递单</a>
+						<notempty name = 'vo.ar_is_send' > <div class = "print-hidden" style="display:none;">{$__this__->getExpressBill($vo['ar_id'])}</div></notempty>
+					   </td>
+                    <else />
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </if>
+				</tr>
+			</volist>
+		</empty>
+    </tbody>
+</table>

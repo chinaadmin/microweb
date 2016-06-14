@@ -1,0 +1,78 @@
+<extend name="Common:base"/>
+<block name="css">
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/home-page.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/list-page.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/brand-page.css" />
+</block>
+<block name="nav"><include file="Common:welt_nav" /></block>
+<block name="content">
+	<!-- 商品展示位 -->
+  
+    <div class="show_box">
+      <empty name="brand.desc">
+        <else/>   
+        <div style="padding:16px;">{$brand.desc}</div>
+      </empty>
+
+    </div>
+
+   <!-- 产品列表 -->
+  <div id="sort_box">
+   <div  id="plist" class="sort_list">
+      <ul>
+      <!-- 	<volist name='lists' id="vo">
+        <li>
+          <a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}">
+            <img src="{$vo.thumb}" width="300" height="300">
+          </a>
+          <a href="detail-page.html">
+            <div class="sort_description">
+              <p class="sort_title">{$vo.name}</p>
+              <p>￥<span>{$vo.price}</span></p>
+			  <notempty name="vo.old_price">
+              <p>原价:<i>000</i></p>
+			  </notempty>
+			  </div>
+              <div class="buy_box">
+              <p><span class="buy_num">{$vo.sales|default=0}</span>人已购买</p>
+              <p class="buy_card"><a class="buy_btn btnCart add_cart_large" href="javascript:;">查看详情</a></p>
+            </div>
+            </a>
+            <div class="new_pro">最新品牌
+            </div>
+          </li>
+		 </volist> -->
+		  <volist name='lists' id="vo">
+	         <li>
+                     <a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}">
+                        <img src="{$vo.thumb}" width="298"height="300" class="list-img">
+                    </a>
+                    <div class="sort_description">
+                      <p class="sort_title"> <a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}">{$vo.name}</a></p>
+                      <p class="price_box">
+                          <span><i>￥</i>{$vo.price}</span>
+                          <gt name="vo.old_price" value="0"><i class="old_price">￥{$vo.old_price}</i></gt>
+                          <span class="sale_volume">销量&nbsp;:&nbsp;{$vo.sales|default=0}</span>
+                      </p>
+                      <!--  <img src="__IMG__/home/home_03.png"> -->
+                    </div>
+                </li>
+			</volist>	
+		</ul>
+      <div style="clear:both"></div>
+	   <div class="page_num">
+            <gt name="totalPages" value="1">
+                {$_page}
+            </gt>
+            <div style="clear:both;">
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+	 seajs.use(['controller/searchController'],function(index){
+       
+        });
+	</script>
+</block>

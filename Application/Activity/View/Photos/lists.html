@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>试一口，找真爱</title>
+    <link rel="stylesheet" href="__CSS__/wxapp.css?r={:time()}" charset="utf-8">
+    <script src="__ROOT__/Public/Activity/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="__ROOT__/Public/Activity/bower_components/angular-ui-router/release/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
+    
+
+    <script src="__JS__/teContronller.js?r={:time()}" type="text/javascript" charset="utf-8" ></script>
+    <script src="__JS__/teServices.js?r={:time()}" type="text/javascript" charset="utf-8" ></script>
+    <script src="__JS__/application.js?r={:time()}" type="text/javascript" charset="utf-8" ></script>
+    <script type="text/javascript">
+      var imagePath = "__IMG__/";
+    </script>
+
+  </head>
+  
+  <body ng-app="tryEat" ng-controller="indexControllers">
+      <div class="navTop">
+              <a href="http://www.bihaohuo.cn/" class="homeBtn"></a>
+              <div class="logo" style="background-image: url(__IMG__/logo.png);">
+                <input type="text"  ng-enter="search()" ng-model="input.keyword" placeholder="手机号/照片编号">
+              </div>
+              <a class="searchBtn">                
+                <img src="__IMG__/search.png" alt="" ng-click="showInput()">
+              </a>
+            </div>
+      <div class="view">            
+            <div class="listBox">
+              <div class="xwrap">
+                  <div class="item imghide"><img src="__IMG__/onepix.png" id="onepix"></div>
+                  <div class="item imghide"><img src="__IMG__/onepix.png"></div>
+
+
+                <div class="item" ng-repeat="(key, value) in images">
+                  <div class="wrap">
+                    <a href="./detail.html#pid={{value.photo_id}}&{{query}}">                      
+                      <img ng-src="{{value.photo}}" alt="" class="u">
+                    </a>                    
+                  <div class="bar flex">
+                    <div class="flexOne info">
+                    <p >照片描述：</p>
+                    <p class="desc"><span ng-bind="value.title"></span></p>
+                    <p ng-bind="value.nick"></p>
+                    </div>
+                    <a class="btn" data-id="{{value.photo_id}}" ng-click="value.checked='1';vote(key)">
+                      <img ng-src="{{value.checked=='1'?'__IMG__/like-g.png':'__IMG__/like-h.png'}}" alt="">
+                        <span ng-bind="value.vote_num"></span>
+                    <i class="clear"></i>
+                    </a>
+                  </div>
+                  </div>
+                </div>
+              <div class="clear"></div>
+              </div>
+
+              <div class="themore {{isLastPage?'hide':''}}">
+                <p ng-click="more()"><span>··· 点击显示更多 ···</span></p>
+              </div>
+
+
+            </div>
+      </div>
+      <div class="navBox">
+        <a class="btn vpdate" ng-click="vpdate()">我也要上传照片</a>
+      </div>
+      <div class="msgBox {{msgPopup.hide?'hide':'show'}}">
+        <div class="tips"><span ng-bind="msgPopup.msg"></span></div>
+      </div>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<extend name="Common:base" />
+<block name="content">
+<style>
+							     @media screen{
+        								.moveCard {
+        							         border: 1px red solid;
+        								}
+							      }
+</style>
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.uid">添加<else/>编辑</empty>快递单</div>
+        </div>
+        <div class="portlet-body form">
+            <form autocomplete = "off" id="adit_add" action="{:U('update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">模板名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="et_name" class="m-wrap" value="{$info.et_name}"/>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">快递公司名称<span class="required">*</span></label>
+                <div class="controls">
+                <select name="et_company_id" class="m-wrap js-cat select-query span2">
+                    <option value="">选择快递公司</option>
+                    <volist name = 'logistics_company_list' id = 'vo_logistics_company_list'>
+                        <option <eq name = 'info.et_company_id'  value = '$vo_logistics_company_list.lc_id'>selected</eq> value="{$vo_logistics_company_list.lc_id}">{$vo_logistics_company_list.lc_name}</option>
+                    </volist>
+                </select>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">背景图<span class="required">*</span></label>
+                <div class="controls">
+                    <MyTag:plupload type="one"  name = 'et_background_pic' attachment="info.et_background_pic" thumb="true"/>
+                </div>
+            </div>
+    
+            <div class="control-group">
+                <label class="control-label">模板尺寸</label>
+                <div class="controls"  style='line-height: 34px;'>
+                    宽:&nbsp;<input  type="text" name="et_width" class="m-wrap popovers span1" value="{$info.et_width|default = '230'}" />&nbsp;mm,高度:&nbsp;
+                    <input  type="text" name="et_height" class="m-wrap popovers span1" value="{$info.et_height|default = '127'}" />mm&nbsp;&nbsp;默认 230mm x 127mm 也可自定义 
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">标签</label>
+                <div class="controls" id = 'labelGroup'>
+                    <volist name = 'labelList' id = 'vo_label'>
+                        <div class="checkbox">
+                                <label> 
+                                    <!-- <input <eq name = 'vo_label.checked' value = '1'>checked</eq> type="checkbox"  class = '{$vo_label.el_code}'  data-ident = 'vo_label_{$vo_label.el_id}'  data-label = "<literal>{$</literal>{$vo_label.el_code}<literal>}</literal>"> 
+                                       {$vo_label.el_name} -->
+                                   <input <eq name = 'vo_label.checked' value = '1'>checked</eq> type="checkbox"  class = '{$vo_label.el_code}'  data-ident = 'vo_label_{$vo_label.el_id}'  data-label = "{$vo_label.el_name}"> 
+                                   {$vo_label.el_name}
+                                   <input type ='hidden' name = 'label_position[]'  class = 'vo_label_{$vo_label.el_id}'  data-id = "{$vo_label.el_id}" value = '{$vo_label["position_str"]}'/>
+                                </label>
+                         </div> 
+                     </volist>  
+                     <div class="text-danger">注：选择标后需拖动标签才能保存成功！</div>  
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">内容</label>
+                <div class="controls"  id = 'myHtml'>
+                     <!-- <div id = 'content' >
+                        <img src = "{$info['et_background_pic'][0]['path']}" style = "width:{$info['et_width']}mm;height:{$info['et_height']}mm;"/>
+                    </div> -->
+						<div id = 'content'  class = "content" style = 'width: 230mm; height: 127mm; display: inline-block;'>
+							<style>
+								.moveCard {
+									display: inline-block;
+									position: absolute;
+									padding: 0;
+								}
+                                    								
+								.moveCard span {
+									margin-left: 5px;
+									cursor: pointer;
+								}
+								
+							     .content {
+                                    position: relative
+                                }
+								
+					             @media print{
+                                    .content img {
+                                        display:none; 
+                                    } 
+                                    .hidden-print{
+                                        display:none;
+                                    }
+                                    @page {
+                                         margin: 0;
+                                         padding:0;
+                                    }
+                                }
+							
+							</style>
+	                        <span id ='labelContainer'>
+	                        </span>
+	                        <img src = '{$info.et_background_pic.0.path}'  style = "width:{$info['et_width']}mm;height:{$info['et_height']}mm;"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">打印偏移量X(横向)</label>
+                <div class="controls">
+                    <input type="text" class="m-wrap popovers printOffestX" value="{$info.et_print_offset_x}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">打印偏移量Y(纵向)</label>
+                <div class="controls">
+                    <input type="text" class="m-wrap popovers printOffestY" value="{$info.et_print_offset_y}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">备注</label>
+                <div class="controls">
+                    <textarea rows="" cols="" name = 'et_remark'>{$info.et_remark}</textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="et_id" value="{$info.et_id}"/>
+                <input type = 'hidden' name = 'et_content_html' value = ''/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+	    seajs.use(['controller/ExpressTemplate/ExpressTemplateController'],function(main){
+	        main.edit_add();
+	    });
+    </script>
+</block>

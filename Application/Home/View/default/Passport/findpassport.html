@@ -1,0 +1,70 @@
+<extend name="Common:base" />
+<block name="css">
+<link type="text/css" rel="stylesheet"
+    href="__CSS__/App/home/login-page.css">
+<link type="text/css" rel="stylesheet"
+    href="__CSS__/App/home/find-page.css">
+</block>
+
+<block name="top">
+    <include file="Common:login_top" />
+</block>
+<block name="bottom">
+    <include file="Common:login_bottom" />
+</block>
+
+
+<block name="content">
+<div id="content">
+    <div class="hd">
+        <h2 class="loginSprite">找回密码</h2>
+       <div class="sersafe-steps">
+                    <ol>
+                        <li class="active">
+                            <s class="bg"></s>
+                            <div class="step step-sprite">
+                                <i>1、</i>
+                                <span>填写账户名</span>
+                            </div>
+                        </li>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite sprite-bg">
+                                <i>2、</i>
+                                <span>验证身份</span>
+                            </div>
+                        </li>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite sprite-bg">
+                                <i>3、</i>
+                                <span>设置新密码</span>
+                            </div>
+                        </li>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite">
+                                <i>4、</i>
+                                <span>完成</span>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                </div>
+     <div class="login_box">
+    
+    <form id="signupForm" method="post" action="{:U('doFindPassport')}">
+     
+      <p class="user"><span class="in_bg"></span><input class="stext" type='text' name="userName"  value="" placeholder="已验证手机/邮箱/用户名" /></p>
+      
+      <p class="user"><span class="in_bg pss_bg"></span><input class="code" type="text" name="verify"   value="" placeholder="请输入验证码"/><img src="{:U('backpasswordVerify')}" id="code_img"><a id='changeCode' href="javascript:void(0);">换一张</a><br/></p>
+       <button type="submit" class="find-login">确定</button>
+    </form>    
+  </div>
+  </div>
+</block>
+<block name="js"> <script type="text/javascript">
+    seajs.use('controller/passportController', function(passport) {
+    	passport.findPassport.accountPage();
+    });
+</script> </block>

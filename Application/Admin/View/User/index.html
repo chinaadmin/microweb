@@ -1,0 +1,320 @@
+<extend name="Common:base" />
+<block name="content">
+  <load href="__CSS__/App/admin/order/order.css"/>
+<style>
+	.leftMenu {
+		float: left;
+		width: 12%;
+		margin-right: 1%
+	}
+	
+	.leftMenu ul {
+		margin: 0;
+	}
+	
+	.leftMenu ul li {
+		padding-left: 5px;
+		height: 45px;
+		line-height: 45px;
+		margin: 1px;
+		background-color: white;
+	}
+	.leftMenu .active {
+	   background-color: rgb(211, 231, 243);
+	}
+	.leftMenu ul span {
+		background-color: rgb(129, 178, 207);
+		float: right;
+		margin-right: 5%;
+		padding: 0px 5px;
+		height: 35px;
+		line-height: 35px;
+		margin-top: 5px;
+		color:white
+	}
+	.leftMenuBody{
+	   display:inline-block;
+	   width:87%
+	}
+</style>
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">用户列表</div>
+        </div>
+        <div class="portlet-body">
+          <div class="leftMenu" <eq name = 'url_action'  value = 'user_blacklist'> style = 'display:none;'</eq> >
+                <ul>
+                <li><a href = '{:U("index")}'>所有会员分组</a></li>
+                <volist name = 'groupList'  id = 'groupListVo'>
+                     <li <eq name = 'Think.get.groupId' value = '$groupListVo["id"]'>class = "active"</eq> >&nbsp;&nbsp;<a href="{:U('index',['groupId' => $groupListVo['id']])}">{$groupListVo.name}</a><span>{$groupListVo.count}</span></li>
+                </volist>
+                </ul>
+        </div>
+        <div class = 'leftMenuBody' <eq name = 'url_action'  value = 'user_blacklist'> style = 'width:100%;'</eq>>
+            <div class="clearfix">
+            <neq name = 'url_action'  value = 'user_blacklist'>
+                <div class="btn-group">
+                    <MyTag:rule name="Coupon/issuing">
+                        <a class="btn green js-issuing-coupons">发放优惠<i class="icon-money"></i></a>
+                    </MyTag:rule>
+                </div>
+                <div class="btn-group">
+                    <MyTag:rule name="User/addBlackList">
+                    <a class="btn green js-addBlackList" href="javascript:void(0);">
+                        加入门店黑名单
+                    </a>
+                    </MyTag:rule>
+                </div>
+                <div class="btn-group">
+                    <MyTag:rule name="User/edit">
+                    <a class="btn green" href="{:U('User/edit')}">
+                        添加用户 <i class="icon-plus"></i>
+                    </a>
+                    </MyTag:rule>
+                </div>
+                <div class = 'btn-group'>
+                	<button class = 'btn green'   id = 'addGroup'  <notempty name = 'Think.get.groupId' value = 'groupId'>disabled</notempty> >加入会员分组</button>
+                </div>
+                <div class = 'btn-group'>
+                	<button class = 'btn green'   id = 'removeUser'  <notempty name = 'Think.get.groupId' value = 'groupId'><else/>disabled</notempty> >移出分组</button>
+                </div>
+               <!--  <div class="btn-group">
+                    <MyTag:rule name="User/allExport">
+                     <button class="btn green user-allExport" url="{:U('User/allExport')}">导出当前全部会员</button>
+                    </MyTag:rule>
+                </div> -->
+				<div class="btn-group">
+						<button class="btn dropdown-toggle green" data-toggle="dropdown">
+							其它操作<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a url = "{:U('remakInside',['type' =>1])}" class = "remakInside">标记为内部员工</a></li>
+							<li><a url = "{:U('remakInside',['type' =>-1])}" class = "remakInside">标记为非内部员工</a></li>
+						</ul>
+					</div>
+
+					<else/>
+                    <div class = 'btn-group'>
+                        <a class="btn green remove" url="{:U('User/removeBlackList')}">
+                        移除
+                    </a>
+                    </div>
+                    <div class = 'btn-group'>
+                        <a class="btn green del" url="{:U('User/del')}">
+                        删除
+                    </a>
+                    </div>
+                </neq>
+				<form class="form-search pull-right"  <notempty name = "from"> action="{:U('user_blacklist')}" <else/>  action="{:U('index')}" </notempty>
+					method="GET" style="margin-right: 20px;">
+					<div class="input-append">
+					   <select name="grade_id" class="m-wrap span4" style = 'margin-right:5px'>
+                                <option value="-1">全部会员</option>
+                             <volist name = 'gradeList' id = 'vo_grade_list'>
+                                <option <eq name = 'vo_grade_list.gid'  value = "$Think.get.grade_id">selected</eq> value="{$vo_grade_list.gid}">{$vo_grade_list.grade_name}</option>
+                             </volist> 
+                        </select>   
+						<input type="text" name="mix_keywords" placeholder="用户名|昵称|手机|邮箱"
+							class="m-wrap" value="{$mix_keywords}">
+						<button type="submit" class="btn green">搜索</button>
+						<input type ='hidden'  name = 'groupId'  value = '{$Think.get.groupId}'/>
+						<input type = 'hidden' name = 'from'  <empty name = "from"> value = '{$Think.get.from}' <else />value = '{$from}'</empty>/>
+					</div>
+				</form>
+			</div>
+			<form id = 'list'>
+            <table class="table table-hover table-condensed" >
+                <thead>
+                    <tr>
+                        <th><input type='checkbox' id='check_all'/></th>
+                        <th>用户名</th>
+                        <th>用户昵称</th>
+                        <th>真实姓名</th>
+						<th>友赞用户</th>
+                        <th>交易额/次数</th>
+                        <th>上次交易时间</th>
+                      <!--   <th>积分</th> -->
+                        <th>账户余额</th>
+
+                        <th>会员等级</th>
+                        <th>积分</th>
+                        <th>成长值</th>
+                        <th>邀请人</th>
+
+                        <th>状态</th>
+                       <th>用户来源</th>
+                        <th>最后一次登入时间</th>
+                       <th>内部员工</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                        <td><input type='checkbox' value="{$vo.uid}" name='uid[]' class='user_check'/></td>
+                        <td style = 'position:relative' class = 'detail'>
+                        	{$vo.username}&nbsp;&nbsp;
+                        	<div style="display: none;" class="span6 goods-info refund-info">
+                                <ul style = "padding-left: 10px; ">
+                                	<li>
+                                		<div><b>所属组：</b>{$vo.group_name|default = '暂无'}</div>
+                                	</li>
+                                	<li>
+                                		<a target = "_blank" href = "{:U('order/index',['uid' => $vo['uid']])}">商品订单详情</a>
+                                		<a target = "_blank" href = "{:U('CrowdfundingOrder/index',['uid' => $vo['uid']])}">众筹订单详情</a>
+                                	</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>{$vo.aliasname}</td>
+                        <td>{$vo.real_name|checkEmpty}</td>
+						<td>
+							<empty name='vo.yzid'>
+								否
+							<else/>
+							是
+							</empty>
+						</td>
+                        <td>{$vo.dealTotalCount}</td>
+                        <td>{$vo.last_buy_time}</td>
+                       <!--  <td>{$vo.integral}</td> -->
+                        <td>{$vo.balance}</td>
+
+                        <td>{$vo.grade_name}</td>
+                        <td>{$vo.credits}</td>
+                        <td>{$vo.growth}</td>
+                        <td>{$vo.inviter}</td>
+
+                        <td>{$vo.status|getStatus}</td>
+                        <td>{$vo.come_from}</td>
+                       <td>{$vo.last_login_time|dateFormat}</td>
+                       <td><eq name = "vo.is_inside_user" value = '1'>是<else/>否</eq></td>
+                        <td style = "min-width:25%">
+                            <MyTag:rule name="AccountLog/userlog">
+                            <a class="btn blue-stripe" href="{:U('AccountLog/userlog',['uid'=>$vo['uid'],'from' => ACTION_NAME])}">账户明细</a>
+                            </MyTag:rule>
+							<MyTag:rule name="User/coupon">
+                            <a class="btn blue-stripe" href="{:U('AccountLog/coupon',['uid'=>$vo['uid']])}" >优惠劵</a>
+                            </MyTag:rule>
+                            <MyTag:rule name="User/userDetail">
+                            <a class="btn blue-stripe" href="{:U('User/userDetail',['uid'=>$vo['uid'],'from' => ACTION_NAME])}" >详情</a>
+                            </MyTag:rule>
+                            <neq name = 'url_action'  value = 'user_blacklist'>
+	                            <MyTag:rule name="User/del">
+	                            <a class="btn red-stripe js-del" url="{:U('User/del',['uid'=>$vo['uid']])}">删除</a>
+	                            </MyTag:rule>
+                            </neq>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+            </form>
+            <div class="row-fluid">
+                <div class="pagination pull-right">
+                    {$_page}
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .bg-grey{
+        background-color: #fff !important;
+        background-image: none !important;
+    }
+    .tile{
+        border: 2px solid #ccc;
+        color: #000;
+    }
+    .tile .tile-body{
+        color: #000;
+    }
+    .tile .tile-body h4,.tile .tile-body h4:hover {
+        color: #000;
+    }
+    .tile .tile-body p,.tile .tile-body p:hover,.tile .tile-body p:active,.tile .tile-body p:hover {
+        color: #000;
+    }
+</style>
+<div id="issuing-coupons-view" class="modal hide" style="width:700px;">
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button"></button>
+        <h3>发放优惠劵</h3>
+    </div>
+    <div class="modal-body">
+        <div><h4>你将为<span class="js-issuing-user-count">0</span>人发放优惠劵</h4></div>
+        <div class="clear"></div>
+        <div id="js-coupon-list"></div>
+        <!--<div class="div_coupon tile double selected bg-grey">
+            <div class="corner"></div>
+            <div class="check"></div>
+            <div class="tile-body">
+                <h4>￥20</h4>
+                <p>20元全场优惠劵</p>
+                <p>订单满200可用</p>
+                <p>2015-07-20 00:00:00-
+                    2015-07-23 23:59:59</p>
+            </div>
+        </div>
+        -->
+    </div>
+    <div class="modal-footer modal-center">
+        <button type="button" class="btn blue js-confirm">确定</button>
+        <button type="button" data-dismiss="modal" class="btn">取消</button>
+    </div>
+</div>
+<div id='chooseGroup' class='modal hide'>
+	<div class='modal-header'>
+		<button data-dismiss="modal" class="close" type="button"></button>
+		<h3>加入会员组</h3>
+	</div>
+	<div class='modal-body'>
+		<form class="form-horizontal" method="post"
+			action="{:U('addGroupHandle')}" id="form_add_group">
+			<div class="control-group">
+				<label class="control-label">请选择会员分组</label>
+				<div class="controls">
+					<select name = 'groupNameList'>
+					<option value = '' selected>请选择会员分组</option>
+						<volist name = 'groupList'  id = 'groupListVo'>
+							<option value="{$groupListVo['id']}">{$groupListVo.name}</option>
+						</volist>
+					</select>
+					<span class = 'help-inline' style = 'color:red;' style = 'display:none;' id = 'help-tip'>请选择会员组</span>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class='modal-footer modal-center'>
+		<button type="button" class="btn blue choose_group_confirm">确定</button>
+		<button type="button" data-dismiss="modal" class="btn">取消</button>
+	</div>
+</div>
+<script id="tpl-coupon-list" type="text/template">
+    <%for(var i=0;i<items.length;i++){
+    var info = items[i];
+    %>
+    <div data-id="<%=info['id']%>" class="div_coupon tile double bg-grey">
+        <div class="corner"></div>
+        <div class="check"></div>
+        <div class="tile-body">
+            <h4>￥<%=info['money']%></h4>
+            <p><%=info['name']%></p>
+            <p><%=info['use']%></p>
+            <p><%=info['start_time']%> -
+                <%=info['end_time']%></p>
+        </div>
+    </div>
+    <%}%>
+</script>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/user/userController'],function(user){
+            user.index();
+        });
+    </script>
+</block>

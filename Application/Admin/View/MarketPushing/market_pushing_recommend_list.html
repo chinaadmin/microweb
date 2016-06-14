@@ -1,0 +1,72 @@
+<extend name="Common:base" />
+<block name="css"><load href="__CSS__/App/admin/order/order.css"/></block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">地推人员列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+            	{$Think.get.name}&nbsp;&nbsp;共邀请了&nbsp;&nbsp;【{$Think.get.count}】位会员 		
+				<form class="form-search pull-right" action="{:U('market_pushing_recommend_list')}" method="GET" style="margin-right:15px;">
+				<div class="pull-left" style="margin-right:3px;">
+					<input type="text" name="keywords" placeholder="会员昵称/姓名/手机/邮箱" class="m-wrap" value="{$keywords|default=''}">
+				</div>
+					<button type="submit" class="btn green" style="margin-right:-13px;">搜索</button>
+					<input type = 'hidden'  name = 'uid' value = '{$Think.get.uid}'/>
+					<input type = 'hidden'  name = 'count' value = '{$Think.get.count}'/>
+					<input type = 'hidden'  name = 'name' value = '{$Think.get.name}'/>
+				</form>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th><input type='checkbox' id='check_all'/></th>
+						<th>客户信息</th>
+                        <th>真实姓名</th>
+                        <th>交易额/次数</th>
+                        <th>注册时间</th>
+                        <th>积分</th>
+						<th>账户余额</th>
+                        <th>注册终端</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<empty  name="lists">
+                		<tr>
+					      <td colspan="8" style="text-align:center;">暂无搜索数据</td>
+					    </tr>
+                	<else/>
+                    <volist name="lists" id="vo">
+	                   <tr>
+	                        <td><input type='checkbox' class='check_one'  value = '{$vo.uid}' name = 'id[]'/></td>
+	                        <td><a href = "{:U('crowdfundingOrder/index',['uid' => $vo['uid']])}" target = "_blank">{$vo.username|toStress}</a>&nbsp;&nbsp;{$vo.type | getTypeText = ###,['qq' => 'QQ用户','wechat' => '微信用户'],'注册会员'}</td>
+	                        <td>{$vo.real_name}</td>
+	                        <td>{$vo.consume_money}/{$vo.pay_count}</td>
+	                        <td>{$vo.add_time|dateFormat}</td>
+	                        <td>{$vo['acount_credits']}</td>
+	                        <td>{$vo['acount_remain']}</td>
+	                        <td>{$vo.come_from|getTypeText = ###,['1' => '微商城','2' => '手机','3' => '电脑']}</td>
+	                    </tr>
+                    </volist>
+					</empty>
+				</tbody>
+            </table>
+           <div class="row-fluid">
+                <div class="pagination pull-right">
+                    <ul>{$_page}</ul>               
+			     </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="ActivityEat/verify"/>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/MarketPushing/controller'],function(main){
+           main.index();
+        });
+    </script>
+</block>

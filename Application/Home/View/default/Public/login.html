@@ -1,0 +1,26 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/login-page.css">
+</block>
+<block name="top"><include file="Common:login_top" /></block>
+<block name="nav"></block>
+<block name="bottom"><include file="Common:login_bottom" /></block>
+<block name="content">
+    <img src="__IMG__/home/login_00.jpg" class="img_box">
+    <div class="login_box">
+        <h2>登录必好货<span>还没有账号？<a href="{:U('Public/reg')}">30秒注册</a></span></h2>
+        <form id="signupForm" method="post" action="">
+            <p class="user"><span class="in_bg"></span><input class="stext" type='text' name="userName" id="userName" value="" placeholder="已验证手机/邮箱/用户名" /></p>
+            <p class="user"><input id="passWord" class="stext" type="password" name="passWord" value="" placeholder="请输入密码" / ></p>
+            <p class="user"><span class="in_bg pss_bg"></span><input class="code" type="text" name="" id="" value="" placeholder="请输入验证码"/><img src="__IMG__/home/login_02.jpg" id="code_img"><a href="">换一张</a></p>
+            <p><input type="checkbox"  ><span>自动登录<a href="find-page.html">忘记密码？</a></span></p>
+            <button type="submit">登录</button>
+            <p>你也可以使用以下账号登录</p>
+            <p class="num_box">
+                <a href="" class="qq" title="QQ"></a>
+                <a href="" class="sina" title="新浪微博"></a>
+                <a href="" class="taobao" title="淘宝"></a>
+            </p>
+        </form>
+    </div>
+</block>

@@ -1,0 +1,57 @@
+ <!--商品关联-->
+ <div class="tab-pane" id="tab_4">
+				  	<div class="control-group">
+                      <div class="controls search-controls">
+								<div class="input-append"> 
+								<label class="control-label search-label">所有分类：</label> 
+								  <select class="m-wrap span4 search-select category_id">
+                                    <option value="0">请选择</option>
+									<volist name="categorys" id="vo">
+										<option value="{$vo.cat_id}">{$vo.fullname}</option>
+									</volist>
+                                  </select> 
+								  <label class="control-label search-label">品牌：</label> 
+								  <select class="m-wrap span3 search-select brand_id">
+                                    <option value="0">请选择</option>
+									<volist name="brands" id="vo">
+                                         <option value="{$vo.brand_id}">{$vo.name}</option>
+                                 </volist>
+                                  </select>                    
+									<input type="text" placeholder="keyword..." class="keyword" size="16" class="m-wrap">
+									<a class="btn blue link-search" type='1'>搜索</a>
+								</div>
+
+                      </div>
+                  </div>
+                  <div class="control-group">
+                      <label class="control-label">
+                          可选商品
+                      </label>
+                      <div class="controls">
+                          <div class="link-select" id="link-select">
+                          	<ul>
+                          		
+                          	</ul>					
+                          </div>
+						  <span class="link" id="link_type">
+						  	<label class="radio">
+                               <input type="radio" value="1" checked name="link_type">单向关联
+                            </label>
+								<label class="radio">
+                               <input type="radio" value="2" name="link_type">双向关联
+                            </label>
+						  </span>
+						   <div class="checked-select" id="checked-select">
+                          	<ul>
+                          		<notempty name='info.link'>
+                          			<volist name="info.link" id="vo">
+                          				<li class="selected">
+                          				<span price="{$vo.price}" ids="{$vo.goods_id}">{$vo.name}&nbsp;&nbsp;（库存：{$vo.stock_number}）</span>
+										<input type="hidden" value="{$vo.price}" name="goods[{$vo.goods_id}]"></li>
+                          			</volist>
+                          		</notempty> 
+                          	</ul>
+                          </div>
+                      </div>
+                  </div>
+                  </div>

@@ -1,0 +1,161 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/safe-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/order-new.css"/>
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/baseinfoExt.css"/>
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/v11/ucenter.css"/>
+</block>
+<block name="content">
+<div id="content">
+    <include file="I/common"/>
+    <div class="data_box noborder">
+    <div class="userbaseExt">
+    <div class="userbaseinfo">
+        <div class="avatar">
+            <img src="__IMG__/home/bieAvatar.png" />
+        </div>
+        <div class="opera">
+            <p class="op c6">
+                <span class="username c3">{$user.uid|showUserName}</span>
+                <a href="{:U('I/baseinfo')}" class="useredit c9">修改个人资料</a>
+                <span class="secure">
+                    <a class="c6">安全:</a>
+                    <a class="c6">
+                        <i class="icon phone"></i>
+                        <eq name = 'if_check_mobile'  value = '1'>手机已验证<else/>手机未验证</eq>
+                    </a>
+                    <a class="c6">
+                        <i class="icon email"></i>
+                        <eq name = 'if_check_email'  value = '1'>邮箱已验证<else/>邮箱未验证</eq>
+                    </a>
+                    <a href="{:U('I/usersafe')}" class="c6 edit">修改</a>
+                </span>
+            </p>
+            <p class="c6">当前等级：注册会员</p>
+        </div>
+    </div>
+    <div class="orderOpera">
+        <p class="center">
+            <a href="{:U('Order/index',['type'=>1])}" class="c3">
+                <i class="icon waitpay"></i>
+                待付款（{$order_to_paid_count}）
+            </a>
+            <a href="{:U('Order/index',['type'=>2])}" class="c3">
+                <i class="icon received"></i>
+                待收货（{$order_inbound_count}）
+            </a>
+            <a href="{:U('refund/index',['status'=>1])}" class="c3">
+                <i class="icon back"></i>
+                退款/退货（{$refund_count}）
+            </a>
+        </p>
+        <p class="odmsg">
+            <i class="icon waitcart"></i>
+            【在线支付】的订单需要您尽快付款，如您在48小时内未完成支付，订单将自动取消。
+            <a href="{:U('Order/index',['type'=>1])}">查看未付款订单</a>
+        </p>
+    </div>
+    <div class="lastOrderBar">
+        <span>近期订单</span>
+    </div>
+    <div class="lastOrderList">
+        <table cellspacing="0" cellpadding="0" border="0" class="table-box">
+            <tbody>
+            <volist name="order_lists" id="order_vo">
+                <tr  class="day_form or-num">
+                    <td colspan="6">
+                        <div class="table-space">
+                            <div class="id-num">订单编号
+                                <span><a href="{:U('Order/view',['id'=>$order_vo['order_sn']])}">{$order_vo['order_sn']}</a></span>
+                            </div>
+                            <div class="date-eva">{$order_vo.add_time|dateFormat}</div>
+                            <div class="order-status">{$order_vo.status_name}</div>
+                        </div>
+                    </td>
+                </tr>
+                <notempty name="order_vo['goods']">
+                    {~$goods_count = count($order_vo['goods'])}
+                    <volist name="order_vo['goods']" id="goods_vo">
+                        {~$j = $i}
+                        <tr>
+                            <td class="sortable-box-ar" width="250">
+                                <div>
+                                    <div class="sort-box-or">
+                                        <img src="{$goods_vo.pic}" width="80px" height="80px"/>
+                                        <p class="d-i"><a href="{:U('detail/index',['id'=>$goods_vo['goods_id']])}" target="_blank">{$goods_vo.name}</a></p>
+                                        <p class="colorY">￥ {$goods_vo.goods_price}</p>
+                                        <p>数量: {$goods_vo.number}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="140" class="va-top colorGrey9 textLeft">
+
+                                <notempty name="goods_vo.norms_value">
+                                    <volist name='goods_vo.norms_value' id='norms'>
+                                        <p>{$norms.name}: {$norms.value}</p>
+                                    </volist>
+                                </notempty>
+                            </td>
+                            <td width="140" class="va-top center">
+                                <notempty name="order_vo['btn_returns']">
+                                    <empty name="goods_vo['refund_status']">
+                                        <a href="{:U('Refund/refund',array('recId'=>$goods_vo['rec_id']))}">退款/退货</a>
+                                        <else/>
+                                        <a href="{:U('Refund/info',array('refund_id'=>$goods_vo['refund_id']))}">
+                                            <switch name="goods_vo['refund_real_status']">
+                                                <case value="3">查看退款/退货</case>
+                                                <case value="-1|4">退款失败</case>
+                                                <default />退款中
+                                            </switch>
+                                        </a>
+                                    </empty>
+                                </notempty>
+                                <!--{$order_vo.status_name}-->
+                            </td>
+                            <eq name="j" value="1">
+                                <td class="pay-box-table" <neq name="goods_count" value="1">rowspan="{$goods_count}"</neq>>
+                                <p>￥{$order_vo.order_amount}</p>
+                                <notempty name="order_vo['btn_pay']">
+                                    <a href="{:U('Order/gopay',['id'=>$order_vo['order_id']])}" target="_blank" class="pay-back pay-back-1 pay-go">立即支付</a>
+                                </notempty>
+
+                                <notempty name="order_vo['btn_receipt']">
+                                    <a class="pay-back js-receipt" data-url="{:U('Order/receipt',['id'=>$order_vo['order_id']])}">确认收货</a>
+                                </notempty>
+
+                                <notempty name="order_vo['btn_show']">
+                                    <a href="{:U('Order/view',['id'=>$order_vo['order_sn']])}">订单详情</a>
+                                </notempty>
+
+                                <notempty name="order_vo['btn_cancel']">
+                                    <a class="js-cancel" data-url="{:U('Order/cancel',['id'=>$order_vo['order_id']])}">取消订单</a>
+                                </notempty>
+
+                                <notempty name="order_vo['btn_del']">
+                                    <a class="js-del" data-url="{:U('Order/del',['id'=>$order_vo['order_id']])}">删除订单</a>
+                                </notempty>
+
+                                <notempty name="order_vo['btn_logistics']">
+                                    <a href="{:U('Order/logistics',['id'=>$order_vo['order_sn']])}">查看物流</a>
+                                </notempty>
+                                </td>
+                            </eq>
+                        </tr>
+                    </volist>
+                </notempty>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    </div>
+</div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		seajs.use('controller/baseinfoController.js',function(main){
+			main.init();
+		});
+	</script>
+</block>

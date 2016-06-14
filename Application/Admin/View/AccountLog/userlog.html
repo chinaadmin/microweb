@@ -1,0 +1,91 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$type_lists[$type]['name']}列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="tabbable tabbable-custom">
+                <ul class="nav nav-tabs">
+                    <volist name="type_lists" id="vo">
+                    <li <eq name="type" value="$key">class="active"</eq>><a href="{:U('userlog',['type'=>$key,'uid'=>$uid,'from' => $_GET['from'] ])}" style="padding: 10px 25px">{$vo.name}</a></li>
+                    </volist>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" >
+                        <div class="clearfix">
+                            <label class="control-label" style="float:left">当前用户:{$user_info.username}
+                                <volist name="type_lists" id="vo">
+                                    <span style="padding-left: 8px;font-weight: bold">{$vo.name}</span>:{$credits[$key]}{$vo.unit}
+                                </volist>
+                            </label>
+                            <div class="btn-group" style="float:right">
+                                <MyTag:rule name="AccountLog/add">
+                                <a class="btn green" href="{:U('add',['uid'=>$user_info['uid'],'from' => $_GET['from'] ])}">
+                                    调节用户账户 <i class="icon-plus"></i>
+                                </a>
+                                </MyTag:rule>
+                            </div>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>时间</th>
+                                <th>收入/支出</th>
+                                <if condition="$credits_type eq 0">
+                                    <th>余额</th>
+                                    <th>余额类型</th>
+                                <elseif condition="$credits_type eq 1" />
+                                    <th>积分</th>
+                                    <th>积分类型</th>
+                                <elseif condition="$credits_type eq 3" />
+                                    <th>成长值</th>
+                                    <th>成长值类型</th>
+                                </if>
+                                <th>积分明细</th>
+                                <th>操作人</th>
+                                <!-- <th>余额</th> -->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="lists" id="vo">
+                                <tr>
+                                    <td>{$vo.log_id}</td>
+                                    <td>{$vo.add_time|dateFormat}</td>
+                                    <td>
+                                        <if condition="$vo.credits lt 0">
+                                            支出
+                                        <elseif condition="$vo.credits egt 0" />
+                                            收入
+                                        </if>
+                                    </td>
+                                    <td>{$vo.credits|abs}</td>
+                                    <td>{$vo.type_name}</td>
+                                    <!-- <td>{$vo.balance}</td> -->
+                                    <td>{$vo.remark}</td>
+                                    <td>{$vo.editor}</td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                        <div class="row-fluid">
+                            <div class="pagination pull-right">
+                                {$_page}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/user/creditsController'],function(user){
+            user.index();
+        });
+    </script>
+</block>

@@ -1,0 +1,82 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$group_name}列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="MallMenu/edit">
+                    <a class="btn green" href="{:U('MallMenu/edit',['group'=>$group])}">
+                        添加{$group_name} <i class="icon-plus"></i>
+                    </a>
+                    </MyTag:rule>
+                </div>
+				<div class="btn-group">
+				    <eq name = 'Think.get.group' value = '1'>
+						<MyTag:rule name="cache_keys/enable">
+						<a class="btn green" href="{:U('cache_keys/enable',['id'=>3])}">
+							更新本缓存 <i class="icon-refresh"></i>
+						</a>
+						</MyTag:rule>	
+					</eq>
+				</div>
+			</div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>排序</th>
+                    <th>菜单名称</th>
+                    <th>类型</th>
+                    <th>菜单路径</th>
+                    <th>菜单指向</th>
+                    <th>状态</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="lists" id="vo">
+                    <tr>
+                        <td><input type="text" name="sort[{$vo.id}]" value="{$vo.sort}" class="m-wrap m-sort js-sort"></td>
+                        <td>{$vo.fullname}</td>
+                        <td>{$vo.type_name}</td>
+                        <td><eq name="vo['type']" value="1">{$vo.url}</eq></td>
+                        <td>{$vo.target_name}</td>
+                        <td>{$vo.status|getStatus}</td>
+                        <td>
+                            <MyTag:rule name="MallMenu/edit">
+                            <a class="btn blue-stripe" href="{:U('MallMenu/edit',['id'=>$vo['id']])}">编辑</a>
+                            </MyTag:rule>
+                            <MyTag:rule name="MallMenu/del">
+                            <a class="btn red-stripe js-del" url="{:U('MallMenu/del',['id'=>$vo['id']])}">删除</a>
+                            </MyTag:rule>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+            <div class="row-fluid">
+                <div class="btn-group">
+                    <MyTag:rule name="MallMenu/sort">
+                    <a class="btn green" id="save-sort" url="{:U('sort')}">
+                        <i class="icon-sort"></i> 保存排序
+                    </a>
+                    </MyTag:rule>
+                </div>
+                <div class="pagination pull-right">
+                    {$_page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/mall/menuController'],function(menu){
+            menu.index();
+        });
+    </script>
+</block>

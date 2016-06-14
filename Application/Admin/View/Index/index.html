@@ -1,0 +1,187 @@
+<extend name="Common:base" />
+<block name="css">
+	<load href="__CSS__/App/admin/index/index.css"/>
+	<style>
+		.leftMenu ul {
+		    margin: 0;
+		}
+		li{
+		  list-style:none;
+		}
+		.leftMenu ul li {
+		    padding-left:5px;
+		    height: 45px;
+		    line-height: 45px;
+		    margin: 1px;
+		    background-color: rgb(211, 231, 243);
+		}
+		.leftMenu ul li:first-child{
+		    background-color:white;
+		}
+		.leftMenu ul span {
+		    background-color: rgb(129, 178, 207);
+		    float: right;
+		    margin-right: 5%;
+		    padding: 0px 5px;
+		    height:35px;
+		    line-height:35px;
+		    margin-top:5px;
+		    border:1px solid white
+		}	
+    </style>	
+</block>
+<block name="nav">
+</block>
+<block name="content">
+	<ul class="breadcrumb">
+			 <li>
+			    <a href="javascript:void(0);">管理中心首页</a> 	
+		     </li>
+	</ul>
+	<div class="row-fluid">
+         <present name="stores">
+                        
+                    <div class="span2">
+							<div class='leftMenu'>
+								<ul>
+									<li><b>全部门店</b></li>
+									<volist name = 'storesList'  id = 'storesListVo'>
+    									<li><i class="icon-tasks"></i>&nbsp;&nbsp;<a href="{:U('index',['stores_id'=>$storesListVo['stores_id']])}">{$storesListVo.name}</a></li>
+									</volist>
+								</ul>
+							</div>
+					</div>
+					
+         			<div class="span6">
+
+						<!-- BEGIN PROGRESS BARS PORTLET-->
+
+						<div class="portlet box blue">
+
+							<div class="portlet-title">
+								<div class="caption">
+								    [{$stores.name|default='--'}]&nbsp;&nbsp;业务概览  
+								</div>
+							    <span class='pull-right' style='font-size:18px'>店长:&nbsp;&nbsp;{$stores.manager|default='--'}&nbsp;&nbsp;[{$stores.phone|default='--'}]</span>
+							</div>
+
+							<div class="portlet-body">
+                                  <div class="pro_left pro_right">
+                               	<h4>订单：</h4>
+                               	<ul>
+                               		<li><a href="{:U('Order/index',array('today'=>1))}">今日订单<span class="li_num">（{$today_order}）</span></a></li>
+									<li><a href="{:U('Order/index',array('yesterday'=>1))}">昨日订单<span class="li_num">（{$yesterday_order}）</span></a></li>
+									<li><a href="{:U('Order/index',array('pay_today'=>1))}">今日已付款<span class="li_num">（{$today_pay}）</span></a></li>
+									<li><a href="{:U('Order/index',array('pay_yesterday'=>1))}">昨日已付款<span class="li_num">（{$yesterday_pay}）</span></a></li>
+                               	</ul>
+                               </div>
+							    <div class="pro_left pro_right">
+                               	<h4>待处理订单：</h4>
+                               	<ul>
+                               		<li><a href="{:U('Order/index',array('order_status'=>0))}">待确认<span class="li_num">（{$confirmed}）</span></a></li>
+									<li><a href="{:U('Order/index',array('order_status'=>1,'pay_status'=>2,'receipt_status'=>0))}">待提货<span class="li_num">（{$send}）</span></a></li>
+									<!-- <li><a href="{:U('Order/index',array('order_status'=>1,'pay_status'=>2,'receipt_status'=>0))}">待送货<span class="li_num">（{$readyToSend}）</span></a></li> -->
+                               	</ul>
+                               </div>
+							    <div class="pro_left pro_right">
+                               	<h4>退款/退货订单：</h4>
+                               	<ul class="no_line">
+                               		<li><a href="{:U('Refund/index',array('refund_status'=>0))}">待审核<span class="li_num">（{$refund_ped}）</span></a></li>
+									<li><a href="{:U('Refund/index',array('refund_status'=>1))}">待退款<span class="li_num">（{$refunded}）</span></a></li>
+									<li><a href="{:U('Refund/index',array('refund_status'=>2))}">退款中<span class="li_num">（{$refund}）</span></a></li>
+                               	</ul>
+                               </div>
+							</div>
+
+						</div>
+
+						<!-- END PROGRESS BARS PORTLET-->
+					</div>
+		 
+          <else/>
+					<div class="span6">
+						<!-- BEGIN INLINE NOTIFICATIONS PORTLET-->
+						<div class="portlet box blue">
+							<div class="portlet-title">
+								<div class="caption">待处理事项</div>
+							</div>
+							<div class="portlet-body">
+                               <div class="pro_left">
+                               	<h4>订单：</h4>
+                               	<ul>
+                               		<li><a href="{:U('Order/index',array('order_status'=>0))}">待确认<span class="li_num">（{$confirmed}）</span></a></li>
+									<li><a href="{:U('Order/index',array('order_status'=>1,'pay_status'=>2,'receipt_status'=>0))}">待提货<span class="li_num">（{$send}）</span></a></li>
+                               	</ul>
+                               </div>
+							    <div class="pro_left">
+                               	<h4>退款/退货订单：</h4>
+                               	<ul>
+                               		<li><a href="{:U('Refund/index',array('refund_status'=>0))}">待审核<span class="li_num">（{$refund_ped}）</span></a></li>
+									<li><a href="{:U('Refund/index',array('refund_status'=>1))}">待退款<span class="li_num">（{$refunded}）</span></a></li>
+									<li><a href="{:U('Refund/index',array('refund_status'=>2))}">退款中<span class="li_num">（{$refund}）</span></a></li>
+                               	</ul>
+                               </div>
+							    <div class="pro_left">
+                               	<h4>库存报警：</h4>
+                               	<ul class="no_line">
+                               		<li><a href="{:U('Goods/index',array('stock'=>1))}">库存报警<span class="li_num">（{$warning_num}）</span></a></li>
+                               	</ul>
+                               </div>
+							</div>
+						</div>
+						</div>
+
+
+					<div class="span6">
+
+						<!-- BEGIN PROGRESS BARS PORTLET-->
+
+						<div class="portlet box blue">
+
+							<div class="portlet-title">
+
+								<div class="caption">业务概览</div>
+							</div>
+
+							<div class="portlet-body">
+                                  <div class="pro_left pro_right">
+                               	<h4>订单：</h4>
+                               	<ul>
+                               		<li><a href="{:U('Order/index',array('today'=>1))}">今日订单<span class="li_num">（{$today_order}）</span></a></li>
+									<li><a href="{:U('Order/index',array('yesterday'=>1))}">昨日订单<span class="li_num">（{$yesterday_order}）</span></a></li>
+									<li><a href="{:U('Order/index',array('pay_today'=>1))}">今日已付款<span class="li_num">（{$today_pay}）</span></a></li>
+									<li><a href="{:U('Order/index',array('pay_yesterday'=>1))}">昨日已付款<span class="li_num">（{$yesterday_pay}）</span></a></li>
+                               	</ul>
+                               </div>
+							    <div class="pro_left pro_right">
+                               	<h4>会员：</h4>
+                               	<ul>
+                               		<li><a href="{:U('User/index',array('today'=>1))}">今日新增<span class="li_num">（{$today_user}）</span></a></li>
+									<li><a href="{:U('User/index',array('yesterday'=>1))}">昨日新增<span class="li_num">（{$yesterday_user}）</span></a></li>
+									<li><a href="{:U('User/index')}">会员总数<span class="li_num">（{$userTotal}）</span></a></li>
+                               	</ul>
+                               </div>
+							    <div class="pro_left pro_right">
+                               	<h4>商品：</h4>
+                               	<ul class="no_line">
+                               		<li><a href="{:U('Goods/index')}">商品总数<span class="li_num">（{$goods}）</span></a></li>
+									<li><a href="{:U('Goods/index',array('sale'=>1))}">已上架<span class="li_num">（{$goods_sale}）</span></a></li>
+                               	</ul>
+                               </div>
+							</div>
+
+						</div>
+
+						<!-- END PROGRESS BARS PORTLET-->
+					</div>
+		 
+		 </present>	
+	</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/index/indexController'],function(main){
+            //admin.index();
+        });
+    </script>
+</block>

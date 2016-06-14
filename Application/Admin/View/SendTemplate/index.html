@@ -1,0 +1,66 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$title}</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="SendTemplate/edit">
+                        <a class="btn green" href="{:U('SendTemplate/edit')}">
+                        添加模板 <i class="icon-plus"></i>
+                        </a>
+                    </MyTag:rule>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>模板名称</th>
+                        <th>模板代码</th>
+                        <th>模板类型</th>
+                        <th>标题</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                        <td>{$vo.pk_temp}</td>
+                        <td>{$vo.temp_name}</td>
+                        <td>{$vo.temp_code}</td>
+                        <td>
+                            <switch name = 'vo.temp_type'>
+                                <case value="1">短信模板</case>   
+                                 <case value="2">邮件模板</case>   
+                                 <default />类型有误
+                            </switch>
+                        </td>
+                        <td>{$vo.temp_title}</td>
+                        <td>
+                            <MyTag:rule name="SendTemplate/edit"><a class="btn blue-stripe" href="{:U('SendTemplate/edit',['pk_temp'=>$vo['pk_temp']])}">编辑</a></MyTag:rule>
+                            <MyTag:rule name="SendTemplate/del"><a class="btn red-stripe js-del" url="{:U('SendTemplate/del',['pk_temp'=>$vo['pk_temp']])}">删除</a></MyTag:rule>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+            <div class="row-fluid">
+                <div class="pagination pull-right">
+                    {$_page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/admin/sendtemplate'],function(sendtemplate){
+        	sendtemplate.index();
+        });
+    </script>
+</block>

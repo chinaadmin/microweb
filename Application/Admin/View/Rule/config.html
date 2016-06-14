@@ -1,0 +1,95 @@
+<extend name="Common:base" />
+<block name="content">
+    <style>
+        .label-inline{
+            margin-top: 6px;
+            display: inline-block;
+            margin-bottom: 0;
+            vertical-align: middle;
+            padding: 0 5px;
+        }
+    </style>
+    <div class="tab-content">
+        <div class="portlet box blue ">
+            <div class="portlet-title">
+                <div class="caption">积分配置</div>
+            </div>
+            <div class="portlet-body form">
+                <form id="form_edit" action="{:U('Rule/config_submit')}" method="post" class="form-horizontal">
+                    <div class="control-group" style="margin-left: 100px;">
+                        <label>积分方式（0表示不积分）：</label>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <div style="display: inline-block">
+                                <span class="label-inline">按商品价格</span>
+                                <input name="rule_param[buy_goods][cnf_money]" type="text" class="m-wrap span4" value="{$rule_param['buy_goods']['cnf_money']|default=0}"/>
+                                <span class="label-inline">元为1分</span>
+                            </div>
+                            <label class="checkbox">
+                                <input name="rule_param[buy_goods][cnf_is_special]" type="checkbox" value="1" <eq name="rule_param['buy_goods']['cnf_is_special']" value="1" >checked="checked"</eq> />特价商品除外
+                            </label>
+                        </div>
+                        <input name="rule[buy_goods]" type="hidden" value="1"/>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input name="rule[integral_cash]" type="checkbox" value="1" <eq name="rule['integral_cash']" value="1" >checked="checked"</eq> />积分抵现
+                            </label>
+                            <div style="display: inline-block;">
+                                <input name="rule_param[integral_cash][cnf_integral]" type="text" class="m-wrap span4" value="{$rule_param['integral_cash']['cnf_integral']|default=0}"/>
+                                <span class="label-inline">分为1元</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="control-group">
+                        <div class="controls" >
+                            <span class="label-inline">按积分</span>
+                            <input name="{$vo.code}" type="text" class="m-wrap span1" value="0"/>
+                            <span class="label-inline">分为1元进行抵扣</span>
+                        </div>
+                    </div>-->
+
+                    <div class="control-group" style="margin-left: 100px;">
+                        <label>其他积分设置：</label>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input name="rule[register]" type="checkbox" value="1" <eq name="rule['register']" value="1" >checked="checked"</eq> />新用户注册赠送
+                            </label>
+                            <input name="rule_param[register][cnf_integral]" type="text" class="m-wrap span1" value="{$rule_param['register']['cnf_integral']|default=0}"/>
+                            分
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls" >
+                            <label class="checkbox">
+                                <input name="rule[recommend_user]" type="checkbox" value="1" <eq name="rule['recommend_user']" value="1" >checked="checked"</eq> />每推荐一个用户赠送
+                            </label>
+                            <input name="rule_param[recommend_user][cnf_integral]" type="text" class="m-wrap span1" value="{$rule_param['recommend_user']['cnf_integral']|default=0}"/>
+                            分
+                            <span class="help-inline" style="color: red">
+                                推荐用户并注册成功的赠送
+                            </span>
+                        </div>
+                    </div>
+
+                    <MyTag:rule name="Rule/config_submit">
+                    <div class="form-actions">
+                        <button type="submit" class="btn blue">提交</button>
+                    </div>
+                    </MyTag:rule>
+                </form>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/credits/ruleController'],function(rule){
+            rule.config();
+        });
+    </script>
+</block>

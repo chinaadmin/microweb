@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>试一口，找真爱</title>
+    <link rel="stylesheet" href="__CSS__/wxapp.css?r={:time()}" charset="utf-8">
+	 <script src="__ROOT__/Public/Activity/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="__ROOT__/Public/Activity/bower_components/angular-ui-router/release/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__JS__/exif.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__JS__/jpeg_encoder_basic.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__JS__/teContronller.js?r={:time()}" type="text/javascript" charset="utf-8" ></script>
+    <script src="__JS__/teServices.js?r={:time()}" type="text/javascript" charset="utf-8" ></script>
+    <script src="__JS__/application.js?r={:time()}" type="text/javascript" charset="utf-8"></script>
+  
+    <script type="text/javascript">
+      var defaultImage = "__IMG__/default.jpg";
+      var plusImage = "__IMG__/plus.png";
+      var plusChangeImage = "__IMG__/plus-change.png";
+    </script>
+
+  </head>
+  <body>
+
+      <div class="navTop" id="upload">
+        <a href="http://www.bihaohuo.cn/" class="homeBtn"></a>
+        <div class="logo" style="background-image: url(__IMG__/logo.png);">
+          <span ng-bind="title">添加照片</span>  
+        </div>
+        <a class="searchBtn">
+           <span class="pc-back">照片墙</span>
+        </a>
+      </div>
+
+      <div class="box">
+
+        <div class="imageView">
+          <div class="preview hide">  
+              <img ng-src="image.src" class="hide" data-src="__IMG__/default.jpg">               
+          </div>
+          <img src="__IMG__/default.jpg" alt="" class="cameraBgi" >
+          <a class="btn captureBtn">
+            <form id="cameraForm">
+              <input type="file" name="file" capture="camera" id="camera" accept="image/*">              
+            </form>
+            <form id="baseForm" class="hide">
+              <input name="base" id="base64">
+            </form>
+            <div>
+              <span style="background-image: url(__IMG__/plus.png);"></span>
+            </div>
+          </a>        
+        </div>
+
+        <div class="ng-wrap"  ng-app="tryEat" ng-controller="uploadControllers">
+
+            <div class="descBox">
+              <p><span>集齐20个赞后，不可再更换照片 </span></p>
+              <div class="input">
+                <span>输入照片描述：</span>
+                <input type="text" ng-model="image.title" placeholder="">
+              </div>
+            </div>
+
+            <div class="cameraBox">
+                <a class="btn " ng-click="upload()">提<span></span>交</a>
+            </div>
+
+            <div class="msgBox {{msgPopup.hide?'hide':'show'}}">
+              <div class="tips"><span ng-bind="msgPopup.msg"></span></div>
+            </div>
+
+        </div>
+      </div>
+  </body>
+</html>

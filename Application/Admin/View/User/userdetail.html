@@ -1,0 +1,707 @@
+<extend name="Common:base" />
+<extend name="Common:base" />
+<block name="css">
+<load href="__CSS__/App/admin/order/order.css"/>
+<style>
+.info-base-3 {
+    width:30%;
+    display:inline-block;
+}
+.info-base-3 h4{
+    background-color:#F2F5F7;
+}
+.tab-pane-border {
+    border-top:1px solid #ddd;
+}
+.pane_block_title {
+     margin-bottom:5px;
+     margin-top:36px;
+}
+.pane_block_title:first-of-type{
+     margin-top:0px;
+}
+.tab-pane-border:nth-last-child(1) {
+    margin-bottom:36px;
+} 
+.headerTr{
+    background-color:#F9F9F9
+}
+.js-pagination a.active{
+    background-color:#f5f5f5
+}
+</style>
+</block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$title}</div>
+        </div>
+        <div class="portlet-body form">
+             <ul class="nav nav-tabs">
+              <!--   <li class="active"><a class="" href="#tab_1" data-toggle="tab">用户信息</a></li>
+                <li><a class="" href="#tab_2" data-toggle="tab">交易信息</a></li> -->
+                <li class="active"><a href="#tab_3" data-toggle="tab">统计信息</a></li>
+                <li><a class="" href="#tab_4" data-toggle="tab">会员信息</a></li>
+                <!-- <li><a class="" href="#tab_5" data-toggle="tab">买过的商品</a></li> -->
+                <li><a class="" href="#tab_12" data-toggle="tab">买过的众筹商品</a></li>
+                <li><a class="" href="#tab_6" data-toggle="tab">历史订单</a></li>
+                <li><a class="" href="#tab_7" data-toggle="tab">收货地址</a></li>
+                <!-- <li><a class="" href="#tab_8" data-toggle="tab">积分日志</a></li> -->
+                <li><a class="" href="#tab_9" data-toggle="tab">充值明细</a></li>
+                <li><a class="" href="#tab_10" data-toggle="tab">邀请记录</a></li>
+                <li><a class="" href="#tab_11" data-toggle="tab">第三方信息</a></li>
+                <!-- <li><a class="" href="#tab_13" data-toggle="tab">邀请记录</a></li> -->
+            </ul>
+             <div class="tab-content">
+                <!-- <div class="tab-pane active"  id = 'tab_1'>
+                <div class = 'pane_block_title'>基本资料</div> 
+                 <div class="tab-pane-border " >
+                                          <div class="info-base info-base-3">
+                                                <h4>用户名：</h4>
+                                                <p>{$info.username}</p>
+                                            </div>  
+                                            <div class="info-base info-base-3">
+                                                <h4>昵称：</h4>
+                                                <p>{$info.aliasname}</p>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>会员等级：</h4>
+                                                <p>{$info.grade_id|getTypeText = ###,['1' => '等级1','3' => '等级3']}</p>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>客户来源：</h4>
+                                                <p>{$info.come_from|getTypeText = ###,['1' => '电脑','2' => '手机']}</p>
+                                            </div>
+											<div class="info-base info-base-3">
+												<h4>状态：</h4>
+												<p>{$info.status|getStatus}</p>
+											</div>
+					</div>
+				   <div class = 'pane_block_title'>个人资料</div> 
+                 <div class="tab-pane-border " >
+                                          <div class="info-base info-base-3">
+                                                <h4>真实姓名：</h4>
+                                                <p>{$info.real_name|checkEmpty}</p>
+                                            </div>  
+                                            <div class="info-base info-base-3">
+                                                <h4>性别：</h4>
+                                                <p><eq name = 'info.sex'  value ='1'>男<else/>女</eq></p>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>生日：</h4>
+                                                <p>{$info.user_birthday|dateFormat|checkEmpty}</p>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>手机：</h4>
+                                                <p><notempty name = 'info.mobile'  >{$info.mobile}{$info.mobile_status|getStatus=###,['0' =>['style'=>'label-danger','text'=>'未认证'],'1' =>['style'=>'label-success','text'=>'已认证']],'<span class="label :style">:text</span>'}<else/>_</notempty></p>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>E-mail：</h4>
+                                                <p><notempty name = 'info.email'  >{$info.email}{$info.email_status|getStatus=###,['0' =>['style'=>'label-danger','text'=>'未认证'],'1' =>['style'=>'label-success','text'=>'已认证']],'<span class="label :style">:text</span>'}<else/>_</notempty></p>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>所在地区：</h4>
+                                                <p>{$info.loaction|checkEmpty}</p>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>详细地址：</h4>
+                                                <p>{$info.user_localtion|checkEmpty}</p>
+                                            </div>
+                                            
+                </div>
+                 <div class = 'pane_block_title'>其他资料</div> 
+                 <div class="tab-pane-border" >
+                                          <div class="info-base info-base-3">
+                                                <h4>注册时间：</h4>
+                                                <p>{$info.add_time|dateFormat}</p>
+                                            </div>  
+                                            <div class="info-base info-base-3">
+                                                <h4>最后登录时间：</h4>
+                                                <p>{$info.last_login_time|dateFormat}</p>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>注册IP</h4>
+                                                <p>{$info.reg_ip}</p>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>最后登录ip：</h4>
+                                                <p>{$info.last_login_ip}&nbsp;&nbsp;{$info.last_login_place}</p>
+                                            </div>
+                </div>
+                 <div class = 'pane_block_title'>第三方信息</div> 
+                 <div class="tab-pane-border" >
+                                          <div class="info-base info-base-3">
+                                                <h4>QQ绑定：</h4>
+                                                <p>
+                                                <font color = '5C83AA'>
+                                                    <notempty name = 'qqInfo'>
+                                                      已绑定
+                                                    <else/>
+                                                    未绑定
+                                                    </notempty>
+                                                </font>    
+                                                </p>
+                                            </div>  
+                                            <div class="info-base info-base-3">
+                                                <h4>昵称：</h4>
+                                                <p>{$qqInfo.nick|checkEmpty}</p>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>微信绑定:</h4>
+                                                <p>
+                                                <font color = '5C83AA'>
+                                                 <notempty name = 'wechatInfo'>
+                                                    已绑定
+                                                    <else/>
+                                                    未绑定
+                                                    </notempty>
+                                                </p>
+                                                </font>
+                                            </div>
+                                            <div class="info-base info-base-3">
+                                                <h4>昵称：</h4>
+                                                <p>{$wechatInfo.nick}</p>
+                                            </div>
+                </div>
+                </div>
+                  <div class="tab-pane" id="tab_2">
+	                                          <div class="info-base info-base-3">
+	                                                <h4>第一次购买时间：</h4>
+	                                                <p>{$info_trade.first_buy_time|dateFormat}</p>
+	                                            </div>  
+	                                            <div class="info-base info-base-3">
+	                                                <h4>最后一次购买时间:</h4>
+	                                                <p>{$info_trade.last_buy_time|dateFormat}</p>
+	                                            </div>
+	                                            <div class="info-base info-base-3">
+	                                                <h4>下单总数：</h4>
+	                                                <p>{$info_trade.pay_count}</p>
+	                                            </div>
+												<div class="info-base info-base-3">
+													<h4>已付款数：</h4>
+													<p>{$info_trade.pay_count}</p>
+												</div>
+												<div class="info-base info-base-3">
+													<h4>总交易金额：</h4>
+													<p>{$info_trade.consume_money}</p>
+												</div>
+												<div class="info-base info-base-3">
+													<h4>退款次数：</h4>
+													<p>{$info_trade.order_close_count}</p>
+												</div>
+												<div class="info-base info-base-3">
+													<h4>总退款金额：</h4>
+													<p>{$info_trade.refund_money}</p>
+												</div>
+												<div class="info-base info-base-3">
+													<h4>下单商品总数：</h4>
+													<p>{$info_trade.order_goods_count}</p>
+												</div>
+												<div class="info-base info-base-3">
+													<h4>交易关闭次数：</h4>
+													<p>{$info_trade.order_close_count}</p>
+												</div>
+                 </div>
+                   -->
+                   <style>
+                        .userStatisticsTable td{
+                            text-align:center;
+                        }
+                   </style>
+                <div class="tab-pane active"  id = 'tab_3'>
+                    <table class="table userStatisticsTable table-bordered">
+                        <thead>
+                            <tr>
+	                            <td>订单总数</td>
+	                            <td>订单总金额</td>
+	                            <td>会员积分</td>
+	                            <td>会员等级</td>
+                            </tr>
+                            <tr>
+                                <td>{$userStatistics.all_order}</td>
+                                <td>{$userStatistics.order_all_amount}</td>
+                                <td>{$userStatistics.creditss|default = '-'}</td>
+                                <td>{$userStatistics.grade_name|default = '-'}</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+	                            <td>退款订单数</td>
+	                            <td>退款总金额</td>
+	                            <td>成功的订单数</td>
+	                            <td>成功的订单总金额</td>
+                            </tr>
+                            <tr>
+                                <td>{$userStatistics.order_refund}</td>
+                                <td>{$userStatistics.order_refund_amount}</td>
+                                <td>{$userStatistics.order_success}</td>
+                                <td>{$userStatistics.order_success_money}</td>
+                            </tr>
+                            <tr>
+	                            <td>未付款订单数</td>
+	                            <td>未付款的订单金额</td>
+	                            <td>购买频次</td>
+	                            <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>{$userStatistics.order_nopay}</td>
+                                <td>{$userStatistics.order_nopay_amount}</td>
+                                <td>{$userStatistics['pay_count']}</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+	                            <td>下单商品种数</td>
+	                            <td>下单商品总数</td>
+	                            <td>第一次下单时间</td>
+	                            <td>最后一次下单时间</td>
+                            </tr>
+                            <tr>
+                                <td>{$userStatistics.unique_goods}</td>
+                                <td>{$userStatistics.all_goods}</td>
+                                <td>{$userStatistics.first_time|dateFormat}</td>
+                                <td>{$userStatistics.last_time|dateFormat}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+				<div class="tab-pane" id='tab_4'>
+                    <form id="user_edit" action="{:U('User/update')}" method="post" class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label">账号</label>
+                            <div class="controls">
+                                <input type="text" class="m-wrap"
+                                    value="{$info.username}"   name = 'username'/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">昵称</label>
+                            <div class="controls">
+                                <input type="text"  class="m-wrap"
+                                    value="{$info.aliasname}"  readonly name = 'aliasname'/>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">真实姓名</label>
+                            <div class="controls">
+                                <input type="text"  class="m-wrap" name = 'real_name'
+                                    value="{$info.real_name}"  />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">手机</label>
+                            <div class="controls">
+                                <select name="mobile_status" id="mobile_status"
+                                    class="span1 m-wrap">
+                                    <option <eq name="info.mobile_status" value="0">selected</eq>
+                                        value="0">未认证
+                                    </option>
+                                    <option <eq name="info.mobile_status" value="1">selected</eq>
+                                        value="1">已认证
+                                    </option>
+                                </select> 
+                                <input type="text" name="mobile" class="m-wrap popovers" value="{$info.mobile}" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">邮箱</label>
+                            <div class="controls">
+                                <select name="email_status" id="email_status"
+                                    class="span1 m-wrap">
+                                    <option <eq name="info.email_status" value="0">selected</eq> value="0">
+                                    未认证
+                                    </option>
+                                    <option <eq name="info.email_status" value="1">selected</eq> value="1">
+                                    已认证
+                                    </option>
+                                </select> <input type="text" name="email" class="m-wrap popovers"
+                                    value="{$info.email}" />
+                            </div>
+                        </div>
+                        
+                     <div class="control-group">
+                            <label class="control-label">性别</label>
+                            <div class="controls">
+								<label class="radio"> <input type="radio" name="sex"
+									value="1"
+								<eq name="info.sex" value="1">checked</eq>/>男
+								</label>
+								 <label class="radio"> <input type="radio"
+									name="sex" value="2"
+								 <eq name="info.sex" value="2">checked</eq>/> 女
+								</label>
+				      	</div>
+                        </div>
+
+				     <div class="control-group">
+				                <label class="control-label">地址</label>
+				                <div class="controls">
+				                    <div id="area-select">
+				                        <select name="user_provice" id="provice" data-id="{$address.user_provice}">
+				                        </select>
+				                        <select name="user_city" id="city" data-id="{$address.user_city}">
+				                        </select>
+				                        <select name="user_county" id="county" data-id="{$address.user_county}">
+				                        </select>
+				                    </div>
+				                    <input type="text" name="user_localtion" class="m-wrap span4" style="margin-top: 5px;" value="{$address.user_localtion}"/>
+				                </div>
+                        </div>
+
+                                                       
+						<div class="control-group">
+                            <label class="control-label">门店黑名单</label>
+                            <div class="controls">
+                                 <label class="radio"> <input type="radio"
+                                    name="isBlack" value="1"
+                                 <eq name="info.isBlack" value="1">checked</eq>/> 是
+                                </label>
+                                
+                                <label class="radio"> <input type="radio" name="isBlack"
+                                    value="0"
+                                <eq name="info.isBlack" value="0">checked</eq>/>否
+                                </label>
+							</div>
+                        </div>
+						
+						<div class="control-group">
+                            <label class="control-label">出生日期</label>
+                            <div class="controls">
+                                <select name="b_year" class="span m-wrap" style="width:120px">
+                                    <option value="" <eq name="b_year" value="">selected</eq>>&nbsp;&nbsp;</option>
+                                    <for start='1970' end='$nowYear+1' name='y'>
+                                        <option value="{$y}" <eq name="b_year" value="$y">selected</eq> >&nbsp;&nbsp;&nbsp;&nbsp;{$y}&nbsp;&nbsp;&nbsp;</option>
+                                    </for>
+                                </select>&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;
+                                <select name="b_month" class="span1 m-wrap">
+                                    <option value="" <eq name="b_month" value="">selected</eq>>&nbsp;&nbsp;</option>
+                                    <for start='1' end='13' name='m'>
+                                        <option value="{$m}" <eq name="b_month" value="$m">selected</eq> >&nbsp;&nbsp;&nbsp;&nbsp;{$m}&nbsp;<eq name='b_month' value='{$m}'>{$m}</eq>&nbsp;&nbsp;</option>
+                                    </for>
+                                </select>&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;
+                                <select name="b_day" class="span1 m-wrap">
+                                    <option value="" <eq name="b_day" value="">selected</eq>>&nbsp;&nbsp;</option>
+                                    <for start='1' end='32' name='d'>
+                                        <option value="{$d}" <eq name="b_day" value="$d">selected</eq> >&nbsp;&nbsp;&nbsp;&nbsp;{$d}&nbsp;&nbsp;&nbsp;</option>
+                                    </for>
+                                </select>&nbsp;&nbsp;&nbsp;日&nbsp;&nbsp;&nbsp;
+							</div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">状态</label>
+                            <div class="controls">
+                                <label class="radio"> <input type="radio"
+                                    name="status" value="0"
+                                <eq name="info.status" value="0">checked</eq>/> 禁用
+                                </label> <label class="radio"> <input type="radio"
+                                    name="status" value="1"
+                                <empty name="info.uid">checked<else />
+                                    <eq name="info.status" value="1">checked</eq></empty>/> 启用
+                                </label>
+                            </div>
+                        </div> 
+                        
+                        <div class="control-group">
+                         <label class="control-label">备注</label>
+                          <div class="controls">
+                            <textarea name="remark" rows="3" class="span6 m-wrap">{$info.remark}</textarea>
+                           </div> 
+                        </div>
+                        <div class="form-actions">
+                            <input type="hidden" name="uid" value="{$info.uid}" />
+                            <button type="submit" class="btn blue">保存</button>
+                        </div>
+                    </form>
+				</div>
+
+                <!-- <div class="tab-pane"  id = 'tab_5'>
+                    <table class = 'table'>
+                        <thead>
+                            <tr class = 'headerTr'>
+                                <th>商品信息</th>
+                                <th>购买数量</th>
+                                <th>总金额</th>
+                            </tr>
+                        </thead>
+                        <tbody id = 'buy_goods_list' data-uid = '{$Think.get.uid}' data-pageSize = '10' >
+                        </tboby>
+                    </table>
+                    <div class="pagination pull-right" id = 'buy_goods_page'>
+                 </div>
+                </div> -->
+
+
+				<!-- <div class="tab-pane"  id = 'tab_5'>
+				    <table class = 'table'>
+				        <thead>
+				            <tr class = 'headerTr'>
+				                <th>商品信息</th>
+				                <th>购买数量</th>
+				                <th>总金额</th>
+				            </tr>
+                            <foreach name="buyList" item="by">
+                                <tr>
+                                    <td><img src='{$by.pic}' style='width:100px'/>{$by.goods_name}</td>
+                                    <td>{$by.num}</td>
+                                    <td>{$by.price}</td>
+                               </tr>
+                           </foreach>
+				        </thead>
+				    </table>
+				    <div class="pagination pull-right">
+                 </div>
+				</div> -->
+
+                <div class="tab-pane"  id = 'tab_12'>
+                    <table class = 'table'>
+                        <thead>
+                            <tr class = 'headerTr'>
+                                <th>商品信息</th>
+                                <th>购买数量</th>
+                                <th>总金额</th>
+                            </tr>
+                        </thead>
+                        <tbody id = 'buy_crowd_list' data-uid = '{$Think.get.uid}' data-pageSize = '10' >
+                        </tboby>
+                    </table>
+                    <div class="pagination pull-right" id = 'buy_crowd_page'></div>
+                </div>
+
+                <div class="tab-pane"  id = 'tab_6'>
+                    <table class = 'table'>
+                        <thead>
+                            <tr class = 'headerTr'>
+                                <th>订单号</th>
+                                <th>订单状态</th>
+                                <th>支付状态</th>
+                                <th>发货状态</th>
+                                <th>总金额</th>
+                                <th>下单时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id = 'historyOrder' data-uid = '{$Think.get.uid}' data-pageSize = '10' >
+                        </tbody>
+                     </table>
+                       <div class="pagination pull-right" id = 'historyOrderPage'>
+                        </div>
+                </div>
+                <div class="tab-pane"  id = 'tab_7'>
+                        <table class = 'table'>
+                        <thead>
+                            <tr class = 'headerTr'>
+                                <th>收货人</th>
+                                <th>收货地区</th>
+                                <th>收货地址</th>
+                                <th>手机</th>
+                                <th>邮编</th>
+                                <th>固定电话</th>
+                            </tr>
+                        </thead>
+                        <tbody id = 'shipping_address_list' data-uid = '{$Think.get.uid}' data-pageSize = '10' >
+                        </tbody>
+                     </table>
+                       <div class="pagination pull-right" id = 'shipping_address_page'>
+                        </div>
+                  </div>
+                  <!-- <div class="tab-pane"  id = 'tab_8'>
+                       <table class = 'table'>
+                        <thead>
+                            <tr class = 'headerTr'>
+                                <th>时间</th>
+                                <th>好货币</th>
+                                <th>好货币（收入/支出）</th>
+                                <th>变更来源</th>
+                                <th>涉及订单号</th>
+                                <th>过期时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id = 'credits_list' data-uid = '{$Think.get.uid}' data-pageSize = '10' >
+                        </tbody>
+                     </table>
+                      <div class="pagination pull-right" id = 'credits_page'>
+                      </div>
+                  </div> -->
+                  <div class="tab-pane"  id = 'tab_9'>
+                        <table class = 'table'>
+                        <thead>
+                            <tr class = 'headerTr'>
+                                <th>时间</th>
+                                <th>账户余额</th>
+                                <th>充值/支出</th>
+                                <th>来源</th>
+                                <th>涉及订单号</th>
+                            </tr>
+                        </thead>
+                        <tbody id = 'recharge_list' data-uid = '{$Think.get.uid}' data-pageSize = '10' >
+                        </tbody>
+                     </table>
+                      <div class="pagination pull-right" id = 'recharge_page'>
+                      </div>
+                    </div>
+                  <div class="tab-pane"  id = 'tab_10'>
+                       <table class = 'table'>
+                        <thead>
+                            <tr class = 'headerTr'>
+                                <th>编号</th>
+                                <th>邀请渠道</th>
+                                <th>用户名</th>
+                                <th>邀请时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id = 'recommend_list' data-uid = '{$Think.get.uid}' data-pageSize = '10' >
+                        </tbody>
+                     </table>
+                      <div class="pagination pull-right" id = 'recommend_page'>
+                      </div>
+                 </div>
+                  <div class="tab-pane"  id = 'tab_11'>
+	                 <div class="tab-pane-border"  style = 'border-top:none;'>
+                            <div class="info-base info-base-3">
+                                <h4>QQ绑定：</h4>
+                                <p>
+                                <font color = '5C83AA'>
+                                    <notempty name = 'qqInfo'>
+                                      已绑定
+                                    <else/>
+                                    未绑定
+                                    </notempty>
+                                </font>    
+                                </p>
+                            </div>  
+                            <div class="info-base info-base-3">
+                                <h4>昵称：</h4>
+                                <p>{$qqInfo.nick|checkEmpty}</p>
+                            </div>
+                            <div class="info-base info-base-3"></div>
+                            <div class="info-base info-base-3">
+                                <h4>微信绑定:</h4>
+                                <p>
+                                <font color = '5C83AA'>
+                                    <notempty name = 'wechatInfo'>
+                                        已绑定
+                                        <else/>
+                                        未绑定
+                                    </notempty>
+                                </font>
+                                </p>
+                            </div>
+                            <div class="info-base info-base-3">
+                                <h4>昵称：</h4>
+                                <p>{$wechatInfo.nick}</p>
+                            </div>
+    	                </div>
+                    </div>
+
+                    <!-- <div class="tab-pane"  id = 'tab_13'>
+                        <table class = 'table'>
+                            <thead>
+                                <tr class = 'headerTr'>
+                                    <th>序号</th>
+                                    <th>邀请渠道</th>
+                                    <th>邀请时间</th>
+                                    <th>分享平台</th>
+                                    <th>是否邀请成功</th>
+                                    <th>邀请用户</th>
+                                </tr>
+                            </thead>
+                            <tbody id = 'invite_list' data-uid = '{$Think.get.uid}' data-pageSize = '10' >
+                            </tbody>
+                        </table>
+                        <div class="pagination pull-right" id = 'recommend_page'></div>
+                    </div> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script id="tpl_history_order" type="text/template">
+        <%for(var i=0;i<items.length;i++){%>
+           <tr>
+                <td><%=items[i].order_sn%></td>
+                <td><%=items[i].status%></td>
+                <td><%=items[i].pay_status%></td>
+                <td><%=items[i].shipping_status%></td>
+                <td><%=items[i].goods_amount%></td>
+                <td><%=items[i].add_time%></td>
+           </tr>
+        <%}%>
+    </script>
+    <script id="tpl_shipping_address_list" type="text/template">
+        <%for(var i=0;i<items.length;i++){%>
+           <tr>
+                <td><%=items[i].name%></td>
+                <td><%=items[i].user_localtion%></td>
+                <td><%=items[i].user_detail_address%></td>
+                <td><%=items[i].mobile%></td>
+                <td></td>
+                <td></td>
+           </tr>
+        <%}%>
+    </script>
+    <script id="tpl_credits_list" type="text/template">
+        <!-- <%for(var i=0;i<items.length;i++){%>
+           <tr>
+                <td><%=items[i].add_time%></td>
+                <td><%=items[i].balance%></td>
+                <td><%=items[i].credits%></td>
+                <td><%=items[i].remark%></td>
+                <td><%=items[i].order%></td>
+                <td></td>
+           </tr>
+        <%}%> -->
+    </script>
+    <script id="tpl_recharge_list" type="text/template">
+        <%for(var i=0;i<items.length;i++){%>
+           <tr>
+                <td><%=items[i].add_time%></td>
+                <td><%=items[i].balance%></td>
+                <td><%=items[i].credits%></td>
+                <td><%=items[i].remark%></td>
+                <td><%=items[i].order%></td>
+           </tr>
+        <%}%>
+    </script>
+    <script id="tpl_recommend_list" type="text/template">
+        <%for(var i=0;i<items.length;i++){%>
+           <tr>
+                <td><%=items[i].id%></td>
+                <td>微信</td>
+                <td><%=items[i].username%></td>
+                <td><%=items[i].add_time%></td>
+           </tr>
+        <%}%>
+    </script>
+    <script id="tpl_buy_goods_list" type="text/template">
+        <!-- <%for(var i=0;i<items.length;i++){%>
+           <tr>
+                <td><img src = '<%=items[i].src%>' style = 'width:100px'/><%=items[i].name%>&nbsp;&nbsp;<%=items[i].goods_price%></td>
+                <td><%=items[i].number%></td>
+                <td><%=items[i].total%></td>
+           </tr>
+        <%}%> -->
+    </script>
+    <script id="tpl_buy_crowd_list" type="text/template">
+        <%for(var i=0;i<item.length;i++){%>
+           <tr>
+                <td><img src = '<%=item[i].pic%>' style = 'width:100px'/><%=item[i].cg_goods_name%>&nbsp;&nbsp;<%=item[i].cog_goods_price%></td>
+                <td><%=item[i].cog_count%></td>
+                <td><%=item[i].total%></td>
+           </tr>
+        <%}%>
+    </script>
+    <script type="text/javascript">
+    seajs.use(['controller/user/userController'],function(user){
+    	 user.edit();
+    })
+	</script>
+</block>

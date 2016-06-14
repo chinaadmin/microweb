@@ -1,0 +1,127 @@
+<extend name="Common:base" />
+<block name='css'>
+	<load href='__CSS__/App/admin/norms/norms.css'/>
+</block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.uid">添加<else/>编辑</empty>商品规格</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="norms_edit" action="{:U('Norms/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">规格名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.norms_name|default=''}"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">规格类型</label>
+                <div class="controls">
+                    <select class="m-wrap" id='change-type' name="type">
+                        <option value="1" <eq name='info.norms_type' value='1'>selected='selected'</eq>>文字类型</option>
+						<option value="2" <eq name='info.norms_type' value='2'>selected='selected'</eq>>图片类型</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">备注</label>
+                <div class="controls">
+                    <input type="text" name="mark" class="m-wrap" value="{$info.norms_mark|default=''}"/>
+                </div>
+            </div>
+          <div class="control-group">
+                <label class="control-label">排序</label>
+                <div class="controls">
+                    <input type="text" name="sort" class="m-wrap span1" value="{$info.norms_sort|default='0'}"/>
+                </div>
+            </div>
+			<div class="control-group">
+                <label class="control-label">&nbsp;</label>
+                <div class="controls">
+                    <a class="btn purple" id='add-norms' href="javascript:void(0);"><i class="icon-plus"></i>增加规格值</a>
+                </div>
+            </div>
+			
+			<div class="control-group">
+				<label class="control-label" style="width:50px;"></label>
+               <div class="span8">
+
+						<!-- BEGIN SAMPLE TABLE PORTLET-->
+
+						<div class="portlet box purple">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-comments"></i>商品规格值</div>
+							</div>
+
+							<div class="portlet-body">
+
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th>规格值</th>
+											<th>规格值图片</th>
+											<th>排序</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody id='append-data'>
+										<notempty name="info.norms_values">
+										<volist name='info.norms_values' id='vo' key='k'>
+										<tr class='norms'>
+											<td><input type='text' name="value[]" value="{$vo.norms_value}"/></td>
+											<td class='mytag' <eq name='k' value='1'>id='mytag'</eq>>
+											<MyTag:plupload type="one" id='{$k}' name="attr[]" attachment="vo.norms_attr" thumb="false" clickdefault="false"/>
+											<div class="up-hide"></div>
+											</td>
+											<td><input type='text' name='value_sort[]' class="span3" value="{$vo.norms_value_sort}"/></td>
+											<td>
+													<a class="btn mini black del-norms" href="javascript:void(0);"><i class="icon-trash"></i> 移除</a>
+											</td>
+										</tr>
+										</volist>
+										 <else/>
+										 <tr class='norms'>
+											<td><input type='text' name="value[]"/></td>
+											<td id='mytag' class='mytag'><MyTag:plupload type="one" name="attr[]" thumb="false" clickdefault="false"/>
+											<div class="up-hide"></div>
+											</td>
+											<td><input type='text' name='value_sort[]' class="span3" value="1"/></td>
+											<td><a class="btn mini black del-norms" href="javascript:void(0);"><i class="icon-trash"></i> 移除</a></td>
+										</tr>
+										</notempty>
+									</tbody>
+
+								</table>
+
+							</div>
+
+						</div>
+
+						<!-- END SAMPLE TABLE PORTLET-->
+
+					</div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="norms_id" value="{$info.norms_id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('Norms/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<span style = 'display:none;' id = 'mytagCopy'>
+<MyTag:plupload  type="one" name="attr[]" thumb="false" clickdefault="false"/>
+<div class="up-hide">
+</span>
+</block>
+<block name="js">
+    <script type="text/javascript">
+		seajs.use(['controller/norms/normsController'],function(main){
+            main.edit();
+        });
+    </script>
+</block>

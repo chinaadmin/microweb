@@ -1,0 +1,26 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/login-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/zhuce-page.css">
+</block>
+<block name="top"><include file="Common:login_top" /></block>
+<block name="nav"></block>
+<block name="bottom"><include file="Common:login_bottom" /></block>
+<block name="content">
+    <img src="__IMG__/home/login_00.jpg" class="img_box">
+    <div class="login_box">
+        <h2>用户注册<span>已有账号&nbsp;<a href="{:U('Public/login')}">在此登录</a></span></h2>
+        <form id="signupForm" method="post" action="">
+            <p><input class="stext" type='text' name="userName" id="userName" value="" placeholder="手机号" /></p>
+            <p><span></span><input class="code" type="text" name="" id="" value="" placeholder="验证码"/><img src="__IMG__/home/login_02.jpg" id="code_img"><a href="">换一张</a></p>
+            <p><span></span><input class="code" type="text" name="" id="" value="" placeholder="短信校验码"/><input type="button" class="code_btn" value="获取短信校验码">
+                <span class="code_error" style="display:none;">验证码已发送</span></p>
+            <p><input id="passWord" class="stext" type="password" name="passWord" value="" placeholder="请输入密码"/></p>
+            <p><input type="password" name="confirm_password" id="confirm_password" class="stext" placeholder="请确认密码"></p>
+            <button type="submit">登录</button>
+            <p>
+                <a href="">《必好货用户协议》</a>
+            </p>
+        </form>
+    </div>
+</block>

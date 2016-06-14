@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title><block name="title">shop</block></title>
+<block name="css"></block>
+<load href="__JS__/Lib/seajs/2.3.0/sea.js"/>
+<load href="__JS__/Lib/seajs/2.3.0/seajs-css.js"/>
+<script type="text/javascript">
+	window.JTCONFIG = {
+        //上传中心url
+        //jtUpload : '{$url_upload}',
+		jtUpload : 'http://upload.jtshop.com',
+        urlGroup : '{$url_group}',
+        urlModule : '{$url_model}',
+        urlAction : '{$url_action}',
+        urlDepr : '{:C('URL_PATHINFO_DEPR')}',
+        urlHtmlSuffix : '{:C('URL_HTML_SUFFIX')}'
+    };
+window.requireJs = [];
+window.UEDITOR_HOME_URL= "__JS__/Pulgins/ueditor/1.4.3/";
+window.UMEDITOR_HOME_URL="__JS__/Pulgins/umeditor/1.2.2/";
+  seajs.config({
+	   base: "__JS__",
+	   alias: {
+	   	 'json2': '__JS__/App/base/json2.js',
+         'ecma5': '__JS__/App/base/ecma5.js',
+		 'respond':'__JS__/Pulgins/respond/respond.js' ,
+	     "jquery": "__JS__/Lib/jquery/1.9.1/jquery-1.9.1.min.js",
+		 "ueditor":"__JS__/Pulgins/ueditor/1.4.3/ueditor.all.min.js",
+		 //"ueditor":"__JS__/Pulgins/ueditor/1.4.3/ueditor.all.js",
+		 "umeditor":"__JS__/Pulgins/umeditor/1.2.2/umeditor.min.js",
+		 "plupload":"__JS__/Pulgins/plupload/2.1.2/js/plupload.full.min.js",
+		 "common" :"__JS__/App/base/common.1.2.0.js"
+	   },
+	   paths:{
+	   	"base":"__JS__/App/base",
+		"pulgins":"__JS__/Pulgins"
+	   },
+	   charset:"utf-8",
+	   debug:true,
+       preload: [
+        //ie<8
+        this.JSON ? '' : 'json2',
+        //ie<9
+        Function.prototype.bind ? '' : 'ecma5',
+        //ie8 support
+        Function.prototype.bind ? '' : 'respond',
+		'/Public/Js/App/base/base.js'
+     ]
+  }); 
+</script>
+</head>
+<body>
+  <block name="body"></block>
+</body>
+<script type="text/javascript">
+	 seajs.use();
+</script>
+<block name='footer-js'>
+</block>
+</html>

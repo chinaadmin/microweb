@@ -1,0 +1,69 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">商品标签</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="Tag/edit">
+                    <a class="btn green" href="{:U('Tag/edit')}">
+                        添加标签<i class="icon-plus"></i>
+                    </a>
+                    </MyTag:rule>
+                </div>
+				 <div class="btn-group">
+                    <MyTag:rule name="Tag/del">
+                    <button url="{:U('Tag/del')}" class="btn green tag-del">删除</button>
+                        删除标签
+                    </a>
+                    </MyTag:rule>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th><input type='checkbox' id='check_all'/></th>
+                        <th>标签名称</th>
+                        <th>是否启用</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                        <td><input type='checkbox' value="{$vo.tag_id}" name='tag_id[]'  class='tag_check'/></td>
+                        <td>{$vo.name}</td>
+						<td>{$vo.tag_status|getStatus=###}</td>
+						<td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+                        <td>
+                            <MyTag:rule name="Tag/edit">
+                            <a class="btn blue-stripe" href="{:U('edit',['tag_id'=>$vo['tag_id']])}">编辑</a>
+                            </MyTag:rule>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+           <div class="row-fluid">
+                <div class="btn-group">
+                   
+                </div>
+                <div class="pagination pull-right">
+                    <ul>{$_page}</ul>               
+			     </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/tag/tagController'],function(main){
+            main.index();
+        });
+    </script>
+</block>

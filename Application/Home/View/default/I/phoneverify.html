@@ -1,0 +1,62 @@
+<extend name="Common:base" />
+<block name="css">
+<link type="text/css" rel="stylesheet"
+	href="__CSS__/App/home/data-page.css">
+	
+<link type="text/css" rel="stylesheet"
+	href="__CSS__/App/home/phone-page.css">
+<link type="text/css" rel="stylesheet"
+	href="__CSS__/App/home/email-page.css">
+	<style>
+	/*覆写css*/
+	.verify-form{
+	   margin:0px 0px 20px 115px;
+	}
+	label.myError{
+	   margin-left:15px;
+	}
+	.myError{
+	   color:#ff8c00;
+	}
+	</style>
+</block>
+<block name="content">
+<div id="content">
+	<include file="I/common" />
+	<div class="data_box">
+		<div class="usersafe-tip clearfix">
+			<div class="usersafe-crumbs">
+				<a href="{:U('usersafe')}">账户安全</a><i>&gt;</i><span
+					style="color: #ff8c00;">手机绑定</span>
+			</div>
+		</div>
+		<div class="verify-form modify-email" >
+			<ul>
+				<li>
+					<div style="margin-left: 11px;">
+					<form id="sendCode"  action = '{:U("sendCode")}'>
+						<p>
+							<span>手机号：</span><input type="text"  
+								name="telephone" class="txtEmail">
+						</p>
+						<button type="submit" class="phone_btn1 msgs"  yum='获取手机绑定码'  value="获取手机绑定码">获取手机绑定码</button>
+						<div class="send-succ">绑定码发送成功</div>
+					</form>
+						</div>
+				</li>
+				<form  id = 'checkCode' action = '{:U("checkCode")}'>
+				<li class="code_box" style="left: 9px;"><span>验证码：</span> <input
+					type="text" class="verifyCode" name = 'checkCode'></li>
+				<li><input type="submit" value="绑定手机"
+					class="btnNextPhone button-next" ></li>
+				</form>
+			</ul>
+		</div>
+	</div>
+</div>
+</block>
+<block name="js"> <script type="text/javascript">
+	seajs.use('controller/usersafeController.js', function(usersafe) {
+	    usersafe.phone();
+	});
+</script> </block>

@@ -1,0 +1,123 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">菜单列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="tabbable tabbable-custom">
+                <ul class="nav nav-tabs">
+                    <volist name="category_lists" id="vo">
+                        <li <eq name="category" value="$key">class="active"</eq>><a href="{:U('index',['category'=>$key])}" style="padding: 10px 25px">{$vo}</a></li>
+                    </volist>
+                </ul>
+                <div class="tab-content">
+                    <div class="clearfix">
+                        <MyTag:rule name="Menubar/edit">
+	                        <div class="btn-group">
+	                            <a class="btn green" href="{:U('Menubar/edit',['pid'=>$pid,'category'=>$category])}">
+	                                添加菜单 <i class="icon-plus"></i>
+	                            </a>
+	                          </div>
+	                         <div class="btn-group">   
+	                            <a href="{:U('cache_keys/delcache',['key'=>'jt_menubar'])}" class="btn green"> 
+	                             更新缓存 <i class="icon-refresh"></i>
+	                           </a>
+	                        </div>
+                        </MyTag:rule>
+                        <div class="btn-group">
+                            <a class="btn grey" href="{:U('Menubar/index',['pid'=>$prev_id,'category'=>$category])}">
+                                上级菜单 <i class="icon-long-arrow-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>排序</th>
+                                <th>菜单名称</th>
+                                <th>模块</th>
+                                <th>菜单路径</th>
+                                <th>所属分组</th>
+                                <th>菜单图标</th>
+                                <th>显示</th>
+                                <th>状态</th>
+                                <th>是否关联</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="lists" id="vo">
+                            <tr>
+                                <td><input type="text" name="sort[{$vo.menu_id}]" value="{$vo.sort}" class="m-wrap m-sort js-sort"></td>
+                                <td><a href="{:U('Menubar/index',['pid'=>$vo['menu_id']])}">{$vo.name}</a></td>
+                                <td>{$vo.module}</td>
+                                <td>{$vo.url}</td>
+                                <td>{$vo.group_name|default="无"}</td>
+                                <td>{$vo.icon}</td>
+                                <td>
+                                    <if condition="$vo.is_show & 1">
+                                        菜单
+                                    </if>
+                                    <if condition="$vo.is_show & 2">
+                                        权限
+                                    </if>
+                                </td>
+                                <td>{$vo.status|getStatus}</td>
+                                <td>{$vo.is_relation}</td>
+                                <td>
+                                    <MyTag:rule name="Menubar/updataRelation">
+                                    <a class="btn green-stripe js-relation" data-id="{$vo['menu_id']}">关联菜单</a>
+                                    </MyTag:rule>
+                                    <MyTag:rule name="Menubar/edit">
+                                    <a class="btn blue-stripe" href="{:U('Menubar/edit',['menu_id'=>$vo['menu_id']])}">编辑</a>
+                                    </MyTag:rule>
+                                    <MyTag:rule name="Menubar/del">
+                                    <a class="btn red-stripe js-del" url="{:U('Menubar/del',['menu_id'=>$vo['menu_id']])}">删除</a>
+                                    </MyTag:rule>
+                                </td>
+                            </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                    <div class="row-fluid">
+                        <MyTag:rule name="Menubar/sort">
+                        <div class="btn-group">
+                            <a class="btn green" id="save-sort" url="{:U('sort')}">
+                                <i class="icon-sort"></i> 保存排序
+                            </a>
+                        </div>
+                        </MyTag:rule>
+                        <div class="pagination pull-right">
+                            {$_page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="relation-view" class="modal hide" style="width:700px;">
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button"></button>
+        <h3>关联菜单</h3>
+    </div>
+    <div class="modal-body">
+        <ul id="relationTree" class="ztree"></ul>
+        <input type="hidden" id="relation" name="relation" value="{$info.relation}">
+        <input type="hidden" id="menu_id" name="id" value="">
+    </div>
+    <div class="modal-footer modal-center">
+        <button type="button" class="btn blue js-confirm">确定</button>
+        <button type="button" data-dismiss="modal" class="btn">取消</button>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/menubar/menubarController'],function(menu){
+            menu.index();
+        });
+    </script>
+</block>

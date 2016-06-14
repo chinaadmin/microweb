@@ -1,0 +1,333 @@
+<extend name="Common:base" />
+<block name="content">
+<style>
+.planDiv{
+	border:1px solid #797979;width:45%;margin-bottom:10px;padding-top:15px;
+}
+.addTip{
+	border:1px solid red;
+}
+
+
+</style>
+<div class="row-fluid">
+	<div class="portlet box blue">
+		<div class="portlet-title">
+			<div class="caption">
+				<empty name="info.cr_id">添加<else />编辑</empty>众筹
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<form id="from_edit" action="{:U('__CONTROLLER__/update')}"
+				method="post" class="form-horizontal" >
+				<div class="control-group">
+					<label class="control-label">众筹项目名<span class="required">*</span></label>
+					<div class="controls">
+						<input type="text" name="cr_name" class="m-wrap"
+							value="{$info.cr_name}" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">活动时间<span class="required">*</span></label>
+					<div class="controls">
+						
+	           		   <div class="input-append date date-picker start_time">
+	                        <input type="text" value="<notempty name = 'info.cr_start_time'>{$info.cr_start_time|date = 'Y-m-d H:i:s',###}</notempty>" size="16" readonly="" class="span9 start_time m-wrap m-ctrl-medium date-picker" id="start_time" name="cr_start_time">
+	                        <span class="add-on"><i class="icon-calendar"></i></span>
+	                    </div>~&nbsp;&nbsp;<div class="input-append date date-picker end_time">
+	                        <input type="text" value="<notempty name = 'info.cr_end_time'>{$info.cr_end_time|date = 'Y-m-d H:i:s',###}</notempty>" size="16" readonly="" class="span9 end_time m-wrap m-ctrl-medium date-picker" id="end_time" name="cr_end_time">
+	                        <span class="add-on"><i class="icon-calendar"></i></span>
+	                    </div>
+			    
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label">众筹数量<span class="required">*</span></label>
+					<div class="controls">
+						<input type="text" name="cr_count" class="m-wrap"
+							value="{$info.cr_count}" /><span class = 'help-inline'>份</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label">方案设计<span class="required">*</span></label>
+					<div class="controls">
+					 <notempty name = 'info.detail'>
+					 	 <volist name = 'info.detail' id = 'voDetail'>
+					 	 	<div class = 'planDiv'>
+					 	 		 <input type = "hidden" name = "cd_id[]" value = "{$voDetail.cd_id}"/>
+								<div class="control-group">
+									<label class="control-label">方案名:</label>
+									<div class="controls">
+									<input type = 'text' name = "cd_name[]" value = "{$voDetail.cd_name}"/>
+									<a class = 'btn green delPlan'>删除本方案</a>
+									</div>
+								</div>
+								<div class = "control-group">
+									<label class = "control-label">方案子标题:</label>
+									<div class = "controls">
+										<input type = 'text' name = 'cd_subhead[]' value = "{$voDetail.cd_subhead}"/>
+									</div>
+								</div>
+								<div class = "control-group">
+									<label class = "control-label">员工推荐人提成:</label>
+									<div class = "controls">
+										<input type = "text" name = "cd_percentage[]" value = "{$voDetail.cd_percentage}"/>
+										<div class = "help-inline">%</div>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">方案制度:</label>
+									<div class="controls">
+										<select class="span3"  name = 'cd_period_unit[]' >
+											<option>时间单位</option>
+											<option <eq name = 'voDetail.cd_period_unit' value = '1'>selected <assign name = 'periodName' value = '年'/> </eq> value = '1'>年度</option>
+											<option <eq name = 'voDetail.cd_period_unit' value = '2'>selected<assign name = 'periodName' value = '季'/> </eq>  value = '2'>季度</option>
+											<option <eq name = 'voDetail.cd_period_unit' value = '3'>selected <assign name = 'periodName' value = '月'/> </eq>  value = '3'>月度</option>
+										</select> 
+										<select class="span3" name = 'cd_period_count[]'>
+											<option>单位个数</option>
+											<switch name = 'voDetail.cd_period_unit' >
+												<case value = "1">
+													<php>$period_count = 5;</php>
+												</case>
+												<case value = "2">
+													<php>$period_count = 4;</php>
+												</case>
+												<case value = "3">
+													<php>$period_count = 12;</php>
+												</case>
+											</switch>
+											<php>
+											   $period_count_str = '';
+											   $ifSelected = '';
+												for($i = 1;$i<=$period_count;$i++){
+													if($voDetail['cd_period_count'] == $i){
+														$ifSelected = 'selected';
+													}else{
+														$ifSelected = '';
+													}
+													$period_count_str .= "<option ".$ifSelected." value =".$i.">".$i."</option>";
+												}
+												echo $period_count_str; 
+											</php>
+										</select>
+										<span>{$periodName}</span>
+										&nbsp;&nbsp;&nbsp;
+										<select class="span3" name = 'cd_pay_type[]' >
+											<option>缴费类型</option>
+											<option <eq name = 'voDetail.cd_pay_type' value = '1'>selected</eq>  value = '1'>一次性支付</option>
+											<option <eq name = 'voDetail.cd_pay_type' value = '2'>selected</eq>  value = '2'>分期支付</option>
+											<!-- <option <eq name = 'voDetail.cd_pay_type' value = '3'>selected</eq>  value = '3'>不平均支付</option> -->
+										</select>
+									</div>
+								</div>
+							<div class="control-group pay-type-group">	
+											<label class="control-label"></label>
+											<div class="controls">
+												<table>
+													<tbody>
+																<volist name = 'voDetail.perPay' id = 'voPerPay'  mod = '3'>
+																	<eq name="mod" value="0"><tr></eq>
+																		<td>
+																		<input type = 'hidden' value = "{$voPerPay.cp_id}" class = "perPayId"/>	
+																		第{$voPerPay.cp_term_index}{$periodName}&nbsp;<input style = "width:50%" type="text" class="span2 perPay" value = "{$voPerPay.cp_pay_money}">&nbsp;元&nbsp;&nbsp;&nbsp;
+																		</td>
+																	<eq name="mod" value="2"></tr></eq>
+																</volist>
+													</tbody>
+												</table>
+											</div>
+								</div>
+								
+					<div class="control-group">
+								<label class="control-label"></label>
+								<div class="controls">
+									<a style="margin-left: 5px" class="btn green addGoods">增加商品</a>
+								</div>
+							</div>
+								<div class="control-group" >
+									<label class="control-label"></label>
+									<div class="controls">
+										<table style = "width:100%" class = "table-bordered table">
+										<tr>
+											<th>图片</th>
+											<th></th>
+											<th>主标题</th>
+											<th>子标题</th>
+										</tr>
+											<volist name = 'voDetail.goodsList' id = 'voGoodsList'>
+												<tr  ondblclick = "javascript:addGoods(event);" >
+													<td class="goodsPic">
+														<MyTag:plupload id = 'goodPicList' name = "cg_att_id" id_suffix = 'voGoodsList.cg_id' type="one" attachment="voGoodsList.picPath" thumb="true"  clickdefault="true"/>
+													</td>
+													<td><input type = 'hidden'  class = "goodsId" value = "{$voGoodsList.cg_id}"/>商品{$i}:&nbsp;&nbsp;</td>
+													 <td class = "goodsName" contenteditable="true">{$voGoodsList.cg_goods_name}</td>
+													 <td class = "goodsSubhead" contenteditable="true">&nbsp;&nbsp;&nbsp;{$voGoodsList.cg_goods_subhead}</td>
+												</tr>
+											</volist>
+										</table>
+									</div>
+								</div>
+							</div>
+					 	 </volist>
+					 <else/>
+							<div class = 'planDiv'>
+								<div class="control-group">
+									<label class="control-label">方案名:</label>
+									<div class="controls">
+									<input type = 'text' name = "cd_name[]"/>
+									<a class = 'btn green delPlan'>删除本方案</a>
+									</div>
+								</div>
+								
+								<div class = "control-group">
+									<label class = "control-label">方案子标题:</label>
+									<div class = "controls">
+										<input type = 'text' name = 'cd_subhead[]' value = ""/>
+									</div>
+								</div>
+								
+								<div class = "control-group">
+									<label class = "control-label">员工推荐人提成:</label>
+									<div class = "controls">
+										<input type = "text" name = "cd_percentage[]" value = ""/>
+										<div class = "help-inline">%</div>
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label">方案制度:</label>
+									<div class="controls">
+										<select class="span3"  name = 'cd_period_unit[]' >
+											<option>时间单位</option>
+											<option value = '1'>年度</option>
+											<option value = '2'>季度</option>
+											<option value = '3'>月度</option>
+										</select> 
+										<select class="span3" name = 'cd_period_count[]'>
+											<option>单位个数</option>
+										</select>
+										<span></span>
+										&nbsp;&nbsp;&nbsp;
+										<select class="span3" name = 'cd_pay_type[]' style = 'display:none;'>
+											<option>缴费类型</option>
+											<option value = '1'>一次性支付</option>
+											<option value = '2'>分期支付</option>
+											<!-- <option value = '3'>不平均支付</option> -->
+										</select>
+									</div>
+								</div>
+							
+							<div class="control-group">
+								<label class="control-label"></label>
+								<div class='controls'>
+									<a class='btn green addGoods' style="margin-left: 5px">增加商品</a>
+								</div>
+							</div>
+							<div class="control-group" style = 'display:none;'>
+									<label class="control-label"></label>
+									<div class="controls">
+										<table style = "width:100%" class = "table-bordered table">
+										<tr>
+											<th>图片</th>
+											<th></th>
+											<th>主标题</th>
+											<th>子标题</th>
+										</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</notempty>
+						<a class="btn green" id = 'addPlan' >新增方案</a>
+					</div>
+				</div>
+
+				<div class = "control-group">
+					<label class = "control-label">众筹视频封面:</label>
+					<div class = "controls">
+						<MyTag:plupload attachment = "info.cr_vedio_cover_attid_arr" id = 'vedio_cover' name = "cr_vedio_cover_attid"  type="one"  thumb="true"  clickdefault="true"/>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">众筹介绍内容<span class="required">*</span></label>
+					<div class="controls">
+						<MyTag:editor height="200" width="800" name="cr_content"
+							id="editor1">{$info.cr_content}</MyTag:editor>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label">内部员工折扣<span class="required">*</span></label>
+					<div class="controls">
+						<input type="text" name="cr_staff_discount" class="m-wrap"
+							value="{$info.cr_staff_discount}" /><span class='help-inline'>折</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+							<label class="control-label">启用状态</label>
+							  <div class="controls">
+		                            <label class="radio">
+									    <input type="radio" name="cr_status"  value="0"  <heq name = 'info.cr_status' value = '0'>checked</heq>>
+									    禁用
+									  </label>
+									 <label class = 'radio'>
+									    <input type="radio" name="cr_status"  value="1"   <heq name = 'info.cr_status' value = '1'>checked <else/> <neq name = 'info.cr_status'  value = '0'>checked</neq></heq> >
+									    启用
+									  </label>
+							</div>
+				</div>
+				
+				<div class = 'control-group'>
+					<label class = 'control-label'>备注:</label>
+					<div class = 'controls'>
+						<textarea rows="" cols="" placeholder = '请输入备注' name = 'cr_remark'>{$info.cr_remark}</textarea>
+					</div>
+				</div>
+						<div class="control-group">
+							<label class="control-label">启用旅游项目</label>
+							  <div class="controls">
+		                            <label class="radio">
+									    <input type="radio" name="cr_travel_status"  value="0"  <neq name = 'info.cr_travel_status'  value = '1'><else/>checked</neq>>
+									    禁用
+									  </label>
+									 <label class = 'radio'>
+									    <input type="radio" name="cr_travel_status"  value="1"   <eq name = 'info.cr_travel_status' value = '1'>checked</eq> >
+									    启用
+									  </label>
+							</div>
+				</div>
+				<div class = 'control-group'>
+				 		<label class = 'control-label'>旅游项目名:<span class="required">*</span></label>
+				 		<div class = 'controls'><input type ='text' name = 'cr_travel_name' value = "{$info.cr_travel_name}"/></div>
+				 	</div>
+				 	<div class = 'control-group'>
+				 		<label class = 'control-label'>旅游项目内容:<span class="required">*</span></label>
+				 		<div class = 'controls'>
+				 		<MyTag:editor height="200" width="800" name="cr_travel_content"
+								id="editor2">{$info.cr_travel_content}</MyTag:editor>
+				 		</div>
+				 	</div>
+				<div class="form-actions">
+					<input type="hidden" id="cr_id" name="cr_id" value="{$info.cr_id}" />
+					<button type="submit" class="btn blue">提交</button>
+					<a class="btn" href="{:U('__CONTROLLER__/index')}">返回</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div style = "display:none;" id = "uploadTmp">
+	<MyTag:plupload id = 'browseAdd' name = "cg_att_id"  type="one"  thumb="true"  clickdefault="true"/>
+</div>
+</block>
+<block name="js"> 
+	<script type="text/javascript">
+		seajs.use(['controller/Crowdfunding/CrowdfundingeController'],function(controller){
+			controller.edit();
+		});
+	</script>
+ </block>

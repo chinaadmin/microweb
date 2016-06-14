@@ -1,0 +1,73 @@
+<volist name="lists" id="vo">
+<div id="myModal_{$vo.order_sn}" class="modal hide fade modal_order" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:790px;">
+  <div class="modal-header">
+    <h3 id="myModalLabel">订单发货</h3>
+  </div>
+  <div class="modal-body">
+  	<ul class="breadcrumb">
+              <li>订单号：{$vo.order_sn}</li>&nbsp;&nbsp;
+			  <li>提货码：{$vo.order_code}</li>
+	</ul>
+	<form action="{:U('SendGoods/send')}" method="Post" class="form-horizontal modal_form" id="send_{$vo.order_sn}">
+		<input type="hidden" name='order_id' value="{$vo.order_id}"/>
+	 <div class="control-group">
+                         <!-- label class="control-label" style="width:57px;">处理人：</label>
+                         <div class="controls" style="margin-left:0px;" type=""> -->
+						<input type="hidden" value="{$user.username}" name="uid"/>
+                             <!---<select class="m-wrap" name="uid">
+                                 
+                             </select>
+                         </div> -->
+                     </div>
+    <div class="portlet-body">
+								<table class="table table-striped table-bordered table-advance table-hover">
+									<thead>
+										<tr>
+											<th>商品</th>
+											<th>收货人</th>
+											<th>状态</th>
+										</tr>
+									</thead>
+									<tbody>
+									 <volist name='vo.goods' id='good_v'> 
+										<tr>
+											<td class="highlight">
+												<img src="{$good_v.pic}" width='50' height="50"/>
+												{$good_v.name}
+												<notempty name='good_v.norms'>
+												<volist name='good_v.norms_value' id='vs'>
+													{$vs.value}&nbsp;&nbsp;
+												</volist>
+											</notempty>
+											</td>
+											<td>{$vo.receipt_name}
+											<br/>
+											{$vo.receipt_mobile}
+											</td>
+											<td>
+											   <eq name="good_v.refund_status" value="1">
+													退款/退货
+												<else/>
+												    已确认
+												</eq>
+												<empty name='good_v.refund_num'>
+												(发货数量：{$good_v['number']},退货数量：0
+													<else/>
+												(发货数量：{$good_v['number']-$good_v['refund_num']},退货数量：{$good_v.refund_num|default=0})
+												</empty>
+											</td>
+										</tr>
+									</volist>
+									</tbody>
+
+								</table>
+
+							</div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type='submit'>确认发货</button>
+	<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+  </div>
+  </form>
+</div>
+</volist>

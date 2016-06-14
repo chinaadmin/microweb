@@ -1,0 +1,176 @@
+<extend name="Common:base" />
+<block name="content">
+<style type="text/css">
+    .access .bo_5{
+        border: 1px solid #cccccc;
+        padding: 5px;
+    }
+    .access .back_gray{
+        background: #eeeeee;
+    }
+    .access .back_green{
+        background: #FFFFFF;
+    }
+    .access .top_5{
+        margin-top: 5px;
+    }
+    .access .pl_20{
+        padding-left: 20px;
+    }
+    .checkbox{
+        display: inline-block;
+    }
+</style>
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">角色列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="tabbable tabbable-custom">
+                <ul class="nav nav-tabs">
+                    <volist name="type_lists" id="vo">
+                        <li <eq name="type" value="$key">class="active"</eq>><a href="{:U('index',['type'=>$key])}" style="padding: 10px 25px">{$vo}</a></li>
+                    </volist>
+                </ul>
+                <div class="tab-content">
+                    <div class="clearfix">
+                        <MyTag:rule name="Role/edit">
+                            <div class="btn-group">
+                                <a class="btn green" href="{:U('Role/edit',['type'=>$type])}">
+                                    添加角色 <i class="icon-plus"></i>
+                                </a>
+                            </div>
+                        </MyTag:rule>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>角色名</th>
+                            <th>头像</th>
+                            <th>状态</th>
+                            <th>格言</th>
+                            <th>备注</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="lists" id="vo">
+                            <tr>
+                                <td>{$vo.role_id}</td>
+                                <td>{$vo.name}</td>
+                                <td>
+                                	<notempty name = 'vo.picPath'>
+                                		<a href="{$vo.picPath}" class="lightbox"><img  src="{$vo.picPath}" width='30' height='30' style="cursor:pointer;"/></a>
+                                	</notempty>
+                                </td>
+                                <td>{$vo.status|getStatus}</td>
+                                <td>{$vo.maxim}</td>
+                                <td>{$vo.remark}</td>
+                                <td>
+                                    <MyTag:rule name="Role/setPermission">
+                                        <a class="btn green-stripe js-setting-permission" data-id="{$vo['role_id']}">设置权限</a>
+                                    </MyTag:rule>
+                                    <MyTag:rule name="Role/edit">
+                                        <a class="btn blue-stripe" href="{:U('Role/edit',['role_id'=>$vo['role_id']])}">编辑</a>
+                                    </MyTag:rule>
+                                    <if condition="$is_super eq true or $vo['is_system'] == 0">
+                                    <MyTag:rule name="Role/del">
+                                        <a class="btn red-stripe js-del" url="{:U('Role/del',['role_id'=>$vo['role_id']])}">删除</a>
+                                    </MyTag:rule>
+                                    </if>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <div class="row-fluid">
+                        <div class="pagination pull-right">
+                            {$_page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="setting-permission-view" class="modal hide" style="width:700px;">
+
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button"></button>
+        <h3>设置权限</h3>
+		<div>
+			<label class="checkbox">
+                    <input type="radio" class="js_cbx_access js_level" name="radio" value="0" checked="checked" >所有
+            </label>
+			<foreach name="menu_list" item="vo">
+				
+				<label class="checkbox">
+                    <input type="radio" class="js_cbx_access js_level"  name="radio" value="{$vo.id}" >{$vo.name}
+				</label>
+			</foreach>
+		</div>
+    </div>
+    <form id="js-set-permission" action="{:U('setPermission')}" method="post">
+    <div id="permission-content-view" class="modal-body">
+
+    </div>
+    <input type="hidden" id="role_id" name="role_id" value="">
+    </form>
+    <div class="modal-footer modal-center">
+        <button type="button" class="btn blue js-confirm">确定</button>
+        <button type="button" data-dismiss="modal" class="btn">取消</button>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script id="tpl-permission-content" type="text/template">
+        <div class="access">
+            <%
+            for(var i=0;i<items.length;i++){
+                if(items[i].level == 1){
+            %>
+            <div class="bo_5 top_5 back_gray pid<%=items[i].id%> pid">
+                <label class="checkbox">
+                    <input type="checkbox" class="js_cbx_access js_level_1" name="access[]" value="<%=items[i].id%>" <% if(items[i].checked == true){ %>checked="checked"<%}%> > <%=items[i].name%>
+                </label>
+                <%
+                    for(var j=0;j<items.length;j++){
+                        if(items[j].level == 2 && items[j].pid == items[i].id){
+                %>
+                <div class="bo_5 top_5 back_green">
+                    <div>
+                        <label class="checkbox">
+                            <input type="checkbox" class="js_cbx_access js_level_2" data-level1="<%=items[i].id%>" name="access[]" value="<%=items[j].id%>" <% if(items[j].checked == true){ %>checked="checked"<%}%> > <%=items[j].name%>
+                        </label>
+                    </div>
+                    <div class="pl_20">
+                        <%
+                        for(var t=0;t<items.length;t++){
+                            if(items[t].level == 3 && items[t].pid == items[j].id){
+                        %>
+                        <label class="checkbox">
+                            <input type="checkbox" class="js_cbx_access js_level_3" data-level1="<%=items[i].id%>" data-level2="<%=items[j].id%>" name="access[]" value="<%=items[t].id%>" <% if(items[t].checked == true){ %>checked="checked"<%}%> > <%=items[t].name%>
+                        </label>
+                        <%
+                            }
+                        }
+                        %>
+                    </div>
+                </div>
+                <%
+                    }
+                }
+                %>
+            </div>
+            <%}
+            }%>
+        </div>
+    </script>
+    <script type="text/javascript">
+        seajs.use(['controller/role/roleController'],function(role){
+            role.index();
+        });
+    </script>
+</block>

@@ -1,0 +1,97 @@
+<extend name="Common:base" />
+<block name="css"><load href="__CSS__/App/admin/order/order.css"/></block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">收款详情</div>
+        </div>
+        <div class="portlet-body">
+			<ul class="breadcrumb">
+							<li>
+								<a href="">订单管理</a>
+								<span class="icon-angle-right"></span>
+								收款单详情
+							</li>
+			</ul>			
+			<div class="row-fluid">
+					<div class="span12">
+						<div class="tabbable tabbable-custom boxless">
+							<div class="tab-content">
+								<div id="tab_1" class="tab-pane active row-fluid">
+										<div class='span8 info-left'> 
+								  <div class="portlet box">
+							              
+                                          <div class="portlet-body"> 
+										  <div class="info-base">
+                                          		<h4>编号：</h4>
+												<p>{$info.add_time|date='YmdHis',###}</p>
+                                          	</div>  
+                                          	<div class="info-base">
+                                          		<h4>订单编号：</h4>
+												<p>{$info.order_sn}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>订单状态：</h4>
+												<p>{$info.status|getStatus=###,['0'=>['text'=>'未确认'],'1'=>['text'=>'已确认'],'2'=>['text'=>'已取消'],'3'=>['text'=>'无效'],'4'=>['text'=>'退货']]}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>支付状态：</h4>
+												<p>{$info.pay_status|getStatus=###,['0'=>['text'=>'未付款'],'1'=>['text'=>'付款中'],'2'=>['text'=>'已付款']]}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>付款时间：</h4>
+												<p>{$info.pay_time|date="Y-m-d H:i:s",###}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>支付方式：</h4>
+												<p>{$info.payment_name}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>操作员：</h4>
+												<p></p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>付款金额：</h4>
+												<p>￥{$info.money_paid|default='0.00'}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>创建时间：</h4>
+												<p>{$info.add_time|date='Y-m-d H:i:s',###}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>收款人：</h4>
+												<p></p>
+                                          	</div>
+											<form  action="{:U('Order/orderMark',array('order_id'=>$info['order_id']))}" method="post" id='seller_postscript' class="info-base info-mark">
+                                          		<h4 style="float:left;">订单备注：</h4>
+												<p><textarea rows="3" class="large m-wrap"  name="seller_postscript">{$info.seller_postscript|default=''}</textarea>
+												<MyTag:rule name="Order/orderMark">	
+												<button type="submit" class='btn pull-left blue'>确定</button>
+												</MyTag:rule>
+												<a href="{:U('Order/collection')}" class="btn pull-left blue">返回</a>
+												</p>
+                                            </form> 
+                                          </div>
+						          </div>
+								   </div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			
+        </div>	
+    </div>	
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/order/orderController'],function(main){
+          main.info();
+        });
+    </script>
+</block>

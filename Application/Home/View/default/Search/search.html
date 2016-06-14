@@ -1,0 +1,73 @@
+<extend name="Common:base"/>
+<block name="css">
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/list-page.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/class-page.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/unfind-page.css" />
+</block>
+<block name="nav"><include file="Common:welt_nav" /></block>
+<block name="content">
+<empty name="lists">
+	<div class="img_box">
+      <img src="__IMG__/home/search_00.jpg">
+      <div class="explain_box">
+          <p class=""> 找不到与"{$search_word}"有关的商品</p>
+          <p class="back_home">您可以返回<a href="/">首页</a>选择其它心仪商品</p>
+      </div>
+  </div>
+<else/>
+  <div class="main" style="margin-top:0">
+    <!-- 左边产品说明 -->
+    <div id="wrapper-250">
+      <div id="path_box"style="margin-bottom:16px;">
+    <a href="javascript:void(0);" style="font-size:16px;">搜索结果</a>  <span>&gt;</span> <a id="path_cl" href="javascript:void(0);" style="font-size:16px;">{$search_word}</a>
+  </div>
+  <ul class="accordion">
+  	<volist name="cats" id="vo">
+    <li id="one" class="files">
+    	<i class="sort_bg {$vo.icon} <eq name= 'key' value= '0'> active</eq>" ></i>
+		<a href="{:U('List/goodsLists',array('catId'=>$vo['cat_id'],'type'=>2))}" <eq name="key" value="0">class="active"</eq>>{$vo.name}</a>
+      <ul class="sub-menu" >
+      	<volist name="vo.child" id="v">
+        <li><a href="{:U('List/goodsLists',array('catId'=>$v['cat_id'],'type'=>2))}" style="background-color:#fff;">{$v.name}</a></li>
+      </volist>
+	  </ul>
+    </li>
+   </volist>
+  </ul>
+</div>
+<!-- 产品列表 -->
+    <div id="plist" style="padding-top:42px;">
+        
+        <ul id="plist_pro"  class = 'search_result' style="top:30px;">
+            <volist name="lists" id="vo">
+            <li>
+                <div class="lh_wrap">
+                    <div class="p-img"><a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}"><img alt="{$vo.name}" src="{$vo.thumb}" title="{$vo.name}" width="220px" height="220px"></a></div>
+                    <div class="p-name"><a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}">{$vo.name}</a></div>
+                    <div class="extra"><a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}"><span>￥</span>{$vo.price}</a><notempty name="vo.old_price"><i>￥{$vo.old_price}</i></notempty></div>
+                  <!--   <div class="btns">
+                        <a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}" class="add_cart_large btnCart">查看详情</a>
+                       
+                    </div> -->
+                </div>
+            </li>
+			</volist>
+        </ul>
+        <div class="page_num">
+			<gt name="totalPages" value="1">
+				{$_page}
+			</gt>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <div id="flyItem" class="fly_item"><img src="__IMG__/home/item-pic.jpg" width="40" height="40"></div>
+</div>
+</empty>
+</block>
+<block name="js">
+	<script type="text/javascript">
+	 seajs.use(['controller/searchController'],function(index){
+       
+        });
+	</script>
+</block>

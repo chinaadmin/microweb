@@ -1,0 +1,71 @@
+<!--底部-->
+<notempty name="web_is_default"><div class="footer-pd"></div></notempty>
+<div <notempty name="web_is_default">class="footer-position"</notempty> >
+    <div id="footer">
+        <!-- 底部标图 -->
+        <div id="footer_pic">
+            <notempty name="web_is_default">
+                <img src="__IMG__/home/sort_02.jpg"></notempty>
+        </div>
+
+        <div class="blackBox">
+            <div class="guide">
+                <div class="middle">
+                    {~$_help_menu=$__this__->help_menu()}
+                    <volist name="_help_menu" id="menu_vo">
+                        <div class="<eq name="i" value="1">
+                            guide-2
+                            <else/>
+                            guide-1
+                        </eq>
+                        ">
+                        <p> <b>{$menu_vo['name']}</b>
+                        </p>
+                        <volist name="menu_vo['child']" id="menu_child_vo">
+                            <p>
+                                <a href="{$menu_child_vo.url}">{$menu_child_vo.name}</a>
+                            </p>
+                        </volist>
+                    </div>
+                </volist>
+   <!--              <div class="guide-1">
+                    <p> <b>手机必好货</b>
+                    </p>
+                    <img src="__IMG__/home/qr_01.jpg" width="86" >
+                    <p>
+                        <a href=""class="qq">必好货官方微信</a>
+                        必好货官方微信                      
+                    </p>
+                </div> -->
+                <div class="guide-1">
+                    <p style="font-size:14px;">
+                        <b>关注必好货</b>
+                    </p>
+                    <img src="__IMG__/home/qr-02.png" width="86">
+                    <p style='text-align:center;'>
+                          <!-- <a href="javascript:void(0);"class="pp">必好货微信商城</a> -->
+                        必好货微商城
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer_infor">
+        <div class="footer_infor_link">
+            {~$_bottom_menu=$__this__->bottom_menu()}
+            <volist name="_bottom_menu" id="menu_vo">
+                <a href="{$menu_vo.url}" target="{$menu_vo.target}">{$menu_vo.name}</a>
+            </volist>
+        </div>
+        <div class="footer_infor_txt">{$Think.config.jt_config_web_foot|htmlspecialchars_decode}</div>
+    </div>
+    <notempty name="web_is_default">
+        <div class="footer_bg">
+            <img src="{$Think.config.jt_config_web_foot_image}"></div>
+        <else/>
+        <div style="padding-top:70px;"></div>
+    </notempty>
+    <div class = 'ui-tools-bottom' >
+        <img src="__IMG__/home/goTop.png"></div>
+</div>
+</div>

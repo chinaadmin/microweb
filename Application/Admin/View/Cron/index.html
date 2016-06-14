@@ -1,0 +1,67 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">计划任务列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="Cron/edit">
+                        <a class="btn green" href="{:U('Cron/edit')}">
+                        添加计划任务 <i class="icon-plus"></i>
+                        </a>
+                    </MyTag:rule>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>计划标题</th>
+                        <th>计划任务执行文件</th>
+                        <th>任务周期</th>
+                        <th>任务状态</th>
+                        <th>上次执行时间</th>
+                        <th>下次执行时间</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                        <td>{$vo.subject}</td>
+                        <td>{$vo.file}.php</td>
+                        <td>{$vo.type}</td>
+                        <td><if condition=" $vo['is_open'] ">{:toStress('开启')}<else />{:toStress('关闭','label-danger')}</if></td>
+                        <td>
+                            <empty name="vo['modified_time']">-<else/>{:date('Y-m-d H:i',$vo['modified_time'])}</empty>
+                        </td>
+                        <td>
+                            <empty name="vo['next_time']">-<else/>{:date('Y-m-d H:i',$vo['next_time'])}</empty>
+                        </td>
+                        <td>
+                            <MyTag:rule name="Cron/viewlog"><a class="btn blue-stripe" href="{:U('Cron/viewlog',['id'=>$vo['cr_id']])}">查看执行情况</a></MyTag:rule>
+                            <MyTag:rule name="Cron/edit"><a class="btn blue-stripe" href="{:U('Cron/edit',['id'=>$vo['cr_id']])}">编辑</a></MyTag:rule>
+                            <MyTag:rule name="Cron/del"><a class="btn red-stripe js-del" url="{:U('Cron/del',['id'=>$vo['cr_id']])}">删除</a></MyTag:rule>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+            <div class="row-fluid">
+                <div class="pagination pull-right">
+                    {$_page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/cron/cronController'],function(main){
+            main.index();
+        });
+    </script>
+</block>

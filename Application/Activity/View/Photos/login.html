@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <title>试一口，找真爱</title>
+  <link rel="stylesheet" href="__CSS__/wxapp.css?r={:time()}" charset="utf-8">
+  <script src="__ROOT__/Public/Activity/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="__ROOT__/Public/Activity/bower_components/angular-ui-router/release/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
+  <script src="__JS__/teContronller.js?r={:time()}" type="text/javascript" charset="utf-8" ></script>
+  <script src="__JS__/teServices.js?r={:time()}" type="text/javascript" charset="utf-8" ></script>
+  <script src="__JS__/application.js?r={:time()}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body >
+
+    <div class="navTop">
+        <a href="http://www.bihaohuo.cn/" class="homeBtn"></a>
+        <div class="logo" style="background-image: url(__IMG__/logo.png);">
+          <span>登陆验证</span>  
+        </div>
+      </div>
+
+  <div class="view">
+
+    <div class="loginBox onebox">
+      <input type="text" class="full input phone" placeholder="请输入手机号" ng-model="user.mobile">
+      <p class="lineGroup">
+        <input type="text" class="lite code" placeholder="请输入短信验证码" ng-model="user.code">
+        <a class="btn" ng-click="getCode()">获取验证码</a>
+      </p>      
+      <p class="text msg hide" style="margin-top: 8px; margin-bottom: -12px;">
+        <span>短信已经发送到您的手机，若60秒内还未收到短信验证码，请重新获取验证码</span>
+      </p>
+    </div>
+
+    <div ng-app="tryEat" ng-controller="loginControllers">
+      <div class="loginBox">
+        <a class="btn full loginBtn" ng-click="add()">完成绑定</a>
+      </div>
+      <div class="msgBox {{msgPopup.hide?'hide':'show'}}">
+        <div class="tips">
+          <span ng-bind="msgPopup.msg"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

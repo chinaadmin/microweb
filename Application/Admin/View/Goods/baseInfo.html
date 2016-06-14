@@ -1,0 +1,210 @@
+ <!--商品基本信息-->
+ <div class="tab-pane active" id="tab_1">
+                     <div class="control-group">
+                         <label class="control-label">商品名称<span class="required">*</span></label>
+                         <div class="controls">
+                             <input type="text" name="name" class="m-wrap span2" value="{$info.name|default=''}"/>
+                         </div>
+                     </div>
+					 
+					 <div class="control-group">
+                         <label class="control-label">商品编号</label>
+                         <div class="controls">
+                             <input type="text" name="code" class="m-wrap span2 popovers" data-content="如果不填由系统默认生成！"  data-trigger="hover" value="{$info.code|default=''}"/>
+                         </div>
+                     </div>
+
+                     <div class="control-group">
+                         <label class="control-label">有赞商品id</label>
+                         <div class="controls">
+                             <input type="text" name="yzid" class="m-wrap span2 popovers" value="{$info.yzid|default=''}"/>
+                         </div>
+                     </div>
+					 
+					 <div class="control-group">
+                         <label class="control-label">商品排序</label>
+                         <div class="controls">
+                             <input type="text" name="sort" class="m-wrap span2" value="{$info.sort|default=0}"/>
+                         </div>
+                     </div>
+					 
+					 <div class="control-group">
+                         <label class="control-label">商品简述</label>
+                         <div class="controls">
+                             <textarea name="goods_description" class="m-wrap span2">{$info.goods_description|default=''}</textarea>
+                         </div>
+                     </div>
+					 
+                     <div class="control-group">
+                         <label class="control-label">商品分类<span class="required">*</span></label>
+                         <div class="controls">
+                             <select class="m-wrap" name="cat_id">
+                                 <option value="0">请选择</option>
+                                 <volist name="categorys" id="vo">
+                                 	<option value="{$vo.cat_id}" <eq name="info.cat_id" value="$vo.cat_id">selected</eq>>{$vo.fullname}</option>
+                                 </volist>
+                             </select>
+							  <label class="checkbox">
+                                <input type="checkbox" name='addsub' value='1' class='addsub' <notempty name='subcats'>checked</notempty>>
+                                添加从属分类
+                            </label>
+                         </div>
+                     </div>
+					 
+                     <div class="control-group subcat" style="display:none;">
+                         <label class="control-label">
+                             从属分类
+                         </label>
+                         <div class="controls">
+                             <div>
+                                 <select data-placeholder="请选择从属分类" name='subcat[]' style="width:220px;"  class="chosen-select" multiple tabindex="4">
+                                     <volist name="categorys" id="vo">
+                                     	 <if condition="in_array($vo['cat_id'],$subcats)">
+                                     	 	  <option value="{$vo.cat_id}" selected="selected">{$vo.fullname}</option>
+                                     	 	<else/>
+											  <option value="{$vo.cat_id}">{$vo.fullname}</option>
+                                     	 </if>
+                                     </volist>
+                                 </select>
+                             </div>
+                         </div>
+                     </div>
+					
+				  
+					  <div class="control-group">
+                         <label class="control-label">商品品牌</label>
+                         <div class="controls">
+                             <select class="m-wrap" name="brand_id">
+                                 <option value="0">请选择</option>
+                                 <volist name="brands" id="vo">
+                                         <option value="{$vo.brand_id}"<eq name="info.brand_id" value="$vo.brand_id">selected</eq>>{$vo.name}</option>
+                                 </volist>
+                             </select>
+                         </div>
+                     </div>
+					 
+				   <div class="control-group">
+                         <label class="control-label">商品库存<span class="required">*</span></label>
+                         <div class="controls">
+                             <input type="text" name="number" class="m-wrap span2" value="{$info.stock_number|default=''}"/>
+                         </div>
+                    </div>
+					
+					<div class="control-group">
+                         <label class="control-label">商品重量</label>
+                         <div class="controls">
+                             <input type="text" name="weight" class="m-wrap span2" value="{$info.weight|default=''}"/>
+							 <span class="help-inline">单位为“克”</span>
+                         </div>
+                    </div>
+					
+					<div class="control-group">
+                         <label class="control-label">本店售价<span class="required">*</span></label>
+                         <div class="controls">
+                             <input type="text" name="price" class="m-wrap span2" value="{$info.price|default=''}"/>
+                         </div>
+                    </div>
+					
+					<div class="control-group">
+                         <label class="control-label">市场售价<span class="required">*</span></label>
+                         <div class="controls">
+                             <input type="text" name="old_price" class="m-wrap span2" value="{$info.old_price|default=''}"/>
+                         </div>
+                    </div>
+				  
+                    <div class="control-group">
+                        <label class="control-label">  状态</label>
+                        <div class="controls">
+                            <label class="radio">
+                                <input type="radio" name="is_sale" value="0" <eq name="info.is_sale" value="0">checked</eq>/>
+                                下架
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="is_sale" value="1"<notpresent name="info.is_sale">checked<else/><eq name="info.is_sale" value="1"> checked</eq></notpresent>/>
+                                上架
+                            </label>
+                        </div>
+                    </div>
+					
+				 <div class="control-group">
+                        <label class="control-label">展位</label>
+                        <div class="controls">
+                        <volist name="attFeat"  id="vs">
+                        	<label class="checkbox">
+                                <input type="checkbox" name="feat[]" <if condition="in_array($key,$feat)">checked</if> value="{$key}"/>
+                               {$vs}
+                            </label>
+                        </volist>
+                        </div>
+                    </div>
+					
+					<notempty name='tags'>
+					 <div class="control-group">
+                        <label class="control-label">商品标签</label>
+                        <div class="controls">
+                        <volist name="tags"  id="vo">
+                        	<label class="checkbox">
+                                <input type="checkbox" name="tag_id[]" {$vo.checked} value="{$vo.tag_id}"/>
+                                {$vo.name}
+                            </label>
+                        </volist>
+                        </div>
+                    </div>
+					</notempty>
+					
+					<div class="control-group">
+                         <label class="control-label">积分</label>
+                         <div class="controls">
+                             <input type="text" name="integral" class="m-wrap span2" value="{$info.integral|default=''}"/>
+                         </div>
+                    </div>
+					
+					<!-- <div class="control-group">
+                        <label class="control-label">是否包邮</label>
+                        <div class="controls">
+                            <label class="radio">
+                            	<input type="radio" name="is_postage" value="0"<notpresent name="info.is_postage">checked<else/><eq name="info.is_postage" value="0"> checked</eq></notpresent>/>
+                                不包邮
+                            </label>
+                            <label class="radio">
+                            	<input type="radio" name="is_postage" value="1" <eq name="info.is_postage" value="1">checked</eq>/>
+                                包邮
+                            </label>
+                        </div>
+                    </div> -->
+
+                    <!-- 是否支持快递 begin -->
+                    <div class="control-group">
+                        <label class="control-label">是否支持快递</label>
+                        <div class="controls">
+                            <label class="radio">
+                                <input type="radio" name="is_express" value="1" <notpresent name="info.is_express">checked<else /><eq name="info.is_express" value="1">checked</eq></notpresent> />
+                                支持快递
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="is_express" value="0" <eq name="info.is_express" value="0"> checked</eq> />
+                                不支持快递
+                            </label>
+                        </div>
+                    </div>
+                    <!-- 是否支持快递 begin -->
+
+					
+					 <div class="control-group">
+                        <label class="control-label">是否普通商品</label>
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" name="is_goods" <empty name="info.is_goods">checked<else/><eq name="info.is_goods" value="1">checked</eq></empty> value="1"/>
+                                打勾表示能作为普通商品销售，否则只能作为配件或赠品销售。
+                            </label>
+                        </div>
+                    </div>
+				  
+				  <div class="control-group">
+                         <label class="control-label">上传商品图片<span class="required">*</span></label>
+                         <div class="controls" style="position:relative;">
+                         	<span style="color:red;position:absolute;top:2px;left:80px;display:block;">点击下图选择默认封面图片！（上传图片尺寸700X700）</span>
+                            <MyTag:plupload type="many" attachment="info.attribute_id" thumb="true" clickdefault="true"/>
+                         </div>
+                    </div>
+                 </div>

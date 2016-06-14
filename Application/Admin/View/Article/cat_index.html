@@ -1,0 +1,72 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$code_name}分类列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="Article/cat_edit">
+                    <a class="btn green" href="{:U('cat_edit',['code'=>$code])}">
+                        添加{$code_name}分类 <i class="icon-plus"></i>
+                    </a>
+                    </MyTag:rule>
+                </div>
+                <div class="btn-group">
+                    <a class="btn green" href="{:U('cache_keys/enable',['id'=>4])}">
+                        更新本缓存 <i class="icon-refresh"></i>
+                    </a>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>排序</th>
+                    <th>文章分类名称</th>
+                    <th>状态</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="lists" id="vo">
+                    <tr>
+                        <td><input type="text" name="sort[{$vo.cat_id}]" value="{$vo.sort}" class="m-wrap m-sort js-sort"></td>
+                        <td><a href="{:U('index',['cat_id'=>$vo['cat_id']])}">{$vo.fullname}</a></td>
+                        <td>{$vo.status|getStatus}</td>
+                        <td>
+                            <MyTag:rule name="Article/cat_edit">
+                            <a class="btn blue-stripe" href="{:U('cat_edit',['id'=>$vo['cat_id']])}">编辑</a>
+                            </MyTag:rule>
+                            <MyTag:rule name="Article/cat_del">
+                            <a class="btn red-stripe js-del" url="{:U('cat_del',['id'=>$vo['cat_id']])}">删除</a>
+                            </MyTag:rule>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+            <div class="row-fluid">
+                <div class="btn-group">
+                    <MyTag:rule name="Article/cat_sort">
+                    <a class="btn green" id="save-sort" url="{:U('cat_sort')}">
+                        <i class="icon-sort"></i> 保存排序
+                    </a>
+                    </MyTag:rule>
+                </div>
+                <div class="pagination pull-right">
+                    {$_page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/article/categoryController'],function(menu){
+            menu.index();
+        });
+    </script>
+</block>

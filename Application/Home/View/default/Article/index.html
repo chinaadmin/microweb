@@ -1,0 +1,40 @@
+<extend name="Common:base"/>
+<block name="css">
+<link type="text/css" rel="stylesheet" href="__CSS__/App/home/helper-page.css">
+</block>
+<block name="nav"></block>
+<block name="content">
+    <div class="content_title">
+        <h2>{$cat_title}</h2>
+    </div>
+    <div class="side_list">
+        <h2>{$cat_title}</h2>
+        <volist name="article_menu" id="menu_vo">
+        <div class="side_title side_normal">
+            <div class="obtn">{$menu_vo['name']}</div>
+        </div>
+        <ul class="list_detail" <eq name="menu_vo.current" value="1">style="display:block"<else/>style="display:block"</eq>>
+            <volist name="menu_vo['child']" id="child_vo">
+            <li><a <eq name="child_vo.current" value="1">class="bg-active"</eq> href="{$child_vo['url']}">{$child_vo['name']}</a></li>
+            </volist>
+        </ul>
+        </volist>
+    </div>
+    <div class="text_box">
+
+        <div class="text_area">
+            <h2>{$article.name}</h2>
+            <div style="padding: 30px 2px">
+                {$article.content|htmlspecialchars_decode}
+            </div>
+        </div>
+    </div>
+    </div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/articleController'],function(index){
+            index.index();
+        });
+    </script>
+</block>

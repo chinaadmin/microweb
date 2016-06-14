@@ -1,0 +1,88 @@
+<extend name="Common:base" />
+<block name="content">
+	<div class="row-fluid">
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption">
+					奖品管理
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<div class="clearfix">
+					<div class="btn-group">
+						<a class="btn green" href="/prize/edit.html">
+						添加商品 <i class="icon-plus"></i>
+					</a>
+					</div>
+					<div class="btn-group">
+						<a class="btn green" href="{:U('prize/export' , ['as_type'=>$_type , 'status' => $_status , 'p'=>$_page_code])}">
+						导出数据 <i class="icon-download-alt"></i>
+					</a>
+					</div>
+					<form class="form-search pull-right" action="" method="get" >
+						<div class="input-append">
+							<select class="m-wrap select-query" name="as_type">
+								<option value="">奖品类型</option>
+								<volist name="category" id="vo">
+									<option value="{$key}" <eq name="key" value="$_type">selected</eq>>{$vo.name}</option>
+								</volist>
+							</select>
+							<select class="m-wrap select-query" name="status">
+								<option value="">状态</option>
+								<option value="1" <eq name="_status" value="1">selected</eq>>启用</option>
+								<option value="0" <eq name="_status" value="0">selected</eq>>禁用</option>
+							</select>
+							<button type="submit" class="btn green">搜索</button>
+						</div>
+					</form>
+				</div>
+				<!--cealrfix end-->
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>奖品ID</th>
+							<th>奖品名称</th>
+							<th>奖品类型</th>
+							<th>奖品</th>
+							<th>参与活动</th>
+							<th>有效时间</th>
+							<th>领取数量</th>
+							<th>启用状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name="lists" id="vo">
+							<tr>
+								<td>{$vo.as_id}</td>
+								<td>{$vo.as_name}{$vo.as_name_label}</td>
+								<td>{$vo.as_type_name}</td>
+								<td>{$vo.as_hongbao_amount}</td>
+								<td>{$vo.is_join}</td>
+								<td>{$vo.as_start_time|dateFormat=### , 'Y-m-d H:i:s'} --- {$vo.as_end_time|dateFormat=### , 'Y-m-d H:i:s'}</td>
+								<td><a href="{:U('draw/index' , ['as_type'=>$vo['as_type'] , 'as_id'=>$vo['as_id']])}">{$vo.counts}</a></td>
+								<td>{$vo.status_name}</td>
+								<td>
+									<MyTag:rule name="prize/edit"><a class="btn blue-stripe" href="{:U('prize/edit',['id'=>$vo['as_id']])}">编辑</a></MyTag:rule>
+									<MyTag:rule name="prize/del"><a class="btn red-stripe js-del" url="{:U('prize/del',['id'=>$vo['as_id'] , 'model' => 'prize'])}">删除</a></MyTag:rule>
+								</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+				<div class="row-fluid">
+					<div class="pagination pull-right">
+						{$_page}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		seajs.use(['controller/prize/prizeController'], function(main) {
+			main.index();
+		});
+	</script>
+</block>

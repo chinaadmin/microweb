@@ -1,0 +1,23 @@
+<extend name="Common:base"/>
+<block name="css">
+<link type="text/css" rel="stylesheet" href="__CSS__/App/home/home-page.css">
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/unfind-page.css">
+</block>
+<block name="nav"><include file="Common:welt_nav" /></block>
+<block name="content">
+<!-- banner区域 -->
+  <div class="img_box">
+      <img src="__CSS__/Images/home/error_00.jpg">
+      <div class="explain_box" style="background:#fff;">
+          <p class="">页面出错啦~~</p>
+          <p class="back_home">您可以返回<a href="{:U('/')}">首页</a><a href="javascript:history.go(-1);">上一页</a></p>
+           <div style="clear:both"></div>
+      </div>
+  </div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use([],function(index){
+        });
+    </script>
+</block>

@@ -1,0 +1,420 @@
+ <!--左侧信息-->
+								<!--<div class='span8 info-left'>
+                                   <div class='info-action pull-left'>
+                                   	<ul class='pull-left'>
+                                        <MyTag:rule name="Order/order_confirm">
+                                        <eq name='info.status' value='0'>
+                                   		 <li><a href="javascript:void(0);" class='btn  mini blue order_confirm' order_id="{$info.order_id}">确认</a></li>
+										</eq>
+                                        </MyTag:rule>
+									</ul>
+									<div class='pull-right'>
+								   	下单会员：{$info.username}
+								   </div>
+                                   </div>
+								   
+								  <div class="portlet box">
+							              <div class="portlet-title">
+								              <div class="caption">基本信息</div>
+							              </div>
+                                          <div class="portlet-body">   
+                                          	<div class="info-base">
+                                          		<h4>订单编号：</h4>
+												<p>{$info.order_sn|default="--"}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>订单总金额：</h4>
+												<p>{$info.order_amount|default="--"}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>订单状态：</h4>
+												<p>{$info.status|getStatus=###,$status}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>支付状态：</h4>
+												<p>{$info.pay_status|getStatus=###,$pay_status}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>发货状态：</h4>
+												<p>{$info.shipping_status|getStatus=###,$shipping_status}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>是否需要发票：</h4>
+												<p>{$info.needs_invoice|getStatus=###,['0'=>['text'=>'不需要'],'1'=>['text'=>'需要']]}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>付款时间：</h4>
+												<p> 
+												    <eq name='info.pay_status' value="2">
+												    	{$info.pay_time|date="Y-m-d H:i:s",###}
+													   <else/>
+													     未付款
+												    </eq>
+												</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>支付方式：</h4>
+												<p>{$info.payment_name|default="--"}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>是否提货：</h4>
+												<p>
+													<eq name='info.shipping_status' value='2'>
+														已提货
+													<else/>
+													未提货
+													</eq>
+												</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>订单来源：</h4>
+												<p>
+                                                    <empty name="info.source_name">
+                                                        --
+                                                    <else/>
+                                                        {$info.source_name}
+                                                    </empty>
+                                                </p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>付款至今：</h4>
+												<p>
+													 <eq name='info.pay_status' value="2">
+												    	{$info.pay_time_long}
+													   <else/>
+													     未付款
+												    </eq>
+												</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>用户备注：</h4>
+												<p>{$info.seller_postscript|default="--"}</p>
+                                          	</div>
+                                          </div>
+						          </div>-->
+							<!--商品详情-->
+							       <!-- <div class="portlet box">
+							              <div class="portlet-title">
+								              <div class="caption">商品详情</div>
+							              </div>
+								     <div class="portlet-body">
+								<table class="table table-striped table-bordered table-advance table-hover">
+									<thead>
+										<tr>
+											<th>商品名称</th>
+											<th>退款退货</th>
+											<th>商品编号</th>
+											<th>单价</th>
+											<th>数量</th>
+                                            <th>小计</th>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="goods" id="v">
+										<tr>
+										    <td><img src="{$v.pic}" width='50' height="50" style="float:left;"/>	
+											<div class="order-goods-info" style="line-height:23px;margin-left:10px;float:left;">										
+											{$v.name}#
+											<notempty name='v.norms'>
+												（
+												<volist name='v.norms_value' id='vs'>
+													{$vs.value}、
+												</volist>
+                                                                                                                                                                  ）
+											</notempty>
+											X（{$v.number}）
+											<br/>
+											<volist name='v.norms_value' id='vs'>
+												<span>{$vs.name}:{$vs.value}&nbsp;&nbsp;</span>
+											</volist>
+											</div>
+											</td>
+											<td>
+											<present  name='v.refundstatus'>
+												<if condition="in_array($v['refundstatus'],array(-1,0,1,2,5)) ">
+												退款中
+											 </if> 
+											  <if condition="$v['refundstatus']==3">
+											  	已退款
+											  </if>
+											  <else/>		     
+												<a href="{:U('Order/refund',array('rec_id'=>$v['rec_id']))}" target="_blank">退款退貨</a>
+											  </present>
+											</td>
+											<td>{$v.code}</td>
+											<td>{$v.goods_price}</td>
+											<td>{$v.number}</td>
+											<td><?php echo number_format(($v['goods_price']*$v['number']),2);?></td>
+										</tr>
+									</volist>
+									</tbody>
+								</table>
+							</div>
+							<div class="info-sum">
+								<p>实付款：￥{$info.money_paid}</p>
+								<p>总重量：--</p>
+							</div>
+                                <MyTag:rule name="Order/orderMark">
+								<form  action="{:U('Order/orderMark',array('order_id'=>$info['order_id']))}" method="post" id='seller_postscript' class="info-base info-mark">
+                                          		<h4 style="float:left;">订单备注：</h4>
+												<p><textarea rows="3" class="large m-wrap"  name="seller_postscript">{$info.seller_postscript|default=''}</textarea>
+												<button type="submit" class='btn pull-left blue'>确定</button>
+												<a href="{:U('Order/index')}" class="btn pull-left blue">返回</a>
+												</p>
+                                </form>
+                                </MyTag:rule>
+						    </div> -->
+									<!--商品详情结束--> 
+								   <!--</div>-->
+								   <!--左侧信息结束-->
+								   <!--右侧-->
+								   <!--<div class="span4">
+								   	<div class='info-action pull-left' style="margin:0 0 10px 25px;">
+									 <div class='pull-right'>
+								        	下单时间：{$info.add_time|date="Y-m-d H:i:s",###}
+								      </div>
+								   </div>-->
+								   <!--收货人信息-->
+								   	 <!--<div class="portlet box">
+							              <div class="portlet-title">
+								              <div class="caption">收货人信息</div>
+							              </div>
+										  <div class="portlet-body">
+                                          	<div class="info-base">
+                                          		<h4>收货人：</h4>
+												<p>{$info.receipt_name|default="--"}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>手机号：</h4>
+												<p>{$info.receipt_mobile|default="--"}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>联系电话：</h4>
+												<p>{$info.tel|default="--"}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>邮编：</h4>
+												<p>{$info.zipcode|default="--"}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>收获地址：</h4>
+												<p>{$info.localtion|default=""}{$info.address|default="--"}</p>
+                                          	</div>
+										   </div>
+								     </div>-->
+									  <!--收货人信息结束-->
+									  <!--提货信息-->
+									 <!--<div class="portlet box">
+							              <div class="portlet-title">
+								              <div class="caption">配送信息</div>
+							              </div>
+										  <div class="portlet-body">
+										  	<switch name="info.shipping_type">
+										  		<case value="0">
+												  	   <div class="info-base">
+		                                          		<h4>配送方式：</h4>
+														<p>门店自提</p>
+		                                          	    </div>
+														<div class="info-base">
+		                                          		<h4>提货店名：</h4>
+														<p>{$info.stores_name|default='--'}</p>
+		                                          	    </div>
+														<div class="info-base">
+		                                          		<h4>提货时间：</h4>
+														<p><neq name='send.send_time' value='0'>{$send.send_time|date='Y-m-d'}<else/>--</neq></p>
+		                                          	    </div>
+										  		</case>
+												<case value="1">
+													<div class="info-base">
+		                                          		<h4>配送方式：</h4>
+														<p>普通物流</p>
+		                                          	    </div>
+														<div class="info-base">
+		                                          		<h4>物流公司：</h4>
+														<p>{$send.logistics_name|default='--'}</p>
+		                                          	    </div>
+														<div class="info-base">
+		                                          		<h4>物流单号：</h4>
+														<p>{$send.send_num|default='--'}</p>
+		                                          	    </div>
+												</case>
+												<default/>
+												       <div class="info-base">
+		                                          		<h4>配送方式：</h4>
+														<p>送货上门</p>
+		                                          	    </div>
+														<div class="info-base">
+		                                          		<h4>配送店名：</h4>
+														<p>{$info.stores_name|default='--'}</p>
+		                                          	    </div>
+														<div class="info-base">
+		                                          		<h4>配送人：</h4>
+														<p>{$send.delivery|default='--'}</p>
+		                                          	    </div>
+										  	</switch>
+										   </div>
+								     </div>-->
+								  <!--提货信息结束-->
+								  <!--发票信息-->
+								   <!--<div class="portlet box">
+							              <div class="portlet-title">
+								              <div class="caption">发票信息</div>
+							              </div>
+										  <div class="portlet-body">
+                                          	<div class="info-base">
+                                          		<h4>发票类型：</h4>
+												<p><eq name='info.invoice_type' value="1">
+													增值税发票
+													<else/>
+													普通发票
+												   </eq>
+												</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>发票抬头：</h4>
+												<p>{$info.invoice_payee|default="--"}</p>
+                                          	</div>
+											<div class="info-base">
+                                          		<h4>发票内容：</h4>
+												<p>{$info.invoice_content|default="--"}</p>
+                                          	</div>
+										   </div>
+								     </div>-->
+								  <!--发票信息结束-->
+								   <!--</div>-->
+								   <!--右侧结束-->
+          <div class="base-info">
+          	<div class="base-info-top">
+          		<ul>
+          			<li>订单号：{$info.order_sn}</li>
+					<li>订单来源： {$info.source_name|default='--'}</li>
+					<li>支付方式：{$info.payment_name|default='--'}【{$pay_status[$info['pay_status']]}】</li>
+					<li>配送方式：{$shipping_type[$info['shipping_type']]}</li>
+          		</ul>
+          	</div>
+			<div class="base-info-body">
+				<div class="info-body1">
+					<!-- <p class="p1">下单会员：{$info.username}<br>电话会员：{$info.mobile|default="--"}</p> -->
+					<p class="p1">
+						<span>下单会员：{$info.username}<span><br/>
+						<span>联系方式：{$info.mobile}</span>
+					</p>
+					<p class="p2">收货地址：{$info.receipt_name|default="--"}&nbsp;&nbsp;{$info.receipt_mobile|default="--"}
+					<br/>{$info.localtion|default=""}{$info.address|default="--"}</p>
+					<p class="p3">
+						发票信息：{$info.invoice_payee|default="不需要"}/{$info.invoice_content|default=""}
+					    <br/>
+						会员留言：{$info.postscript|default="--"}
+					</p>
+				</div>
+				<div class="info-body2">
+					<div class="order-base">
+						<h4>订单状态：{$pay_status[$info['pay_status']]}，{$status[$info['status']]}</h4>
+						<switch name="info.shipping_type">
+					  		<case value="0">
+					  			<p>自提门店：{$info.stores_name|default='--'}</p> 
+					  		</case>
+							<case value="1">
+								<p>物流公司：{$send.logistics_name.lc_name|default='--'}
+								&nbsp;&nbsp;&nbsp;物流单号：{$send.send_num|default='--'}
+								</p>
+							</case>
+							<default/>
+							<p>配送门店：{$info.stores_name|default='--'}【{$send.delivery|default='--'}&nbsp;{$send.delivery_mobile|default=''}】</p>
+						</switch>
+						<p>
+							<MyTag:rule name="Order/order_confirm">
+								<eq name='info.status' value='0'>
+								 <!-- <a href="javascript:void(0);" class='btn  mini order_confirm' order_id="{$info.order_id}">确认</a> -->
+							    </eq>
+						    </MyTag:rule>
+							&nbsp;&nbsp;<a href="#myModal_remark" role="button"  data-toggle="modal">备注</a>
+						</p>
+					</div>
+				</div>
+				<div class='info-body3'>
+					<p>下单时间：{$info.add_time|date='Y-m-d H:i:s',###}</p>
+					<p>付款时间：<eq name='info.pay_time' value='0'>未支付<else/>{$info.pay_time|date='Y-m-d H:i:s',###}</eq></p>
+					<!-- <p>发货时间：<eq name='info.shipping_time' value='0'>未发货<else/>{$info.shipping_time|date='Y-m-d H:i:s',###}</eq></p> -->
+					<p>发货时间：<eq name='send.send_time' value=''>未发货<else/>{$send.send_time|date='Y-m-d H:i:s',###}</eq></p>
+					<p>订单确认时间：<eq name='info.confirm_time' value='0'>待确认<else/>{$info.confirm_time|date='Y-m-d H:i:s',###}</eq></p>
+				</div>
+			</div>
+		    <div class='base-info-footer'>
+		    	<div class="portlet box">
+							              <div class="portlet-title">
+								              <div class="caption"><i class="icon-cogs"></i>商品详情</div>
+							              </div>
+								     <div class="portlet-body" style="padding:0px;">
+								<table class="table table-striped table-bordered table-advance table-hover">
+									<thead>
+										<tr>
+											<th>商品名称</th>
+											<th>售后状态</th>
+											<th>单价</th>
+											<th>数量</th>
+											<th>会员抵扣</th>
+                                            <th>小计</th>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="goods" id="v">
+										<tr>
+										    <td><img src="{$v.pic}" width='50' height="50" style="float:left;"/>	
+											<div class="order-goods-info" style="line-height:23px;margin-left:10px;float:left;">										
+											{$v.name}#
+											<notempty name='v.norms'>
+												（
+												<volist name='v.norms_value' id='vs'>
+													{$vs.value}、
+												</volist>
+                                                                                                                                                                  ）
+											</notempty>
+											X（{$v.number}）
+											<br/>
+											<volist name='v.norms_value' id='vs'>
+												<span>{$vs.name}:{$vs.value}&nbsp;&nbsp;</span>
+											</volist>
+											</div>
+											</td>
+											<td>
+											<present  name='v.refundstatus'>
+												<!--<if condition="in_array($v['refundstatus'],array(-1,0,1,2,5)) ">
+												退款中
+											 </if> 
+											  <if condition="$v['refundstatus']==3">
+											  	已退款
+											  </if>-->
+											  <switch name='v.refundstatus'>
+											  	<case value='-1'>退款审核未通过</case>
+												<case value='1'>待退款</case>
+												<case value='2'>退款中</case>
+												<case value='3'>已退款</case>
+												<case value='4'>退款失败</case>
+												<case value='5'>待退货</case>
+												<case value='6'>取消退款退货</case>
+											</switch>
+											  <else/>
+											  <eq name='info.pay_status' value='2'>
+											    <a href="{:U('Order/refund',array('rec_id'=>$v['rec_id']))}" target="_blank">退款退貨</a>
+								               </eq>		     
+											  </present>
+											</td>
+											<td>{$v.goods_price}</td>
+											<td>{$v.number}</td>
+											<td>打{$info.order_discount}折,省{$info.discount_price}元</td>
+											<td><?php echo number_format(($v['goods_price']*$v['number']),2);?><br/>(优惠劵抵扣{$info.coupon_price|default='0'},使用积分抵扣{$info.integral_price|default='0'})</td>
+										</tr>
+									</volist>
+									</tbody>
+								</table>
+							</div>
+							<div class="info-sum">
+								<p style="float:left;">返好货币：0分</p>
+								<p style="float:right;">实付款：<span style="color:#ff6600">￥{$info.money_paid}</span></p>
+							</div>
+						    </div>
+		    </div>
+          </div>
+
+<include file="Order/modal/remark"/>

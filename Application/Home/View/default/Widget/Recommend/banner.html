@@ -1,0 +1,21 @@
+<div id="banner_box">
+    <div id="banner">
+        <volist name="ad_lists" id="ad_vo">
+        <a href="{$ad_vo.url}" style="-background-color:{$ad_vo.bd_color}">
+            <img src="{$ad_vo.photo}" alt="{$ad_vo.photo_alt}">
+        </a>
+        </volist>
+    </div>
+    <div id="btn_left" class="d-hide"></div>
+    <div id="btn_right" class="d-hide"></div>
+    <ul class="thumbnail">
+        <volist name="ad_lists" id="ad_vo">
+        <li class="thumbnail_img <eq name="i" value="0">border_red</eq>">
+            <span class="point"></span>
+        </li>
+        </volist>
+    </ul>
+</div>
+<script type="text/javascript">
+    window.home.banner = true;
+</script>

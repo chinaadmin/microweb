@@ -1,0 +1,64 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/safe-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/email-page.css"/>
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/ruturn-page.css"/>
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/order-new.css">
+</block>
+<block name="content">
+<include file="I/common"/>
+    <div class="tabPanel" id="refund-index">
+        <ul class="tab_box">
+            <li class="tab_btn <notpresent name='status'>hit</notpresent>"><a href="{:U('index')}">全部</a></li>
+            <li class="tab_btn <eq name='status' value='0'>hit</eq>"><a href="{:U('index',array('status'=>0))}">已申请</a></li>
+            <li class="tab_btn <eq name='status' value='1'>hit</eq>"><a href="{:U('index',array('status'=>1))}">处理中</a></li>
+            <li class="tab_btn <eq name='status' value='3'>hit</eq>"><a href="{:U('index',array('status'=>3))}">已退款</a></li>
+            <li class="tab_btn <eq name='Think.get.status' value='-1'>hit</eq>"><a href="{:U('index',array('status'=>-1))}">撤销/拒绝</a></li>
+        </ul>
+        <div class="panes">
+         <div style="display: block;" class="pane">
+      	<div class="search-panes">
+      		<form action="{:U(index,array('status'=>$status))}" method='post'>
+      		 <input type="text" class="serch-inp" name="keyword"  value="{$keyword|default=''}" placeholder="输入商品标题或退款单号进行搜索"/>
+			 <input type="submit" class="btn-panes" value="查询"/>
+		    </form>
+      		 <div class="panes-box">
+               <table cellspacing="0" cellpadding="0" border="0" class="table-box">
+                   <thead class="table-head">
+                       <th width="194"> 退款单号</th>
+                       <th width="320">商品信息</th>
+                       <th width="117">金额</th>
+                       <th width="85">退款状态</th>
+                       <th>操作</th>
+                   </thead>
+                   <tbody>
+                   	<volist name="lists" id="vo">
+                       <tr>
+                           <td width="194">{$vo.refund_sn}</td>
+                           <td width="320"><p><a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}" target="_blank">{$vo.name}</a></p></td>
+                           <td class="price-cl">￥{$vo.refund_money}</td>
+                           <td>{$vo.refund_status|getStatus=###,$refund_status}</td>
+                           <td><a href="{:U('Refund/info',array('refund_id'=>$vo['refund_id']))}">查看</a></td>
+                       </tr>
+					 </volist>
+                   </tbody>
+               </table>
+      		  </div>
+         	</div>
+        </div>
+			
+		    <div class="pane" style="display: none;"><h2>已申请</h2><p>已申请</p></div>
+            <div class="pane" style="display: none;"><h2>处理中</h2><p>处理中</p></div>
+            <div class="pane" style="display: none;"><h2>已退款</h2><p>已退款</p></div>
+            <div class="pane"  style="display: none;"><h2>撤销/拒绝</h2><p>撤销/拒绝</p></div>
+        </div>
+        <div class="pagination">
+            <gt name="totalPages" value="1">
+                {$_page}
+            </gt>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</block>

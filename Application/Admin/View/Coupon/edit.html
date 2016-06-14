@@ -1,0 +1,272 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.id">添加<else/>编辑</empty>优惠劵</div>
+        </div>
+        <div class="portlet-body form">
+            <form autocomplete = "off" id="user_edit" action="{:U('Coupon/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">优惠劵名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">有效期</label>
+                <div class="controls">
+                    <div class="input-append date date-picker start_time">
+                        <input  name="start_time" type="text" id="start_time" class="span9 start_time m-wrap m-ctrl-medium date-picker" readonly="" size="16" value="<empty name='info.start_time'>{:date('Y-m-d')}<else/>{$info.start_time|date='Y-m-d',###}</empty>">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                    ~
+                    <div class="input-append date date-picker end_time">
+                        <input name="end_time" type="text" id="end_time" class="span9 end_time m-wrap m-ctrl-medium date-picker" readonly="" size="16" value="<notempty name='info.end_time'>{$info.end_time|date='Y-m-d',###}</notempty>">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                    <input type="hidden" name="sel_time">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">面值<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="money" class="m-wrap span1" value="{$info.money|default=0}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">使用规则</label>
+                <div class="controls">
+                    <label class="radio" style="display: block">
+                        <input type="radio" name="rule" value="1" <empty name="info.id">checked<else/><eq name="info.rule" value="1">checked</eq></empty>/>
+                        不限
+                    </label>
+                    <label class="radio" style = 'display: block; margin-bottom: 8px ! important;'>
+                     	<input type="radio" name="rule" value="3" <eq name="info.rule" value="3">checked</eq>/>
+                        <a class = 'green btn' id = 'choose_goods'>选择商品</a>
+                        <input type = 'hidden' name = 'goods_ids' value = '{$info.goods_ids}'/>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="rule" value="2" <eq name="info.rule" value="2">checked</eq>/>
+                        订单满
+                    </label>
+                    <input type="text" name="order_money" class="m-wrap span1"  value="{$info.order_money}"/> 元可用
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">发放规则</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="grant_rule" value="1" <empty name="info.id">checked<else/><eq name="info.grant_rule" value="1">checked</eq></empty>/>
+                        系统发放
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="grant_rule" value="2" <eq name="info.grant_rule" value="2">checked</eq>/>
+                        用户领取
+                    </label>
+
+                </div>
+            </div>
+
+            <div id="js-user-receive" <neq name="info.grant_rule" value="2">style="display:none;"</neq>>
+            <div class="control-group">
+                <label class="control-label">发行数量</label>
+                <div class="controls">
+                    <input type="text" name="all_count" class="m-wrap span1" value="{$info.all_count}"/>
+                    <span style="line-height: 35px;">张</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">每人限领</label>
+                <div class="controls">
+                    <input type="text" name="limit_count" class="m-wrap span1" value="{$info.limit_count}"/>
+                    <span style="line-height: 35px;">张</span>
+                </div>
+            </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">优惠劵颜色</label>
+                <div class="controls">
+                    <input type="text" name="color" id="custom" class="m-wrap" value="{$info.color|default='#ff0000'}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.id">checked<else/><eq name="info.status" value="1">checked</eq></empty>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">备注</label>
+                <div class="controls">
+                    <textarea class="span6 m-wrap" rows="3" name="remark">{$info.remark}</textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="id" value="{$info.id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('Coupon/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 商品弹框 -->
+<div id="goods-modal" class="modal hide fade" tabindex="-1" style="width: 70%; left:30% ;  ">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3>选择商品</h3>
+    </div>
+    <div class="modal-body" style="">
+        <div class="row-fluid">
+        <div class = 'span3'>
+            <div class = 'portlet blue box' style = 'height:781px'>
+                <div class = 'portlet-title'>
+                    <div class = 'caption'>已选商品</div>
+                </div>
+                <div class = 'portlet-body' style = 'height:722px'>
+                    <table class = 'table tabbable-custom'>
+                        <thead>
+                            <tr>
+									<th>
+										<div class="input-append">
+											<a class="btn blue span4 clearGoodsList">清空列表</a>
+											 <input placeholder="商品名" class="span5 m-wrap" name = 'goods_key'>
+											<a class="btn green"  id = 'serach_goods'>搜索</a>
+										</div>
+									</th>
+								</tr>
+                        </thead>
+                        <tbody id = 'choosed_list_body'>
+                          <volist name = 'goodsChoosedList' id = 'voGoodsChoosedListVo'>
+                                <tr class="goodsRemoveLeft{$voGoodsChoosedListVo.goods_id}">
+                                        <td>
+                                               <img style="width:64px;" src="{$voGoodsChoosedListVo.src}" class="span5" title="{$voGoodsChoosedListVo.name}">
+                                                <span class="span8">
+                                                    <div style="width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                                                      {$voGoodsChoosedListVo.name}
+                                                    </div>
+                                                    <div>￥{$voGoodsChoosedListVo.old_price}</div>
+                                                </span>
+                                            <i class="close boxClose"></i>
+                                          </td>
+                                 </tr>
+                          </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class = 'span9' style = "margin:0px;">
+				<div class="portlet box blue" style = 'height:781px'>
+					<div class="portlet-title">
+						<div class="caption">选择商品</div>
+					</div>
+					<div class="portlet-body" style = 'height:722px'>
+						<div class="clearfix">
+							<form style="margin-right: 15px;" method="GET"
+								action="" class="form-search pull-right">
+								<div class = 'input-append'>
+								    <label class="checkbox" >
+								    <input type="checkbox" name = 'onlyChoosed' id = 'onlyChoosed'>
+                                        只显示已选的商品
+                                    </label>
+								</div>
+								<div class="input-append">
+									<select class = 'm-wrap'  name = 'cat_id'>
+									   <option value = '0'>选择商品分类</option>
+									   <volist name = 'goodsClassifyList' id = 'goodsClassifyListVo'>
+    									   <option value = '{$goodsClassifyListVo.cat_id}'>{$goodsClassifyListVo.name}</option>
+									   </volist>
+									</select>
+								</div>
+								<div class="input-append">
+									<input type="text" value="" class="m-wrap"
+										placeholder="商品名" name="goods_name">
+									<a class="btn green"  id = 'serach_choose'>搜索</a>
+								</div>
+							</form>
+						</div>
+						<div class="tabbable tabbable-custom">
+							<div class="tab-content">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th id = 'checkAll'><!-- <input style = 'display:none;' type = 'checkbox' value = ''  class = 'goodsListCheckAll'> --></th>
+											<th>商品名称</th>
+											<th>价格(元)</th>
+											<th>库存</th>
+											<th>品牌</th>
+										</tr>
+									</thead>
+									<tbody id = 'goodsList'>
+							        </tbody>
+								</table>
+								<div class="row-fluid">
+									<div class="pagination pull-right" id = 'goodsListPage'></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		</div>
+	</div>
+    <div class="modal-footer modal-center">
+        <button class="btn blue js-goods-confirm" type="button">确定</button>
+        <button class="btn" data-dismiss="modal" type="button">取消</button>
+    </div>
+</div>
+</block>
+<block name="js">
+<!-- 商品弹框模板 -->
+	<script id = 'goodsListPageTpl' type = 'text/template'>
+<% for(var i = 0;i < items.length;i++){%>
+       <tr>
+                                            <td><input class = 'goodsListCheckOne goodsRemoveRight<%= items[i]['goods_id']%>' type = 'checkbox' value = "<%= items[i]['goods_id']%>"/></td>
+                                            <td>
+                                               <img title = "<%= items[i]['name']%>" class = 'span5' src = "<%=items[i]['src']%>" style = "width:64px;"/>
+												<a href= "<%= items[i]['href']%>" target = '_blank'>
+                                                <span class="span8" style = "margin-left:10px">
+                                                    <div style="width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                                                      <%= items[i]['name']%>
+                                                    </div>
+                                                    <div >￥<%= items[i]['old_price']%></div>
+                                                </span>
+												</a>
+                                            </td>
+                                            <td><%= items[i]['old_price']%></td>
+                                            <td><%= items[i]['goods_norms_number']%></td>
+                                            <td><%= items[i]['brandname']%></td>
+      </tr>
+<%}%>
+<% if(items.length <= 0){ %>
+    <tr>
+    <td colspan = '5' style ='text-align:center'>暂无数据</td>
+</tr>
+<% } %>
+	</script>
+    <script type="text/javascript">
+        var bd_color = "{$info.color}" || "#ff0000";
+        seajs.use(['controller/coupon/couponController'],function(coupon){
+            coupon.edit();
+        });
+    </script>
+</block>

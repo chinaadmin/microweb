@@ -1,0 +1,71 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">到货通知</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="Arrival/send">
+                    <a class="btn green" href="{:U('Arrival/send')}">
+                        发送到货通知
+                    </a>
+                    </MyTag:rule>
+                </div>
+				<div class="btn-group">
+					<MyTag:rule name="Arrival/del">
+					<button url="{:U('Arrival/del')}" class="btn green order-del">删除</button>
+					 </MyTag:rule>
+				</div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    	<th><input type='checkbox' id='check_all'/></th>
+                        <th>商品名称</th>
+                        <th>用户名</th>
+                        <th>邮箱</th>
+                        <th>手机</th>
+                        <th>登记时间</th>
+						<th>通知时间</th>
+                        <th>是否发送</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                    	<td><input type='checkbox' value="{$vo.notice_id}" name='notice_id[]'  class='order_check'/></td>
+                        <td>{$vo.name}</td>
+					    <td>{$vo.username}</td>
+                        <td>{$vo.email|default='--'}</td>
+                        <td>{$vo.mobile|default='--'}</td>
+                        <td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+                        <td>{$vo.send_time|date='Y-m-d H:i:s',###}</td>
+                        <td>{$vo.send_status|getStatus=###,['0' =>['style'=>'label-danger','text'=>'未发送'],'1' =>['style'=>'label-success','text'=>'已发送']]}</td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+           <div class="row-fluid">
+                <div class="btn-group">
+                   
+                </div>
+                <div class="pagination pull-right">
+                    <ul>
+                    	{$_page}
+                    </ul>               
+			     </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/arrival/arrivalController'],function(main){
+            main.index();
+        });
+    </script>
+</block>

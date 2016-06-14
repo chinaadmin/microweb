@@ -1,0 +1,58 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/safe-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/refund-page.css">
+<style>
+    #content h2{
+    background-image:none;
+    background:#ba6701;
+    height:30px;
+    line-height:27px;
+    margin-top: 20px;
+    padding-left:0;
+    }
+    .usersafe-crumbs{
+        text-align:left;
+        padding-left:30px;
+    }
+    .usersafe-crumbs a{
+        color:#444;
+    }
+    .data-box h1{
+        background-position:239px 0;
+    }
+    .buy-btn{
+        display: block;
+        width:100px;
+        height:25px;
+        color:#fff;
+        text-align:center;
+        background:#FF8C00;
+        line-height:25px;
+        margin:0 auto;
+        margin-top:20px;
+    }
+</style>
+
+</block>
+<block name="content">
+<div id="content">
+  <include file="I/common"/>
+  <div class="data_box data-box">
+        <div class="usersafe-crumbs">
+          <a href="{:U('usersafe')}">账户安全</a><i>&gt;</i><span style="color:#ff8c00;">邮箱验证</span>
+      </div>
+      <h1>恭喜您，邮箱绑定成功</h1>
+        <div class="jump-box">
+    了解更多账户安全信息请点击><a href="{:U('usersafe')}">账户安全</a>
+        </div> 
+        <a href="/" class="buy-btn">立即购物</a>
+    </div>
+</div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+
+	</script>
+</block>

@@ -1,0 +1,163 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.attr_id">添加<else/>编辑</empty>属性值</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="from_edit" action="{:U('Attribute/update')}" method="post" class="form-horizontal">
+            	<input type="hidden" name='id' value="{$info.attr_id|default=''}"/>
+            <div class="control-group">
+                <label class="control-label">属性值</label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name|default=''}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">排序</label>
+                <div class="controls">
+                    <input type="text" name="sort" class="m-wrap span1" value="{$info.sort|default=0}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">所属类型</label>
+                <div class="controls">
+                    <select class="m-wrap" name="type" id="type">
+                        <option value="0">请选择</option>
+                        <volist name="types" id="vo">
+                        		<option value="{$vo.type_id}" <eq name="info.type_id" value="$vo.type_id">selected</eq>>{$vo.name}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+			
+			<empty name="info.attr_group">
+				<div class="control-group" id="group" style="display:none;">
+			    </div>
+			<else/>
+			 <div class="control-group" id="group">
+                <label class="control-label">属性分组</label>
+                <div class="controls">
+                    <select class="m-wrap" name="attr_group">
+                        <option value="0">请选择</option>
+                        <volist name="info.attr_groups" id="vo">
+                        		<option value="{$vo.id}" <eq name="info.attr_group" value="$vo.id">selected</eq>>{$vo.name}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+			</empty>
+			
+		   <script type="text/html" id="att_group">
+                <label class="control-label">属性分组</label>
+                <div class="controls">
+                    <select class="m-wrap" name="attr_group">
+                        <option value="0">请选择</option>
+                        <%for(i in data){%>
+						   <%if(att_group && data[i].id==att_group){%>
+						   <option value="<%=data[i].id%>" selected="selected"><%=data[i].name%></option>
+						   <%}else{%>
+                        	<option value="<%=data[i].id%>"><%=data[i].name%></option>
+							<%}%>
+                        <%}%>
+                    </select>
+                </div>
+            
+		   </script>
+			  
+            <div class="control-group">
+                <label class="control-label">能否进行检索</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="index_type" value="0" <eq name="info.index_type" value="0">checked</eq>/>
+                        不需要检索
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="index_type" value="1" <empty name="info.attr_id">checked<else/><eq name="info.index_type" value="1">checked</eq></empty> />
+                        关键字检索
+                    </label>
+					  <label class="radio">
+                        <input type="radio" name="index_type" value="2" <eq name="info.index_type" value="2">checked</eq>/>
+                        范围检索
+                    </label>
+                </div>
+            </div>
+			
+			 <div class="control-group">
+                <label class="control-label">相同属性是否关联</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="relation" value="0" <eq name="info.is_relation" value="0">checked</eq>/>
+                        否
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="relation" value="1" <empty name="info.attr_id">checked<else/><eq name="info.is_relation" value="1">checked</eq></empty>/>
+                        是
+                    </label>
+                </div>
+            </div>
+			
+			<div class="control-group">
+                <label class="control-label">属性是否可选</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="attr_type" value="0" <empty name="info.attr_id">checked<else/><eq name="info.attr_type" value="0">checked</eq></empty>/>
+                        不可选
+                    </label>
+                   <!-- <label class="radio">
+                        <input type="radio" name="attr_type" value="1" <eq name="info.attr_type" value="1">checked</eq>/>
+                        单选
+                    </label>
+					 <label class="radio">
+                        <input type="radio" name="attr_type" value="2"<eq name="info.attr_type" value="1">checked</eq>/>
+                        复选
+                    </label>-->
+                </div>
+            </div>
+			
+			<div class="control-group">
+                <label class="control-label">属性录入方式</label>
+                <div class="controls" class="select-value">
+                    <label class="radio">
+                        <input type="radio" name="input_type" value="0" <empty name="info.attr_id">checked<else/><eq name="info.input_type" value="0">checked</eq></empty>/>
+                        手工录入
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="input_type" value="1" <eq name="info.input_type" value="1">checked</eq>/>
+                        从下列列表选择录入
+                    </label>
+					 <label class="radio">
+                        <input type="radio" name="input_type" value="2" <eq name="info.input_type" value="2">checked</eq>/>
+                        多行文本框
+                    </label>
+                </div>
+            </div>
+			
+            <div class="control-group">
+                <label class="control-label">可选值</label>
+                <div class="controls">
+                    <textarea class="span6 m-wrap popovers" rows="3"  <neq name="info.input_type" value="1">disabled="true"</neq> name="value" data-trigger="hover" data-content='多个值用英文","隔开。'>{$info.value|default=''}</textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="menu_id" value="{$info.menu_id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('Attribute/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+    	var att_group = "{$info.attr_group}";
+        seajs.use(['controller/attribute/attributeController'],function(main){
+          main.index();
+        });
+    </script>
+</block>

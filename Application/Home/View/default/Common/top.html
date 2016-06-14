@@ -1,0 +1,186 @@
+<block name="beta">
+
+</block>
+ <!--头部开始-->
+<div id="header">
+	<div class="top_box">
+		<div class="top_center_box">
+			<div class="welcome_box">
+                <p class="m_right">嘿，欢迎来到必好货商城！</p>
+                <empty name="user">
+                <div class="login-box-home">
+                    <p><a href="{:U('Passport/login')}" class="login-home">请登录</a> </p>
+                    <!--<p class="m_center">|</p>-->
+                    <p> <a href="{:U('Passport/reg')}">免费注册</a> </p>
+                </div>
+                <else/>
+                <div class="login-box-home">
+                    <p><a href="{:U('I/index')}">Hi，{$user.uid|showUserName}</a> </p>
+                    <!--<p class="m_center">|</p>-->
+                    <p> <a href="{:U('Passport/logout')}">退出</a> </p>
+                </div>
+                </empty>
+			</div>
+			<div class="logo_nav">
+				<ul>
+					<!--<li class="logo_index"><a href="">我的订单</a>
+						<div class="logo_nav_tow" style="display: none;">
+							<p><a href="">已买到的宝贝</a>
+							</p>
+							<p><a href="">我的收藏</a>
+							</p>
+							<p><a href="">待付款</a>
+							</p>
+						</div>
+					</li>-->
+					<li class="logo_index"><a href="">我的好货</a>
+						<div class="logo_nav_tow" style="display: none;">
+							<p><a href="{:U('order/index')}">我的订单</a>
+							</p>
+							<p><a href="{:U('refund/index')}">退款/退货</a>
+							</p>
+							<p><a href="{:U('i/baseinfo')}">个人资料</a>
+							</p>
+							<p><a href="{:U('i/usersafe')}">账户安全</a>
+							</p>
+							<p><a href="{:U('i/opinion')}">意见反馈</a>
+							</p>
+						</div>
+					</li>
+					<li class="d-hide"><a href="">移动客户端</a>
+					</li>
+                    <li class="logo_index qr d-hide">
+                        <img title="微信分享" src="__IMG__/home/home_01.png">
+                        <div id="qr" class="logo_nav_tow" style="display: none;">
+                            <img src="__IMG__/home/qr_02.jpg">
+                        </div> </li>
+                    <li class="logo_share d-hide"><a href=""><img title="微博分享" src="__IMG__/home/home_02.png"></a></li>
+                    <li class="noborder v-border"><a href="{:U('article/index',['id'=>27])}">帮助中心</a></li>
+                    <div class="clearfix"></div>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--Logo+搜索-->
+	<div class="search">
+		<div class="logo_img">
+            <a href="{:U('/')}"><img src="{$Think.config.jt_config_web_logo}"></a>
+			<!-- <p>{$Think.config.jt_config_web_slogan}</p> -->
+		</div>
+		<div class="search_box">
+			<div class="s_top">
+				<form action="{:U('Search/search')}" method="post" id="home-search">
+				<input type="text" name='searchKeywords'  placeholder = '搜索您需要的商品'  value="{$search_word|default=''}">
+				<p>
+					<button type="submit">搜索</button>
+				</p>
+				</form>
+			</div>
+			<div class="s_bottom d-hide">
+				<a href="">三文鱼油</a>
+				<a href="">肉松饼</a>
+				<a href="">羊奶粉</a>
+				<a href="">春光</a>
+			</div>
+		</div>
+		<!--购物车-->
+        <neq name="web_top_cart" value="0">
+        <div class="cats-hover" >
+            <div class="buy_car">
+                <div class="buy_img">
+                    <p>
+                        <a href="{:U('Cart/index')}">我的购物车</a>
+                    </p>
+                </div>
+                <div class="buy_zero">
+                    <p id="js-cart-count">{$__this__->getCartCount()}</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="cats-show">
+            </div>
+            <script id="tpl-top-cart-lists" type="text/template">
+                <%
+                if(items.lists.length == 0){
+                %>
+                <div style="padding: 30px">
+                    <p style="text-align: center; margin-left: 0; line-height: 30px; font-size: 16px;">你的购物车还没有商品，</p>
+                    <p style="text-align: center; margin-left: 0;line-height: 30px;font-size: 16px;">赶紧去选购吧！</p>
+                </div>
+                <%
+                }else{
+                %>
+                <h2>最新加入的商品</h2>
+                <%
+                for(var i=0;i<items.lists.length;i++){
+                if(i>=5){
+                    continue;
+                }
+                var info = items.lists[i];
+                %>
+                <div class="show-list" data-id="<%=info.cart_id%>">
+                    <div class="show-img">
+                        <a href="/detail_index_id_<%=info.goods_id%>.html" target="_blank"><img src="<%=info.pic%>" height="50" width="50"></a>
+                        <div class="infor-show">
+                            <p><a href="/detail/index/id/<%=info.goods_id%>.html" target="_blank"><%=info.name%></a></p>
+                            <span class="show-price">￥<%=info.goods_price%></span>
+                            <span>×<%=info.number%></span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="delete re-btn js-top-cart-del">删除</div>
+                    <div class="clearfix"></div>
+                </div>
+                <%}%>
+                <div class="cats-foot">
+                    <div class="cats-lef">
+                        <p>共<span class="list-num"><%=items.total.number%></span>件产品</p>
+                        <p>共计<span>￥<%=items.total.goods_price%></span></p>
+                    </div>
+                    <div class="go-buy">
+                        <a href="{:U('Cart/index')}" class="go-buy-box">去购物车结算</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <%}%>
+            </script>
+            <script type="text/javascript">
+                window.home.top_cart = true;
+            </script>
+        </div>
+        </neq>
+	</div>
+
+	<!--横向导航-->
+	<div id="nav_box">
+		<div id="box">
+			<ul id="nav">
+                {~$_top_menu=$__this__->top_menu()}
+                <volist name="_top_menu" id="menu_vo">
+				<li>
+                    <a href="{$menu_vo.url}" target="{$menu_vo.target}" <eq name="menu_vo.current" value="1">class="road-sign"</eq> >{$menu_vo.name}</a>
+				</li>
+                </volist>
+				{~$_categorys = $__this__->cats()}
+                <li class="sort_show"><div class="pro_hover">商品分类</div>
+                    <div id="sort_hover">
+                    	<volist name="_categorys" id="vo">
+                        <div class="sort_listbox">
+                        	<i class="sort_bg {$vo.icon}"></i>
+                            <h2><a href="{:U('List/goodsLists',array('catId'=>$vo['cat_id'],'type'=>1))}">{$vo.name}</a></h2>
+							<volist name="vo.child" id="v">
+                            <p><a href="{:U('List/goodsLists',array('catId'=>$v['cat_id'],'type'=>1))}">{$v.name}</a></p>
+							</volist>
+                            <div style="clear:both"></div>
+                        </div>
+					</volist>
+                    </div>
+                </li>
+            </ul>
+		</div>
+	</div>
+    <script type="text/javascript">
+        window.home.nav = true;
+        window.home.nav_default_menu = true;
+    </script>
+</div>

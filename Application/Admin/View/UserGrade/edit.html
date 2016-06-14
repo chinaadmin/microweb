@@ -1,0 +1,120 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.gid">添加<else/>编辑</empty>会员等级</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="from_edit" action="{:U('UserGrade/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">等级名称</label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.grade_name|default=''}"/>
+                </div>
+            </div>
+
+            <!-- <div class="control-group">
+                <label class="control-label">等级条件</label>
+                <div class="controls">
+                	<div class="ex-money">
+	                	消费金额
+	                    <select name="express" class="span1" style="margin-left:13px;">
+	                    	<option value="1" <eq name='info.grade_express' value="1">selected="selected"</eq>>等于</option>
+							<option value="2" <eq name='info.grade_express' value="2">selected="selected"</eq>>大于</option>
+							<option value="3" <eq name='info.grade_express' value="3">selected="selected"</eq>>小于</option>
+							<option value="4" <eq name='info.grade_express' value="4">selected="selected"</eq>>介于</option>
+	                    </select>
+						  <input type="text" name="start_money" class="m-wrap span1" value="{$info['grade_money']|default=''}"/>
+						<span>
+						 <eq name="info.grade_express" value="4">
+						 	~<input type="text" name="end_money" class="m-wrap span1" value="{$info['grade_ex_money']|default=''}"/>
+						 </eq>
+						 </span>
+					 </div>
+					 <div class="ex-money" style="margin-top:3px;">
+					 或充值金额
+					  <select name="recharge" class="span1">
+                    	<option value="1" <eq name='info.recharge' value="1">selected="selected"</eq>>等于</option>
+						<option value="2" <eq name='info.recharge' value="2">selected="selected"</eq>>大于</option>
+						<option value="3" <eq name='info.recharge' value="3">selected="selected"</eq>>小于</option>
+						<option value="4" <eq name='info.recharge' value="4">selected="selected"</eq>>介于</option>
+                    </select>
+					  <input type="text" name="recharge_money" class="m-wrap span1" value="{$info['recharge_money']|default=''}"/>
+					<span>
+					 <eq name="info.recharge" value="4">
+					 	~<input type="text" name="recharge_ex_money" class="m-wrap span1" value="{$info['recharge_ex_money']|default=''}"/>
+					 </eq>
+					 </span>
+					 </div>
+                </div>
+            </div> -->
+			
+			<!--<div class="control-group">
+                <label class="control-label">等级条件</label>
+                <div class="controls">
+                	单笔订单大于等于
+				   <input type="text" name="grade_money" class="m-wrap span1" value="{$info['grade_money']|default=''}"/>
+                                                                     元
+				</div>
+            </div>-->
+
+            <!-- <div class="control-group">
+                <label class="control-label">优惠折扣</label>
+                 <div class="controls">
+                    <input type="text" name="discount" class="m-wrap span1" value="{$info.grade_discount|default=10}"/>
+                </div>
+            </div>
+			
+			 <div class="control-group">
+                <label class="control-label">积分设置</label>
+                 <div class="controls" style="line-height:34px;">
+                    按商品价格<input type="text" name="integral_money" class="m-wrap span1" value="{$info.integral_money}"/>元
+			<input type="text" name="integral" class="m-wrap span1" value="{$info.integral}"/>分
+			<input type="checkbox" name="special" value="1" <eq name="info.special" value="1">checked</eq>/>特价商品除外
+                </div>
+            </div> -->
+
+            <div class="control-group">
+                <label class="control-label">成长值</label>
+                <div class="controls">
+                    <input type="text" name="start_value" class="m-wrap" value="{$info.start_value|default=''}"/>
+                </div>
+            </div>
+			
+			<div class="control-group">
+                <label class="control-label">是否启用</label>
+                <div class="controls">
+                    <!-- <label class="checkbox">
+                        <input type="checkbox" name="default" value="1" <eq name="info.grade_default" value="1">checked</eq>/>
+                      是否默认
+                    </label> -->
+                    <label class="radio">
+                        <input type="radio" name="grade_status" value="1" <notpresent name="info.grade_status">checked</notpresent><eq name="info.grade_status" value="1">checked</eq>/>
+                        启用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="grade_status" value="0" <eq name="info.grade_status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="form-actions">
+                <input type="hidden" name="grade_id" value="{$info.grade_id|default='0'}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('UserGrade/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/userGrade/userGradeController'],function(main){
+          main.edit();
+        });
+    </script>
+</block>

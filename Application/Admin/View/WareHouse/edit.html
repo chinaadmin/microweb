@@ -1,0 +1,97 @@
+<extend name="Common:base" />
+<block name="css">
+	<load href='__CSS__/App/common/catico.css' />
+</block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.ware_id">添加<else/>编辑</empty>发货点</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="from_edit" action="{:U('WareHouse/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">发货点名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.ware_name|default=''}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">联系人<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="username" class="m-wrap" value="{$info.ware_username|default=''}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">地址<span class="required">*</span></label>
+                  <div class="controls">
+                    <div id="area-select">
+                        <select name="provice" id="provice" data-id="{$info.provice}">
+                        </select>
+                        <select name="city" id="city" data-id="{$info.city}">
+                        </select>
+                        <select name="county" id="county" data-id="{$info.county}">
+                        </select>
+                    </div>
+                    <input type="text" name="address" class="m-wrap span4" style="margin-top: 5px;" value="{$info.ware_address}"/>
+                </div>
+            </div>
+            
+			<div class="control-group">
+                <label class="control-label">邮编<span class="required">*</span></label>
+                <div class="controls">
+                     <input type="text" name="zip_code" class="m-wrap" value="{$info.ware_zipcode|default=''}"/>
+                </div>
+            </div>
+			 
+            <div class="control-group">
+                <label class="control-label">电话</label>
+                <div class="controls">
+                   <input type="text" name="tel" class="m-wrap" value="{$info.ware_tel|default=''}"/>
+                </div>
+            </div>
+			
+			<div class="control-group">
+				<label class="control-label">手机<span class="required">*</span></label>
+                <div class="controls">
+               <input type="text" name="mobile" class="m-wrap" value="{$info.ware_mobile|default=''}"/>
+                </div>
+				</div>
+			
+			<div class="control-group">
+                 <label class="control-label">默认</label>
+                 <div class="controls">
+                  <label class="checkbox">
+                        <input type="checkbox" name="default" value="1"<eq name="info.is_default" value="1">checked</eq>/>
+                        默认
+                    </label>
+                </div>
+             </div>
+			 
+
+            <div class="control-group">
+                <label class="control-label">备注</label>
+                <div class="controls">
+                    <textarea class="span6 m-wrap" rows="3" name="remark">{$info.ware_mark|default=''}</textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="ware_id" value="{$info.ware_id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('WareHouse/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/WareHouse/WareHouseController'],function(main){
+          main.edit();
+        });
+    </script>
+</block>

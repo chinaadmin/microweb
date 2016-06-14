@@ -1,0 +1,106 @@
+<extend name="Common:base" />
+<block name="css"><load href="__CSS__/App/admin/order/order.css"/></block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">免费试吃</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+            	
+            </div>
+			
+			<table class="table lists-table table-advance table-hover">
+    <thead>
+        <tr>
+            <th width="15%">申请人姓名</th>
+            <th width="10%">手机号</th>
+            <th width="15%">微信号</th>
+            <th width="10%">所在部门</th>
+            <th width="20%">职位</th>
+            <th>办公地址</th>
+			<th>申请时间</th>
+			<th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<empty  name="lists">
+				<tr>
+			      <td colspan="9" style="text-align:center;">暂无搜索数据</td>
+			    </tr>
+          <else/>
+	    <volist name="lists" id='vo'>
+    	<tr>
+	    	<td colspan="2">
+	    		<div class="order-top">
+				  公司名称：{$vo.company|default="--"}
+				 {$vo.status|getStatus=###,['0'=>['style' => 'label-important', 'text' => '待审核'],'1'=>['style' => 'label-success', 'text' => '已同意'],'2'=>['style' => '', 'text' => '已取消']]}
+				</div>
+			<td colspan="3">
+				<div class='order-table'>
+					<div class="order-top">
+	    			公司地址：{$vo.company_address|default='--'}
+					</div>
+	    		</div>
+			</td>
+			<td colspan="2">
+			    <div class='order-table'>
+	    			<div class="order-top">
+	    				公司人数：{$people[$vo['people_num']]}
+	    			</div>
+	    		</div>
+			</td>
+		
+			<td colspan="1">
+				<div class='order-table'>
+	    			<div class="order-top">
+	    				<MyTag:rule name="Tast/status">
+	    				<a class="tast-status" href="{:U('Tast/status',['tast_id'=>$vo['tast_id'],'status'=>1])}">同意</a>
+					</MyTag:rule>
+					<MyTag:rule name="Tast/status">
+							&nbsp;&nbsp;<a class="tast-status" href="{:U('Tast/status',['tast_id'=>$vo['tast_id'],'status'=>2])}">取消</a>
+                    </MyTag:rule>
+					  <MyTag:rule name="Tast/remark">
+							&nbsp;&nbsp;<a class="tast_remark" data-id={$vo.tast_id} href="{:U('Tast/remark',['tast_id'=>$vo['tast_id']])}">备注</a>
+                       </MyTag:rule>
+	    			</div>
+	    		</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="order-body">
+				{$vo.name|default='--'}
+			    </div>
+			</td>
+			<td>{$vo.mobile|default='--'}</td>
+			<td>{$vo.wechat|default='--'}</td>
+			<td>{$vo.sector|default='--'}</td>
+			<td>{$position[$vo['position']]}</td>
+			<td>{$vo.office_address|default='--'}</td>
+			<td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+			<td></td>
+		</tr>
+		</volist>
+		</empty>
+    </tbody>
+</table>
+         
+           <div class="row-fluid">
+                <div class="pagination pull-right">
+                    <ul>{$_page}</ul>               
+			     </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Tast/remark"/>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/tast/tastController'],function(main){
+          main.index();
+        });
+    </script>
+</block>

@@ -1,0 +1,191 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.uid">添加<else/>编辑</empty>计划任务</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="user_edit" action="{:U('Cron/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">任务标题<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="subject" class="m-wrap" value="{$subject}"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">执行时间</label>
+                <div class="controls">
+                <notempty name="cr_id">
+                <select id="js_time_select" name="loop_type" style="width: 100px" class="m-wrap">
+                    <volist name="loopType" id="vo">
+                        <option value="{$key}" <if condition=" $key eq $loop_type ">selected</if>>{$vo}</option>
+                    </volist>
+                </select>
+                <span class="js_time_item" id="js_time_month" <if condition=" $loop_type neq 'month' ">style="display:none;"</if>>
+                    <select name="month_day" style="width: 100px" class="m-wrap">
+                        <for start="1" end="32">
+                            <option value="{$i}"  <if condition=" $i eq $day ">selected</if>>{$i}日</option>
+                        </for>
+                        <option value="99" <if condition=" 99 eq $day ">selected</if>>最后一天</option>
+                    </select>
+                    <select  name="month_hour" style="width: 100px" class="m-wrap">
+                        <for start="0" end="24">
+                            <option value="{$i}" <if condition=" $i eq $hour ">selected</if>>{$i}点</option>
+                        </for>
+                    </select>
+                </span>
+                <span class="js_time_item" id="js_time_week" <if condition=" $loop_type neq 'week' ">style="display:none;"</if>>
+                    <select name="week_day" style="width: 100px" class="m-wrap">
+                        <option value="1" <if condition=" 1 eq $day ">selected</if>>周一</option>
+                        <option value="2" <if condition=" 2 eq $day ">selected</if>>周二</option>
+                        <option value="3" <if condition=" 3 eq $day ">selected</if>>周三</option>
+                        <option value="4" <if condition=" 4 eq $day ">selected</if>>周四</option>
+                        <option value="5" <if condition=" 5 eq $day ">selected</if>>周五</option>
+                        <option value="6" <if condition=" 6 eq $day ">selected</if>>周六</option>
+                        <option value="0" <if condition=" 0 eq $day ">selected</if>>周日</option>
+                    </select>
+                    <select name="week_hour" style="width: 100px" class="m-wrap">
+                        <for start="0" end="24">
+                            <option value="{$i}"  <if condition=" $i eq $hour ">selected</if>>{$i}点</option>
+                        </for>
+                    </select>
+                </span>
+                <span class="js_time_item" id="js_time_day" <if condition=" $loop_type neq 'day' ">style="display:none;"</if> >
+                    <select name="day_hour" style="width: 100px" class="m-wrap">
+                        <for start="0" end="24">
+                            <option value="{$i}"  <if condition=" $i eq $hour ">selected</if>>{$i}点</option>
+                        </for>
+                    </select>
+                </span>
+                <span class="js_time_item" id="js_time_hour"   <if condition=" $loop_type neq 'hour' ">style="display:none;"</if>>
+                    <select name="hour_minute" style="width: 100px" class="m-wrap">
+                        <option value="0" <if condition=" 0 eq $minute ">selected</if>>00分</option>
+                        <option value="10"  <if condition=" 10 eq $minute ">selected</if>>10分</option>
+                        <option value="20"  <if condition=" 20 eq $minute ">selected</if>>20分</option>
+                        <option value="30"  <if condition=" 30 eq $minute ">selected</if>>30分</option>
+                        <option value="40"  <if condition=" 40 eq $minute ">selected</if>>40分</option>
+                        <option value="50"  <if condition=" 50 eq $minute ">selected</if>>50分</option>
+                    </select>
+                </span>
+                <span class="js_time_item" id="js_time_now"   <if condition=" $loop_type neq 'now' ">style="display:none;"</if> >
+                    <?php
+                        if ($day) $time =  $day;
+                        if ($hour) $time =  $hour;
+                        if ($minute) $time =  $minute;
+                    ?>
+                    <input type="text" style="width: 100px" class="m-wrap" name="now_time" value="{$time}">
+                    <select name="now_type" style="width: 100px" class="m-wrap">
+                        <option value="minute" <if condition=" $minute ">selected</if> >分钟</option>
+                        <option value="hour"  <if condition=" $hour ">selected</if>>小时</option>
+                        <option value="day" <if condition=" $day ">selected</if>>天</option>
+                    </select>
+                </span>
+                <else/>
+                <select id="js_time_select" name="loop_type" style="width: 100px" class="m-wrap">
+                    <option value="month">每月</option>
+                    <option value="week">每周</option>
+                    <option value="day">每日</option>
+                    <option value="hour">每小时</option>
+                    <option value="now">每隔</option>
+                </select>
+                <span class="js_time_item" id="js_time_month"  style="">
+                    <select name="month_day" style="width: 100px" class="m-wrap">
+                        <for start="1" end="32">
+                            <option value="{$i}">{$i}日</option>
+                        </for>
+                        <option value="99">最后一天</option>
+                    </select>
+                    <select name="month_hour" style="width: 100px" class="m-wrap">
+                        <for start="0" end="24">
+                            <option value="{$i}">{$i}点</option>
+                        </for>
+                    </select>
+                </span>
+                <span class="js_time_item" id="js_time_week" style="display:none;">
+                    <select name="week_day" style="width: 100px" class="m-wrap">
+                        <option value="1">周一</option>
+                        <option value="2">周二</option>
+                        <option value="3">周三</option>
+                        <option value="4">周四</option>
+                        <option value="5">周五</option>
+                        <option value="6">周六</option>
+                        <option value="0">周日</option>
+                    </select>
+                    <select name="week_hour" style="width: 100px" class="m-wrap">
+                        <for start="0" end="24">
+                            <option value="{$i}">{$i}点</option>
+                        </for>
+                    </select>
+                </span>
+                <span class="js_time_item" id="js_time_day" style="display:none;">
+                    <select name="day_hour" style="width: 100px" class="m-wrap">
+                        <for start="0" end="24">
+                            <option value="{$i}">{$i}点</option>
+                        </for>
+                    </select>
+                </span>
+                <span class="js_time_item" id="js_time_hour" style="display:none;">
+                    <select name="hour_minute" style="width: 100px" class="m-wrap">
+                        <option value="0">00分</option>
+                        <option value="10">10分</option>
+                        <option value="20">20分</option>
+                        <option value="30">30分</option>
+                        <option value="40">40分</option>
+                        <option value="50">50分</option>
+                    </select>
+                </span>
+                <span class="js_time_item" id="js_time_now" style="display:none;">
+                    <input type="text" style="width: 100px" class="m-wrap" name="now_time" value="0">
+                    <select name="now_type" style="width: 100px" class="m-wrap">
+                        <option value="minute">分钟</option>
+                        <option value="hour">小时</option>
+                        <option value="day">天</option>
+                    </select>
+                </span>
+                </notempty>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">开启计划：</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="is_open" value="1" <eq name="is_open" value="1">checked</eq>/>
+                        开启
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="is_open" value="0" <empty name="cr_id">checked<else/><eq name="is_open" value="0">checked</eq></empty>/>
+                        关闭
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">执行文件</label>
+                <div class="controls">
+                    <select class="m-wrap" name="file">
+                        <volist name="fileList" id="vo">
+                            <option value="{$vo|basename=###,'.php'}" <if condition=" $file eq  basename($vo,'.php')">selected</if>>{$vo}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="cr_id" value="{$cr_id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('Cron/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/cron/cronController'],function(main){
+            main.edit();
+        });
+    </script>
+</block>

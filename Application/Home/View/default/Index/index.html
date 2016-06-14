@@ -1,0 +1,78 @@
+<extend name="Common:base"/>
+<block name="css">
+<link type="text/css" rel="stylesheet" href="__CSS__/App/home/home-page.css">
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/list-page.css" />
+</block>
+
+
+<block name="nav"><include file="Common:welt_nav" /></block>
+
+
+<block name="content">
+	<!--banner区域-->
+    <div class="banner-position">
+        {:W('Recommend/show',[3])}
+    </div>
+    <div class="banner-pd"></div>    
+    <!-- 商品展示位 -->
+    <div id="masonny_div">
+        <volist name="hots_lists" id="vo">
+        <div class="show_box">
+            <div class="depict_box">
+                <p class="show_title"><a href="{$vo['url']}">{$vo['name']}</a></p>
+                <p class="show_buy"><span class="buy_num">{$vo['sales']}</span>人已购买</p>
+                <p class="show_price"><span>￥</span>{$vo['price']}</p>
+                <!--<p class="show_car"><a href="javascript:;" class="btnCart">加入购物车</a></p>-->
+                <p style="font-size: 14px; text-decoration: line-through; color: rgb(153, 153, 153); padding-top: 8px;"><i>￥{$vo.old_price}</i></p>
+                <p class="show_car"><a href="{$vo['url']}">查看详情</a></p>
+            </div>
+            <a href="{$vo['url']}"><img src="{$vo['photo']}" alt="{$vo['photo_alt']}" ></a>
+        </div>
+        </volist>
+
+    <!-- 产品列表 -->
+	<volist name='lists' id='v'>
+    <div id="sort_box">
+        <h2>{$v.feat_name}<a href="{:U('List/goodsLists',array('feat'=>$v['feat_id']))}">查看更多&nbsp>></a></h2>
+        <div class="sort_list">
+            <ul>
+            <volist name="v.goods" id="vo"> 
+                <li>
+                    <a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}">
+                        <img src="{$vo.thumb}" width="298"height="300" class="list-img">
+                    </a>
+                    <div class="sort_description">
+                      <p class="sort_title"> <a href="{:U('Detail/index',array('id'=>$vo['goods_id']))}">{$vo.name}</a></p>
+                      <p class="price_box">
+                          <span><i>￥</i>{$vo.price}</span>
+                          <gt name="vo.old_price" value="0"><i class="old_price">￥{$vo.old_price}</i></gt>
+                         <!--  <span class="sale_volume">销量&nbsp;:&nbsp;{$vo.sales|default=0}</span> -->
+                      </p>
+                      <!--<img src="__IMG__/home/home_03.png">-->
+                    </div>
+                </li>
+            </volist>
+            </ul>
+        </div>
+    </div>
+	</volist>
+   
+    <div class="barand_box">
+        <h2>品牌专场</h2>
+        <ul class="barand_logo">
+        	<volist name="brands" id="vo">
+            <li><a href="{:U('Brand/index',array('brand'=>$vo['brand_id']))}"><img src="{$vo.logo}" width="240" height="130"><p>{$vo.name}</p></a></li>
+           </volist>
+           <div style="clear:both"></div>
+		</ul>
+        
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/indexController'],function(index){
+            index.index();
+        });
+    </script>
+</block>

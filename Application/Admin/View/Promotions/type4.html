@@ -1,0 +1,70 @@
+<style>
+    @import url('__JS__/Pulgins/city/css.css');
+    @import url('__JS__/Pulgins/city/alpha.css');
+    .summaryList{
+        display: inline-block;
+        height: 25px;
+    }
+    .summaryList li{
+        float:left;
+        margin-top:10px;
+    }
+    .summaryList li span{
+        color:#4b8df8;
+    }
+    #summaryList{
+        border: 1px solid #4b8df8;
+        background:rgb(175,198,229);
+        color:rgb(255,255,255);
+        padding: 5px;
+    }
+</style>
+<div class="control-group">
+    <label class="control-label">免邮规则</label>
+    <div class="controls">
+        <label class="radio">
+            <input type="radio" name="rule[condition][0][0]" value="goods" <notempty name="param[0]['condition']['goods']['is_sel']">checked<else/><empty name="param[0]['condition']['money']['is_sel']">checked</empty></notempty>/>
+            订单含任意指定商品，则全单免邮
+        </label>
+        <label class="radio" style="display: block">
+            <input type="radio" name="rule[condition][0][0]" value="money" <notempty name="param[0]['condition']['money']['is_sel']">checked</notempty>/>
+            订单含任意指定商品并达到一定金额，则全单免邮 <span style="line-height: 35px;">>> 买满  <input type="text" name="rule_param[condition_money][0]" class="m-wrap span1 numText" value="{$param[0]['condition']['money']['val']}"/>  元享受免邮优惠</span>
+        </label>
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label">不参与包邮地区</label>
+    <div class="controls">
+        <butten class="btn green jobAreaSelect" data-idsuffix='freight'>
+            设置不包邮地区
+        </butten>
+        <input id='jobAreaIDfreight' type='hidden' name='rule_param[condition_shipment][0]' value='{$param[0]['condition']['shipment']['val']}'/>
+        <input type="hidden" name="rule[condition][0][1]" value="shipment"/>
+        <span id='btn_jobAreafreight' style="padding: 5px;">
+            <span>当前设置：</span>
+            <ul class='summaryList'>
+                <empty name="param[0]['condition']['shipment']['county_name_formate']">
+                    无限制均可参与
+                <else/>
+                    <volist name="param[0]['condition']['shipment']['county_name_formate']"
+                            id='vo_county_name_formate'>
+                        <li data-countyidstr = '{$vo_county_name_formate.countyIdStr}' data-provinceid='{$vo_county_name_formate.provinceid}'>{$vo_county_name_formate.provinceName}<span>（{$vo_county_name_formate.positionCityCount}）</span></li>
+                    </volist>
+                </empty>
+            </ul>
+        </span>
+    </div>
+</div>
+<input type="hidden" name="rule[num]" value="1"/>
+<!-- maskLayer start -->
+<div id="maskLayer" name='maskLayer' style="display:none">
+    <iframe id="maskLayer_iframe" frameBorder=0 scrolling=no style="filter:alpha(opacity=50)"></iframe>
+    <div id="alphadiv"  name="alphadiv" style="filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5"></div>
+    <div id="drag"  name="drag">
+        <h3 id="drag_h"  name="drag_h" ></h3>
+        <div id="drag_con"  name="drag_con"></div><!-- drag_con end -->
+    </div>
+</div>
+<!-- maskLayer end -->
+<div id="sublist" name='sublist' style="display:none"></div>
+<div id = 'summaryList'  style = 'display:none;z-index:21000'></div>

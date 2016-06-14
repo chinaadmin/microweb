@@ -1,0 +1,112 @@
+<!--打印快递单-->
+<div class="modal hide fade" id="expressModel" tabindex="-1" aria-hidden='true' role="dialog" aria-labelledby="myModalLabel" style="width:900px;">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        <h4 class="modal-title">批量打印快递单</h4>
+      </div>
+      <div class="modal-body">
+		  <div class="logistics-body">
+				<div class="span12" style="margin-left:0px;">
+						<!-- BEGIN CONDENSED TABLE PORTLET-->
+						<div class="portlet box green">
+							<div class="portlet-title">
+								<div class="caption">Condensed Table</div>
+							</div>
+							<div class="portlet-body" style = "max-height:300px;overflow-y:scroll">
+								<table class="table table-condensed table-hover">
+									<thead>
+										<tr>
+											<th>订单号</th>
+											<th>商品名称</th>
+											<th>快递公司</th>
+											<th class="hidden-480">运单号</th>
+											<!-- <th>打印状态说明</th> -->
+										</tr>
+									</thead>
+									<tbody id='print'>
+									<script type="text/html" id="print-logistics">
+										<%if(data){%>
+										  <%for(j in data){%>
+											<tr>
+												<td><%=data[j].order_sn%></td>
+											 <td>
+											 	<div class="order-goods">
+											 		<div class='goods-title'>
+														<%for(x in data[j].rec){%>
+														  <%=data[j]['rec'][x].name%>
+														  <%if(data[j]['rec'][x].norms_value){%>
+														   .<%=data[j]['rec'][x].norms_value%>
+														  <%}%>
+														<%}%>
+													</div>
+														<ul class="goods-alt">
+														 <%for(x in data[j].rec){%>
+															 <li>
+																  <%=data[j]['rec'][x].name%>
+																  <%if(data[j]['rec'][x].norms_value){%>
+																   .<%=data[j]['rec'][x].norms_value%>
+																   <%}%>
+															 </li> 
+													    <%}%>
+														</ul>
+													</div>
+												</td>
+												<td class='print-order'><%=data[j].logistics%><input type='hidden' name="print_order[]" class='lc_<%=data[j].lc_id%>' value="<%=data[j].order_id%>"/></td>
+												<td class="hidden-480"><%=data[j].send_num%></td>
+												<!-- <td class='for-error'></td> -->
+											</tr>
+											<%}%>
+										<%}%>
+									</script>
+									</tbody>
+
+								</table>
+							</div>
+						</div>
+						<!-- END CONDENSED TABLE PORTLET-->
+					</div>	 
+					 
+			
+			 
+			  <div class="form-horizontal control-group">
+                         <label class="control-label">快递模版：</label>
+                         <div class="controls" id='add-template'>
+                         	<script type="text/html" id="template">
+                              <select name="template" class='l-template'>
+                              	<option value="0">请选择</option>
+			                    <%if(express){%>
+								  <%for(k in express){%>
+								  <option value="<%=express[k].et_id%>"  data-logistic="<%=express[k].et_company_id%>"><%=express[k].et_name%></option>
+								  <%}%>
+								<%}%>
+                              </select>
+							   <a href="javascript:void(0);" class='preview-express'>预览模版</a>
+								<font color = 'red' class = 'print_tip' style = "display:none">&nbsp;请选择快递模版</font>
+							  </script>
+							 
+                         </div>
+             </div>
+			 
+		  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary print-start">开始打印</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--快递单-->
+<div class="express-template" style="display:none;">
+	
+</div>
+<!--快递单结束-->
+
+<!--预览快递单数据-->
+<form action="{:U('SendGoods/getTemplate')}" method="post" id='post-tmp' target="_blank">
+	
+</form>
+<!--预览快递单-->

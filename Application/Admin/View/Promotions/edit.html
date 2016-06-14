@@ -1,0 +1,291 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.id">添加<else/>编辑</empty>活动</div>
+        </div>
+        <div class="portlet-body form">
+            <form autocomplete = "off" id="user_edit" action="{:U('Promotions/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">活动名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name}"/>
+                </div>
+            </div>
+
+            <switch name="info.type">
+                <case value="1|3|4|5|6">
+                <div class="control-group">
+                    <label class="control-label">参与商品</label>
+                    <div class="controls">
+                        <label class="radio">
+                            <input type="radio" name="all_goods" value="1" <eq name="info.all_goods" value="1">checked</eq>/>
+                            全部商品
+                        </label>
+						<if condition="$info['type']==3 || $info['type']==5 || $info['type']==6"> 
+						 <label class="radio">
+                            <input type="radio" name="all_goods" value="0" <empty name="info.id">checked<else/><eq name="info.all_goods" value="0">checked</eq></empty>/>
+                            部分商品
+                        </label>
+						</if>
+                    </div>
+                </div>
+                </case>
+            </switch>
+           
+		
+		   
+		      <div class="control-group">
+                <label class="control-label">有效期</label>
+                <div class="controls">
+                    <div class="input-append date date-picker start_time">
+                        <input  name="start_time" type="text" id="start_time" class="span9 start_time m-wrap m-ctrl-medium date-picker" readonly="" size="16" value="<empty name='info.start_time'>{:date('Y-m-d')}<else/>{$info.start_time|date='Y-m-d',###}</empty>">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                    ~
+                    <div class="input-append date date-picker end_time">
+                        <input name="end_time" type="text" id="end_time" class="span9 end_time m-wrap m-ctrl-medium date-picker" readonly="" size="16" value="<notempty name='info.end_time'>{$info.end_time|date='Y-m-d',###}</notempty>">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                    <input type="hidden" name="sel_time">
+                </div>
+            </div>
+		   
+		   
+            <switch name="info.type">
+                <case value="1"><include file="Promotions:type1" /></case>
+                <case value="2"><include file="Promotions:type2" /></case>
+                <case value="3"><include file="Promotions:type3" /></case>
+                <case value="4"><include file="Promotions:type4" /></case>
+				<case value="5"><include file="Promotions:type5" /></case>
+				<case value="6"><include file="Promotions:type6" /></case>
+				<case value="7"><include file="Promotions:type7" /></case>
+            </switch>
+
+
+            <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.id">checked<else/><eq name="info.status" value="1">checked</eq></empty>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">活动对象</label>
+                <div class="controls">
+                    <butten id="js-set-user-btn" class="btn green">
+                        设置活动对象
+                    </butten>
+                    <span id="js-set-user-text" style="padding: 5px;">
+                    当前设置：无限制均可参与
+                    </span>
+                    <input type="hidden" name="object" value="{$info.object|htmlentities}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">活动平台</label>
+                <div class="controls">
+                    <select name="source">
+                        <option value="0" <eq name="info.source" value="0">selected</eq>>全部平台</option>
+                        <volist name="source_lists" id="source_vo">
+                            <option value="{$key}" <eq name="info.source" value="$key">selected</eq>>{$source_vo}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">活动说明</label>
+                <div class="controls">
+                    <textarea class="span6 m-wrap" rows="3" name="remark">{$info.remark}</textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="id" value="{$info.id}"/>
+                <input type="hidden" name="type" value="{$info.type}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('Promotions/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <div id="set-user-view" class="modal hide" style="width:700px;">
+        <div class="modal-header">
+            <button data-dismiss="modal" class="close" type="button"></button>
+            <h3>选择活动对象</h3>
+        </div>
+        <div class="modal-body">
+            <notempty name="user_grade">
+            <div class="row-fluid">
+                <div class="span2">
+                    <label class="radio" style="line-height: 35px;">
+                        <input class="js-checkbox" type="checkbox" data-type="all" data-name="grade" value="1" />vip会员组
+                    </label>
+                </div>
+                <div class="span1" style="line-height: 35px;width: 10px;">
+                    >>
+                </div>
+                <div class="span9">
+                    <volist name="user_grade" id="user_grade_vo">
+                    <label class="radio" style="line-height: 35px;float: left; margin-left: 10px;">
+                        <input class="js-checkbox" type="checkbox" name="grade[]" data-name="grade" value="{$user_grade_vo.gid}" data-text="{$user_grade_vo.grade_name}({$user_grade_vo.count})" />{$user_grade_vo.grade_name}({$user_grade_vo.count})
+                    </label>
+                    </volist>
+                </div>
+            </div>
+            </notempty>
+            <notempty name="user_group">
+            <div class="row-fluid">
+                <div class="span2">
+                    <label class="radio" style="line-height: 35px;">
+                        <input class="js-checkbox" type="checkbox" data-type="all" data-name="group" value="1" />会员分组
+                    </label>
+                </div>
+                <div class="span1" style="line-height: 35px;width: 10px;">
+                    >>
+                </div>
+                <div class="span9">
+                    <volist name="user_group" id="user_group_vo">
+                    <label class="radio" style="line-height: 35px;float: left; margin-left: 10px;">
+                        <input  class="js-checkbox" type="checkbox" name="group[]" data-name="group" value="{$user_group_vo.id}" data-text="{$user_group_vo.name}({$user_group_vo.count})" />{$user_group_vo.name}({$user_group_vo.count})
+                    </label>
+                    </volist>
+                </div>
+            </div>
+            </notempty>
+        </div>
+        <div class="modal-footer modal-center">
+            <button type="button" class="btn blue js-confirm">确定</button>
+            <button type="button" data-dismiss="modal" class="btn">取消</button>
+        </div>
+    </div>
+<!--选择商品-->
+	<div id="goods-modal" class="modal hide fade" tabindex="-1" style="width: 70%; left:30% ;  ">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3>选择商品</h3>
+    </div>
+    <div class="modal-body" style="">
+        <div class="row-fluid">
+        <div class = 'span3'>
+            <div class = 'portlet blue box' style = 'height:781px'>
+                <div class = 'portlet-title'>
+                    <div class = 'caption'>已选商品</div>
+                </div>
+                <div class = 'portlet-body' style = 'height:722px'>
+                    <table class = 'table tabbable-custom'>
+                        <thead>
+                            <tr>
+									<th>
+										<div class="input-append">
+											<a class="btn blue span4 clearGoodsList">清空列表</a> 
+											 <input placeholder="商品名" class="span5 m-wrap" name = 'goods_key'>
+											<a class="btn green"  id = 'serach_goods'>搜索</a>
+										</div>
+									</th>
+								</tr>
+                        </thead>
+                        <tbody id = 'choosed_list_body'>
+                          <volist name = 'goodsChoosedList' id = 'voGoodsChoosedListVo'>
+                                <tr class="goodsRemoveLeft{$voGoodsChoosedListVo.goods_id}">
+                                        <td>
+                                               <img style="width:64px;" src="{$voGoodsChoosedListVo.src}" class="span5" title="{$voGoodsChoosedListVo.name}">
+                                                <span class="span8">
+                                                    <div style="width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                                                      {$voGoodsChoosedListVo.name}                                                                    
+                                                    </div>
+                                                    <div>￥{$voGoodsChoosedListVo.old_price}</div>        
+                                                </span>
+                                            <i class="close boxClose"></i>
+                                          </td>
+                                 </tr>
+                          </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class = 'span9' style = "margin:0px;">
+				<div class="portlet box blue" style = 'height:781px'>
+					<div class="portlet-title">
+						<div class="caption">选择商品</div>
+					</div>
+					<div class="portlet-body" style = 'height:722px'>
+						<div class="clearfix">
+							<form style="margin-right: 15px;" method="GET"
+								action="" class="form-search pull-right">
+								<div class = 'input-append'>
+								    <label class="checkbox" >
+								    <input type="checkbox" name = 'onlyChoosed' id = 'onlyChoosed'>
+                                        只显示已选的商品
+                                    </label> 
+								</div>
+								<div class="input-append">
+									<select class = 'm-wrap'  name = 'cat_id'>
+									   <option value = '0'>选择商品分类</option>
+									   <volist name = 'goodsClassifyList' id = 'goodsClassifyListVo'>
+    									   <option value = '{$goodsClassifyListVo.cat_id}'>{$goodsClassifyListVo.name}</option>
+									   </volist>
+									</select>
+								</div>
+								<div class="input-append">
+									<input type="text" value="" class="m-wrap"
+										placeholder="商品名" name="goods_name">
+									<a class="btn green"  id = 'serach_choose'>搜索</a>
+								</div>
+							</form>
+						</div>
+						<div class="tabbable tabbable-custom">
+							<div class="tab-content">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th id = 'checkAll'></th>
+											<th>商品名称</th>
+											<th>价格(元)</th>
+											<th>库存</th>
+											<th>品牌</th>
+										</tr>
+									</thead>
+									<tbody id = 'goodsList'>
+							        </tbody>
+								</table>
+								<div class="row-fluid">
+									<div class="pagination pull-right" id = 'goodsListPage'></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		
+		</div>
+	</div>
+   
+    <div class="modal-footer modal-center">
+        <button class="btn blue js-goods-confirm" type="button">确定</button>
+        <button class="btn" data-dismiss="modal" type="button">取消</button>
+    </div>
+</div>
+<!--选择商品END-->	
+	
+</block>
+<block name="js">
+    <script type="text/javascript">
+    	var pro_type = {$info['type']};
+        seajs.use(['controller/coupon/promotionsController'],function(promotions){
+            promotions.edit({$info['type']},'{$info['param']}');
+        });
+    </script>
+</block>

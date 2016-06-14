@@ -1,0 +1,97 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.id">添加<else/>编辑</empty>规则</div>
+        </div>
+        <div class="portlet-body form">
+            <form autocomplete = "off" id="user_edit" action="{:U('Rule/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">规则名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">规则编号<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="code" class="m-wrap"  value="{$info.code}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">公式</label>
+                <div class="controls">
+                    <input type="text" name="formula" class="m-wrap span4"  value="{$info.formula}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">类型</label>
+                <div class="controls">
+                    <select class="m-wrap" name="type">
+                        <volist name="type_lists" id="vo">
+                        <option value="{$key}" <eq name="info.type" value="$key">selected</eq>>{$vo}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+
+            <div class="js-type" data-id="2" style="display: <eq name="info.type" value="2">block<else/>none</eq>" >
+                <div class="control-group">
+                    <label class="control-label">条件</label>
+                    <div class="controls">
+                        <input type="text" name="condition" class="m-wrap" value="{$info.config.condition}"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="js-type" data-id="3" style="display: <eq name="info.type" value="3">block<else/>none</eq>">
+                <div class="control-group">
+                    <label class="control-label">Model名称</label>
+                    <div class="controls">
+                        <input type="text" name="model" class="m-wrap" value="{$info.config.model}"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Model方法</label>
+                    <div class="controls">
+                        <input type="text" name="function" class="m-wrap" value="{$info.config.function}"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.id">checked<else/><eq name="info.status" value="1">checked</eq></empty>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="id" value="{$info.id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('Rule/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/credits/ruleController'],function(rule){
+            rule.edit();
+        });
+    </script>
+</block>

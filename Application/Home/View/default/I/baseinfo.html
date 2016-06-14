@@ -1,0 +1,96 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/safe-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/baseinfo.html.css">
+</block>
+<block name="content">
+<include file="I/common"/>
+<div class="data_box">
+	<div class="data_opt">
+		<form action="{:U('I/baseinfo')}" method='post' id='signupForm'>
+			<p>
+				<label>用户名:</label>
+				<eq name = 'info.is_modify_username'  value = '0'>
+					<input type="text"  name="name"   value="{$info.username}">
+					<span class="help-inline" >用户名只能修改一次，确认后不能再进行编辑！</span>
+					<input type='hidden'  name = 'if_modify_username'  value = '1' >
+				<else/>
+				    {$info.username}
+				</eq>
+			</p>
+				
+            <p>
+				<label>&nbsp;&nbsp;&nbsp;<em class="required-input">*</em>昵称:</label>
+				<input type="text" name="nickname" id='nickname' value="{$info.aliasname|default=''}">
+			</p>
+			
+			<p class="name_form">
+				<label><em class="required-input">*</em>真实姓名:</label>
+				<input type="text" name="mepo_name" id='mepo_name' value="{$info.real_name|default=''}">
+			</p>
+
+			<p class="sex_form">
+				<label>性别:</label>
+				<select name='mepo_sex'>
+					<option value="">请选择性别</option>
+					<option value="1" <eq name='info.sex' value='1'>selected="selected"</eq>>男</option>
+					<option value="2" <eq name='info.sex' value='2'>selected="selected"</eq>>女</option>
+				</select>
+			</p>
+			<p class="day_form">
+				<label>生日:</label>
+				<select class="sel_year" rel="{$info.birthday_year|default='1999'}" name="u_year"></select>&nbsp;&nbsp;年&nbsp;&nbsp;
+				<select class="sel_month" rel="{$info.birthday_month|default='01'}" name="u_month"></select>&nbsp;&nbsp;月&nbsp;&nbsp;
+				<select class="sel_day" rel="{$info.birthday_day|default='01'}" name="u_day"></select>&nbsp;&nbsp;日&nbsp;&nbsp;</p>
+			<p class="tel_form">
+				<label>手机:</label>
+				<eq name = 'info.mobile_status' value = '1'>
+				    {$info.mobile}<a href="{:U('editMobile')}">修改手机</a>
+				<else/>
+				您的账号还没绑定手机<a href="{:U('phoneVerify')}">绑定手机</a>
+				</eq>
+			</p>
+
+			<p class="email_form">
+				<label>邮箱:</label>
+				 <eq name = 'info.email_status' value = '1'>
+                    {$info.email}<a href="{:U('editEmail')}">修改邮箱</a>
+                <else/>
+                您的账号还没有绑定邮箱<a href="{:U('checkEmail')}">绑定邮箱</a>
+                </eq>
+			</p>
+
+			<p class="place_form">
+				<label>所在地区:</label>
+				<span id="area-select">
+				<select id="provice" name="private"></select>&nbsp;&nbsp;
+				<select id="city" name="city" ></select>&nbsp;&nbsp;
+				<span id="seachdistrict_div"><select id="county" name="county"></select></span>&nbsp;&nbsp;
+				<select id="town" name="town" style="width:150px;"></select>&nbsp;&nbsp;
+				</span>	
+			</p>
+
+			<p class="address_from">
+				<label>详细地址:</label>
+				<input type="text" class="address" name="address" value="{$info.user_detail_address|default=''}">
+			</p>
+
+			<p>
+				<button  type="submit" class="btn2">保存</button>
+			</p>
+		</form>
+	</div>
+</div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		var provice_id = "{$info.user_provice}" || '';
+		var city_id = "{$info.user_city}" || '';
+		var county_id = "{$info.user_county}" || '';
+		var town_id = "{$info.user_town}" || '';
+		seajs.use('controller/baseinfoController',function(main){
+			main.init();
+		});
+	</script>
+</block>

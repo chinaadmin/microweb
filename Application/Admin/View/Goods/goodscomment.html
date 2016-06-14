@@ -1,0 +1,97 @@
+<extend name="Common:base" />
+<block name="content">
+	<div class = "row-fluid">
+		<div class = 'portlet box blue'>
+			<div class = "portlet-title">
+				<div class = "caption">评论管理</div>
+			</div>
+			<div class = 'portlet-body'>
+			<div class="row-fluid">
+				<div class = 'pull-left'><strong>商品名称:</strong>&nbsp;&nbsp;{$goodsName}</div>
+				<div class='pull-right'>
+						<form style="margin-right: 15px;" method="GET"
+							action="{:U('goodsComment' ,['goods_id' => $_GET['goods_id']])}">
+							<div class="row  pull-left">
+								<select name="status" class="m-wrap js-cat select-query span12">
+									<option value="-1">状态</option>
+									<option value="1" <eq name = 'Think.get.status' value = '1'>selected</eq>>启用</option>
+									<option value="0" <eq name = 'Think.get.status' value = '0'>selected</eq>>禁用</option>
+								</select>
+							</div>
+							<div style="margin-right: 3px;" class="pull-left">
+								<input type="text"  class="m-wrap"
+									placeholder="用户名或昵称" name="keywords" value = "{$Think.get.keywords}">
+							</div>
+							<button style="margin-right: -13px;" class="btn green"
+								type="submit">搜索</button>
+						</form>
+				</div>
+			</div>
+			<div class="row-fluid">
+			<table class = "table table-hover">
+					<thead>
+						<tr>
+							<th>商品规格</th>
+							<th>评论者(昵称或用户名)</th>
+							<th>评论内容</th>
+							<th>评论时间</th>
+							<th>状态</th>
+							<th>禁用备注</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+					<notempty name = 'list' >
+						<volist name = 'list'  id = 'vo_list'>
+							<tr>
+								<td>
+									<volist name = 'vo_list.norms_value' id = "vo_norms_value">
+										{$vo_norms_value.name}:&nbsp;{$vo_norms_value.value}&nbsp;&nbsp;
+									</volist>
+								</td>
+								<td>{$vo_list.comment_name}</td>
+								<td>{$vo_list.gc_content}</td>
+								<td>{$vo_list.add_time}</td>
+								<td>{$vo_list.gc_status|getStatus}</td>
+								<td>{$vo_list.gc_failed_remark|default = "暂无"}</td>
+								<td><button class = 'btn blue-stripe'  data-status = "{$vo_list.gc_status}"  data-gc_id = "{$vo_list.gc_id}" <notempty name = "vo_list.gc_status">disabled</notempty>  id = 'pass' >通过</button>&nbsp;&nbsp;<button  data-gc_id = "{$vo_list.gc_id}"  data-status = "{$vo_list.gc_status}" <notempty    name = "vo_list.gc_status"><else/>disabled</notempty> id = "noPass" class = 'btn blue-stripe'>不通过</button></td>
+							</tr>
+						</volist>
+					<else/>
+						<tr>
+							<td colspan = '7'><center>暂无评论</center></td>	
+						</tr>
+					</notempty>	
+					</tbody>
+				</table>
+				</div>
+				<div class = "row-fluid">
+					<div class = 'pagination'>
+					 	<ul>{$_page}</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<div  role="dialog" tabindex="-1" class="modal hide fade" id="myModal" style="display: none;">
+  <div class="modal-header">
+    <h3>评论审核</h3>
+  </div>
+  <div class="modal-body">
+  	<div  style = 'text-align:center'><textarea cols="" rows="" autofocus placeholder = "请输入不通过原因"></textarea><span id='tips' style = "display:none;color:red">&nbsp;原因必填</span></div>	
+	</div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">审核</button>
+	<button aria-hidden="true" data-dismiss="modal" class="btn">关闭</button>
+</div>
+  
+</div>
+</block>
+<block name="js">
+	<script>
+		seajs.use(['controller/goods/goodsComment'],function(main){
+			main.init();
+		});
+	</script>
+</block>

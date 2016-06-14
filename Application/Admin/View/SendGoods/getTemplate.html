@@ -1,0 +1,39 @@
+<extend name="Common:base" />
+<block name="top"></block>
+<block name="left"></block>
+<block name="css">
+<load href="__CSS__/App/admin/order/order.css"/>
+<style>
+@media print{
+	button[name="confirmPrint"] {
+	        display:none;
+	    }
+}
+@page {
+  size: A4;
+}
+.page-content{
+	margin-left:0px;
+}
+.page-header-fixed .page-container{
+	margin-top:0px;
+}
+</style>
+</block>
+<block name="content">
+<button class="btn do-print-express" style="margin:10px;">打印</button>
+<div class="row-fluid" id='express-view'>
+   <volist name="lists" id='vo'>
+   	<div class="content-print">
+   	{$vo}
+	</div>
+   </volist>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+     seajs.use(['controller/order/orderController'],function(main){
+    	   main.index();
+     }); 
+    </script>
+</block>

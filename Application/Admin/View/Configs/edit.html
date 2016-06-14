@@ -1,0 +1,111 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.uid">添加<else/>编辑</empty>配置</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="form_edit" action="{:U('Configs/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">配置名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">配置代码<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="code" class="m-wrap" value="{$info.code}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">上级配置</label>
+                <div class="controls">
+                    <select class="m-wrap" name="pid">
+                        <option value="">请选择</option>
+                        <volist name="configs_lists" id="vo">
+                            <option value="{$key}" <eq name="info.pid" value="$key">selected</eq>>{$vo}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">排序</label>
+                <div class="controls">
+                    <input type="text" name="sort" class="m-wrap span1" value="{$info.sort}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">配置类型</label>
+                <div class="controls">
+                    <select class="m-wrap" name="type">
+                        <volist name="configs_type" id="vo">
+                            <option value="{$key}" <eq name="info.type" value="$key">selected</eq>>{$vo}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">宽度</label>
+                <div class="controls">
+                    <input type="text" name="width" class="m-wrap span1" value="{$info.width}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">配置值</label>
+                <div class="controls">
+                    <input type="text" name="value" class="m-wrap popovers" value="{$info.value}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">系统变量</label>
+                <div class="controls">
+                    <select name="is_system" id="is_system" class="span1 m-wrap">
+                        <option <eq name="vo.is_system" value="0" >selected</eq> value="0">否</option>
+                        <option <eq name="vo.is_system" value="1" >selected</eq> value="1">是</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">是否只超级管理员可见</label>
+                <div class="controls">
+                    <select name="is_admin" id="is_admin" class="span1 m-wrap">
+                        <option <eq name="vo.is_admin" value="0" >selected</eq> value="0">否</option>
+                        <option <eq name="vo.is_admin" value="1" >selected</eq> value="1">是</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">说明</label>
+                <div class="controls">
+                    <textarea class="span6 m-wrap" rows="3" name="desc">{$info.desc}</textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="configs_id" value="{$info.configs_id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('Configs/lists')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/configs/configsController'],function(configs){
+            configs.edit();
+        });
+    </script>
+</block>

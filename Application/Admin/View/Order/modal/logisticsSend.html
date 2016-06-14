@@ -1,0 +1,131 @@
+<!--物流发货-->
+<div class="modal hide fade" id="logisticModel" tabindex="-1" aria-hidden='true' role="dialog" aria-labelledby="myModalLabel" style="width:1000px;">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        <h4 class="modal-title">物流发货</h4>
+      </div>
+	   <form method="post" action="{:U('SendGoods/sendLogistics')}" class="form-horizontal" id="send-logistics">
+      <div class="modal-body">
+          <div class="logistics-title">
+          	<span>请确认快递公司与运单号一致，确认快递公司和运单号后不可修改</span>
+          </div>
+		 
+		  <div class="logistics-body">
+		  	 <div class="control-group">
+                         <label class="control-label" style="width:auto;">默认快递：</label>
+                         <div class="controls" id="add-logistics" style="margin-left:0px;">
+						 <script type="text/html" id="logistics">
+						 	<%if(logistics){%>
+						 	<%for(i in logistics){%>
+                               <label class="checkbox">
+                                   <input type="checkbox" class='logistics' name="default_logistics" value="<%=logistics[i].lc_id%>"/><%=logistics[i].lc_name%>
+                                </label>
+							<%}%>
+							<% } %>
+						</script>
+                         </div>
+             </div>
+			 
+			 <div class="ontrol-group">
+                         <label class="control-label" style="width:auto;">发件人：</label>
+                         <div class="controls" id='add-sender'  style="margin-left:0px;">
+                         	<script type="text/html" id="sender">
+                              <select name="sender_people" style='width:300px;'>
+                              	<%if(sender){%>
+									<%for(x in sender){%>
+	                              	<option value="<%=sender[x].ware_id%>"><%=sender[x].ware_name%>&nbsp;&nbsp;<%=sender[x].ware_username%>&nbsp;&nbsp;<%=sender[x].ware_mobile%>&nbsp;&nbsp;<%=sender[x].ware_address%></option>
+									<%}%>
+								<%}%>
+                              </select>
+							  <!-- <a class='btn green mini' id='getSendCode'>获取运单号</a> -->
+							 </script>
+                         </div>
+             </div>
+			 
+				
+				<div class="span12" style="margin-left:0px;">
+						<!-- BEGIN CONDENSED TABLE PORTLET-->
+						<div class="portlet box green">
+							<div class="portlet-title">
+								<div class="caption">Condensed Table</div>
+							</div>
+							<div class="portlet-body">
+								<table class="table table-condensed table-hover">
+									<thead>
+										<tr>
+											<th>订单号</th>
+											<th>商品名称</th>
+											<th>快递公司</th>
+											<th class="hidden-480">运单号</th>
+											<!-- <th>发货状态说明</th> -->
+										</tr>
+									</thead>
+									<tbody id="order-data">
+								<script type="text/html" id="order">
+									<%if(data){%>
+									  <%for(j in data){%>
+										<tr>
+											<td><%=data[j].order_sn%></td>
+											<td>
+												<div class="order-goods">
+											 		<div class='goods-title'>
+														<%for(x in data[j].rec){%>
+														  <%=data[j]['rec'][x].name%>
+														  <%if(data[j]['rec'][x].norms_value){%>
+														   .<%=data[j]['rec'][x].norms_value%>
+														  <%}%>&nbsp;&nbsp;
+														  <input type='hidden' class='order-id' name="logistics[<%=data[j].order_id%>][rec][]" value="<%=data[j]['rec'][x].rec_id%>"/>
+														<%}%>
+													</div>
+													<ul class="goods-alt">
+													 <%for(x in data[j].rec){%>
+														 <li>
+															  <%=data[j]['rec'][x].name%>
+															  <%if(data[j]['rec'][x].norms_value){%>
+															   .<%=data[j]['rec'][x].norms_value%>
+															   <%}%>
+														 </li> 
+												    <%}%>
+													</ul>
+													</div>
+											</td>
+											<td><select name="logistics[<%=data[j].order_id%>][logistics]" class="logistics-select">
+												<%for(k in logistics){%>
+												<option value="<%=logistics[k].lc_id%>"><%=logistics[k].lc_name%></option>
+												<%}%>
+											</select>
+											</td>
+											<td class="hidden-480">
+											<input type="text" name="logistics[<%=data[j].order_id%>][number]" value="" class="numbers n_<%=data[j].order_id%>" style="width:125px;"/>
+											<%if(j==1){%>
+											 <i class="icon-long-arrow-down add-sn"></i>
+							                <%}%>
+										   </td>
+											<!-- <td class="for-error"></td> -->
+										</tr>
+									  <%}%>
+									<%}%>
+								</script>
+									</tbody>
+
+								</table>
+							</div>
+						</div>
+						<!-- END CONDENSED TABLE PORTLET-->
+					</div>	 
+					 
+		  </div>
+
+	  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary send-logistics">确认发货</button>
+		<button type="button" class="btn btn-primary l-send-print-sales">发货并打印发货单</button>
+		<button type="button" class="btn btn-primary l-send-print-express">发货并打印快递单</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+   </form>
+    </div>
+  </div>
+</div>

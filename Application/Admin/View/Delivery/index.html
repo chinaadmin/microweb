@@ -1,0 +1,60 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$title}</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="Delivery/add">
+                    <a class="btn green" href="{:U('Delivery/add')}">
+                        添加配送方式 <i class="icon-plus"></i>
+                    </a>
+                    </MyTag:rule>
+                </div>
+			</div>
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width:10%">配送名称</th>
+                        <th>配送说明</th>
+                        <th style="width:10%">是否启用</th>
+                        <th style="width:10%">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                        <td>{$vo.dw_delivery_way}</td>
+                        <td>{$vo.dw_remark}</td>
+                        <td>{$vo.dw_status|getStatus}</td>
+                        <td>
+                            <MyTag:rule name="Delivery/edit">
+                            <a class="btn blue-stripe" href="{:U('Delivery/edit',['dw_id'=>$vo['dw_id']])}" >编辑</a>
+                            </MyTag:rule>
+                            <MyTag:rule name="Delivery/del">
+                            <a class="btn red-stripe js-del" url="{:U('Delivery/del',['dw_id'=>$vo['dw_id']])}">删除</a>
+                            </MyTag:rule>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+            <div class="row-fluid">
+                <div class="pagination pull-right">
+                    {$_page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/user/userController'],function(user){
+            user.index();
+        });
+    </script>
+</block>

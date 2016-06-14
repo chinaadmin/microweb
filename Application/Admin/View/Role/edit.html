@@ -1,0 +1,92 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.role_id">添加<else/>编辑</empty>角色</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="user_edit" action="{:U('update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name}"/>
+                </div>
+            </div>
+			
+			<div class = 'control-group'>
+				<label class = 'control-label'>头像</label>
+				<div class = 'controls'>
+					<MyTag:plupload id = 'avatar_id' name = "avatar_id" id_suffix = 'info.avatar_id' type="one" attachment="info.picPath" thumb="true"  clickdefault="true"/>
+				</div>
+			</div>
+			
+			<div class = 'control-group'>
+				<label class = 'control-label'>格言</label>
+				<div class = 'controls'>
+					 <textarea class="span6 m-wrap" rows="3" name="maxim" placeholder = '请填写格言'>{$info.maxim}</textarea>
+				</div>
+			</div>
+			
+            <if condition="$is_super eq true">
+            <div class="control-group">
+                <label class="control-label">编号</label>
+                <div class="controls">
+                    <input type="text" name="code" class="m-wrap" value="{$info.code}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">系统</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="is_system" value="0" <empty name="info.is_system">checked</empty>/>
+                        否
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="is_system" value="1" <eq name="info.is_system" value="1">checked</eq>/>
+                        是
+                    </label>
+                </div>
+            </div>
+            </if>
+
+            <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.role_id">checked<else/><eq name="info.status" value="1">checked</eq></empty>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">描述</label>
+                <div class="controls">
+                    <textarea class="span6 m-wrap" rows="3" name="remark" placeholder = "请填写角色描述">{$info.remark}</textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="type" value="{$info.type}"/>
+                <input type="hidden" name="role_id" value="{$info.role_id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="javascript:history.back();">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/role/roleController'],function(role){
+            role.edit();
+        });
+    </script>
+</block>

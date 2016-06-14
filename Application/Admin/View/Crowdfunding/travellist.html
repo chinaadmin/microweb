@@ -1,0 +1,52 @@
+<extend name="Common:base" />
+<block name="content">
+	<div class = 'row-fluid'>
+		<div class = 'portlet blue box'>
+			<div class = 'portlet-title'>
+				<div class = 'caption'>旅游活动报名单</div>
+			</div>
+			<div class = 'portlet-body'>
+				<div class = 'row-fluid'>
+					<form class = 'pull-right form-inline'  action = '{:U("travellist")}'>
+						<input type = 'text' placeholder = '昵称|用户名' name = 'keyWord' value = "{$Think.get.keyWord}"/>
+						<button type = 'submit' class = 'btn green' >搜索</button>
+					</form>	
+				</div>
+				<div class = 'row-fluid'>
+					<table class = 'table table-hover'>
+						<tr>
+							<th>项目名</th>
+							<th>昵称|用户名</th>
+							<th>用户电话</th>
+							<th>用户邮箱</th>
+						</tr>
+						<volist name = 'list' id = 'voList'>
+							<tr>
+								<td>{$voList.cr_name}</td>
+								<td>
+									<empty name = 'voList.aliasname'>
+									 	{$voList.username}
+									 <else/>
+									 	{$voList.aliasname}
+									</empty>
+								</td>
+								<td>{$voList.mobile}</td>
+								<td>{$voList.email}</td>
+							</tr>
+						</volist>
+					</table>
+					  <div class="pagination pull-right">
+	                    {$_page}
+	                </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+<block name="js">
+		<script type="text/javascript">
+		seajs.use(['controller/Crowdfunding/travel'],function(travel){
+			travel.list();
+		});
+	</script>
+</block>

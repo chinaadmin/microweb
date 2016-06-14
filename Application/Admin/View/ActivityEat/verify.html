@@ -1,0 +1,68 @@
+<style type="text/css">
+	.photo-body{
+		text-align:center;
+	}
+</style>
+<volist name="lists" id="vo">
+<div id="myModal_{$vo.photo_id}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h3 id="myModalLabel">照片审核</h3>
+  </div>
+  <div class="modal-body">
+	<form action="{:U('ActivityEat/status')}" method="Post" class="form-horizontal modal_verify" id="send_{$vo.photo_id}">
+		<input type="hidden" name='photo_id' value="{$vo.photo_id}"/>
+    <div class="portlet-body">
+		  <div class="photo-body">
+		  	<p class='photo-title'>
+		  		{$vo.title}
+		  	</p>
+			<p class="photo-pic">
+			  <img src="{$vo.photo}" width='290' height='386' />
+			</p>
+		  </div>
+		  <div class="from-photo">
+		  	 <div class="control-group">
+                         <label class="control-label">赞：</label>
+                         <div class="controls">
+                              <p style="margin-top:7px;">{$vo.vote_num}</p>
+                         </div>
+             </div>	
+		  	 <div class="control-group">
+                         <label class="control-label">发布时间：</label>
+                         <div class="controls">
+                              <p style="margin-top:7px;">{$vo.add_time|date='Y-m-d H:i:s',###}</p>
+                         </div>
+             </div>	
+		   <div class="control-group">
+                         <label class="control-label">照片状态：</label>
+                         <div class="controls">
+                              <label class="radio">
+                                   <input type="radio"  name="status" value="0" <eq name="vo.status" value='0'>checked</eq>/>禁用
+                                </label>
+                               <label class="radio">
+                                     <input type="radio"  name="status" value="1" <eq name="vo.status" value='1'>checked</eq>/>启用
+                                 </label> 
+                         </div>
+             </div>	
+			 
+			  <div class="control-group">
+                         <label class="control-label">用户状态：</label>
+                         <div class="controls">
+                                <label class="radio">
+                                   <input type="radio"  name="user_status[{$vo['mobile']}]" value="0" <eq name="vo.user_status" value='0'>checked</eq>/>禁用
+                                </label>
+                                <label class="radio">
+                                     <input type="radio"  name="user_status[{$vo['mobile']}]" value="1" <eq name="vo.user_status" value='1'>checked</eq>/>启用
+                                </label> 
+                         </div>
+             </div>	
+		</div>	
+	</div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type='submit'>审核</button>
+	<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+  </div>
+  </form>
+</div>
+</volist>

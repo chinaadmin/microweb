@@ -1,0 +1,77 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$type_lists[$type]['name']}列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="tabbable tabbable-custom">
+                <ul class="nav nav-tabs">
+                    <volist name="type_lists" id="vo">
+                    <li <eq name="type" value="$key">class="active"</eq>><a href="{:U('index',['type'=>$key])}" style="padding: 10px 25px">{$vo.name}</a></li>
+                    </volist>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" >
+                        <div class="clearfix">
+                            <form class="form-search pull-right" action="" method="GET" >
+                                <div class="input-append">
+                                    <select class="m-wrap select-query" name="operate_type">
+                                        <option value="">操作类型</option>
+                                        <volist name="operate_type_lists" id="operate_vo">
+                                        <option value="{$key}" <present name="operate_type"><eq name='operate_type' value='$key'>selected="selected"</eq></present>>{$operate_vo}</option>
+                                        </volist>
+                                    </select>
+                                    <input type="text" name="username" placeholder="用户账户" class="m-wrap" value="{$username|default=''}">
+                                    <button type="submit" class="btn green">搜索</button>
+                                </div>
+                            </form>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>用户账号</th>
+                                <th>变动原因</th>
+                                <th>操作类型</th>
+                                <th>{$type_lists[$type]['name']}</th>
+                                <th>余额</th>
+                                <th>变动时间</th>
+                                <th>操作人</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="lists" id="vo">
+                                <tr>
+                                    <td>{$vo.log_id}</td>
+                                    <td>{$vo.username}</td>
+                                    <td>{$vo.remark}</td>
+                                    <td>{$vo.type_name}</td>
+                                    <td>{$vo.credits}</td>
+                                    <td>{$vo.balance}</td>
+                                    <td>{$vo.add_time|dateFormat}</td>
+                                    <td>{$vo.editor}</td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                        <div class="row-fluid">
+                            <div class="pagination pull-right">
+                                {$_page}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/user/creditsController'],function(user){
+            user.index();
+        });
+    </script>
+</block>

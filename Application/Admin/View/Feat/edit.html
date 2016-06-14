@@ -1,0 +1,79 @@
+<extend name="Common:base" />
+<block name="css">
+	<load href='__CSS__/App/common/catico.css' />
+</block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.feat_id">添加<else/>编辑</empty>展位</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="from_edit" action="{:U('feat/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">展位名称</label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.feat_name|default=''}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">展位链接</label>
+                <div class="controls">
+                    <input type="text" name="url" class="m-wrap" value="{$info.feat_url|default=''}"/>
+                </div>
+            </div>
+			 
+            <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.feat_status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.feat_id">checked<else/><eq name="info.feat_status" value="1">checked</eq></empty>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+	
+			<div class="control-group">
+                <label class="control-label">展位位置</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="position" value="2" <eq name="info.feat_position" value="2">checked</eq>/>
+                      首页推荐             
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="position" value="1" <empty name="info.feat_position">checked<else/><eq name="info.feat_position" value="1">checked</eq></empty>/>
+                        展位列表
+                    </label>
+                </div>
+            </div>
+			
+			<div class="control-group">
+                <label class="control-label">移动端显示图标</label>
+                <div class="controls" style="position:relative;">
+                	<span style="color:red;position:absolute;top:2px;left:80px;display:block;">（上传图片尺寸240X130）</span>
+                   <MyTag:plupload type="one" name="feat_photo" attachment="info.attr_id" thumb="false" clickdefault="false"/>
+                </div>
+            </div>
+			
+            <div class="form-actions">
+                <input type="hidden" name="feat_id" value="{$info.feat_id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('feat/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/feat/featController'],function(main){
+          
+        });
+    </script>
+</block>

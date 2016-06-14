@@ -1,0 +1,554 @@
+<extend name="Common:base"/>
+<block name="css">
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/v11/order.css" />
+</block>
+<block name="nav"><include file="Common:welt_nav" /></block>
+<block name="content">
+<!--路径-->
+<div class="hd">
+    <div class="sersafe-steps">
+        <ol>
+            <li class="pass">
+                <s class="bg"></s>
+                <div class="step step-sprite">
+                    <i>1、</i>
+                    <span>加入购物车</span>
+                </div>
+            </li>
+            <li class="active">
+                <s class="bg"></s>
+                <div class="step step-sprite">
+                    <i>2、</i>
+                    <span>填写信息</span>
+                </div>
+            </li>
+            <li>
+                <s class="bg"></s>
+                <div class="step step-sprite sprite-bg">
+                    <i>3、</i>
+                    <span>订单支付</span>
+                </div>
+            </li>
+            <li>
+                <s class="bg"></s>
+                <div class="step step-sprite">
+                    <i>4、</i>
+                    <span>支付成功</span>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="box">
+<div id="js-recaddress" class="address">
+    <h3>收货人信息
+        <a class="btn js-recaddress-add-btn">新增收货地址</a>
+    </h3>
+    <div id="js-recaddress-div" class="wrap">
+    </div>
+    <p class="addrman">
+        <a href="{:U('I/recaddress')}">管理收货地址</a>
+        <a class="js-show-all-address">显示全部地址</a>
+    </p>
+</div>
+
+<div id="js-delivery" class="delivery">
+    <h3>配送方式</h3>
+    <div class="js-delivery-div wrap">
+        <volist name="delivery_way" id="way_vo">
+        <p data-id="{$way_vo['dw_code']}" <eq name="way_vo['dw_code']" value="visit_delivery">style="display:none;"</eq>>
+            <span>
+              <input type="radio" name="delivery" <eq name="way_vo['dw_code']" value="express_delivery">checked="true"</eq> value="{$way_vo['dw_code']}" /> <em>{$way_vo['dw_delivery_way']}</em>
+            </span>
+            <span>
+              <a>{$way_vo['dw_remark']}</a>
+              <!--<a href="#">查看运费说明</a>-->
+            </span>
+        </p>
+        <eq name="way_vo['dw_code']" value="visit_delivery">
+            <p data-id="disabled_{$way_vo['dw_code']}">
+            <span>
+              <input type="radio" value="disabled_{$way_vo['dw_code']}" disabled /> <em>{$way_vo['dw_delivery_way']}</em>
+            </span>
+            <span>
+              <a>门店附近500米内满30元免费配送，因您的地址已超过指定范围，恕不支持送货上门，请选择其他配送方式</a>
+            </span>
+            </p>
+        </eq>
+        </volist>
+        <div class="js-from-mentioning location">
+
+        </div>
+
+    </div>
+</div>
+
+<div id="js-pay" class="paybox">
+    <h3>支付方式</h3>
+    <div class="wrap">
+        <p class="js-pay-type paytype">
+            <span class="js-pay-type-span"><input type="radio" name="paytype" value="0" checked="true" />支付平台</span>
+            <span>目前支付方式只支持支付宝</span>
+        </p>
+        <p class="js-pay-type-con payselect" data-id="0" style="display: none">
+            <volist name="payment_lists" id="vo">
+                <eq name="vo.type" value="0">
+                <span class="js-pay-type-con-radio">
+                  <input type="radio" name="payment" value="{$vo.code}" <eq name="i" value="1">checked</eq> />
+                  <img src="{$vo.photo}" alt="{$vo.name}"/>
+                </span>
+                </eq>
+            </volist>
+        </p>
+        <p class="js-pay-type paytype">
+            <span class="js-pay-type-span"><input type="radio" name="paytype" value="1" />网银支付</span>
+            <span>支持地方银行，需开通网银支付功能</span>
+        </p>
+        <p class="js-pay-type-con payselect" data-id="1" style="display: none">
+            <volist name="payment_lists" id="vo">
+                <eq name="vo.type" value="1">
+                <span class="js-pay-type-con-radio">
+                  <input type="radio" name="payment" value="{$vo.code}" <eq name="i" value="1">checked</eq> />
+                  <img src="{$vo.photo}" alt="{$vo.name}"/>
+                </span>
+                </eq>
+            </volist>
+        </p>
+    </div>
+</div>
+
+<div id="js-invoice" class="billbox">
+    <h3>发票
+        <a class="js-update-invoice btn">修改</a>
+    </h3>
+    <div class="wrap">
+        <div class="default js-invoice-div">
+        </div>
+        <div class="editing" style="display:none">
+            <p>
+                <span>发票类型:</span>
+              <span>
+                <input type="radio" checked="checked" name="type" value="0"/>
+                普通发票
+              </span>
+            </p>
+            <div class="js-invoice-input">
+
+            </div>
+            <p class="addon">
+                <span></span>
+                <span class="js-add-invoice">新增发票抬头</span>
+            </p>
+            <p class="btns">
+                <span></span>
+                <span>
+                    <a class="btn js-submit">保存发票</a>
+                    <a class="btn js-cancel">不开发票</a>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="shopbox">
+    <h3>
+        商品信息
+        <a href="{:U('Cart/index')}" class="btn">返回购物车</a>
+    </h3>
+    <div class="wrap">
+        <div class="tableBox">
+            <div class="th">
+                <div class="tr">
+                    <div class="td">
+                        <ul>
+                            <li class="name">商品名称</li>
+                            <li class="price">单价</li>
+                            <li class="number">数量</li>
+                            <li class="sum">小计</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tbody">
+                <div class="tr">
+                    <div class="td">
+                        <!--<div class="item"> <b>品牌</b>
+                            <span>必好货</span>
+                        </div>-->
+                        <volist name="cart_lists" id="vo">
+                        <ul>
+                            <li class="name">
+                                <a href="{:U('Detail/index',['id'=>$vo['goods_id']])}" target="_blank">
+                                    <img src="{$vo['pic']}" width="80px" height="80px"/>
+                                    <p>{$vo['name']}</p>
+                                    <p class="cats-format">
+                                    <notempty name='vo.norms_value'>
+                                        <volist name="vo.norms_value" id="norms">
+                                            {$norms.name}：{$norms.value}&nbsp&nbsp&nbsp
+                                        </volist>
+                                    </notempty>
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="price" >
+                                <span>￥{$vo['goods_price']}</span>
+                            </li>
+                            <li class="number">
+                                <span>{$vo['number']}</span>
+                                >
+                            </li>
+                            <li class="sum" >
+                                <p>${$vo['price']}</p>
+                            </li>
+                        </ul>
+                        </volist>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- /*购物车表格*/-->
+<div class="catbox">
+
+    <div class="remark-box">
+        <label>补充说明：</label>
+        <input type="text" name="postscript" placeholder="选填，对本次交易有什么特别说明的吗" />
+    </div>
+
+    <div id="js-preferential" class="coupon">
+        <p>
+            <span class="js-use-coupon">
+                <em></em>
+                <span>使用优惠券</span>
+            </span>
+            <a class="js-use-coupon-con" style="display:none">
+            </a>
+        </p>
+        <notempty name="integral_cash">
+        <p>
+            <span class="js-use-integral">
+                <em></em>
+                <span>使用好货币抵现（{$integral_cash}积分=1元）</span>
+            </span>
+            <a class="js-use-integral-con" style="display:none">
+            </a>
+        </p>
+        </notempty>
+    </div>
+
+    <div id="js-money">
+
+    </div>
+</div>
+<form id="js-form" action="" method="post" target="_blank"></form>
+<!-- 支付框-->
+<div id="js-pay-mask" class="pop-box"></div>
+<div id="js-pay-content" class="pay-wid">
+    <h2 style="padding:0 10px">请您在新打开的页面上完成付款<i class="close-box"></i></h2>
+    <div class="pay-content">
+        <div class="btn-box">
+            <input type="button" class="true-box pay-true js-pay-finish" value="已完成付款">
+            <input type="button" class="fail-box pay-fail js-pay-problem" value="付款遇到问题">
+        </div>
+        <div class="btn-2">
+            <input type="button"  class="anew close-box js-pay-again" value="重新支付"/>
+            <input type="button" class="cancel-btn js-pay-cancel" value="取消"/>
+        </div>
+        <p>查看<a href="">支付帮助</a>或联系<a href="">在线客服</a></p>
+    </div>
+</div>
+
+<!--收货地址弹出层-->
+<div class="popBox" style="display:none;">
+    <div class="js-address-modal adderss-add box" style="display:none;">
+        <div class="wrap">
+            <h3>
+                <span>收货信息</span>
+                <i class="close-box"></i>
+            </h3>
+            <form id="recaddressForm" action="{:U('affiliated/updateRecaddress')}" method="post">
+                <div id="js-recaddress-update" class="content">
+
+                </div>
+                <div class="footer">
+                    <p>
+                        <span></span>
+                        <span>
+                            <a class="btn js-submit">确定</a>
+                            <a class="btn js-cancel">取消</a>
+                        </span>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="js-adderss-delivery-modal adderss-delivery box" style="display:none;">
+        <div class="wrap">
+            <h3>
+                <span>选择自提点</span>
+                <i class="close-box"></i>
+            </h3>
+            <div id="js-stores-con" class="content">
+                <p>
+                    <span>选择区域：</span>
+                    <span>
+                        <select id="js-county-id" name="selectArea">
+                        </select>
+                    </span>
+                </p>
+                <div class="js-stores-lists selectmore">
+                </div>
+            </div>
+            <div class="footer">
+                <p>
+                    <span></span>
+                    <span>
+                        <a class="js-submit btn">确定</a>
+                        <a class="js-cancel btn">取消</a>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="js-time-delivery-modal time-delivery box" style="display:none;">
+        <div class="wrap">
+            <h3>
+                <span>自提时间</span>
+                <i class="close-box"></i>
+            </h3>
+            <div class="content">
+                <ul id="js-stores-time-lists">
+                </ul>
+            </div>
+            <div class="footer">
+                <p>
+                    <span></span>
+                    <span>
+                        <a class="js-submit btn">确定</a>
+                        <a class="js-cancel btn">取消</a>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script id="tpl-recaddress-update" type="text/template">
+        <p><span><i>*</i>收货人姓名：</span><span><input type="text" name="name" value="<%=items['name']%>"/></span></p>
+        <p><span><i>*</i>手机号码：</span><span><input type="text" name="mobile" value="<%=items['mobile']%>"/></span></p>
+        <p class="select"><span><i>*</i>所在地区：</span>
+            <span id="area-select">
+                <select name="provice" id="provice">
+                </select>
+                <select name="city" id="city">
+                </select>
+                <select name="county" id="county">
+                </select>
+                <input type="hidden" name="address">
+            </span>
+        </p>
+        <p><span><i>*</i>详细地址：</span><span><input type="text" name="user_detail_address" value="<%=items['user_detail_address']%>" /></span></p>
+        <input type="hidden" name="address_id" value="<%=items['address_id']%>">
+    </script>
+
+    <script id="tpl-recaddress" type="text/template">
+        <%if(items.length==0){%>
+        <%}else{%>
+        <%for(var i=0;i<items.length;i++){
+        var info = items[i];
+        %>
+        <div data-id="<%=info['address_id']%>" class="js-recaddress-item item <% if(info['address_id']==sel_id){ %>active<%}%>" <%if(!show_all&&i>=4){%>style="display:none"<%}%>>
+            <p class="title">
+                <span><%=info['name']%></span>
+                <span><%=info['mobile']%></span>
+            </p>
+            <p class="addr"><%=info['user_localtion']%> <%=info['user_detail_address']%></p>
+            <p class="btns">
+                <a class="js-update">修改</a>
+                <a class="js-del">删除</a>
+            </p>
+            <span></span>
+        </div>
+        <%}%>
+        <%}%>
+    </script>
+
+    <script id="tpl-invoice-input" type="text/template">
+        <%if(items.length==0){%>
+        <p class="input active">
+            <span>发票抬头:</span>
+            <span>
+                <input type="text" name="invoice" data-id="" value="" /><i class="checked js-checked" title="选择使用"></i>
+            </span>
+        </p>
+        <%}else{%>
+        <%for(var i=0;i<items.length;i++){
+            var info = items[i];
+        %>
+        <p class="input <%if(is_default &&((sel_id==''&&i==0)||sel_id==info['invoice_id'])){%>active<%}%>">
+            <span><%if(i==0&&is_default){%>发票抬头:<%}%></span>
+            <span>
+                <input type="text" name="invoice" data-id="<%=info['invoice_id']%>" value="<%=info['invoice_payee']%>" /><i class="checked js-checked" title="选择使用"></i>
+                <%if(i>0||!is_default){%>
+                <i class="del js-del" title="删除该抬头">-</i>
+                <%}%>
+            </span>
+        </p>
+            <%}
+        }%>
+    </script>
+
+    <script id="tpl-stores-lists" type="text/template">
+        <%for(var i=0;i<items.length;i++){
+            var info = items[i];
+        %>
+        <p>
+            <span><%if(i==0){%>选择门店：<%}%></span>
+            <span>
+                <a class="js-stores-items btn <% if(info.stores_id == sel_id){%>active<%}%>" data-id="<%=info.stores_id%>">
+                    <%=info.name%>
+                </a>
+                <span>地址：<%=info.localtion%> <%=info.address%> <b><%=info.phone%></b></span>
+            </span>
+        </p>
+        <% if(info.stores_id == sel_id){%>
+        <input type="hidden" id="js-stores-id" name="stores_id" value="<%=info.stores_id%>" />
+        <%}%>
+        <%}%>
+    </script>
+
+    <script id="tpl-stores-time-lists" type="text/template">
+        <%for(var i=0;i<items.length;i++){
+        var info = items[i];
+        %>
+        <li class="js-stores-time-item <% if(info.strtotime == sel_id){%>active<%}%>" data-id="<%=info.strtotime%>">
+        <span><%=info.day%></span>
+        <span>周<%=info.week%></span>
+        </li>
+        <%}%>
+    </script>
+
+    <script id="tpl-from-mentioning" type="text/template">
+        <p>
+            <span></span>
+            <span>
+                门店自提:<%=stores.name%>
+                <a class="js-stores-update adderss">修改</a>
+            </span>
+        </p>
+        <p>
+            <span></span>
+            <span>自提地址:<%=stores.localtion%> <%=stores.address%></span>
+        </p>
+        <p>
+            <span></span>
+            <span>
+                自提时间:<%=time.year_day%> [星期<%=time.week%>]
+                <a class="js-stores-time-update time">修改</a>
+            </span>
+        </p>
+    </script>
+
+    <script id="tpl-invoice" type="text/template">
+        <%if(info.status==0){%>
+        <p class="no">
+            <span>不开发票</span>
+            <span></span>
+        </p>
+        <%}else{%>
+        <p class="sure">
+            <span>发票类型:</span>
+            <span>
+                普通发票 <b class="empty"></b>
+                发票抬头：<%=info.invoice_payee%> <b class="empty"></b>
+                发票内容：商品明细
+            </span>
+        </p>
+        <%}%>
+    </script>
+
+    <script id="tpl-money-coupon" type="text/template">
+        <% if(coupon.length == 0){%>
+        <span>您还没有优惠券，暂不能使用</span>
+        <%}else{%>
+        <span>
+            <select name="cpnselect">
+                <option value="0">请选择</option>
+                <%for(var i=0;i < coupon.length;i++){
+                var info = coupon[i];%>
+                <option value="<%=info.id%>" <%if(sel_id==info.id){%>selected<%}%>><%=info.name%>[面值：<%=info.money%>]</option>
+                <%}%>
+            </select>
+        </span>
+        <%}%>
+    </script>
+
+    <script id="tpl-money-integral" type="text/template">
+        请使用好货币：<input type="text" name="js-credits" style="width:70px;" value="<%if(sel_id!=0&&sel_id!=''){ %><%=sel_id%><%}%>"/>分 <a class="js-credits-submit btn submit">使用</a><br/>
+        总好货币：<%=credits.count%>，本次可用好货币：<%=credits.use%>
+    </script>
+
+    <script id="tpl-money" type="text/template">
+        <div class="submitBox">
+            <p>
+              <span>
+                <a class="colorY"><%=money.number%></a>
+                件商品
+              </span>
+                <span>应付金额：</span>
+                <span>￥<%=money.price%></span>
+            </p>
+            <%if(money.shipment_price && money.shipment_price != 0){%>
+            <p>
+                <span></span>
+                <span>运费：</span>
+                <span>+￥<%=money.shipment_price%></span>
+            </p>
+            <%}%>
+            <%if(money.discount_price && money.discount_price != 0){%>
+            <p>
+                <span></span>
+                <span>折后优惠：</span>
+                <span>-￥<%=money.discount_price%></span>
+            </p>
+            <%}%>
+            <%if(money.coupon_price && money.coupon_price != 0){%>
+            <p>
+                <span></span>
+                <span>优惠劵：</span>
+                <span>-￥<%=money.coupon_price%></span>
+            </p>
+            <%}%>
+            <%if(money.integral_price && money.integral_price != 0){%>
+            <p>
+                <span></span>
+                <span>好货币：</span>
+                <span>-￥<%=money.integral_price%></span>
+            </p>
+            <%}%>
+            <p>
+                <span></span>
+                <span>实付金额：</span>
+                <span class="colorY">￥<%=money.pay_price%></span>
+            </p>
+            <p>
+                <a id="js-order-submit" class="btn submit">提交订单</a>
+            </p>
+        </div>
+    </script>
+
+    <script type="text/javascript">
+        seajs.use(['controller/shoppingController1.1'],function(cart){
+            cart.shopping();
+        });
+    </script>
+</block>

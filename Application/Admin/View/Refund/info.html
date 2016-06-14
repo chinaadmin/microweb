@@ -1,0 +1,396 @@
+<extend name="Common:base" />
+<block name="css"><load href="__CSS__/App/admin/order/order.css"/></block>
+<block name="content">
+<style>
+/* 字体颜色 */
+.text-danger {
+	color: #ff0000;
+}
+
+.text-primary {
+	color: #337ab7;
+}
+
+.text-success {
+	color: #3c763d;
+}
+
+.text-muted {
+	color: #777;
+}
+
+.text-warning {
+	color: #8a6d3b;
+}
+
+.text-info {
+	color: #31708f;
+}
+
+</style>
+<div class="row-fluid">
+	<input type="hidden" id="order-status" name="" value="{$info.shipping_status}" />
+	<input type="hidden" id="refund-sn" name="refund_sn" value="{$info.refund_sn}" />
+
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">售后单详情</div>
+        </div>
+        <div class="portlet-body">
+			<ul class="breadcrumb">
+				<li>
+					<a href="{:U('Refund/index')}">退款/退货管理</a>
+					<span class="icon-angle-right"></span>
+					退款单详情
+				</li>
+			</ul>
+            <div class="row-fluid">
+			<div class="span12" id="refund-img">
+
+				<div id="step1">
+					<p>
+						<img id="refund1" src="__IMG__/admin/refund/info/u144.png" alt="售后流程图标">
+				   		<img id="refund2" src="__IMG__/admin/refund/info/u142_line.png" alt="售后流程图标">
+				   	</p>
+				   	<div id="text1" style="color:#1e90ff;">
+				   		<p>提交售后申请</p>
+				   		<p>{$info.refund_time|date='Y-m-d H:i:s',###}</p>
+				   	</div>
+				</div>
+
+			   	<div id="step2">
+			   		<notin name="info.refund_status" value="-1, 0">
+			   			<p>
+			   				<img id="refund3" src="__IMG__/admin/refund/info/u142_line.png" alt="售后流程图标">
+			   				<img id="refund4" src="__IMG__/admin/refund/info/u144.png" alt="售后流程图标">
+			   				<img id="refund5" src="__IMG__/admin/refund/info/u142_line.png" alt="售后流程图标">
+			   			</p>
+			   			<div id="text2" style="color:#1e90ff;">
+			   				<p>审核通过</p>
+			   				<p><if condition="$info.examine neq '' ">{$info.examine_time|date='Y-m-d H:i:s',###}</if></p>
+			   			</div>
+			   		<else />
+				   		<p>
+				   			<img id="refund3" src="__IMG__/admin/refund/info/u155_line.png" alt="售后流程图标">
+		                    <img id="refund4" src="__IMG__/admin/refund/info/u162.png" alt="售后流程图标">
+		                    <img id="refund5" src="__IMG__/admin/refund/info/u155_line.png" alt="售后流程图标">
+		                </p>
+		                <div id="text2">
+		                	<p>待审核</p>
+					   	</div>
+					</notin>
+			   	</div>
+
+			   	<div id="step3">
+			   		<notin name="info.refund_status" value="-1, 0, 5">
+			   			<p>
+			   				<img id="refund6" src="__IMG__/admin/refund/info/u142_line.png" alt="售后流程图标">
+			   				<img id="refund7" src="__IMG__/admin/refund/info/u144.png" alt="售后流程图标">
+			   				<img id="refund8" src="__IMG__/admin/refund/info/u142_line.png" alt="售后流程图标">
+			   			</p>
+			   			<div id="text3" style="color:#1e90ff;">
+			   				<p>已验货</p>
+			   			</div>
+			   		<else />
+			   			<p>
+					   	  	<img id="refund6" src="__IMG__/admin/refund/info/u155_line.png" alt="售后流程图标">
+		                    <img id="refund7" src="__IMG__/admin/refund/info/u162.png" alt="售后流程图标">
+		                    <img id="refund8" src="__IMG__/admin/refund/info/u155_line.png" alt="售后流程图标">
+		                </p>
+		                <div id="text3">
+		                	<p>待验货</p>
+		                </div>
+		           	</notin>
+			   	</div>
+
+			   	<div id="step4">
+			   		<notin name="info.refund_status" value="-1, 0, 1, 5">
+			   			<p>
+			   				<img id="refund9" src="__IMG__/admin/refund/info/u142_line.png" alt="售后流程图标">
+			   				<img id="refund10" src="__IMG__/admin/refund/info/u144.png" alt="售后流程图标">
+			   				<img id="refund11" src="__IMG__/admin/refund/info/u142_line.png" alt="售后流程图标">
+			   			</p>
+			   			<div id="text4" style="color:#1e90ff;">
+			   				<p>已处理</p>
+			   			</div>
+			   		<else />
+				   		<p>
+					   	  	<img id="refund9" src="__IMG__/admin/refund/info/u155_line.png" alt="售后流程图标">
+		                    <img id="refund10" src="__IMG__/admin/refund/info/u162.png" alt="售后流程图标">
+		                    <img id="refund11" src="__IMG__/admin/refund/info/u155_line.png" alt="售后流程图标">
+		                </p>
+		                <div id="text4">
+		                	<p>待处理</p>
+					   	</div>
+				   	</notin>
+			   	</div>
+
+			   	<div id="step5">
+			   		<in name="info.refund_status" value="3, 6">
+			   			<p>
+			   				<img id="refund12" src="__IMG__/admin/refund/info/u142_line.png" alt="售后流程图标">
+			   				<img id="refund13" src="__IMG__/admin/refund/info/u144.png" alt="售后流程图标">
+			   			</p>
+			   			<div id="text5" style="color:#1e90ff;">
+			   				<p>已完成</p>
+			   				<p>{$info.completion_time|date="Y-m-d H:i:s",###}</p>
+			   			</div>
+			   		<else />
+				   		<p>
+					   	  	<img id="refund12" src="__IMG__/admin/refund/info/u155_line.png" alt="售后流程图标">
+		                    <img id="refund13" src="__IMG__/admin/refund/info/u162.png" alt="售后流程图标">
+		                </p>
+		                <div id="text5">
+		                	<p>待完成</p>
+					   	</div>
+					</in>
+			   	</div>
+
+			</div>
+		</div> 
+		<table class="table table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>售后单信息</th>
+					<th>订单信息</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<table class="table">
+							<tr>
+								<td style="border: none; width: 60px;">售后单号: </td>
+								<td style="border: none;">{$info.refund_sn|default=""}</td>
+								<td style="border: none; width: 60px;">售后状态: </td>
+								<td style="border: none;">{$info.refund_status|getRefundStatus=###}</td>
+							</tr>
+							<tr>
+								<td style="border: none; width: 60px;">退货总额:</td>
+								<td style="border: none;"><span class="text-danger">{$info.refund_money|default=""}</span></td>
+								<td style="border: none; width: 60px;">用户期望:</td>
+								<td style="border: none;">退款 <span class="text-danger">{$info.hope_refund_money|default=""}</span> 元</td>
+							</tr>
+							<tr>
+								<td style="border: none; width: 60px;">退款原因: </td>
+								<td style="border: none;">{$info.refund_reasons|default=""}</td>
+								<td style="border: none; width:60px;"></td>
+								<td style="border: none;"></td>
+							</tr>
+							<tr>
+								<td style="border: none; width: 60px;">退款说明:</td>
+								<td style="border: none;">{$info.description|default=""}</td>
+								<td style="border: none; width: 60px;"></td>
+								<td style="border: none;"></td>
+							</tr>
+							<tr>
+								<td style="border: none; width: 60px;">
+									<span>用户图片:</span>
+								</td>
+								<td colspan="3" style="border: none;">
+                                <volist name="info.voucher" id="v">
+									<span>
+										<a rel="group" href="{$v.pic}"><img src="{$v.pic}" alt="" style="width: 70px;height: 70px;"></a>
+									</span>
+                                </volist>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4" style="border: none;">
+									<table class="table">
+                                    <volist name="info.goodspic" id="v">
+										<tr>
+											<td style="border: none;">
+												<div class="row-fluid">
+													<div class="span4">
+												   		<img src="{$v.pic}" alt="" style="width: 100px;height: 100px;" />
+												  	</div>
+												  	<div class="span8">
+                                                    <p>{$v.name}</p>
+                                                     <volist name="v.norms_value" id="vo">
+												  	   
+												  	   <p>{$vo.name}:{$vo.value}</p>
+                                                       </volist>
+												  	   <p>数量:{$v.number}  金额：{$v.goods_price}元</p>
+                                                      
+												  	</div>
+												</div>
+											</td>
+										</tr>
+                                     </volist>
+										
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td>
+						<table class="table">
+							<tr>
+								<td style="border: none; width: 65px;">订单号:</td>
+								<td style="border: none;"><span class="text-primary">{$info.order_sn|default=""}</span></td>
+								<td style="border: none; width: 65px;">支付方式: </td>
+								<td style="border: none;">{$info.pay_type|getPayType=###}</td>
+							</tr>
+							<tr>
+								<td style="border: none; width: 65px;">会员昵称: </td>
+								<td style="border: none;">{$info.user|default=''}</td>
+								<td style="border: none; width: 65px;">手机号: </td>
+								<td style="border: none;">{$info.mobile}</td>
+							</tr>
+							<tr>
+								<td style="border: none; width: 65px;">订单金额: </td>
+								<td style="border: none;">{$info.money_paid} 元</td>
+								<td style="border: none; width: 65px;">优惠券: </td>
+								<td style="border: none;"><span class="text-danger">{$info.coupon_price|default=''}</span> 元</td>
+							</tr>
+							<tr>
+								<td colspan="4" style="border: none;"><strong>配送信息</strong></td>
+							</tr>
+							<tr>
+								<td style="border: none;">
+									配送方式: 
+								</td>
+								<td style="border: none;">
+									{$info.shipping_type|getShippingType=###} - 运费 {$info.shipment_price} 元
+								</td>
+								<td style="border: none;">
+									订单状态：
+								</td>
+								<td style="border: none;">
+									{$info.shipping_status|getShippingStatus=###}
+								</td>
+							</tr>
+
+							<!-- <tr>
+								<td colspan="4" style="border: none;"><strong>审核记录</strong></td>
+							</tr>
+							<tr>
+								<td colspan="4" style="border: none;">
+									<div class="controls-group">
+										<label>dfsd</label>
+										<label>dfsd</label>
+										<label>dfsd</label>
+									</div>
+								</td>
+							</tr> -->
+
+							<if condition="($info.refund_status eq 0) OR ($info.refund_status eq -1)">
+								<tr>
+									<td colspan="4" style="border: none;"><strong>审核</strong></td>
+								</tr>
+								<tr>
+									<td colspan="4" style="border: none;">
+										<div class="portlet-body form">
+											<div class="control-group">
+												<div class="controls">
+													是否同意：
+													<label class="radio">
+														<input type="radio" name="refund_status" class="js-refund_status" value="1" />是
+													</label>
+													<label class="radio">
+														<input type="radio" name="refund_status" class="js-refund_status" value="-1" checked="checked" />否
+													</label>
+										        </div>
+									        </div>
+									        <div class="control-group">
+									           	退款金额： <input type="text" name="refund_money" id="refund-money" value="" />
+									        </div>
+									        <div class="control-group">
+									            审核说明： <textarea id="refund-mark" name="refund_mark"></textarea>
+									        </div>
+									        <input class="btn blue js-submit" type="submit" value="提交" style="margin-left: 70px;" />
+									    </div>
+									</td>
+								</tr>
+							</if>
+
+							<if condition="($info.refund_status eq 1) OR ($info.refund_status eq 2)">
+								<tr>
+									<td colspan="4" style="border: none;"><strong>退款金额</strong></td>
+								</tr>
+								<tr>
+									<td colspan="4" style="border: none;">
+										<div class="portlet-body form">
+											<div class="control-group">
+									            <input type="text" name="edit_refund_money" id="edit-refund-money" value="{$info.real_refund_money}" style="height: 25px;" /> <input class="btn blue js-submit" type="submit" value="保存" style="margin-bottom: 10px;" />
+									        </div>
+								        </div>
+									</td>
+								</tr>
+							</if>
+
+							<!-- 确认收货 begin -->
+							<eq name="info.refund_status" value="5">
+								<tr>
+									<td colspan="4" style="border: none;"><strong>收货</strong></td>
+								</tr>
+								<tr>
+									<td colspan="4" style="border: none;">
+										<div class="portlet-body form">
+											<input type="hidden" id="confirm-delivery" value="1" />
+											<input type="hidden" id="order-sn" value="{$info.order_sn}" />
+											<input class="btn blue js-submit" type="submit" value="确认收货" />
+								        </div>
+									</td>
+								</tr>
+
+								<!-- <tr>
+									<td colspan="4" style="border: none;"><strong>收货记录</strong></td>
+								</tr>
+								<tr>
+									<td colspan="4" style="border: none;">
+										<div class="controls-group">
+											<label>收货记录</label>
+											<label>dfsd</label>
+											<label>dfsd</label>
+										</div>
+									</td>
+								</tr> -->
+							</eq>
+							<!-- 确认收货 end -->
+
+							<!-- 处理订单 start -->
+							<eq name="info.refund_status" value="1">
+								<tr>
+									<td colspan="4" style="border: none;"><strong>处理</strong></td>
+								</tr>
+								<tr>
+									<td colspan="4" style="border: none;">
+										<div class="controls-group">
+											<input class="btn red js-submit" type="submit" value="同意退款" data-handle="3" />
+											<input class="btn blue js-submit" type="submit" value="用户放弃" data-handle="6" style="margin-left: 30px;" />
+										</div>
+									</td>
+								</tr>
+
+								<!-- <tr>
+									<td colspan="4" style="border: none;"><strong>处理记录</strong></td>
+								</tr>
+								<tr>
+									<td colspan="4" style="border: none;">
+										<div class="controls-group">
+											<label>处理记录</label>
+											<label>dfsd</label>
+											<label>dfsd</label>
+										</div>
+									</td>
+								</tr> -->
+							</eq>
+							<!-- 处理订单 end -->
+							
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>	<!-- .portlet box blue end -->
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/refund/refundController'],function(main){
+          main.info();
+        });
+    </script>
+</block>

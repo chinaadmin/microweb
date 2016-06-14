@@ -1,0 +1,231 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/ruturn-massage.css"/>
+	<link rel="stylesheet" type="text/css" href="__CSS__/App/home/ruturn-2.css"/>
+</block>
+<block name="content">
+<php>
+    $picNum = 1; //图片标签
+</php>
+  <div id="content">
+	 <div class="place-box">
+	 	您的位置&nbsp;><a href="{:U('Refund/index')}">退款/退货</a>><span class="place-color">&nbsp;退款/退货详情</span>
+	 </div>
+	 <eq name = 'info.refund_status' value = '6'> <!-- 取消退款/退货 -->
+            <div class="time-ax refund_step3">
+                <div class="pwrap">
+                    <div class="point first goon calcelRefund">
+                        <div class="title">申请退款/退货</div>
+                        <div class="image">
+                            <p class="line">
+                                <span></span>
+                            </p>
+                            <img alt="" src="/Public/Css/Images/home/step_1.png"></div>
+                    </div>
+                    
+                                        
+                    <div class="point last goon calcelRefund">
+                        <div class="title">取消退款/退货</div>
+                        <div class="image">
+                            <p class="line">
+                                <span></span>
+                            </p>
+                            <img alt="" src="/Public/Css/Images/home/step_2.png"></div>
+                    </div>
+                                        <!-- 审核失败的情况 -->
+                    <!-- <div class="point last">
+                        <div class="title">退款失败</div>
+                        <div class="image">
+                            <p class="line">
+                                <span></span>
+                            </p>
+                            <img src="/Public/Css/Images/home/step_3.png" alt=""></div>
+                    </div>
+                    <div class="clearfix"></div> -->
+                </div>
+        
+             </div>	   
+	 <else/>
+			 <div class="time-ax <eq name='info.refund_status' value='-1'>refund_step3<else/><eq name='info.shipping_status' value='0'>refund_step4<else/>refund_step5</eq></eq>">
+				<div class="pwrap">
+					<div class="point first goon">
+						<div class="title">申请退款/退货</div>
+						<div class="image">
+							<p class="line">
+								<span></span>
+							</p>
+							<img src="__IMG__/home/step_<php>echo $picNum++;</php>.png" alt=""></div>
+					</div>
+					<div class="point <neq name='info.refund_status' value='0'>goon</neq>">
+						<div class="title">订单审核</div>
+						<div class="image">
+							<p class="line">
+								<span></span>
+							</p>
+							<img src="__IMG__/home/step_<php>echo $picNum++;</php>.png" alt=""></div>
+					</div>
+					<neq name="info.refund_status" value="-1">
+						<neq name="info.shipping_status" value="0">
+							<div class="point <eq name='info.refund_status' value='5'>at</eq> <if condition="($info['refund_status'] gt 0)&&($info['refund_status'] neq 5) ">goon</if>">
+								<div class="title">等待退货</div>
+								<div class="image">
+									<p class="line">
+										<span></span>
+									</p>
+									<img src="__IMG__/home/step_<php>echo $picNum++;</php>.png" alt=""></div>
+							</div>
+						</neq>
+					<div class="point <eq name='info.refund_status' value='1'>at</eq><if condition="($info['refund_status'] gt 1)&&($info['refund_status'] neq 5) ">goon</if>">
+						<div class="title">等待退款</div>
+						<div class="image">
+							<p class="line">
+								<span></span>
+							</p>
+							<img src="__IMG__/home/step_<php>echo $picNum++;</php>.png" alt=""></div>
+					</div>
+					<div class="point last <eq name='info.refund_status' value='3'>at</eq>">
+						<div class="title">退款<eq name='info.refund_status' value='4'>失败<else/>成功</eq></div>
+						<div class="image">
+							<p class="line">
+								<span></span>
+							</p>
+							<img src="__IMG__/home/step_<php>echo $picNum++;</php>.png" alt=""></div>
+					</div>
+					<else/>
+					<div class="point last <eq name='info.refund_status' value='-1'>at</eq>">
+						<div class="title">审核不通过</div>
+						<div class="image">
+							<p class="line">
+								<span></span>
+							</p>
+							<img src="__IMG__/home/step_<php>echo $picNum++;</php>.png" alt=""></div>
+					</div>
+					<div class="clearfix"></div>
+					</neq>
+					<!-- 审核失败的情况 -->
+					<!-- <div class="point last">
+						<div class="title">退款失败</div>
+						<div class="image">
+							<p class="line">
+								<span></span>
+							</p>
+							<img src="__IMG__/home/step_3.png" alt=""></div>
+					</div>
+					<div class="clearfix"></div> -->
+				</div>
+		
+			 </div>
+	 </eq>
+	 <div class="return-box">
+	 	<div class="apply-box">
+	 		<h2>退款申请</h2>
+	 			<p><label class="r-price">退款金额：</label>{$info.refund_money}</p>
+				<P><label class="r-num">退款数量：</label>{$info.refund_num}</P>
+	 			<p><label class="r-code">退款编号：</label>{$info.refund_sn}</p>
+	 			<p><label class="r-time">申请时间：</label>{$info.refund_time|date='Y-m-d H:i:s',###}</p>
+				<p><label class="r-op">退款说明：</label>{$info.description|default='七天无理由退款'}</p>
+	 		<div class="img-title">
+	 			<img src="{$info.pic}" width="80" height="80"/>
+	 			<span>{$info.name}<br/>
+				<notempty name='info.norms_value'>
+				<i>
+					<volist name="info.norms_value" id="vo">
+						{$vo.value}&nbsp;&nbsp;
+					</volist>
+				</i>
+				</notempty>
+				</span>
+	 			<div class="clearfix"></div>
+	 		</div>
+	 		<div class="img-text">
+	 			<p>订单编号：{$info.order_sn}</p>
+	 			<p>成交时间：{$info.pay_time|date='Y-m-d H:i:s',###}</p>
+	 			<!--<p>运费：￥0.00</p>-->
+	 			<span>退款总额：<i>￥{$info.refund_money}</i></span>
+	 			<div class=" clearfix"></div>
+	 		</div>
+	 	</div>
+	 	<div class="wait-box">
+	 		<h1>
+	 			<eq name="info.refund_status" value="-1">
+	 				退款申请不通过
+	 			</eq>
+				<eq name="info.refund_status" value="0">
+	 				等待商家处理退货申请
+	 			</eq>
+	 			<eq name="info.refund_status" value="6">
+                    退款退货已取消
+                </eq>
+				<eq name="info.refund_status" value="5">
+	 				商家已审核通过，等待买家退货
+	 			</eq>
+				<eq name="info.refund_status" value="1">
+	 				商家已同意退款请求
+	 			</eq>
+				<eq name="info.refund_status" value="2">
+	 				商家已退款，请等待确认
+	 			</eq>
+				<eq name="info.refund_status" value="3">
+	 				订单退款已完成
+	 			</eq>
+	 		</h1>
+	 		<p><label class="r-time">退款申请时间：</label>{$info.refund_time|date='Y-m-d H:i:s',###}</p>
+	 		<p><label class="r-op">退款/退货原因：</label>{$info.refund_reasons|default='7天无理由退货'}</p>
+			<eq name="info.refund_status" value="-1">
+				<notempty name="info.refund_mark">
+	 		    <p><label class="r-beizhu">商家备注：</label>{$info.refund_mark}</p>
+				</notempty>
+	 		</eq>
+	 	</div>
+	 	<eq name = 'info.refund_status'  value = '0'><!-- 待审核状态 -->
+			<div class="wait-box choice-refund">
+				<p>
+					你还可以:&nbsp;&nbsp;&nbsp;&nbsp; <a href="{:U('Refund/refund',array('recId'=>$info['rec_id'],'refundId' => $info['refund_id']))}">修改退款申请</a>&nbsp;&nbsp;<a
+						href='{:U("cancelRefund",["ref_id" =>$info["refund_id"]])}'  class = 'js_cancel_refund' >取消退款退货申请</a>
+				</p>
+			</div>
+		</eq>
+		<div class="clearfix"></div>
+	 </div>
+	 <div class="order-fllow">
+      	<h2>订单跟踪</h2>
+          <table class="table-box" cellspacing="0" cellpadding="0" border="0">
+              <thead>
+                  <th>处理时间</th>
+                  <th>处理信息</th>
+                 <!-- <th>操作人</th>-->
+              </thead>
+              <tbody>
+                  <volist name="orderAction" id="vo">
+                  	 <notempty name="vo.front_remark">
+                      <tr>
+                          <td>
+                              {$vo.add_time|date="Y-m-d",###}
+                          </td>
+                          <td>
+                                  {$vo.front_remark}
+                          </td>
+                          <!-- <td>
+                          <eq name="vo.is_seller" value='1'>
+                          商家
+                          <else/>
+                          客户
+                          </eq>
+                          </td>-->
+                      </tr>
+					  </notempty>
+                  </volist>
+              </tbody>
+          </table>
+     </div>
+</div>
+</block>
+
+<block name="js">
+    <script type="text/javascript">
+        seajs.use('controller/refundController',function(main){
+            main.info();
+        });
+    </script>
+</block>

@@ -1,0 +1,86 @@
+<extend name="Common:base" />
+<block name="content">
+
+	<div class="row-fluid">
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption">
+					<empty name="info.ma_id">添加<else/>编辑</empty>免品活动
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<form autocomplete="off" id="form_edit" action="{:U('FreeEat/update')}" method="post" class="form-horizontal">
+
+					<!-- 活动名称 begin -->
+					<div class="control-group">
+						<label class="control-label">活动名称<span class="required">*</span></label>
+						<div class="controls">
+							<input type="text" name="ma_title" class="m-wrap" value="{$info.ma_title}" />
+						</div>
+					</div>
+					<!-- 活动名称 end -->
+
+					<!-- 活动结束时间 begin -->
+					<div class="control-group">
+						<label class="control-label">活动结束时间</label>
+						<div class="controls">
+							<div class="input-append date form_datetime">
+								<input name="ma_end_time" type="text" id="end_time" class="span9 end_time m-wrap m-ctrl-medium" readonly="" size="25" value="<notempty name='info.ma_end_time'>{$info.ma_end_time|date='Y-m-d H:i:s',###}<else />{:date('Y-m-d 23:59:59')}</notempty>">
+								<span class="add-on"><i data-time-icon="icon-calendar" data-date-icon="icon-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<!-- 活动结束时间 end -->
+
+					<!--  试吃数量 begin  -->
+					<div class="control-group">
+						<label class="control-label">试吃数量</label>
+						<div class="controls">
+							<empty name="info.ma_id">
+								<input type="text" name="ma_quantum" class="m-wrap" value="{$info.ma_quantum|default='0'}" /> <span style="position: relative; top: 5px; left: 10px;">份  <span class="text-danger"> &nbsp;&nbsp;(注：活动份数，设定后不能修改。0为不限制！)</span></span>
+							<else />
+								<span style="position: relative; top: 5px; left: 10px;">
+									 {$info.ma_quantum|default='0'} 份  
+									<span class="text-danger"> &nbsp;&nbsp;(注：活动份数，设定后不能修改。0为不限制！)</span>
+								</span>
+							</empty>
+						</div>
+					</div>
+					<!-- 试吃数量 end -->
+					
+					<!-- 活动图片 begin -->
+					<div class="control-group">
+                        <label class="control-label">活动图片</label>
+                        <div class="controls" style="position:relative;">
+                        	<MyTag:plupload type="one" attachment="info.ma_pic_id" thumb="false" clickdefault="false"/>
+                        </div>
+                    </div>
+                    <!-- 活动图片 end -->
+
+                    <!-- 活动说明 begin -->
+					<div class="control-group">
+						<label class="control-label">活动说明</label>
+						<div class="controls">
+							<MyTag:editor height="500" name="ma_description" id="ma_description" width="99.9%">{$info.ma_description|default=""}</MyTag:editor>
+						</div>
+					</div>
+					<!-- 活动说明 end -->
+
+					<div class="form-actions">
+						<input type="hidden" name="ma_id" value="{$info.ma_id}" />
+						<button type="submit" class="btn blue">提交</button>
+						<a class="btn" href="{:U('FreeEat/index')}">返回</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</block>
+<block name="js">
+	<script type="text/javascript">
+		seajs.use(['controller/FreeEat/FreeEatController'], function(main) {
+			main.edit();
+		});
+	</script>
+</block>

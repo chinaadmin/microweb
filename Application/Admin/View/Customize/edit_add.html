@@ -1,0 +1,56 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+	<div class="portlet box blue">
+		<div class="portlet-title">
+			<div class="caption">
+				<empty name="info.cg_id">添加<else />编辑</empty>
+				自定义页
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<form id="from_edit" action="{:U('__CONTROLLER__/update')}"
+				method="post" class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label">自定义页面标题<span class="required">*</span></label>
+					<div class="controls">
+						<input type="text" name="cg_title" class="m-wrap"
+							value="{$info.cg_title}" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">链接地址<span class="required">*</span></label>
+					<div class="controls">
+						<php>
+						  $prefix = 'http://'.C('JT_CONFIG_WEB_DOMAIN_NAME').'/Customize/showPage/urlCode/';
+						</php>
+						<input type="text" class="m-wrap"  style ="border:none;width: 354px;margin: 0 0 !important;padding-right: 0!important;padding-left: 0!important;" value="{$prefix}" />
+						<input type="text" name="cg_url" class="m-wrap"
+							value="{$info.cg_url}" />
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label">自定义页面内容<span class="required">*</span></label>
+					<div class="controls">
+						<MyTag:editor height="200" width="800" name="cg_content"
+							id="editor">{$info.cg_content}</MyTag:editor>
+					</div>
+				</div>
+
+				<div class="form-actions">
+					<input type="hidden" id="cg_id" name="cg_id" value="{$info.cg_id}" />
+					<button type="submit" class="btn blue">提交</button>
+					<a class="btn" href="{:U('__CONTROLLER__/index')}">返回</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</block>
+<block name="js"> <script type="text/javascript">
+	seajs.use([ 'controller/customize/customizeController' ], function(
+			customize) {
+		customize.update();
+	});
+</script> </block>

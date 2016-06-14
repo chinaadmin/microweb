@@ -1,0 +1,94 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/commonExt.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/v11/logistics.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/v11/usercommon.css">
+</block>
+<block name="content">
+    <include file="I/common"/>
+    <div class="scorebox">
+        <div class="xwrap">
+            <h3>物流详情</h3>
+            <switch name="info['shipping_type']">
+                <case value="0">
+                    <div class="thank">
+                        <h3>感谢您使用门店自提服务</h3>
+                        <div>
+                            <img src="__IMG__/home/logisticDetail.jpg" />
+                            <p><span>服务门店：<b>{$stores.name}</b></span></p>
+                            <p><span>联系电话：{$stores.phone}</span></p>
+                            <p><span>详细地址：{$stores.localtion} {$stores.address}</span></p>
+                        </div>
+                    </div>
+                </case>
+                <case value="1">
+                    <!--<p><b>您已经在南山科技园店完成提货</b></p>-->
+                    <div class="list">
+                        <div class="content">
+                            <ul>
+                                <volist name="logistics_following.main" id="logistics">
+                                <li>
+                                    <span class="fir"></span>
+                                    <span class="sec">{$logistics['add_time_formate']}</span>
+                                    <span class="thr">{$logistics['add_time_formate_data']}</span>
+                                    <span class="for">{$logistics['ses_context']}</span>
+                                </li>
+                                </volist>
+                                <!--<li>
+                                    <span class="fir"></span>
+                                    <span class="sec"></span>
+                                    <span class="thr">16:45:20</span>
+                                    <span class="for">送货</span>
+                                </li>
+                                <li>
+                                    <span class="fir"></span>
+                                    <span class="sec"></span>
+                                    <span class="thr">17:34:12</span>
+                                    <span class="for">发货</span>
+                                </li>
+                                <li>
+                                    <span class="fir"></span>
+                                    <span class="sec">2015-07-13 周一</span>
+                                    <span class="thr">10:45:02</span>
+                                    <span class="for">您的订单已经处理</span>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </case>
+                <case value="2">
+                    <div class="thank">
+                        <h3>感谢您使用送货上门服务</h3>
+                        <div>
+                            <img src="__IMG__/home/logisticDetail.jpg" />
+                            <p><span>服务门店：<b>{$stores.name}</b></span></p>
+                            <p><span>联系电话：{$stores.phone}</span></p>
+                            <p><span>详细地址：{$stores.localtion} {$stores.address}</span></p>
+                        </div>
+                    </div>
+                </case>
+            </switch>
+        </div>
+        <div class="msg">
+            <notempty name="delivery_record">
+            <p><span>运单号码：{$delivery_record.send_num} 物流公司：{$delivery_record.lc_name} 客服电话：{$delivery_record.lc_tel}</span></p>
+            </notempty>
+            <p><span>收货地址：{$order_receipt.localtion} {$order_receipt.address} {$order_receipt.name} {$order_receipt.mobile}</span></p>
+        </div>
+        <eq name="info['shipping_type']" value="1">
+        <div class="tips">
+            <img src="__IMG__/home/logisticTips.png" alt="" />
+            <p>本页物流查询信息由快递公司提供</p>
+            <p>物流快递信息有可能存在延迟，可能会导致您的物流信息长时间没有更新，敬请耐心等待。（延迟时间可能从1天到3天不等，EMS快递的物流配送信息可能有一周左右的延迟）</p>
+        </div>
+        </eq>
+    </div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		seajs.use('controller/orderController.js',function(main){
+			main.gopay();
+		});
+	</script>
+</block>

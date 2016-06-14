@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="cn" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="cn" class="ie9"> <![endif]-->
+<!--[if !IE]><!--><html lang="cn"><!--<![endif]-->
+<head>
+<block name="head"><include file="Common:head" /></block>
+</head>
+<body class="page-header-fixed">
+
+<block name="top"><include file="Common:top" /></block>
+
+<div class="page-container row-fluid" >
+	<block name="left"><include file="Common:left" /></block>
+	<div class="page-content">
+		<div class="container-fluid">
+            <block name="nav"><include file="Common:nav" /></block>
+			<block name="content"></block>
+		</div>
+	</div>
+</div>
+
+<include file="Common:bottom" />
+
+<script type="text/javascript">
+    seajs.use(['base/controller/adminbaseController'],function(base){
+        base.init();
+    });
+</script>
+<block name="js"></block>
+</body>
+</html>

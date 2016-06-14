@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="cn" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="cn" class="ie9"> <![endif]-->
+<!--[if !IE]><!--><html lang="cn"><!--<![endif]-->
+<head>
+<title>快递单打印预览</title>
+<block name="head"><include file="Common:head" /></block>
+</head>
+<body>
+<style>
+    body {
+        background-color: white !important;
+    }
+    .content .hidden-print{
+    	display:none;
+    }
+    .myLabel {
+        margin:0 5px;
+        height:31px;
+        line-height:31px;
+    }
+     .portlet-body{
+        padding:0px;
+     }
+     .portlet.box .portlet-title{
+        color:rgb(0,0,0) !important;        
+     }
+</style>
+<div class = 'container-fluid' >
+	<div class="row-fluid" >
+	    <div class = 'portlet box'>
+		    <div class = 'portlet-title hidden-print'>
+		          快递单打印预览
+		    </div>
+		    <div class = 'portlet-body'>
+		    <div class="clearfix hidden-print">
+                <form style="margin-right:15px;" method="GET" action="" class="form-search pull-left">
+							<div style="margin-right: 2px;" class="pull-left">
+							    <a href="javascript:void(0);" id = 'print' class="btn green">打印</a>
+							</div>
+							<div class="pull-left myLabel">
+							 快递单模板:
+							</div>
+							<div class="pull-left">
+							     <select name="" class="m-wrap  span12">
+                                    <volist name = 'expressTemplate'  id = 'voExpressTemplate'>
+                                        <option <eq name = 'voExpressTemplate.et_id' value = '$Think.get.fk_express_template_id'>selected</eq> value="{$voExpressTemplate.et_id}">{$voExpressTemplate.et_name}</option>
+                                    </volist>
+                                </select>
+							</div>
+							
+							<div class="pull-left myLabel">
+                             发货点:
+                            </div>
+					        <div class="pull-left">
+                                 <select name="" class="m-wrap span12">
+                                    <option value = ''>请选择发货门店</option>
+                                    <volist name = 'storesList'  id = 'voStoresList'>
+                                        <option value="{$voStoresList.stores_id}">{$voStoresList.name}</option>
+                                    </volist>
+                                </select>
+                            </div>
+						</form>
+		    </div>
+		   <!--  <div class = 'row-fluid' id = 'PrintArea' >
+                <img style="width:230mm;height:127mm;" src="/Uploads/Image/123.jpg">
+            </div> -->
+            <span id = 'PrintArea' >
+		      {$templateHtml['et_content_html']|htmlspecialchars_decode}
+		     </span>
+	    </div>
+	    
+	</div>
+</div>
+<script type="text/javascript">
+    var globalPositonJson = '{$positonJson}';
+    seajs.use(['controller/ExpressTemplate/ExpressTemplateController'],function(main){
+    	main.print();
+    });
+</script>
+<block name="js"></block>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.id">添加<else/>编辑</empty>{$group_name}</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="from_edit" action="{:U('update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">名称</label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">排序</label>
+                <div class="controls">
+                    <input type="text" name="sort" class="m-wrap span1" value="{$info.sort|default=0}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">上级菜单</label>
+                <div class="controls">
+                    <select class="m-wrap" name="pid">
+                        <option value="">请选择</option>
+                        <volist name="top_list" id="vo">
+                            <eq name="vo['level']" value="1">
+                            <option value="{$vo.id}" <eq name="info.pid" value="$vo.id">selected</eq>>{$vo.fullname}</option>
+                            </eq>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">类型</label>
+                <div class="controls">
+                    <select class="m-wrap" name="type" id="type">
+                        <volist name="type_list" id="vo">
+                            <option value="{$key}" <eq name="info.type" value="$key">selected</eq>>{$vo}</option>
+                        </volist>
+                    </select>
+                    <select class="m-wrap" name="target">
+                        <volist name="target_list" id="vo">
+                            <option value="{$key}" <eq name="info.target" value="$key">selected</eq>>{$vo}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+
+            <div class="js-tab hide" data-type="1">
+                <div class="control-group">
+                    <label class="control-label">路径</label>
+                    <div class="controls">
+                        <input type="text" name="url" class="m-wrap" value="{$info.url}"/>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="js-tab hide" data-type="2">
+                <div class="control-group">
+                    <label class="control-label">内容</label>
+                    <div class="controls">
+                        <MyTag:editor height="500" width="99.9%" name="content">{$info.content}</MyTag:editor>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.id">checked<else/><eq name="info.status" value="1">checked</eq></empty>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+
+            <!--<div class="control-group">
+                <label class="control-label">描述</label>
+                <div class="controls">
+                    <textarea class="span6 m-wrap" rows="3" name="remark">{$info.remark}</textarea>
+                </div>
+            </div>-->
+
+            <div class="form-actions">
+                <input type="hidden" name="id" value="{$info.id}"/>
+                <input type="hidden" name="group" value="{$group}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('index',['group'=>$group])}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="icon-view" class="modal hide" style="width:700px;">
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button"></button>
+        <h3>图标示例</h3>
+    </div>
+    <div class="modal-body">
+        <include file="Common:icon" />
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/mall/menuController'],function(menu){
+            menu.edit();
+        });
+    </script>
+</block>

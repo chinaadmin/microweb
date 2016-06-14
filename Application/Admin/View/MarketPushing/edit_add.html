@@ -1,0 +1,153 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.uid">添加<else/>编辑</empty>地推人员</div>
+        </div>
+        <div class="portlet-body form">
+            <form autocomplete = "off" id="user_edit" action="{:U('update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">员工编号<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="username" class="m-wrap" value="{$info.username}" <notempty name='info.uid'>disabled="disabled"</notempty>/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">真实姓名<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="nickname" class="m-wrap popovers"  value="{$info.nickname}"/>
+                </div>
+            </div>
+
+          <div class="control-group">
+                <label class="control-label">性别</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="sex" value="1"  <notempty name = 'info.sex'><eq name="info.sex" value="1">checked</eq> <else /> checked</notempty>/>
+                        男
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="sex" value="2" <eq name="info.sex" value="2">checked</eq>/>
+                        女
+                    </label>
+                </div>
+            </div>
+    
+            <div class="control-group">
+                <label class="control-label">密码</label>
+                <div class="controls">
+                    <input  type="password" name="password" class="m-wrap popovers" value="" />
+                    <notempty name="info.uid">
+                    <span class="help-inline">为空表示不修改密码</span>
+                    </notempty>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">邮箱</label>
+                <div class="controls">
+                    <input type="text" name="email" class="m-wrap popovers" value="{$info.email}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">手机<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="mobile" class="m-wrap popovers" value="{$info.mobile}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">所属部门<span class="required">*</span></label>
+                <div class="controls">
+                    <select name="fk_de_id">
+                        <option value="">请选择部门</option>
+                        <volist name="department" id="vo">
+                            <option value="{$vo.de_id}" <if condition="$vo['de_id'] eq $info['fk_de_id']">selected="selected"</if>>{$vo.de_name}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.uid">checked<else/><eq name="info.status" value="1">checked</eq></empty>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+			<div class="control-group">
+				<label class="control-label">
+				上传商品图片
+				<span class="required">
+					
+				</span>
+				</label>
+				<div style="position:relative;" class="controls">
+					<span style="color:red;position:absolute;top:2px;left:80px;display:block;">
+						点击下图选择默认封面图片！（上传图片尺寸700X700）
+					</span>
+					<script type="text/javascript">
+						window.requireJs = ["base/plugin.js"];
+					</script>
+					<div clickdefault="1" thumbtype="1" thumbheight="" thumbwidth="" thumb="1"
+					url="" use="upload" type="many" style="position: relative;" data-name="attachId[]"
+					data-id="browse1" class="plupload" login="" model="" id="plupload_browse1">
+						<botton style="position: relative; z-index: 1;" class="browse" id="browse1">
+							选择文件
+						</botton>
+						<div class="browse_progress" id="progress_browse1">
+						</div>
+						<div class="images">
+						</div>
+						<div id="html5_1adpet1o716e41ogcavkvag1rkv3_container" class="moxie-shim moxie-shim-html5"
+						style="position: absolute; top: 0px; left: 0px; width: 70px; height: 30px; overflow: hidden; z-index: 0;">
+							<input type="file" accept="" multiple="" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"
+							id="html5_1adpet1o716e41ogcavkvag1rkv3">
+						</div>
+					</div>
+				</div>
+			</div>
+			 <div class="control-group">
+                <label class="control-label">格言</label>
+                <div class="controls">
+                    <textarea class="span6 m-wrap" rows="3" name="motto">{$info.motto}</textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">描述</label>
+                <div class="controls">
+                    <textarea class="span6 m-wrap" rows="3" name="remark">{$info.remark}</textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="uid" value="{$info.uid}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('index')}">返回</a>
+                <input name = 'role_id'  type = 'hidden' value = '{$role_id}'/>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/admin/adminController'],function(admin){
+            <empty name="info.uid">
+            admin.add();
+            <else/>
+            admin.edit();
+            </empty>
+        });
+    </script>
+</block>

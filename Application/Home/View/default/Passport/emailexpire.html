@@ -1,0 +1,31 @@
+<extend name="Common:base" />
+<block name="css">
+<link type="text/css" rel="stylesheet"
+    href="__CSS__/App/home/login-page.css">
+<link type="text/css" rel="stylesheet"
+    href="__CSS__/App/home/find-page.css">
+<link type="text/css" rel="stylesheet"
+    href="__CSS__/App/home/find-phone.css">
+</block>
+<block name="top">
+    <include file="Common:login_top" />
+</block>
+<block name="bottom">
+    <include file="Common:login_bottom" />
+</block>
+
+<block name="content">
+<div id="content">
+    <div class="hd">
+        <h2 class="loginSprite">找回密码</h2>
+     </div>
+       <div class="find-text">
+         <div class="back-email">此链接已过期，您可以选择：<a href="{:U('findpassport')}">重新找回邮件链接</a></div>
+       </div>
+  </div>
+</block>
+<block name="js"> <script type="text/javascript">
+    seajs.use('controller/passportController', function(passport) {
+        passport.findPassport.passwordWay();
+    });
+</script> </block>

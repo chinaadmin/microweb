@@ -1,0 +1,82 @@
+<extend name="Common:base" />
+<block name="css"><load href="__CSS__/App/admin/type/type.css"/></block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.type_id">添加<else/>编辑</empty>属性</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="from_edit" action="{:U('update')}" method="post" class="form-horizontal">
+            	<input type="hidden" name='type_id' value="{$info.type_id|default=''}"/>
+            <div class="control-group">
+                <label class="control-label">属性名称</label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name|default=''}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">排序</label>
+                <div class="controls">
+                    <input type="text" name="sort" class="m-wrap span1" value="{$info.sort|default=0}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/>
+                      禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.type_id">checked<else/><eq name="info.status" value="1">checked</eq></empty>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+             <!--属性分组
+            <div class="control-group">
+                <label class="control-label">属性分组</label>
+                <div class="controls">
+					<div class="m-wrap check-box" id='add-input'>
+						 <empty name="info.att_group">
+						 	<div class="edit-del">
+						 	 <input type="text" class="span2 m-wrap" name="attk[]" value=""/>
+							  <i class="icon-remove remove-del"></i>
+							 </div>
+						 <else/>
+						<volist name="info.att_group" id="vo">
+					   <div class="edit-del">
+					  	  <input type="text" class="span2 m-wrap" name="att[{$vo.id}]" value="{$vo.name}"/>
+						   <i class="icon-remove remove-del"></i>
+					   </div>
+					   </volist>
+					   </empty>
+					   <div class="edit-del add-in">
+					   <a href="javascript:void(0);" class="btn">
+                            <i class="icon-plus"></i>
+                       </a>
+					   </div>
+                    </div>
+                </div>
+            </div>-->
+   
+            <div class="form-actions">
+                <input type="hidden" name="menu_id" value="{$info.menu_id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('Type/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/type/typeController'],function(main){
+          main.index();
+        });
+    </script>
+</block>

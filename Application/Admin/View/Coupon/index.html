@@ -1,0 +1,110 @@
+<extend name="Common:base" />
+<block name="css"><load href="__CSS__/App/admin/order/order.css"/></block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">优惠劵列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="Coupon/edit">
+                        <a class="btn green" href="{:U('Coupon/edit')}">
+                        添加优惠劵 <i class="icon-plus"></i>
+                        </a>
+                    </MyTag:rule>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    	<th>ID</th>
+                        <th>优惠劵名称</th>
+                        <th></th> <!-- 标记是否设为活动奖品 -->
+                        <th>面值</th>
+                        <th>需消费金额</th>
+                        <th>有效时间</th>
+                        <th>发放数量</th>
+                        <th>状态</th>
+                        <th>发放方式</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                    	<td>{$vo.id}</th>
+                        <td class='order-code'>
+                            {$vo.name}
+                            <!--优惠劵详情-->
+                            <div class="span6 goods-info refund-info">
+                                <ul>
+                                    <li><p><span>￥{$vo.money|formatAmount}</span></p></li>
+                                    <li><p style="font-weight:normal">{$vo.name}</p></li>
+                                    <li><p style="font-weight:normal">
+                                        <switch name="vo.rule">
+                                            <case value="1">无消费金额限制</case>
+                                            <case value="2">订单满{$vo.order_money}元可用</case>
+                                            <case value="3">指定商品使用</case>
+                                        </switch>
+                                    </p></li>
+                                    <li class='in-line'><p style="font-weight:normal">{$vo.start_time|dateFormat=###,'Y-m-d H:i:s'}至{$vo.end_time|dateFormat=###,'Y-m-d H:i:s'}</p></li>
+                                    <li><p style="font-weight:normal">{$vo.remark|default='--'}</p><span></span></li>
+                                </ul>
+                            </div>
+                            <!--优惠劵详情结束-->
+                        </td>
+                        <td>
+                            <!-- 编辑是否为活动中的奖品 begin -->
+                            <in name="vo.id" value="$plist">
+                                <span class="label label-medium label-important">奖品</span>
+                            </in>
+                            <!-- 编辑是否为活动中的奖品 end -->
+                        </td>
+                        <td>{$vo.money|formatAmount}</td>
+                        <td>
+                            <switch name="vo.rule">
+                                <case value="1">不限</case>
+                                <case value="2">{$vo.order_money|formatAmount}</case>
+                                 <case value="3">指定商品使用</case>
+                            </switch>
+                        </td>
+                        <td>{$vo.start_time|dateFormat=###,'Y-m-d H:i:s'}至{$vo.end_time|dateFormat=###,'Y-m-d H:i:s'}</td>
+                        <td>
+                            {$vo.counts}
+                            <MyTag:rule name="Coupon/code"><a href="{:U('Coupon/code',['id'=>$vo['id']])}">（查看）</a></MyTag:rule>
+                        </td>
+                        <td>{$vo.status_name}</td>
+                        <td><eq name = 'vo.grant_rule'  value = '1'>系统发放<else/>用户领取</eq></td>
+                        <td>
+                            <if condition="($vo['count'] gt 0) OR (in_array($vo['id'], $plist))">
+                                <MyTag:rule name="Coupon/issuing"><a <eq name = 'vo.grant_rule'  value = '1'> class="btn blue-stripe" href="{:U('User/index')}"<else/> class="btn blue-stripe disabled"  href="javascript:void(0);"</eq>>发放优惠券</a></MyTag:rule>
+                                <MyTag:rule name="Coupon/edit"><a class="btn blue-stripe disabled" href="javascript:void(0);">编辑</a></MyTag:rule>
+                                <MyTag:rule name="Coupon/del"><a class="btn red-stripe disabled" href="javascript:void(0);">删除</a></MyTag:rule>
+                            <else />
+                                <MyTag:rule name="Coupon/issuing"><a <eq name = 'vo.grant_rule'  value = '1'> class="btn blue-stripe" href="{:U('User/index')}"<else/> class="btn blue-stripe disabled"  href="javascript:void(0);"</eq>>发放优惠券</a></MyTag:rule>
+                                <MyTag:rule name="Coupon/edit"><a class="btn blue-stripe" href="{:U('Coupon/edit',['id'=>$vo['id']])}">编辑</a></MyTag:rule>
+                                <MyTag:rule name="Coupon/del"><a class="btn red-stripe js-del" url="{:U('Coupon/del',['id'=>$vo['id']])}">删除</a></MyTag:rule>
+                            </if>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+            <div class="row-fluid">
+                <div class="pagination pull-right">
+                    {$_page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/coupon/couponController'],function(coupon){
+            coupon.index();
+        });
+    </script>
+</block>

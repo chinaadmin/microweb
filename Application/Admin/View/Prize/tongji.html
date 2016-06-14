@@ -1,0 +1,51 @@
+<extend name="Common:base" />
+<block name="css"><load href="__CSS__/App/admin/order/order.css"/></block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">中奖统计列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+            	<form class="form-search pull-right" action="{:U('tongji')}" method="GET" style="margin-right:15px;">
+            		<div class="row  pull-left" style="margin-right:32px;">
+            			<input placeholder = "请输入奖品名称" type = 'text'  name = 'as_name' value = ""/>
+					</div>
+				 	<button type="submit" class="btn green" style="margin-right:-13px;">搜索</button>
+				</form>
+            </div>
+			<!--列表-->
+			<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>奖品</th>
+							<th>领取数量</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name="lists" id="vo">
+							<tr>
+								<td>{$vo.as_name}</td>
+								<td>{$vo.receive_total}</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			<!--列表-->
+			<div class="row-fluid">
+                <div class="pagination pull-right">
+                    <ul>{$_page}</ul>               
+			     </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+    	seajs.use(['controller/prize/prizeController'],function(main){
+        	main.tongji();
+        });
+    </script>
+</block>

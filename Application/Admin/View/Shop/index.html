@@ -1,0 +1,60 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">管理员列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <a class="btn green" href="{:U('Admin/edit')}">
+                        添加管理员 <i class="icon-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>用户名</th>
+                        <th>昵称</th>
+                        <th>角色</th>
+                        <th>添加时间</th>
+                        <th>状态</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                        <td>{$vo.uid}</td>
+                        <td>{$vo.username}</td>
+                        <td>{$vo.nickname}</td>
+                        <td>{$vo.role_name}</td>
+                        <td>{$vo.add_time|dateFormat}</td>
+                        <td>{$vo.status|getStatus}</td>
+                        <td>
+                            <a class="btn blue-stripe" href="{:U('Admin/edit',['uid'=>$vo['uid']])}">编辑</a>
+                            <a class="btn red-stripe js-del" url="{:U('Admin/del',['uid'=>$vo['uid']])}">删除</a>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+            <div class="row-fluid">
+                <div class="pagination pull-right">
+                    {$_page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/admin/adminController'],function(admin){
+            admin.index();
+        });
+    </script>
+</block>

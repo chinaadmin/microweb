@@ -1,0 +1,72 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$title}</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="Customize/add">
+                        <a class="btn green" href="{:U('Customize/add')}">
+                        添加自定义页 <i class="icon-plus"></i>
+                        </a>
+                    </MyTag:rule>
+                </div>
+                <div class="btn-group">
+                    <MyTag:rule name="Customize/del">
+                        <button url = "{:U('Customize/del')}" class="btn green" id ='delAll'>删除</button>
+                    </MyTag:rule>
+                </div>
+                <form style="margin-right:15px;" method="GET" action="{:U('index')}" class="form-search pull-right">
+					<div style="margin-right: 3px;" class="pull-left">
+						<input type="text" value="{$Think.get.keywords}" class="m-wrap" placeholder="自定义页面名称" name="keywords">
+					</div>
+					<button style="margin-right:-13px;" class="btn green" type="submit">搜索</button>
+				</form>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th><input type='checkbox' id='check_all'/></th>
+                        <th>营销活动名称</th>
+                        <th>链接地址</th>
+                        <th>最后编辑时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <php>
+                    $prefix = 'http://'.C('JT_CONFIG_WEB_DOMAIN_NAME').'/Customize/showPage/urlCode/';
+                 </php>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                        <td><input type='checkbox' value="{$vo.cg_id}" name='id[]' class='check'/></td>
+                        <td>{$vo.cg_title}</td>
+                        <td>{$prefix}{$vo.cg_url}</td>
+                        <td>{$vo.cg_update_time|dateFormat}</td>
+                        <td>
+                            <MyTag:rule name ="Customize/edit"><a class="btn blue-stripe" href="{:U('Customize/edit',['id'=>$vo['cg_id']])}">编辑</a></MyTag:rule>
+                            <MyTag:rule name ="Customize/showPage"><a class="btn red-stripe" target = '_blank' href="{$prefix}{$vo.cg_url}">预览</a></MyTag:rule>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+            <div class="row-fluid">
+                <div class="pagination pull-right">
+                    {$_page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/customize/customizeController'],function(customize){
+        	customize.index();
+        });
+    </script>
+</block>

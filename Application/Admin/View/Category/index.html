@@ -1,0 +1,89 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">商品分类</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="Category/edit">
+                    <a class="btn green" href="{:U('Category/edit')}">
+                        添加分类<i class="icon-plus"></i>
+                    </a>
+                    </MyTag:rule>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>排序</th>
+						<!-- <th>ID</th> -->
+                        <th>分类名称</th>
+                        <th>分类地址</th>
+                        <th>价格分级</th>
+                        <th>添加时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                        <td><input type="text" class="m-wrap m-sort js-sort" value="{$vo.sort}" name="sort[{$vo.cat_id}]"></td>
+                        <!-- <td>{$vo.cat_id}</th> -->
+					    <td>
+					       <neq name = 'vo.level'  value = '1'>
+						       <font color = '#666666'>
+    						       {$vo.fullname}
+						       </font>
+					       <else/>
+						       {$vo.fullname}
+					       </neq>
+					    </td>
+                        <td>
+                         <eq name = 'vo.level'  value = '1'>
+                            {:U('list/goodslists',[catId=>$vo['cat_id']])}
+                          <else/>
+                          --  
+                         </eq>
+                        </td>
+                        <td>{$vo.price_interval}</td>
+                        <td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+                        <td>{$vo.status|getStatus=###,['0' =>['style'=>'label-danger','text'=>'不显示'],'1' =>['style'=>'label-success','text'=>'显示']]}</td>
+                        <td>
+                            <MyTag:rule name="Category/edit">
+                            <a class="btn blue-stripe" href="{:U('edit',['id'=>$vo['cat_id']])}">编辑</a>
+                            </MyTag:rule>
+                            <MyTag:rule name="Category/del">
+                            <a class="btn red-stripe js-del" url="{:U('del',['id'=>$vo['cat_id']])}">删除</a>
+                            </MyTag:rule>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+           <div class="row-fluid">
+                <div class="btn-group">
+                    <MyTag:rule name="Category/sort">
+                    <a url="{:U('sort')}" id="save-sort" class="btn green">
+                        <i class="icon-sort"></i> 保存排序
+                    </a>
+                    </MyTag:rule>
+                </div>
+                <div class="pagination pull-right">
+                    <ul>    </ul>               
+			     </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/category/categoryController'],function(main){
+            main.index();
+        });
+    </script>
+</block>

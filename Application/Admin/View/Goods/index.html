@@ -1,0 +1,128 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">商品列表</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="Goods/edit">
+                    <a class="btn green" href="{:U('Goods/edit')}">
+                        添加商品<i class="icon-plus"></i>
+                    </a>
+                    </MyTag:rule>
+                </div>
+				<form class="form-search pull-right" action="" method="GET" style="margin-right:15px;">
+				  <div class="row  pull-left" >
+                 <select class="m-wrap js-cat select-query" name="cat_id" style="margin-right:32px;">
+                 	<option value="">所有分类</option>
+					<volist name="categorys" id="vo">
+						<option value="{$vo.cat_id}" <eq name="cat_id" value="$vo.cat_id">selected="selected"</eq>>{$vo.fullname}</option>
+					</volist>
+                </select>
+				</div>
+				<div class="row  pull-left" style="margin-right:31px;">
+                 <select class="m-wrap js-cat select-query span12" name="brand">
+                 	<option value="">所有品牌</option>
+					<volist name="brands" id="vo">
+						<option value="{$vo.brand_id}" <eq name="brand_id" value="$vo.brand_id">selected="selected"</eq>>{$vo.name}</option>
+					</volist>
+                </select>
+				</div>
+				<div class="row  pull-left" style="margin-right:31px;">
+                 <select class="m-wrap js-cat select-query span12" name="sale">
+                 	    <option value="2">上/下架</option>
+						<option value="1" <eq name="is_sale" value='1'>selected="selected"</eq>>上架</option>
+						<option value="0" <eq name="is_sale" value='0'>selected="selected"</eq>>下架</option>
+                </select>
+				</div>
+				<div class="row  pull-left">
+                 <select class="m-wrap js-cat select-query span12" name="feat">
+                 	    <option value="-1">展位</option>
+						<volist name="feats" id="vo">
+							<option value="{$key}"<eq name="feat" value='$key'>selected="selected"</eq>>{$vo}</option>
+						</volist>
+                </select>
+				</div>
+				<div class="input-append">
+					<input type="text" name="goods_keywords" placeholder="商品名称" class="m-wrap" value="{$keywords|default=''}">
+					<button type="submit" class="btn green">搜索</button>
+				</div>
+				</form>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>排序</th>
+						<th>编号</th>
+                        <th>商品名称</th>
+                        <th>货号</th>
+                        <th>价格</th>
+                        <th>上架</th>
+						<th>展位</th>
+						<th>库存</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<empty  name="lists">
+                		<tr>
+					      <td colspan="9" style="text-align:center;">暂无搜索数据</td>
+					    </tr>
+                	<else/>
+                    <volist name="lists" id="vo">
+                    <tr>
+                        <td><input type="text" class="m-wrap m-sort js-sort" value="{$vo.sort}" name="sort[{$vo.goods_id}]"></td>
+                        <td>{$vo.goods_id}</td>
+					    <td><a target="_blank" href="{:U('Home/Detail/index',array('id'=>$vo['goods_id']),'',true)}" style='color:#000000;'>{$vo.name}</a></td>
+                        <td>{$vo.code}</td>
+						<td>{$vo.price}</td>
+						<td><eq name="vo.is_sale" value="1">
+							<i class="icon-ok"></i>
+							<else/>
+							<i class="icon-remove"></i>
+						    </eq>
+						</td>
+						<td>{$vo.featured}</td>
+                        <td>{$vo.stock_number}</td>
+                        <td>
+                        	<!-- <a class="btn purple-stripe" target="_blank" href="{:U('Home/Detail/index',array('id'=>$vo['goods_id']),'',true)}">预览</a> -->
+                            
+							<MyTag:rule name="Goods/edit">
+                            <a class="btn blue-stripe" href="{:U('edit',['id'=>$vo['goods_id']])}">编辑</a>
+                            </MyTag:rule>
+                            <MyTag:rule name="Goods/del">
+                            <a class="btn red-stripe js-del" url="{:U('del',['id'=>$vo['goods_id']])}">删除</a>
+                            </MyTag:rule>
+                            <a class="btn red-stripe"  href ="{:U('goodsComment',['goods_id'=>$vo['goods_id']])}">评论</a>
+                        </td>
+                    </tr>
+                    </volist>
+					</empty>
+                </tbody>
+            </table>
+           <div class="row-fluid">
+                <div class="btn-group">
+                    <MyTag:rule name="Goods/sort">
+                    <a url="{:U('sort')}" id="save-sort" class="btn green">
+                        <i class="icon-sort"></i> 保存排序
+                    </a>
+                    </MyTag:rule>
+                </div>
+                <div class="pagination pull-right">
+                    <ul>{$_page}</ul>               
+			     </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/goods/goodsController'],function(main){
+           main.init();
+        });
+    </script>
+</block>

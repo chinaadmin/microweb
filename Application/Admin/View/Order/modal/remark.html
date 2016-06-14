@@ -1,0 +1,19 @@
+<div id="myModal_remark" class="modal hide fade modal_order" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h3 id="myModalLabel">订单备注</h3>
+  </div>
+ <form  action="{:U('Order/orderMark',array('order_id'=>$info['order_id']))}" method="post" id='seller_postscript' class="info-base info-mark form-horizontal">
+	  <div class="modal-body">
+			<div class="control-group">
+	                <label class="control-label" style="width:auto;">订单备注：</label>
+	                <div class="controls" style="margin-left:0px;">
+	                   <textarea rows="4" class="m-wrap span10"  name="seller_postscript">{$info.seller_postscript|default=''}</textarea>
+	                </div>
+	            </div>
+	  </div>
+	  <div class="modal-footer">
+	        <button type="submit" class="btn btn-primary">提交</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	  </div>
+ </form>
+</div>

@@ -1,0 +1,96 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.uid">添加<else/>编辑</empty>用户</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="user_edit" action="{:U('User/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">账号<span class="required">*</span></label>
+                <div class="controls">
+                    <!-- <input type="text" name="username" class="m-wrap" value="{$info.username}"/> -->
+
+                    <input type="text" name="username" class="m-wrap" value='<if condition="$_GET['username']">{$_GET['username']}<else />{$info.username}</if>' /><!-- 后台下单添加用户时默认显示要添加的用户名 -->
+
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">昵称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="aliasname" class="m-wrap" value="{$info.aliasname}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">密码</label>
+                <div class="controls">
+                    <input type="password" name="pass" class="m-wrap" value="" />
+                    <notempty name="info.uid">
+                    <span class="help-inline">为空表示不修改密码</span>
+                    </notempty>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">邮箱</label>
+                <div class="controls">
+                    <select name="email_status" id="email_status" class="span1 m-wrap">
+                        <option <eq name="info.email_status" value="0" >selected</eq> value="0">未认证</option>
+                        <option <eq name="info.email_status" value="1" >selected</eq> value="1">已认证</option>
+                    </select>
+                    <input type="text" name="email" class="m-wrap popovers" value="{$info.email}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">手机</label>
+                <div class="controls">
+                    <select name="mobile_status" id="mobile_status" class="span1 m-wrap">
+                        <option <eq name="info.mobile_status" value="0" >selected</eq> value="0">未认证</option>
+                        <option <eq name="info.mobile_status" value="1" >selected</eq> value="1">已认证</option>
+                    </select>
+                    <!-- <input type="text" name="mobile" class="m-wrap popovers" value="{$info.mobile}"/> -->
+
+                    <input type="text" name="mobile" class="m-wrap popovers" value='<if condition="$_GET['refereeMobile']">{$_GET['refereeMobile']}<else />{$info.mobile}</if>' /><!-- 后台下单添加用户时默认显示要添加的号码 -->
+
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.uid">checked<else/><eq name="info.status" value="1">checked</eq></empty>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="uid" value="{$info.uid}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('User/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/user/userController'],function(user){
+            <empty name="info.uid">
+            user.add();
+            <else/>
+            user.edit();
+            </empty>
+        });
+    </script>
+</block>

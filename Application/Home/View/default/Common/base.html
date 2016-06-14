@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<block name="head"><include file="Common:head" /></block>
+	</head>
+	<body>
+		<block name="top"><include file="Common:top" /></block>
+
+		<div id="content">
+			<block name="content"></block>
+		</div>
+		
+		<block name="nav"></block>
+		<block name="bottom"><include file="Common:bottom" /></block>
+        <script type="text/javascript">
+            seajs.use(['controller/baseController'],function(base){
+
+            });
+        </script>
+		<block name="js"></block>
+	</body>
+</html>

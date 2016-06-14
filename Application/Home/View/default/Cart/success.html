@@ -1,0 +1,39 @@
+<extend name="Common:base"/>
+<block name="css">
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/data-page.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/refund-page.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/App/home/join-cats.css" />
+</block>
+<block name="nav"><include file="Common:welt_nav" /></block>
+<block name="content">
+<div class="data-box">
+    <h1>商品已成功加入购物车！</h1>
+    <div class="cats-content">
+        <a href="{:U('Cart/index')}" class="cats-btn">去购物车结算</a>您还可以:<a href="{:U('Index/index')}">继续购物</a>
+    </div>
+    <div class="clearfix">
+    </div>
+    <div class="sort-box">
+        <div class="sort-head">购买该商品的用户还购买了</div>
+        <div class="sort-con">
+        	<volist name="data" id="vo">
+            <div class="sort-show">
+                <a href="{:U('detail/index',array('id'=>$vo['goods_id']))}"><img src="{$vo.thumb}"width="80px"height="80px"></a>
+                <div class="sort-massage">
+                    <a href="{:U('detail/index',array('id'=>$vo['goods_id']))}"><p>{$vo.name}</p></a>
+                    <p class="price-cl">￥{$vo.price}</p>
+                </div>
+            </div>
+          </volist>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/cartController'],function(cart){
+            //cart.cart();
+        });
+    </script>
+</block>

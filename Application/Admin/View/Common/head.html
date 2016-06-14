@@ -1,0 +1,83 @@
+<meta charset="utf-8" />
+<title>{$seo_title|default='必好货后台管理'}</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="keywords" content="{$seo_keyword}" />
+<meta name="description" content="{$seo_description}" />
+
+<load href='__CSS__/Base/bootstrap/2.3.1/css/bootstrap.min.css' />
+<load href='__CSS__/Base/bootstrap/2.3.1/css/bootstrap-responsive.min.css' />
+<load href='__CSS__/Components/font-awesome/3.2.0/css/font-awesome.min.css' />
+<load href='__CSS__/Components/uniform/uniform.default.css' />
+<load href='__CSS__/App/admin/style-metro.css' />
+<load href='__CSS__/App/admin/style.css' />
+<load href='__CSS__/App/admin/style-responsive.css' />
+<load href='__CSS__/App/admin/default.css' />
+
+<!-- css -->
+<block name="css"></block>
+
+<load href='__JS__/Lib/seajs/2.3.0/sea.js' />
+<load href="__JS__/Lib/seajs/2.3.0/seajs-css.js"/>
+<script type="text/javascript">
+    window.JTCONFIG = {
+        //上传中心url
+        jtUpload : '{$url_upload}',
+		//jtUpload : 'http://upload.jtshop.com',
+        urlGroup : '{$url_group}',
+        urlModule : '{$url_model}',
+        urlAction : '{$url_action}',
+        urlDepr : '{:C('URL_PATHINFO_DEPR')}',
+        urlHtmlSuffix : '{:C('URL_HTML_SUFFIX')}',
+	    SESSION: "{:session_id()}"
+    };
+    //全局变量
+    window.requireJs = [];
+    window.UEDITOR_HOME_URL= "__JS__/Pulgins/ueditor/1.4.3/";
+    window.UMEDITOR_HOME_URL="__JS__/Pulgins/umeditor/1.2.2/";
+    //seajs config
+    seajs.config({
+        base: '__JS__/App/admin/',
+        debug: true,
+        charset: 'utf-8',
+        alias: {
+            'json2': '__JS__/App/base/json2.js',
+            'ecma5': '__JS__/App/base/ecma5.js',
+            'common': '__JS__/App/base/common.1.2.0.js',
+            'jquery': '__JS__/Lib/jquery/1.9.1/jquery-1.9.1.min.js',
+            'bootstrap': '__JS__/Lib/bootstrap/2.3.1/bootstrap.min.js',
+            //'artDialog': '__JS__/Pulgins/ui/artDialog/6.0.2/src/dialog.js',
+            'jquery_validate': '__JS__/Pulgins/jquery-validate/1.11/jquery.validate.js',
+            //'storejs':'__JS__/Pulgins/storejs/store.min.js',
+            'respond':'__JS__/Pulgins/respond/respond.js' ,
+            "ueditor":"__JS__/Pulgins/ueditor/1.4.3/ueditor.all.min.js",
+		    "umeditor":"__JS__/Pulgins/umeditor/1.2.2/umeditor.min.js",
+            'template': '__JS__/Pulgins/artTemplate/3.0/template.js',
+            "plupload":"__JS__/Pulgins/plupload/2.1.2/js/plupload.full.min.js",
+            'jquery_ui': '__JS__/Lib/jquery-ui/1.10.1/jquery-ui-1.10.1.custom.min.js',
+            'uniform':'__JS__/Pulgins/jquery-uniform/jquery.uniform.min.js',
+			'fancyapps':'__JS__/Pulgins/fancyapps/2.1.5/source/jquery.fancybox.js',
+			'chosen':'__JS__/Pulgins/chosen/1.4.2/chosen.jquery.js',
+			'highcharts':'__JS__/Pulgins/Highcharts/4.1.8/highcharts.js'
+        },
+        paths: {
+            'model' : '__JS__/App/admin/model',
+            'base' : '__JS__/App/base',
+            'bootstrap' : '__JS__/Lib/bootstrap/2.3.1',
+            'pulgins' : '__JS__/Pulgins',
+			'common' : '__JS__/App/common'
+        },
+        // 变量配置
+        vars: {},
+        map: [ ],
+        plugins: [],
+        preload: [
+            //ie<8
+            this.JSON ? '' : 'json2',
+            //ie<9
+            Function.prototype.bind ? '' : 'ecma5',
+            //ie8 support
+            Function.prototype.bind ? '' : 'respond',
+			'/Public/Js/App/base/base.js'
+        ]
+    });
+</script>

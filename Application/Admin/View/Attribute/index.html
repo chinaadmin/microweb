@@ -1,0 +1,69 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$type_name}属性</div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix">
+                <div class="btn-group">
+                    <MyTag:rule name="Attribute/edit">
+                    <a class="btn green" href="{:U('Attribute/edit')}">
+                        添加属性值<i class="icon-plus"></i>
+                    </a>
+                    </MyTag:rule>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>排序</th>
+                        <th>属性值</th>
+                        <th>所属属性</th>
+                        <th>可选值</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="lists" id="vo">
+                    <tr>
+                        <td><input type="text" class="m-wrap m-sort js-sort" value="{$vo.sort}" name="sort[{$vo.attr_id}]"></td>
+                        <td>{$vo.name}</td>
+                        <td>{$type_name}</td>
+                        <td>{$vo.value}</td>
+                        <td>
+                            <MyTag:rule name="Attribute/edit">
+                            <a class="btn blue-stripe" href="{:U('edit',['id'=>$vo['attr_id']])}">编辑</a>
+                            </MyTag:rule>
+                            <MyTag:rule name="Attribute/del">
+                            <a class="btn red-stripe js-del" url="{:U('del',['id'=>$vo['attr_id']])}">删除</a>
+                            </MyTag:rule>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+           <div class="row-fluid">
+                <div class="btn-group">
+                    <MyTag:rule name="Attribute/sort">
+                    <a url="{:U('sort')}" id="save-sort" class="btn green">
+                        <i class="icon-sort"></i> 保存排序
+                    </a>
+                    </MyTag:rule>
+                </div>
+                <div class="pagination pull-right">
+                    <ul>  {$_page}  </ul>               
+			     </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/category/categoryController'],function(main){
+            main.index();
+        });
+    </script>
+</block>

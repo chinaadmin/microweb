@@ -1,0 +1,51 @@
+<extend name="Quest:base"/>
+<block name="css">
+    <link rel="stylesheet" media="screen" href="__PUBLIC__/mobile/css/app-con.css?{$style_version}"/>
+    <link rel="stylesheet" media="screen" href="__PUBLIC__/mobile/css/common.css?{$style_version}"/>
+</block>
+<block name="content">
+    <div class="view">
+        <!--头部-->
+        <header>
+            <div class="logo-new">
+                <img src="__PUBLIC__/mobile/images/con_00.png">
+            </div>
+            <div class="title-box">
+                填写联系信息
+            </div>
+            <div class="clearfix"></div>
+        </header>
+        <div class="space-bg"></div>
+        <!--内容-->
+        <div id="content">
+            <form id="user-from" action="{:U('Quest/user')}" method="post">
+                <div class="inp">
+                    <label>真实姓名:</label>
+                    <input type="text" name="name" value="">
+                </div>
+                <div class="inp">
+                    <label>手机号:</label>
+                    <input type="text" name="mobile" value="">
+                </div>
+                <div class="inp">
+                    <label>验证码:</label>
+                    <div class="code-box">
+                        <input type="text" name="code" class="code"><button type="button" class="code-btn msgs">获取验证码</button>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <input type="submit" class="btn-sta" value="马上开始">
+            </from>
+        </div>
+        <!--/*尾部*/-->
+        <footer>
+        </footer>
+    </div>
+</block>
+<block name="js">
+<script type="text/javascript">
+    seajs.use(['controller/quest/questController'],function(quest){
+        quest.user();
+    });
+</script>
+</block>

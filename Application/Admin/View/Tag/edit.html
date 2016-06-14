@@ -1,0 +1,59 @@
+<extend name="Common:base" />
+<block name="css">
+	<load href='__CSS__/App/common/catico.css' />
+</block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.tag_id">添加<else/>编辑</empty>标签</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="from_edit" action="{:U('Tag/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">标签名称</label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name|default=''}"/>
+                </div>
+            </div>
+
+            
+			<div class="control-group">
+                <label class="control-label">标签图片</label>
+                   <div class="controls" style="position:relative;">
+                   <span style="color:red;position:absolute;top:2px;left:80px;display:block;">（上传图片尺寸240X130）</span>
+                   <MyTag:plupload type="one" attachment="info.tag_attr" thumb="false" clickdefault="false"/>
+                </div>
+            </div>
+			 
+			 	<div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.tag_status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <notpresent  name="info.tag_id">checked<else/><eq name="info.tag_status" value="1">checked</eq></notpresent>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="tag_id" value="{$info.tag_id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('tag/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/category/categoryController'],function(menu){
+          
+        });
+    </script>
+</block>

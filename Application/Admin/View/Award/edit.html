@@ -1,0 +1,372 @@
+<extend name="Common:base" />
+<block name="content">
+<style>
+.error {
+	color:red;
+}
+.borderRed{
+	border:1px solid red;
+}
+
+.tips{
+  color:#575757;
+}
+
+</style>
+<div class="row-fluid">
+  <div class="portlet box blue">
+    <div class="portlet-title">
+      <div class="caption">
+        <empty name="info.ap_id">添加<else/>编辑</empty>抽奖方案
+      </div>
+    </div>
+    <div class="portlet-body form">
+      <form id="from_edit" action="{:U('update')}" method="post" class="form-horizontal">
+
+        <input type="hidden" name='ap_id' value="{$info.ap_id|default=''}"/>
+        <div class="control-group">
+          <label class="control-label">活动名称</label>
+          <div class="controls">
+            <input type="text" name="ap_name" class="m-wrap" value="{$info.ap_name|default=''}"/>
+            <span class = 'help-inline'>
+              <input type = 'checkbox'  name = 'ap_is_using'  value = '1' <eq name = 'info.ap_is_using' value = '1'>checked</eq>/>是否开启
+            </span>
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <label class="control-label">时间</label>
+          <div class="controls">
+
+            <div class="input-append date form_datetime">
+              <input name="ap_start_time" type="text" id="start_time" class="span9 end_time m-wrap m-ctrl-medium" size="30" type="text" value="<empty name='info.ap_start_time'>{:date('Y-m-d H:i:s')}<else/>{$info.ap_start_time|date='Y-m-d H:i:s',###}</empty>" readonly>
+              <span class="add-on"><i data-time-icon="icon-calendar" data-date-icon="icon-calendar"></i></span>
+            </div>
+              至 
+            <div class="input-append date end_datetime">
+              <input name="ap_end_time" type="text" id="end_time" class="span9 end_time m-wrap m-ctrl-medium" readonly="" size="30" value="<notempty name='info.ap_end_time'>{$info.ap_end_time|date='Y-m-d H:i:s',###}</notempty>">
+              <span class="add-on"><i data-time-icon="icon-calendar" data-date-icon="icon-calendar"></i></span>
+            </div>
+            <input type="hidden" name="sel_time">
+          </div>
+        </div>
+
+        <!-- 执行时长 start -->
+        <div class="control-group">
+          <label class="control-label">执行时长</label>
+          <div class="controls">
+            <input type="text" name="ap_execute_time" <notempty name="info.ap_execute_time">value="{$info.ap_execute_time}"<else />value="0"</notempty> /> 秒 <span class="tips">&nbsp;&nbsp;注：活动执行时间，0表示不限制，从活动开始直到活动结束。</span>
+          </div>
+        </div>
+        <!-- 执行时长 end -->
+
+        <!-- 奖品资格 start -->
+        <div class="control-group">
+          <label class="control-label">抽奖资格</label>
+          <div class="controls">
+            <select name = "ar_order_type">
+              <option value = ''>选择资格类型</option>
+              <option value = '2' <eq name = 'info.ar_order_type' value = "2">selected</eq>>众筹订单份数</option>
+              <option value = '1'  <eq name = 'info.ar_order_type' value = "1">selected</eq>>正常订单</option>
+            </select>
+          </div>
+        </div>
+        <!-- 奖品资格 end -->
+
+        <empty name = "Think.get.id">
+          <!-- 新增活动 - 奖品设置 start -->
+          <div class="control-group control-group-goods">
+            <label class="control-label"> 奖品设置</label>
+            <div class="controls">
+              <span class = 'cloneHtml'>
+                <!-- 奖品类别 start -->
+                <select name="" id="prizeType" class="prizeType">
+                  <option value="">未中奖</option>
+                  <volist name="prizeType" id="voPrizeType">
+                    <option value="{$key}">{$voPrizeType}</option>
+                  </volist>
+                </select>
+                <!-- 奖品类别 end -->
+
+                <select name = 'fk_as_id[]' id="prizelist" class="prizelist">
+                  <option value="0">未中奖</option>
+                </select>
+
+                &nbsp;&nbsp;奖品数量&nbsp;&nbsp;<input type="text" name="apd_award_total[]" class="m-wrap span1" value="0" />
+                &nbsp;&nbsp;奖品别名&nbsp;&nbsp;
+
+                <input type="text" name="apd_alias_name[]" value="未中奖" /> <!-- 将选择别名改为输入别名 -->
+
+                <!-- &nbsp;&nbsp;奖品中奖率&nbsp;&nbsp;<input type="text" name="apd_probability[]" class="m-wrap span1" /> % &nbsp; -->
+                &nbsp;&nbsp;奖品中奖率&nbsp;&nbsp;<input type="text" id="zz_probability" name="apd_probability[]" class="m-wrap span1 zz_probability" /> % &nbsp;
+
+                每个用户最多领取数量&nbsp;<input type="text" name="apd_one_max_num[]" class="m-wrap span1" value=""/>
+
+
+              </span>
+              <a class = 'btn green add_goods'>增加奖品</a>
+              <MyTag:plupload id = 'awardPic' name = "apd_pic_id[]" type="one" attachment="info.picPath" thumb="true"  clickdefault="true"/>
+            </div>
+          </div>
+          <!-- 新增活动 - 奖品设置 end -->
+        <else/>
+
+          <!-- 编辑活动奖品设置 start -->
+          <volist name = "info.detail" id = 'voDetail' key = 'detailK'>
+            <div class="control-group control-group-goods">
+              <input type = 'hidden' name = "apd_id[]" value = "{$voDetail.apd_id}"/>
+              <label class="control-label"> <eq name = 'detailK' value = '1'>奖品设置:</eq></label>
+              <div class="controls">
+                <span class = 'cloneHtml'>
+
+                  <!-- 奖品类别 start -->
+                  <select name="" id="<php> if($detailK != 1){echo 'prizeType'.$detailK;}else{echo 'prizeType';} </php>" class="prizeType">
+                    <option value="">未中奖</option>
+                    <volist name="prizeType" id="voPrizeType">
+                      <option value="{$key}" <eq name="key" value="$voDetail.ptype">selected</eq> >{$voPrizeType} </option>
+                    </volist>
+                  </select>
+                  <!-- 奖品类别 end -->
+
+                  <select name = 'fk_as_id[]' id="<php> if($detailK != 1){echo 'prizelist'.$detailK;}else{echo 'prizelist';} </php>" class="prizelist">
+                    <option value="0">未中奖</option>
+                    <volist name="voDetail.plist" id="vdp">
+                      <option value="{$vdp.as_id}" <eq name="vdp.as_id" value="$voDetail.fk_as_id">selected</eq> >{$vdp.as_name}</option>
+                    </volist>
+                  </select>
+
+                  &nbsp;&nbsp;奖品数量&nbsp;&nbsp;<input type="text" name="apd_award_total[]" class="m-wrap span1" value="{$voDetail.apd_award_total}"/>
+                  &nbsp;&nbsp;奖品别名&nbsp;&nbsp;
+
+                  <input type="text" name="apd_alias_name[]" <notempty name="voDetail.apd_alias_name">value="{$voDetail.apd_alias_name}"<else />value="未中奖"</notempty> /> <!-- 将选择别名改为输入别名 -->
+
+                  <!-- &nbsp;&nbsp;奖品中奖率&nbsp;<input type="text" name="apd_probability[]" class="m-wrap span1" value="{$voDetail.apd_probability}"/> % &nbsp; -->
+                  &nbsp;&nbsp;奖品中奖率&nbsp;<input type="text" name="apd_probability[]" id="<php> if($detailK != 1){echo 'zz_probability'.$detailK;}else{echo 'zz_probability';} </php>" class="m-wrap span1 zz_probability" value="{$voDetail.apd_probability}"/> % &nbsp;
+
+                  每个用户最多领取数量&nbsp;<input type="text" name="apd_one_max_num[]" class="m-wrap span1" value="{$voDetail.apd_one_max_num}"/>
+
+                </span>
+                <eq name = 'detailK' value = '1'>
+                  <a class = 'btn green add_goods'>增加奖品</a>
+                <else/>
+                  <a class="btn green del_goods">删除奖品</a>
+                </eq>
+                <MyTag:plupload id = 'awardPic{$voDetail.apd_id}' name = "apd_pic_id[]" type="one" attachment="voDetail.picPath" thumb="true"  clickdefault="true"/>
+              </div>
+            </div>
+          </volist>
+          <!-- 编辑活动奖品设置 end -->
+
+        </empty>
+
+        <!-- 获赠奖品 start -->
+        <div class="control-group">
+          <label class="control-label">获赠奖品</label>
+          <div class="controls">
+            <select name="" id="zp_prizeType">
+              <option value="">无</option>
+              <volist name="prizeType" id="vo">
+                <option value="{$key}" <eq name="key" value="$info.zpType">selected</eq> >{$vo}</option>
+              </volist>
+            </select>
+
+            <select name="fk_zp_as_id" id="zp_prizeList">
+              <option value="0">无</option>
+              <volist name="info.zpList" id="vozp">
+                  <option value="{$vozp.as_id}" <eq name="vozp.as_id" value="$info.fk_zp_as_id">selected</eq> >{$vozp.as_name}</option>
+                </volist>
+            </select>
+            &nbsp;&nbsp;最多获得赠品数量&nbsp;&nbsp;<input type="text" name="ap_one_max_num" <if condition="$info.ap_one_max_num neq 0"> value="{$info.ap_one_max_num}" <else /> value="0" </if> />&nbsp;&nbsp;<span class="tips">注：每个人最多获取的赠品数量，0为不限制。</span>
+          </div>
+        </div>
+        <!-- 获赠奖品 end -->
+
+        <!-- 好友帮抽状态 start -->
+        <div class="control-group">
+          <label class="control-label">好友帮抽状态</label>
+          <div class="controls" style="margin-top:7px;">
+            <span>
+              <input type="radio" name="ap_haoyoubangchou_status" value="0" style="margin-left:0px;" <if condition="$info.ap_haoyoubangchou_status neq 1">checked="checked"</if> />&nbsp;&nbsp; 禁用 &nbsp;&nbsp;
+            </span>
+            <span>
+              <input type="radio" id="bc_state" name="ap_haoyoubangchou_status" value="1" <if condition="$info.ap_haoyoubangchou_status eq 1">checked="checked"</if>style="margin-left:0px;" />&nbsp;&nbsp; 启用 &nbsp;&nbsp;
+            </span>
+          </div>
+        </div>
+        <!-- 好友帮抽状态 end -->
+
+        <!-- 好友帮抽 start -->
+        <div class="" id="bangchou">
+
+          <empty name = "Think.get.id">
+
+            <!-- 新增活动 - 好友帮抽奖品设置 start -->
+            <!-- div.control-group-goods start -->
+            <div class="control-group bc_control-group-goods">
+              <label class="control-label"> 好友帮抽奖品设置</label>
+
+              <!-- div.controls start -->
+              <div class="controls">
+
+                <!-- 复制内容主体 start -->
+                <span class = 'bc_cloneHtml'>
+
+                  <!-- 奖品类别 start -->
+                  <select name="" id="bc_prizeType" class="bc_prizeType">
+                    <option value="">未中奖</option>
+                    <volist name="prizeType" id="voPrizeType">
+                      <option value="{$key}">{$voPrizeType}</option>
+                    </volist>
+                  </select>
+                  <!-- 奖品类别 end -->
+
+                  <!-- 奖品列表 -->
+                  <select name = 'bc_fk_as_id[]' id="bc_prizelist" class="bc_prizelist">
+                    <option value="0">未中奖</option>
+                  </select>
+                  &nbsp;&nbsp;奖品数量&nbsp;&nbsp;<input type="text" name="bc_apd_award_total[]" class="m-wrap span1" value="0" />
+                  &nbsp;&nbsp;奖品别名&nbsp;&nbsp;
+                  
+                  <input type="text" name="bc_apd_alias_name[]" value="未中奖" /> <!-- 将选择别名改为输入别名 -->
+
+                  <!-- &nbsp;&nbsp;奖品中奖率&nbsp;&nbsp;<input type="text" name="bc_apd_probability[]" class="m-wrap span1" /> % &nbsp; -->
+                  &nbsp;&nbsp;奖品中奖率&nbsp;&nbsp;<input type="text" id="bc_probability" name="bc_apd_probability[]" class="m-wrap span1 bc_probability" /> % &nbsp;
+
+                  每个用户最多领取数量&nbsp;<input type="text" name="bc_apd_one_max_num[]" class="m-wrap span1" value=""/>
+
+
+                </span>
+                <!-- 复制内容主体 end -->
+
+                <a class = 'btn green bc_add_goods'>增加奖品</a>
+                <MyTag:plupload id = 'bc_awardPic' name = "bc_apd_pic_id[]" type="one" attachment="info.picPath" thumb="true"  clickdefault="true"/>
+                  
+              </div>
+              <!-- div.controls end -->
+            </div>
+            <!-- div.control-group-goods end -->
+            <!-- 新增活动 - 好友帮抽奖品设置 end -->
+
+          <else/>
+
+            <!-- 编辑活动 - 好友帮抽奖品设置 start -->
+            <volist name = "info.bcDetail" id = 'vobcDetail' key = 'bcDetailK'>
+              <div class="control-group bc_control-group-goods">
+                <input type = 'hidden' name = "bc_apd_id[]" value = "{$vobcDetail.apd_id}"/>
+                <label class="control-label"> <eq name = 'bcDetailK' value = '1'> 好友帮抽奖品设置</eq></label>
+                <div class="controls">
+                  <span class = 'bc_cloneHtml'>
+
+                    <!-- 奖品类别 start -->
+                    <select name="" id="<php> if($bcDetailK != 1){ echo 'bc_prizeType'.$bcDetailK; }else{ echo 'bc_prizeType'; } </php>" class="bc_prizeType">
+                      <option value="">未中奖</option>
+                      <volist name="prizeType" id="voPrizeType">
+                        <option value="{$key}" <eq name="key" value="$vobcDetail.ptype">selected</eq>>{$voPrizeType}</option>
+                      </volist>
+                    </select>
+                    <!-- 奖品类别 end -->
+
+                    <!-- 奖品列表 start -->
+                    <select name = 'bc_fk_as_id[]' id="<php> if($bcDetailK != 1){ echo 'bc_prizelist'.$bcDetailK; }else{ echo 'bc_prizelist'; } </php>" class="bc_prizelist">
+                      <option value="0">未中奖</option>
+                      <volist name="vobcDetail.plist" id="vbdp">
+                        <option value="{$vbdp.as_id}" <eq name="vbdp.as_id" value="$vobcDetail.fk_as_id">selected</eq> >{$vbdp.as_name}</option>
+                      </volist>
+                    </select>
+                    <!-- 奖品列表 end -->
+
+                    &nbsp;&nbsp;奖品数量&nbsp;&nbsp;<input type="text" name="bc_apd_award_total[]" class="m-wrap span1" value="{$vobcDetail.apd_award_total}"/>
+                    &nbsp;&nbsp;奖品别名&nbsp;&nbsp;
+
+                    <input type="text" name="bc_apd_alias_name[]" <notempty name="vobcDetail.apd_alias_name">value="{$vobcDetail.apd_alias_name}"<else />value="未中奖"</notempty> /> <!-- 将选择别名改为输入别名 -->
+
+
+
+                    <!-- &nbsp;&nbsp;奖品中奖率&nbsp;&nbsp;<input type="text" name="bc_apd_probability[]" class="m-wrap span1" value="{$vobcDetail.apd_probability}"/> % &nbsp; -->
+                    &nbsp;&nbsp;奖品中奖率&nbsp;&nbsp;<input type="text" id="<php> if($bcDetailK != 1){ echo 'bc_probability'.$bcDetailK; }else{ echo 'bc_probability'; } </php>" name="bc_apd_probability[]" class="m-wrap span1 bc_probability" value="{$vobcDetail.apd_probability}"/> % &nbsp;
+
+
+                    每个用户最多领取数量&nbsp;<input type="text" name="bc_apd_one_max_num[]" class="m-wrap span1" value="{$vobcDetail.apd_one_max_num}"/>
+
+                  </span>
+                  <eq name = 'bcDetailK' value = '1'>
+                    <a class = 'btn green bc_add_goods'>增加奖品</a>
+                  <else/>
+                    <a class="btn green bc_del_goods">删除奖品</a>
+                  </eq>
+                  <MyTag:plupload id = 'bc_awardPic{$vobcDetail.apd_id}' name = "bc_apd_pic_id[]" type="one" attachment="vobcDetail.picPath" thumb="true"  clickdefault="true"/>
+                </div>
+              </div>
+            </volist>
+            <!-- 编辑活动 - 好友帮抽奖品设置 end -->
+
+
+          </empty>
+
+          <!-- 帮抽好友获赠奖品设置 star -->
+          <div class="control-group">
+            <label class="control-label">帮抽好友获赠奖品设置</label>
+            <div class="controls">
+              <select name="" id="bc_hy_prizeType">
+                <option value="">无</option>
+                <volist name="prizeType" id="vo">
+                  <option value="{$key}" <eq name="key" value="$info.bczpType">selected</eq>>{$vo}</option>
+                </volist>
+              </select>
+              <select name="fk_bc_as_id" id="bc_hy_prizeList">
+                <option value="0">无</option>
+                <volist name="info.bczpList" id="vobczp">
+                  <option value="{$vobczp.as_id}" <eq name="vobczp.as_id" value="$info.fk_bc_as_id">selected</eq> >{$vobczp.as_name}</option>
+                </volist>
+              </select>
+
+              &nbsp;&nbsp;帮抽好友最多获得赠品数量&nbsp;&nbsp;<input type="text" name="ap_bc_one_max_num" <if condition="$info.ap_bc_one_max_num neq 0"> value="{$info.ap_bc_one_max_num}" <else /> value="0" </if> />&nbsp;&nbsp;<span class="tips">注：每个帮抽好友最多获取的赠品数量，0为不限制。</span>
+
+            </div>
+          </div>
+          <!-- 帮抽好友个人奖品设置 end -->
+
+        </div>
+        <!-- 好友帮抽 end -->
+
+        <div class="control-group">
+          <label class="control-label">活动说明</label>
+            <div class="controls">
+              <MyTag:editor height="200" width="800" name="ap_remark"
+							id="editor1">{$info.ap_remark}</MyTag:editor>
+            </div>
+        </div>
+			
+        <div class="control-group">
+          <label class="control-label">未中奖提示语</label>
+            <div class="controls">
+                <textarea class="span6 m-wrap popovers" rows="3"  name = "ap_lose_message">{$info.ap_lose_message|default=''}</textarea>
+            </div>
+        </div>
+
+
+        <input type="hidden" id="rateCount" name="rateCount" value="" /> <!-- 奖品中奖率总和 -->
+        <input type="hidden" id="bc_rateCount" name="bc_rateCount" value="" /> <!-- 好友帮抽奖品中奖率总和 -->
+
+
+        <div class="form-actions">
+          <button type="submit" class="btn blue">提交</button>
+            <a class="btn" href="{:U('index')}">返回</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<div id = 'addGoods' style = 'display:none;' data-uploadid = 'addGoodsPic'>
+  <MyTag:plupload id = 'addGoodsPic' name = "apd_pic_id[]" type="one" thumb="true"  clickdefault="true"/>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+    	var att_group = "{$info.attr_group}";
+    	  seajs.use(['controller/Award/AwardController'],function(main){
+              main.edit();
+          });
+    </script>
+</block>

@@ -1,0 +1,79 @@
+<extend name="Common:base" />
+<block name="content">
+    <div class="row-fluid tabbable tabbable-custom boxless">
+        <ul class="nav nav-tabs">
+            <volist id="vo" name="groups">
+                <li <if condition="$vo.configs_id eq $pid">class="active"</if>><a href="{:U('index',['pid' =>$vo['configs_id']])}">{$vo.name}</a></li>
+            </volist>
+        </ul>
+
+        <div class="tab-content">
+        <div class="portlet box blue ">
+            <div class="portlet-title">
+                <div class="caption">网站配置</div>
+                <if condition="$is_super eq true">
+                <div class="tools">
+                    <a href="{:U('Configs/lists')}" data-toggle="modal" class="config"></a>
+                </div>
+                </if>
+            </div>
+            <div class="portlet-body form">
+                <form id="form_edit" action="{:U('Configs/config')}" method="post" class="form-horizontal">
+                    <volist name="lists" id="vo">
+                    <div class="control-group">
+                        <label class="control-label">{$vo.name}</label>
+                        <div class="controls">
+                            <!--单行文本-->
+                            <eq name="vo.type" value="text">
+                                <input name="{$vo.code}" type="text" class="m-wrap" style="width:{$vo.width}px" value="{$vo.value}"/>
+                            </eq>
+                            <!--密码文本-->
+                            <eq name="vo.type" value="password">
+                                <input name="{$vo.code}" type="password" class="m-wrap" style="width:{$vo.width}px" value="{$vo.value}"/>
+                            </eq>
+                            <!--多行文本-->
+                            <eq name="vo.type" value="textarea">
+                                <textarea name="{$vo.code}" class="m-wrap" style="width:{$vo.width}px" rows="5">{$vo.value}</textarea>
+                            </eq>
+                            <!--单选框-->
+                            <eq name="vo.type" value="radio">
+                                <volist name="vo['options']" id="cofvo">
+                                    <label class="radio"><input name="{$vo.code}" type="radio" id="{$vo.code}" value="{$key}" <eq name="key" value="$vo.value" >checked="checked"</eq> />{$cofvo}</label>
+                                </volist>
+                            </eq>
+                            <!--下拉列表框-->
+                            <eq name="vo.type" value="select">
+                                <html:select id="{$vo.code}" name="{$vo.code}" options="vo['options']" selected="vo['value']"/>
+                            </eq>
+                            <!--编辑框-->
+                            <eq name="vo.type" value="editor">
+                                <MyTag:editor height="200" width="800" name="{$vo.code}" id="{$vo.code}">{$vo.value}</MyTag:editor>
+                            </eq>
+                            <!--图片-->
+                            <eq name="vo.type" value="image">
+                                <MyTag:plupload type="one" id="{$vo.code}" name="{$vo.code}" attachment="vo.value" thumb="true"/>
+                            </eq>
+                            <notempty name="vo['desc']">
+                            <span class="help-inline">{$vo.desc}</span>
+                            </notempty>
+                        </div>
+                    </div>
+                    </volist>
+                    <MyTag:rule name="Configs/config">
+                    <div class="form-actions">
+                        <button type="submit" class="btn blue">提交</button>
+                    </div>
+                    </MyTag:rule>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/configs/configsController'],function(configs){
+            configs.index();
+        });
+    </script>
+</block>

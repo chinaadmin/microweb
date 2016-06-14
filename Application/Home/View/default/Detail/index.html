@@ -1,0 +1,291 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/App/home/list-page.css" />
+     <link type="text/css" rel="stylesheet" href="__CSS__/App/home/commonExt.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/App/home/v11/detail.css" />
+</block>
+<block name="nav">
+    <include file="Common:welt_nav" />
+</block>
+<block name="content">
+    <!-- 放大镜 jquery.spinner.js控制-->
+    <div class="preview">
+        <div id="path_box">
+            <a href="/">首页</a>>
+            <notempty name="name">
+                <a href="{:U('List/goodsLists',array('catId'=>$cat_id))}">{$name}></a>
+            </notempty>
+            <a href="{:U('index',array('id'=>$goods_id))}" id="path_cl">{$goodsName}</a>
+        </div>
+        <div class="wrapBox">
+        <div id="vertical" class="bigImg">
+            <volist name="info.thumb" id="vo">
+                <img src="{$vo[$thumbSize[1]]}" data-big="{$vo[$thumbSize[2]]}" width="400" height="400" alt="" id="midimg" />
+            </volist>
+            <div style="display:none;" id="winSelector">
+            </div>
+        </div>
+        <div class="smallImg">
+            <div class="scrollbutton smallImgUp disabled">
+            </div>
+            <div id="imageMenu">
+                <ul>
+                    <volist name="info.thumb" id="vo">
+                        <li
+                            <eq name="key" value="0">
+                                id="onlickImg"
+                            </eq>><img src="{$vo[$thumbSize[0]]}" data-mid="{$vo[$thumbSize[1]]}" data-big="{$vo[$thumbSize[2]]}" width="52" height="52" />
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="scrollbutton smallImgDown">
+            </div>
+        </div>
+        <!--smallImg end-->
+        <div id="bigView" style="display:block;">
+            <img width="800" height="800" alt="" src="" />
+        </div>
+        </div>
+    </div><!-- 产品详情 jquery.spinner.js控制-->
+    <div class="detail_box">
+        <h2 id="goods_title">{$info.name}</h2>
+		<notempty name="goods_description">
+	     	<div class="detail-intro">{$info.goods_description}</div>
+		</notempty>
+        <div class="detail-massage">
+            <neq name='info.old_price' value='0.00'>
+                  <p>
+                   <span>市场价</span><span class="old_price">{$info.old_price}</span>
+                  </p>
+	 	
+	   <p>
+        <span>促销价</span>
+        <span class="detail_price colorY">
+          <i>￥</i>{$info.price}
+             
+        </span>
+        <span><!--购买可获得100个好货币--></span>
+      </p>
+                <else/>
+                <p>
+                   <span>市场价</span><span class="detail_price"><i>￥</i>{$info.price}</span>
+                </p>
+            </neq>
+            <!--<p>优惠<span>满0000元,包邮</span></p>-->
+        </div>
+		
+		<div class="viewbox">
+      <p>
+        <span>浏览量<i>{$info.statistics.click}</i></span>
+        <span class="m">累计购买<i>{$info.statistics.sales}</i></span>
+        <span>收藏<i id='collect'>{$info.statistics.collect}</i></span>
+      </p>
+    </div>
+		
+		
+        <div class="fre_charge">
+            <!--选择发货地区 --><!--   <div class="delivery-box">送至 <span>由&nbsp&nbsp</span>
+            <select class="shop-address">
+            <volist name="stores_lists" id="stores_vo">
+            <option value="{$stores_vo.stores_id}">{$stores_vo.name}</option>
+            </volist>
+            </select>
+            <span class="ex-text">提供商品及服务</span>
+            </div>-->
+            <volist name='norms.norms_value' id='v' key="k">
+                <div class="spec-box norms_group">
+                    <i>{$key}</i>
+                    <p class="ovh">
+                    <volist name='v' id='vo'>
+                        <notempty name='vo.pic'>
+                            <span class='norms_value norms_alt' data-img='{$vo.pic}' data-id='{$vo.norms_value_id}' style="width:auto;"><img src="{$vo.pic}" width='32' attr="{$vo.goods_norms_attr}" height="32" alt="{$vo.norms_value}"/>
+                                <s>
+                                </s>
+                                <div class="alt">
+                                    {$vo.norms_value}
+                                </div>
+                            </span>
+                            <else/><span class='norms_value' data-img='{$vo.pic}' data-id='{$vo.norms_value_id}'>{$vo.norms_value}
+                                <s>
+                                </s>
+                            </span>
+                        </notempty>
+                        <!--<span class="spec-active">{$vo.norms_value}</span>-->
+                    </volist>
+                    </p>
+                </div>
+            </volist>
+            <input type="hidden" id="norms" value=""><input type="hidden" id="goods_id" value="{$info.goods_id}">
+            <p class="buy-num">
+                数量<span class="stock">件<i class='goods_number'>库存:{$info.stock_number|default=0}件</i></span>
+                <input type="text" id="num" class="spinnerExample" value="1"/>
+            </p>
+            <p class="buy-btn">
+                <a href="javascript:;" class="btn-buy">立即购买</a>
+                <a href="javascript:;" class="btnCart delete-btn">加入购物车</a>
+				<a class="delete-btn btnCollect fav-btn" href="javascript:;" style="width:40px;"></a>
+                <div class="clearfix">
+                </div>
+            </p>
+            <div class="share-box">
+                <div class="share-title">
+                    <span style="font-size:14px;">分享到：</span>
+                    <div class="bdsharebuttonbox" data-tag="share_1">
+                        <a class="bds_mshare" data-cmd="mshare"></a>
+                        <a class="bds_qzone" data-cmd="qzone" href="#"></a>
+                        <a class="bds_tsina" data-cmd="tsina"></a>
+                        <a class="bds_baidu" data-cmd="baidu"></a>
+                        <a class="bds_renren" data-cmd="renren"></a>
+                        <a class="bds_tqq" data-cmd="tqq"></a>
+                        <a class="bds_more" data-cmd="more">更多</a>
+                        <!--<a class="bds_count" data-cmd="count"></a>-->
+                    </div>
+                </div>
+                <!--<div class="qr-ico"></div>
+                <div class="share-ico"></div>
+                <div class="clearfix"></div>-->
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    <!-- 侧边产品 -->
+    <div class="buy-content">
+        <!--<div class="sort_box">
+        <div class="sort_title">
+        猜你喜欢<span><img src="__IMG__/home/sort_03.jpg" class="">换一批</span>
+        </div>
+        <notempty name="links">
+        <volist name="links" id="vo">
+        <div class="sort">
+        <a href="{:U('index',array('id'=>$vo['goods_id']))}"><img src="{$vo.thumb}"width="130px"height="130px"></a>
+        <p><a href="{:U('index',array('id'=>$vo['goods_id']))}">{$vo.name}</a></p>
+        </div>
+        </volist>
+        </notempty>
+        </div>--><!-- 侧边产品 -->
+        <div class="sort_box">
+            <div class="sort_title">
+                猜你喜欢<span class="d-hide"><img src="__IMG__/home/sort_03.jpg">换一批</span>
+            </div>
+            <div class="sort_menu">
+                <ul>
+                    <notempty name="links">
+                        <volist name="links" id="vo">
+                            <li class="sort">
+                                <a href="{:U('index',array('id'=>$vo['goods_id']))}"><img src="{$vo.thumb}" width="130px"height="130px"></a>
+                                <div class="price-box">
+                                    ￥{$vo.price}
+                                </div>
+                                <p>
+                                    <a href="{:U('index',array('id'=>$vo['goods_id']))}">{$vo.name}</a>
+                                </p>
+                            </li>
+                        </volist>
+                    </notempty>
+                </ul>
+            </div>
+        </div>
+        <!-- 选项卡 -->
+        <div class="tabPanel">
+            <ul class="tab_box">
+                <li class="hit tab_btn">
+                    商品介绍
+                </li>
+                <!-- <li class="tab_btn">评价</li>--><!--<li class="tab_btn">商品咨询</li>-->
+                <li class="tab_btn">
+                    售后服务
+                </li>
+                <div class="clearfix">
+                </div>
+            </ul>
+            <div class="panes">
+                <div style="display: block;" class="pane">
+                    <h2>产品参数</h2>
+                    <ul>
+                        <li title = '{$info.brand.name}'>
+                            品牌名称&nbsp:&nbsp{$info.brand.name}
+                        </li>
+                        <li title = '{$info.name}'>
+                            商品名称:&nbsp{$info.name}
+                        </li>
+                        <volist name='attr.attr' id='vo'>
+                            <li title = '{$vo.value}'>
+                                {$vo.name}&nbsp:&nbsp{$vo.value}
+                            </li>
+                        </volist>
+                    </ul>
+                    <div class="pane_img" id='player'>
+                        {$info.content}
+                    </div>
+                </div>
+                <!-- <div class="pane" style="display: none;"><h2>评价</h2><p>评价内容</p></div>--><!--<div class="pane" style="display: none;"><h2>商品咨询</h2><p>咨询内容</p></div>--><!--<div class="pane" style="display: none;"><h2>关于我们</h2><p>{$info.brand.desc}</p></div>-->
+                <div class="pane" style="display: none;">
+                    <p>
+                        {$afterSale.content|html_entity_decode}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="js-login-mask" class="pop-box">
+    </div>
+    <div id="js-login-box" class="comfirm-box" style="width:auto;">
+        <h2>必好货欢迎您<i class="close-box"></i></h2>
+        <div class="delete-content">
+            <div class="delete-text">
+                <div>
+                    <form id="signupForm" method="post" action="{:U('Passport/verify')}">
+                        <p class="user">
+                            <input class="stext username" type='text' name="username" id="username" value="" placeholder="已验证手机/邮箱/用户名" />
+                            <span class="colorGrey">新用户? <a href="{:U('passport/reg')}">立即注册</a></span>
+                        </p>
+                        <p class="user">
+                            <input id="passWord" class="stext" type="password" name="password" value="" placeholder="请输入密码" />
+                            <span><a href="{:U('passport/findpassport')}" class="colorGrey">忘记密码?</a></span>
+                      </p>
+                        <p id="verify_code" class="user"
+                            <empty name="need_verify">
+                                style="display: none"
+                            </empty>><input class="code stext" type="text" name="verify" id="verify" value="" placeholder="请输入验证码" /><img id="code_img" src="{:U('Passport/genreateVerify')}" /><a style="cursor: pointer" class="verify-code">换一张</a>
+                            <label for="verify" class="error">
+                            </label>
+                        </p>
+                        <p>
+                            <button type="submit">
+                                登录
+                            </button>
+                        </p>
+                        <p class="colorGrey">您也可以是用以下账号登录</p>
+                        <p class="num_box">
+                          <a href="{:U('Oauth/login',array('type'=>'qq'))}" title="QQ登录">
+                            <img src="__CSS__/Images/home/qq.png" alt="">
+                          </a>
+                          <a href="{:U('Oauth/login',array('type'=>'wechat'))}"  title="微信登录">
+
+                            <img src="__IMG__/home/wechat.png" alt="">
+                          </a>
+                          <a href="{:U('Oauth/login',array('type'=>'sina'))}" title="新浪微博">
+                            <img src="__IMG__/home/sina.png" alt="">
+                          </a>
+                          <!--<a href="" class="sina" title="新浪微博"></a>
+                          <a href="" class="taobao" title="淘宝"></a>-->
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        var norms_attr = '{$norms.norms_attr}';
+        if (norms_attr) {
+            norms_attr = JSON.parse(norms_attr);
+        }
+        seajs.use(['controller/detailController'], function(index){
+            index.index();
+        });
+    </script>
+</block>

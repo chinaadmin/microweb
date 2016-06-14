@@ -1,0 +1,150 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/ruturn-massage.css"/>
+</block>
+<block name="content">
+   <div id="content">
+	 <div class="place-box">
+	 	您的位置&nbsp;><a href="{:U('Order/index')}">我的订单</a>><span class="place-color">&nbsp;退款/退货申请</span>
+	 </div>
+	 <div class="time-ax refund_step5">
+
+        <div class="pwrap">
+            <div class="point first at">
+                <div class="title">申请退款/退货</div>
+                <div class="image">
+                    <p class="line">
+                        <span></span>
+                    </p>
+                    <img src="__IMG__/home/step_1.png" alt=""></div>
+            </div>
+            <div class="point">
+                <div class="title">订单审核</div>
+                <div class="image">
+                    <p class="line">
+                        <span></span>
+                    </p>
+                    <img src="__IMG__/home/step_2.png" alt=""></div>
+            </div>
+            <div class="point">
+                <div class="title">等待退货</div>
+                <div class="image">
+                    <p class="line">
+                        <span></span>
+                    </p>
+                    <img src="__IMG__/home/step_3.png" alt=""></div>
+            </div>
+            <div class="point">
+                <div class="title">等待退款</div>
+                <div class="image">
+                    <p class="line">
+                        <span></span>
+                    </p>
+                    <img src="__IMG__/home/step_4.png" alt=""></div>
+            </div>
+            <div class="point last">
+                <div class="title">退款成功</div>
+                <div class="image">
+                    <p class="line">
+                        <span></span>
+                    </p>
+                    <img src="__IMG__/home/step_5.png" alt=""></div>
+            </div>
+            <!-- 审核失败的情况 -->
+            <!-- <div class="point last">
+                <div class="title">退款失败</div>
+                <div class="image">
+                    <p class="line">
+                        <span></span>
+                    </p>
+                    <img src="__IMG__/home/step_3.png" alt=""></div>
+            </div>
+            <div class="clearfix"></div> -->
+        </div>
+
+	 </div>
+	 <form action="{:U('Refund/refund')}" method='post' id='refund-form'>
+     <div class="return-box">
+         <input type="hidden" name="orderNumber" value="{$orderNumber|default=''}"/>
+		 <input type="hidden" name="recId" value="{$recId|default=''}"/>
+         <p>
+             <label>
+                 退货数量：
+             </label>
+             <input type="text" price="{$price}" name="number" id='number' value="<notempty name='refundInfo.refund_num'>{$refundInfo.refund_num}<else/>{$max_number}</notempty>" max="{$max_number}"><span>最多{$max_number}件</span>
+             <label for="number" class="help-inline" style="color:#ff8c00;">
+             </label>
+         </p>
+         <p>
+             <label>
+                 退款金额：
+             </label>
+             <input type="text" name="money" disabled="true" id="money" value="{$max_money}">
+         </p>
+         <p>
+             <label>
+                 退款原因：
+             </label>
+             <select name="refund_rea">
+             	<option value="-1">请选择</option>
+				<volist name='reason' id='vo'>
+					<option value="{$key}" <eq name = 'refundInfo.refund_reasons' value = '$key'> selected </eq>>{$vo}</option>
+				</volist>
+             </select>
+         </p>
+         <p>
+             <label class="return-sm">
+                 退款说明：
+             </label>
+             <textarea name="mark">{$refundInfo.description}</textarea>
+         </p>
+         <p>
+             <label class="upload-text">
+                 上传凭证：
+             </label>
+             <div class="refund-upload">
+                 <MyTag:plupload type="many" model="1" login='1' thumb="false" attachment="refundInfo.voucher" clickdefault="false"/>
+             </div>
+             <link type="text/css" rel="stylesheet" href="__CSS__/App/home/upload.css"/>
+         </p>
+         <p class="text-upload">
+             每张图片大小不超过5M,最多不超过3张,支持GIF,JPG,png,bmp格式
+         </p>
+
+        <p class="type">
+            <label >退货方式：</label>
+            <span>
+                <span>
+                    <input type="radio" name="fs" id="">
+                    <em>客户送货至门店</em>
+                    <a href="#">查看必好货门店</a>
+                </span>
+                <span>
+                    <input type="radio" name="fs" id="">
+                    <em>客户邮寄商品至必好货</em>
+                    <a href="#">查看售后地址</a>
+                </span>
+                <span>
+                    <input type="radio" name="fs" id="">
+                    <em>上门取货</em>
+                    <a href="#">只支持门店500m内客户</a>
+                </span>
+            </span>
+        </p>
+
+         <button type="submit">
+             提交退款申请
+             <input type = 'hidden' name = 'refundId'  value = '{$Think.get.refundId}'/>
+         </button>
+     </div>
+	</form>
+</div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		seajs.use('controller/refundController.js',function(main){
+			main.index();
+		});
+	</script>
+</block>

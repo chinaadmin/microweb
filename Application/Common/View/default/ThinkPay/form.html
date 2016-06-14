@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>支付加载</title>
+	<style>
+		#content { margin: 10% auto 0; max-width: 360px; text-align:center;}
+		#content div { border: 2px solid #ddd; border-radius: 8px; height: 12px; }
+		#content p { background-color: #ff8400; border-radius: 4px 0 0 4px; margin: 0; padding-top: 12px; width: 0; }
+		#content span{margin-top:32px;display: block;}
+	</style>
+</head>
+<body>
+	<div id="header"></div>
+	<div id="content">		
+		<div>
+			<p id="process"></p>
+		</div>
+		<span>正在加载支付页面...</span>
+
+        <form id='paysubmit' name='paysubmit' action='{$gateway}' method='{$method}'>
+            <volist name="params" id="vo">
+            <input type="hidden" name="{$key}" value="{$vo}" />
+            </volist>
+        </form>
+	</div>
+	<script type="text/javascript">
+        (function () {
+            var p = document.getElementById('process');
+            var i = 0;
+            var time = setInterval(function () {
+                i++;
+                (i>=90)&&(clearInterval(time));
+                p.style.width = i+"%";
+            }, 24);
+            //自动跳转支付页面
+            document.forms['paysubmit'].submit();
+        })();
+	</script>
+</body>
+</html>

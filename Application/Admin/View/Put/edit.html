@@ -1,0 +1,114 @@
+<extend name="Common:base" />
+<block name="css">
+	<load href='__CSS__/App/common/catico.css' />
+</block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.put_id">添加<else/>编辑</empty>分类</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="from_edit" action="{:U('Put/update')}" method="post" class="form-horizontal">
+            	<input type="hidden" name='put_id' value="{$info.put_id|default=''}"/>
+            <div class="control-group">
+                <label class="control-label">标题名称</label>
+                <div class="controls">
+                    <input type="text" name="title" class="m-wrap span2" value="{$info.put_title|default=''}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">上传图片</label>
+                <div class="controls">
+                    <span style="color:red;position:absolute;top:2px;left:80px;display:block;">（上传图片尺寸700X700）</span>
+                    <MyTag:plupload type="one" attachment="info.put_attr" thumb="false" clickdefault="false"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">链接页面</label>
+                <div class="controls">
+                    <input type="text" name="url" class="m-wrap span2" value="{$info.put_url|default=''}"/>
+                </div>
+            </div>
+            
+			<div class="control-group">
+                <label class="control-label">投放时段</label>
+                <div class="controls">
+                   <input type="text" name="start_time" class="m-wrap span2 start_time" value="<empty name='info.start_time'>{:date('Y-m-d',time())}<else/>{$info.start_time|date='Y-m-d',###}</empty>"/>
+				   --
+				   <input type="text" name="end_time" class="m-wrap span2 end_time" value="<empty name='info.end_time'>''<else/>{$info.end_time|date='Y-m-d',###}</empty>"/>
+				   <select name="sel_time" id='sel_time' style="width:91px;">
+				   	<option value="">快捷选择</option>
+					<option value="{:date('Y-m-d',strtotime('+1 week'))}">一周</option>
+					<option value="{:date('Y-m-d',strtotime('+15 day'))}">半月</option>
+				   </select>
+                </div>
+            </div>
+			 
+            <div class="control-group">
+                <label class="control-label">投放平台</label>
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="radio" name="type[]" value="1" <if condition="in_array(1,$info['put_type'])">checked</if>/>
+                        移动端
+                    </label>
+                    <label class="checkbox">
+                        <input type="radio" name="type[]" value="2" <if condition="in_array(2,$info['put_type'])">checked</if>/>
+                        微商城
+                    </label>
+                </div>
+            </div>
+            
+			<div class="control-group">
+                <label class="control-label">是否启用</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.put_status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <empty name="info.put_status">checked</empty><eq name="info.put_status" value="1">checked</eq>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+
+			<div class = 'control-group'>
+				<label class = 'control-label'>是否是引导页图片</label>
+				<div class = 'controls'>
+					<label class="radio">
+                        <input type="radio" name="is_guide" value="0"  <empty name="info.is_guide">checked</empty> <eq name="info.is_guide" value="0" >checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="is_guide" value="1"  <eq name="info.is_guide" value="1">checked</eq>/>
+                        启用
+                    </label>
+				</div>
+			</div>
+			
+            <div class="control-group">
+                <label class="control-label">说明</label>
+                <div class="controls">
+                    <textarea class="span6 m-wrap" rows="3" name="remark">{$info.put_description|default=''}</textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('Put/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/put/putController'],function(main){
+          main.edit();
+        });
+    </script>
+</block>

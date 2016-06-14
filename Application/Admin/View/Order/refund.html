@@ -1,0 +1,160 @@
+<extend name="Common:base" />
+<block name="css"><load href="__CSS__/App/admin/order/order.css"/></block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">退款退貨</div>
+        </div>
+        <div class="portlet-body">
+			<ul class="breadcrumb">
+				<li>
+					<a href="{:U('Order/index')}">订单管理</a>
+					<span class="icon-angle-right"></span>
+					退款退貨
+				</li>
+			</ul>
+			<div class="row-fluid">
+
+					<div class="span12">
+
+						<div id="form_wizard_1" class="portlet box blue">
+
+							<div class="portlet-title">
+
+								<div class="caption">
+
+									<i class="icon-reorder"></i>订单号：{$data.order_sn}</span>
+
+								</div>
+							</div>
+
+							<div class="portlet-body form">
+								<form id="refund_form" class="form-horizontal" method="post" action="{:U('Refund/doRefund')}" novalidate="novalidate">
+                                   <input type="hidden" name="recId" value="{$data.rec_id}"/>
+									<input type="hidden" name="order_id" value="{$data.order_id}"/>
+									<input type="hidden" name="goods_id" value="{$data.goods_id}"/>
+									<input type="hidden" name="uid" value="{$data.uid}"/>
+									<div class="form-wizard">
+
+										<div class="navbar steps">
+
+											<div class="navbar-inner" style="border:1px solid #eee;">
+                                               <div class="goods-left">
+                                               	<img src="{$data.photo}">
+												<span>
+												   {$data.name}
+												  <notempty name="data.norms_value">
+												  	(
+												  <volist name='data.norms_value' id='vo'>
+												  	{$vo.value}、
+												  </volist>
+												  )
+												  </notempty>
+												  <p style='margin-top:5px; font-weight:bolder;'>￥{$data.goods_price}X{$data.number}</p>
+												</span>
+                                               </div>
+												<div class="goods-right">
+													￥{$data['goods_price']*$data['number']}
+												</div>
+
+											</div>
+
+										</div>
+
+									
+										<div class="tab-content">
+											<div id="tab1" class="tab-pane active">
+                                        <ul class="breadcrumb">
+													<li>
+													
+													</li>
+		                                </ul>											
+												<div class="control-group">
+													<!-- <label class="control-label">退款数量<span class="required">*</span></label> -->
+													<div class="controls">
+														<input type="hidden" name="number" value="{$data['number']}"  max="{$data['number']}" class="span2 m-wrap">
+														<!-- <span class="help-inline">最大退款数量为{$data['number']}</span> -->
+													</div>
+
+												</div>
+
+												<div class="control-group">
+													<label class="control-label">退款金额<span class="required">*</span></label>
+													<div class="controls">
+
+														<input type="text"  name="refund_money" value="{$data['number']*$data['goods_price']}" class="span2 m-wrap"><span class="help-inline">最大退款金额为{$data['maxRefundMoney']}</span>
+														<input type = 'hidden' name="max_refund_money" class = 'maxRefundMoney'  value="{$data['maxRefundMoney']}" />
+													</div>
+
+												</div>
+
+                                                <div class="control-group">
+													<label class="control-label">退款原因</label>
+													<div class="controls">
+														<select name="reasons">
+															<option value="0">请选择</option>
+															<volist name="reasons" id="vo">
+																<option value="{$key}">{$vo}</option>
+															</volist>
+														</select>
+													</div>
+												</div>
+
+												<div class="control-group">
+													<label class="control-label">操作</label>
+													<div class="controls">
+														<label class="checkbox">
+														<input type="checkbox" value="1" name="refund_status"/> 同意退款退货
+														</label>
+														<label class="checkbox">
+														<input type="checkbox" value="1" name="receipt"/> 已收货
+														</label>
+													</div>
+												</div>
+
+												<div class="control-group">
+													<label class="control-label">退货描述</label>
+													<div class="controls">
+														<textarea name="mark" class="span4 m-wrap"></textarea>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+										<div class="form-actions clearfix">
+											<button type="submit" class="btn blue button-next">
+											确定 
+											</button>
+											<a class="btn blue button-next" href="{:U('Order/index')}">
+											取消
+											</a>
+										</div>
+
+									</div>
+
+								</form>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			
+			
+			
+        </div>	
+    </div>	
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+    	var goods_price = "{$data['goods_price']}";
+        seajs.use(['controller/order/orderController'],function(main){
+          main.info();
+        });
+    </script>
+</block>

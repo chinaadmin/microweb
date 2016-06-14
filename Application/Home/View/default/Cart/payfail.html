@@ -1,0 +1,61 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link rel="stylesheet" type="text/css"href="__CSS__/App/home/v11/paysuccess.css">
+</block>
+<block name="nav"><include file="Common:welt_nav" /></block>
+<block name="content">
+    <div class="hd">
+        <div class="sersafe-steps">
+            <ol>
+                <li class="pass">
+                    <s class="bg"></s>
+                    <div class="step step-sprite">
+                        <i>1、</i>
+                        <span>加入购物车</span>
+                    </div>
+                </li>
+                <li class="pass">
+                    <s class="bg"></s>
+                    <div class="step step-sprite">
+                        <i>2、</i>
+                        <span>填写信息</span>
+                    </div>
+                </li>
+                <li class="pass">
+                    <s class="bg"></s>
+                    <div class="step step-sprite sprite-bg">
+                        <i>3、</i>
+                        <span>订单支付</span>
+                    </div>
+                </li>
+                <li class="active">
+                    <s class="bg"></s>
+                    <div class="step step-sprite">
+                        <i>4、</i>
+                        <span>支付失败</span>
+                    </div>
+                </li>
+            </ol>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="box">
+        <p><img src="__IMG__/home/wrong_00.png" alt="" /><span>付款失败！</span></p>
+        <p>
+            <span>本次交易的订单号为：{$order_info['order_sn']}</span>
+            <span class="empty"></span>
+          <span>
+            本次交易金额为： <i class="ntext colorY">${$order_info['money_paid']}</i>
+          </span>
+        </p>
+        <p class="fail">
+            <span>您可能需要：</span>
+            <a href="{:U('Order/view',['id'=>$order_info['order_sn']])}">查看订单</a>
+            <a href="{:U('Order/gopay',['id'=>$order_info['order_id']])}" class="m">选择其他支付方式</a>
+            <a href="{:U('/')}">返回首页</a>
+        </p>
+
+    </div>
+</block>

@@ -1,0 +1,351 @@
+<div class="page-sidebar nav-collapse collapse">
+	<ul class="page-sidebar-menu hidden-phone hidden-tablet">
+		<li>
+			<div class="sidebar-toggler hidden-phone"></div>
+		</li>
+        <volist name="_left_menu" id="vo">
+		<li class="<eq name="i" value="1">start</eq> <eq name="vo.is_current" value="1">active</eq>">
+            <if condition="strstr($key,'mu') !== false">
+            <a href="{$vo['show_url']}">
+                <i class="{$vo['icon']}"></i>
+                <span class="title">{$vo['name']}</span>
+            </a>
+            <else/>
+			<a href="javascript:;">
+				<i class="{$vo['icon']}"></i>
+				<span class="title">{$vo['name']}</span>
+                <eq name="vo.is_current" value="1">
+				<span class="selected "></span>
+				<span class="arrow open"></span>
+                <else/>
+                <span class="arrow"></span>
+                </eq>
+			</a>
+			<ul class="sub-menu">
+                <volist name="vo.child" id="ch_vo">
+				<li <eq name="ch_vo.is_current" value="1">class="active"</eq>>
+					<a href="{$ch_vo['show_url']}">{$ch_vo['name']}</a>
+				</li>
+                </volist>
+			</ul>
+            </if>
+		</li>
+        </volist>
+	</ul>
+
+    <!--
+	<ul class="page-sidebar-menu visible-phone visible-tablet">
+
+		<li class="active">
+
+			<a href="index.html">
+
+
+
+        Dashboard
+
+
+
+        <span class="selected"></span>
+
+
+
+        <span class="arrow open"></span>
+
+
+
+    </a>
+
+			<ul class="sub-menu">
+
+				<li class="active">
+
+					<a href="javascript:;">
+
+						<i class="icon-cogs"></i>
+
+						<span class="title">Layouts</span>
+
+						<span class="arrow open"></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li class="active">
+
+							<a href="layout_horizontal_sidebar_menu.html">
+
+
+
+                        Horzontal & Sidebar Menu                     </a>
+
+						</li>
+
+						<li>
+
+							<a href="layout_horizontal_menu1.html">
+
+
+
+                        Horzontal Menu 1                    </a>
+
+						</li>
+
+						<li>
+
+							<a href="layout_horizontal_menu2.html">
+
+
+
+                        Horzontal Menu 2                    </a>
+
+						</li>
+
+						<li>
+
+							<a href="layout_promo.html">
+
+
+
+                        Promo Page                    </a>
+
+						</li>
+
+						<li>
+
+							<a href="layout_email.html">
+
+
+
+                        Email Templates                     </a>
+
+						</li>
+
+						<li>
+
+							<a href="layout_sidebar_closed.html">
+
+
+
+                        Sidebar Closed Page                    </a>
+
+						</li>
+
+						<li>
+
+							<a href="layout_blank_page.html">
+
+
+
+                        Blank Page                    </a>
+
+						</li>
+
+						<li>
+
+							<a href="layout_boxed_page.html">Boxed Page</a>
+
+						</li>
+
+						<li>
+
+							<a href="layout_boxed_not_responsive.html">
+
+
+
+                        Non-Responsive Boxed Layout                     </a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a href="javascript:;">
+
+						<i class="icon-th-list"></i>
+
+						<span class="title">Portlets</span>
+
+						<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="portlet_general.html">
+
+
+
+                        General Portlets                    </a>
+
+						</li>
+
+						<li>
+
+							<a href="portlet_draggable.html">
+
+
+
+                        Draggable Portlets                     </a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a href="javascript:;">
+
+						<i class="icon-map-marker"></i>
+
+						<span class="title">Maps</span>
+
+						<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="maps_google.html">
+
+
+
+                        Google Maps                   </a>
+
+						</li>
+
+						<li>
+
+							<a href="maps_vector.html">
+
+
+
+                        Vector Maps                   </a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a href="charts.html">
+
+						<i class="icon-bar-chart"></i>
+
+						<span class="title">Visual Charts</span>
+
+					</a>
+
+				</li>
+
+				<li>
+
+					<a href="login.html">
+
+						<i class="icon-user"></i>
+
+						<span class="title">Login Page</span>
+
+					</a>
+
+				</li>
+
+			</ul>
+
+		</li>
+
+		<li>
+
+			<a href="javascript:;">
+
+
+
+        Sections
+
+
+
+        <span class="arrow"></span>
+
+
+
+    </a>
+
+			<ul class="sub-menu">
+
+				<li><a href="#">Section 1</a>
+				</li>
+
+				<li><a href="#">Section 2</a>
+				</li>
+
+				<li><a href="#">Section 3</a>
+				</li>
+
+				<li><a href="#">Section 4</a>
+				</li>
+
+				<li><a href="#">Section 5</a>
+				</li>
+
+			</ul>
+
+		</li>
+
+		<li>
+
+			<a href="">Tables</a>
+
+		</li>
+
+		<li>
+
+			<a href="">Extra
+
+
+
+        <span class="arrow"></span>
+
+
+
+    </a>
+
+			<ul class="sub-menu">
+
+				<li><a href="index.html">About Us</a>
+				</li>
+
+				<li><a href="index.html">Services</a>
+				</li>
+
+				<li><a href="index.html">Pricing</a>
+				</li>
+
+				<li><a href="index.html">FAQs</a>
+				</li>
+
+				<li><a href="index.html">Gallery</a>
+				</li>
+
+				<li><a href="index.html">Registration</a>
+				</li>
+
+			</ul>
+
+		</li>
+
+	</ul>
+    -->
+
+</div>

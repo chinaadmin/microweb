@@ -1,0 +1,89 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/commonExt.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/v11/paysuccess.css">
+</block>
+<block name="top"><include file="Common:pay_top" /></block>
+<block name="content">
+    <div class="pay">
+    <div class="box">
+        <div class="msg">
+            <h3>
+                <span>订单提交成功，请您尽快付款！订单号：{$info.order_sn}</span>
+            <span>
+              应付金额
+              <a>{$info.order_amount}</a>
+              元
+            </span>
+            </h3>
+            <p class="tips">
+            <span>
+              请您在提交订单后
+              <a>24小时</a>
+              内完成支付，否则订单会自动取消。
+            </span>
+            <span>
+              <a href="{:U('Order/view',['id'=>$info['order_sn']])}">查看订单</a>
+            </span>
+            </p>
+            <!--<hr/>
+            <p>
+                <span>送货至：积土  广东省深圳市南山区科苑路东方科技大厦2402室  135*****654</span>
+            </p>-->
+        </div>
+
+        <div class="platform">
+            <h3>支付平台</h3>
+            <p>
+                <volist name="payment_lists" id="vo">
+                    <eq name="vo.type" value="0">
+                        <span><input type="radio" name="payment"  value="{$vo.code}" <eq name="i" value="1">checked</eq>/><img src="{$vo.photo}" alt="{$vo.name}"/></span>
+                    </eq>
+                </volist>
+            </p>
+            <h3>网银支付</h3>
+            <p>
+                <volist name="payment_lists" id="vo">
+                    <eq name="vo.type" value="1">
+                        <span><input type="radio" name="payment" value="{$vo.code}" <eq name="i" value="1">checked</eq>/><img src="{$vo.photo}" alt="{$vo.name}"/></span>
+                    </eq>
+                </volist>
+            </p>
+        </div>
+
+        <div class="btnbox">
+            <a id="js-pay" class="btn">
+                立即支付
+            </a>
+        </div>
+    </div>
+    </div>
+
+    <form id="js-form" action="" method="post" target="_blank">
+        <input type="hidden" name="id" value="{$info.order_id}"/>
+        <input type="hidden" name="pay_type" value=""/>
+    </form>
+    <!-- 支付框-->
+    <div id="js-pay-mask" class="pop-box"></div>
+    <div id="js-pay-content" class="pay-wid">
+        <h2 style="padding:0 10px">请您在新打开的页面上完成付款<i class="close-box"></i></h2>
+        <div class="pay-content">
+            <div class="btn-box">
+                <input type="button" class="true-box pay-true js-pay-finish" value="已完成付款">
+                <input type="button" class="fail-box pay-fail js-pay-problem" value="付款遇到问题">
+            </div>
+            <div class="btn-2">
+                <input type="button"  class="anew close-box js-pay-again" value="重新支付"/>
+                <input type="button" class="cancel-btn js-pay-cancel" value="取消"/>
+            </div>
+            <p>查看<a href="">支付帮助</a>或联系<a href="">在线客服</a></p>
+        </div>
+    </div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		seajs.use('controller/orderController.js',function(main){
+			main.gopay();
+		});
+	</script>
+</block>

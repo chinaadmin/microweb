@@ -1,0 +1,205 @@
+<extend name="Common:base" />
+<block name="css"><load href="__CSS__/App/admin/order/order.css"/></block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">订单详情</div>
+        </div>
+        <div class="portlet-body">
+			<ul class="breadcrumb">
+							<li>
+								<a href="">订单管理</a>
+								<span class="icon-angle-right"></span>
+								编辑订单
+							</li>
+			</ul>	
+		<form action="{:U('Order/update',array('order_id'=>$info['order_id'],invoice_id=>$info['invoice_id']))}" method="post" id='edit-invoice'>
+		   <div class="order-edit">
+			  <ul>
+			  	<li>
+			  		<span class='title'>订单编号:</span>
+				    <span class='value'>{$info.order_sn}</span>
+				</li>
+				<li>
+			  		<span class='title'>下单会员:</span>
+				    <span class='value'>{$info.username}</span>
+				</li>
+				<li>
+			  		<span class='title'>下单时间:</span>
+				    <span class='value'>{$info.add_time|date="Y-m-d H:i:s",###}</span>
+				</li>
+				<li>
+			  		<span class='title'>收货人:</span>
+				    <span class='value'><input type="text" name="r_name" value="{$info.receipt_name|default=''}"/></span>
+				</li>
+				<li>
+			  		<span class='title'>手机:</span>
+				    <span class='value'><input type="text" name="r_mobile" value="{$info.receipt_mobile|default=''}"/></span>
+				</li>
+				<li class='big-size'>
+			  		<span class='title'>选择提货店:</span>
+				    <span class='value'>
+				    	<select tabindex="1" class="medium m-wrap" name="stores_id">
+				    		<volist name='stores' id='vo'>
+							<option value="{$vo.stores_id}" <eq name='info.stores_id' value="$vo.stores_id">selected='selected'</eq>>{$vo.name}</option>
+							</volist>
+						</select>
+				</span>
+				</li>
+				<li class='big-size'>
+			  		<span class='title'>提货点地址:</span>
+				    <span class='value'>
+				    	{$info.address|default="--"}
+				    </span>
+				</li>
+				<li class='big-size'>
+			  		<span class='title'>是否需要发票:</span>
+				    <span class='value'>
+				     <label class="radio">
+							<input type="checkbox" name="need_invoice" id='need_invoice' value="1" <notempty name='info.needs_invoice'>checked</notempty> />
+                                                                                                                              是否需要发票
+					 </label>
+					</span>
+				</li>
+				<li class='invoce_type' style="display:none;">
+			  		<span class='title'>发票类型:</span>
+				    <span class='value'>
+				    	<div class="controls">
+                                <label class="radio">
+                                   <input type="radio" id='norml_invoice' name="invoice_type" value="0" <empty name='info.invoice_type'>checked</empty> />普通发票
+                                </label>
+                               <!-- <label class="radio">
+                                     <input type="radio" id='add_invoice' name="invoice_type" value="1" <eq name="info.invoice_type" value='1'>checked</eq>/>增值税发票
+                                 </label>  -->
+                        </div>
+					</span>
+				</li>
+			  </ul>
+			  <div class="order-invoice">
+			  	<div class="general-invoice" style="display:none;">
+			      <div class="form-horizontal control-group">
+							<label class="control-label">发票抬头：</label>
+                                     <div class="controls">
+                                       <input type="text" class="m-wrap span2" value="{$info.invoice_payee|default=''}" name='invoice_payee'>
+									</div>
+				  </div>
+				  <div class="form-horizontal control-group">
+							<label class="control-label">发票内容：</label>
+                                     <div class="controls">
+                                      <select tabindex="1" class="medium m-wrap" name="invoice_content">
+							              <option value="1">商品明细</option>
+						              </select>
+				  </div>
+			  </div>
+				</div>
+			<!--
+			    <div class="add-invoice" style="display:none;">
+			    	<div class="form-horizontal control-group">
+							<label class="control-label">公司名称：</label>
+                                     <div class="controls">
+                                       <input type="text" class="m-wrap span2" name="company_name" value="{$info.company_name|default=''}" >
+									</div>
+				    </div>
+					
+					<div class="form-horizontal control-group">
+							<label class="control-label">公司地址：</label>
+                                     <div class="controls">
+                                       <input type="text" class="m-wrap span2" name="company_address" value="{$info.company_address|default=''}">
+									</div>
+				    </div>
+					
+					<div class="form-horizontal control-group">
+							<label class="control-label">公司电话：</label>
+                                     <div class="controls">
+                                       <input type="text" class="m-wrap span2" name="company_phone" value="{$info.company_phone|default=''}">
+									</div>
+				    </div>
+					
+					<div class="form-horizontal control-group">
+							<label class="control-label">税号：</label>
+                                     <div class="controls">
+                                       <input type="text" class="m-wrap span2" name="tax_code" value="{$info.tax_code|default=''}">
+									</div>
+				    </div>
+					
+					<div class="form-horizontal control-group">
+							<label class="control-label">银行账号：</label>
+                                     <div class="controls">
+                                       <input type="text" class="m-wrap span2" name="bank_account" value="{$info.bank_account|default=''}" >
+									</div>
+				    </div>
+					
+					<div class="form-horizontal control-group">
+							<label class="control-label">开户行：</label>
+                                     <div class="controls">
+                                       <input type="text" class="m-wrap span2" name="bank" value="{$info.bank|default=''}">
+									</div>
+				    </div>
+					
+					<div class="form-horizontal control-group">
+							<label class="control-label">发票抬头：</label>
+                                     <div class="controls">
+                                       <input type="text" class="m-wrap span2" name="invoice_payee" value="{$info.invoice_payee|default=''}">
+									</div>
+				    </div>
+					
+			    </div>-->
+			 </div>
+			 
+			 <div class="print-content">
+				<div class="portlet-body">
+								<table class="table table-striped table-bordered table-advance table-hover">
+									<thead>
+										<tr>
+											<th>商品名称</th>
+											<th>商品编号</th>
+											<th>单价（元）</th>
+											<th>数量</th>
+											<th>小计</th>
+										</tr>
+									</thead>
+									<tbody>
+											<volist name="goods" id="v">
+										<tr>
+										    <td><img src="{$v.pic}" width='50' height="50"/>											
+											{$v.name}#
+											<notempty name='v.norms'>
+												（
+												<volist name='v.norms_value' id='vs'>
+													{$vs.value}、
+												</volist>
+                                                                                                                                                                  ）
+											</notempty>
+											X（{$v.number}）
+											<br/>
+											<volist name='v.norms_value' id='vs'>
+												<span>{$vs.name}:{$vs.value}&nbsp;&nbsp;</span>
+											</volist>
+											</td>
+											<td>{$v.code}</td>
+											<td>{$v.goods_price}</td>
+											<td>{$v.number}</td>
+											<td><?php echo number_format(($v['goods_price']*$v['number']),2);?></td>
+										</tr>
+									</volist>
+									</tbody>
+								</table>
+							</div>
+			 </div>
+			 </form>
+			 <div class="invoice-footer">
+			 	<button type='submit' class="btn">提交订单</button>
+			 </div>
+		   </div>
+		</div>
+     </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/order/orderController'],function(main){
+          main.edit();
+        });
+    </script>
+</block>

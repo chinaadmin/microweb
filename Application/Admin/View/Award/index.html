@@ -1,0 +1,98 @@
+<extend name="Common:base" />
+<block name="content">
+<style>
+.addGoods{
+	cursor: pointer;
+	color:blue;
+}
+</style>
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">{$title}</div>
+        </div>
+        <div class="portlet-body">
+            <div class="row-fluid">
+                <div class="btn-group">
+                   <a class = 'btn green' href = "{:U('edit')}">增加抽奖活动 <i class = "icon-plus"></i></a>
+                </div>
+                <form class = 'form-inline pull-right' action = "{:U('index')}">
+                	活动时间：<input class = "start_time" type = 'text' name = 'startTime'  placeHolder = '开始时间'  value = "{$Think.get.startTime}"/>&nbsp;到&nbsp;
+                	<input class = 'end_time' type = 'text'  name = 'endTime'   placeHolder = '结束时间'  value = "{$Think.get.endTime}"/>
+                	<input  type = 'text' name = "ap_name" placeHolder = "活动名称"  value = "{$Think.get.ap_name}"/>
+                	<button type = 'submit' class = 'btn green'>搜索</button>
+                </form>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>活动ID</th>
+                        <th>活动名称</th>
+                        <th>有效期</th>
+                        <th>用到的奖品</th>
+                        <th>参与人数/人次</th>
+                        <th>领到/未领到次数</th>
+                        <th>开启状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <volist name = 'list' id = 'voList'>
+             		<tr>
+                        <td>{$voList.ap_id}</td>
+                        <td>{$voList.ap_name}</td>
+                        <td>{$voList.ap_start_time|date = 'Y-m-d H:i:s',###}&nbsp;&nbsp;到&nbsp;&nbsp;{$voList.ap_end_time|date = 'Y-m-d H:i:s',###}</td>
+                        <!-- <td class = "addGoods"> -->
+                        <td>
+                        <!-- <php>
+                        	$goodsList = $m->getAwardGoods($voList['ap_id']);
+                        	$end = count($goodsList);
+                        </php>
+                        <volist name = "goodsList" id = 'voGoodsList' key="ink" >
+                        	{$voGoodsList.as_name}
+                        	<eq name = "ink" value = "$end"><else/>&nbsp;&nbsp;|&nbsp;&nbsp;</eq>
+                        </volist> -->
+
+                            <a tabindex="0" class="btn blue addGoods" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="{$voList.ap_name}活动奖品列表" data-content="<php>
+                            $goodsList = $m->getAwardGoods($voList['ap_id']);
+                            $end = count($goodsList);
+                            </php>
+                            <volist name = "goodsList" id = 'voGoodsList' key="ink" >
+                                {$voGoodsList.as_name}
+                            <eq name = "ink" value = "$end"><else/>&nbsp;&nbsp;|&nbsp;&nbsp;</eq>
+                            </volist>">查看活动所有奖品</a>
+
+                        </td>
+                        <td>
+                        	<a href = "{:U('draw/index',['ap_id'=>$voList['ap_id']])}">{$voList.join_count|default = 0}/{$voList.ap_count|default = 0}</a>
+                        </td>
+                        <td>{$voList.receive_count|default = 0}/{$voList.not_receive_count|default = 0}</td>
+                        <td>
+                            <eq name = 'voList.ap_is_using' value = '1'><a class="btn green switchState" data-apid="{$voList.ap_id}" data-val='0' data-toggle="tooltip" data-placement="bottom" title="点击按钮关闭活动">已开启</a><else/><a class="btn switchState" data-apid="{$voList.ap_id}" data-val='1' data-toggle="tooltip" data-placement="bottom" title="点击按钮开启活动">未开启</a></eq>
+                        </td>
+                        <td>
+                            
+                            	<a class = 'btn green' href = "{:U('edit',['id' => $voList['ap_id']])}">编辑</a>
+                            	<a class = 'btn green js-del' url = "{:U('del',['id' => $voList['ap_id']])}">删除</a>
+                            
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+           <div class="row-fluid">
+                <div class="pagination pull-right">
+                    <ul>  {$_page}  </ul>               
+			     </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/Award/AwardController'],function(main){
+            main.index();
+        });
+    </script>
+</block>

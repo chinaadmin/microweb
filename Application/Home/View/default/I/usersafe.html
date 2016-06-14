@@ -1,0 +1,48 @@
+<extend name="Common:base"/>
+<block name="css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/safe-page.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/App/home/data-page.css">
+</block>
+<block name="content">
+<div id="content">
+  <include file="I/common"/>
+    <div class="data_box">
+      <h5>账户安全：<i>建议您启动全部安全设置，以保障账户安全！</i></h5>
+      <ul class="safe-items">
+                <li class="safe-item">
+                    <i class="sprite safe-icon safe-icon-complete"></i>
+                    <span>登录密码</span>
+                    <p>建议定期更换，可用6-20位字符，数字、字母或符号组合.</p>
+                    <a href="{:U('i/passwordPage')}">修改</a>
+                </li>
+                <li class="safe-item">
+                  <i class="sprite safe-icon {$email_class}"></i>
+                  <span>邮箱绑定</span>
+                  <p>可用于登录,忘记密码时也可通过邮件找回密码.</p>
+                  <eq name = 'ifCheckEmail'  value = '1'>
+                            <a href="{:U('editEmail')}">修改</a>       
+                  <else/>
+                            <a href="{:U('checkEmail')}">绑定</a>
+                  </eq>
+                </li> 
+                <li class="safe-item">
+                  <i class="sprite safe-icon {$phone_class}"></i>
+                  <span>手机绑定</span>
+                    <p>可用于登录,忘记密码时也可通过短信绑定找回密码.</p>
+                   <eq name = 'ifCheckMobile'  value = '1'>
+                            <a href="{:U('editMobile')}">修改</a>       
+                  <else/>
+                            <a href="{:U('phoneVerify')}">绑定</a>
+                  </eq>
+                </li>            
+        </ul>
+    </div>
+</div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		seajs.use('controller/baseinfoController.js',function(main){
+			main.init();
+		});
+	</script>
+</block>

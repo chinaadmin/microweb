@@ -1,0 +1,115 @@
+<extend name="Common:base" />
+<block name="top"></block>
+<block name="left"></block>
+<block name="css">
+<load href="__CSS__/App/admin/order/order.css"/>
+<style>
+@media print{
+	button[name="confirmPrint"] {
+	        display:none;
+	    }
+}
+@page {
+  size: A4;
+}
+.page-content{
+	margin-left:0px;
+}
+.page-header-fixed .page-container{
+	margin-top:0px;
+}
+</style>
+</block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">打印发货单</div>
+        </div>
+        <div class="portlet-body">
+		<volist name='lists' id='v'>
+			<div class="print print-sales">
+				<div class="print-title">
+				 <h3>购物清单</h3>
+				 <ul>
+				 	<li>配送方式：
+					<eq name='v.shipping_type' value='0'>自提</eq>
+					<eq name='v.shipping_type' value='1'>物流配送</eq>
+					<eq name='v.shipping_type' value='2'>门店配送</eq>
+					</li>
+					<!-- <li>物流公司：{$v.lc_name|default=''}</li>
+					<li>物流单号：{$v.send_num|default=''}</li> -->
+				 </ul>
+				</div>
+			<div class="print-content">
+				<div class="portlet-body">
+					<div class="order-receipt">
+						<p class='inline'>下单会员：{$v.username}</p>
+						<p class='inline'>收货人：{$v.name}</p>
+						<p>{$v.address}</p>
+						<p>客户备注：{$v.postscript|default=''}</p>
+					</div>
+								<table class="table table-striped table-bordered table-advance table-hover">
+									<thead>
+										<tr>
+											<th>序列</th>
+											<th>商品名称</th>
+											<th>商品规格</th>
+											<th>购买数量</th>
+											<th>单价（元）</th>
+											<th>优惠（元）</th>
+											<th>实收（元）</th>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="v.rec" id="vo" key='key'>
+										<assign name='count' value='$key'/>
+										<tr>
+											<td>{$key}</td>
+											<td>{$vo.name}</td>
+											<td>
+												<notempty name="vo.norms_value">
+													<volist name='vo.norms_value' id='v'>
+														{$v.name}:{$v.value}<br/>
+													</volist>
+												</notempty>
+											</td>
+											<td>{$vo.number}</td>
+											<td>{$vo.market_price}</td>
+											<td>{$vo['goods_price']-$vo['market_price']}</td>
+											<td>{$vo['goods_price']*$vo['number']}</td>
+										</tr>
+									</volist>
+									</tbody>
+								</table>
+							</div>
+			 </div>
+			<div class='print-footer'>
+				<p class='footer-inline'>数量累计：{$count}</p>
+				<p class='footer-inline'>实收款：￥{$v.money_paid|default='0.00'}</p>
+				<p class='footer-inline'>优惠总金额：￥{$v['goods_amount']-$v['money_paid']}</p>
+				<p class='footer-inline'>制单时间：{:date('Y-m-d H:i:s',time())}</p>
+				<p class='footer-inline'></p>
+				<p class='footer-inline'>创建时间：
+				  <notempty name="v.send_time">
+				    {$v.send_time|date='Y-m-d H:i:s',###}	
+				  </notempty>
+				</p>
+			</div>
+			</div>	
+		</volist>	
+		<div class='print print-footer' style="text-align:right;">
+				<button type='button' class='btn' id='all-print'>打印</button>
+				<button type='button' class='btn'>取消</button>
+			</div>
+		</div>
+</div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+     seajs.use(['controller/order/orderController'],function(main){
+    	   main.index();
+     }); 
+    </script>
+</block>

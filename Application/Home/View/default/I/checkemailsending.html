@@ -1,0 +1,72 @@
+<extend name="Common:base" />
+<block name="css">
+<link type="text/css" rel="stylesheet"
+	href="__CSS__/App/home/data-page.css">
+<link type="text/css" rel="stylesheet"
+	href="__CSS__/App/home/email-page.css">
+<link type="text/css" rel="stylesheet"
+	href="__CSS__/App/home/email-1-page.css">
+	<style>
+	label.error {
+	   margin-left:5px;
+	}
+	#verify-code{
+	  cursor: pointer;
+	}
+	</style>
+</block>
+<block name="content">
+<div id="content">
+	<include file="I/common" />
+	<div class="data_box">
+      <div class="usersafe-tip clearfix">
+      <div class="usersafe-crumbs">
+          <a href="safe-page.html">账户安全</a><i>&gt;</i><span style="color:#ff8c00;">邮箱验证</span>
+      </div>
+      <div class="sersafe-steps">
+                    <ol>
+                        <li class="active">
+                            <s class="bg"></s>
+                            <div class="step step-sprite">
+                                <i>1、</i>
+                                <span>验证邮箱</span>
+                            </div>
+                        </li>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite sprite-bg">
+                                <i>2、</i>
+                                <span>发送邮件</span>
+                            </div>
+                        </li>
+                        <li>
+                            <s class="bg"></s>
+                            <div class="step step-sprite">
+                                <i>3、</i>
+                                <span>验证成功</span>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+      <div class="verify-form modify-email">
+                <ul>
+                    <li>
+                        <p>已发送邮件至&nbsp;&nbsp;{$sendEmail}</p>
+                    </li>
+                    <li class="code_box">
+                        <p>此邮件1小时内有效,请尽快登录邮箱,点击验证链接完成验证</p>
+                    </li>
+                    <li>
+                        <a href="{$loginEmail}" target = '__blank'><input type="submit" value="登录邮箱" class="btnNextPhone button-next"></a>
+                    </li>
+                </ul>
+            </div>
+    </div>
+</div>
+</block>
+<block name="js"> <script type="text/javascript">
+	seajs.use('controller/usersafeController.js', function(usersafe) {
+		usersafe.checkEmailPage();
+	});
+</script> </block>

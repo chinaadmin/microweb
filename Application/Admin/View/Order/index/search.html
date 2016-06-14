@@ -1,0 +1,153 @@
+<form class="form-search form-horizontal" action="{:U('index')}" method="GET" style="margin-right:15px;">
+   <ul class='index-ul'>
+   	<li>
+       <div class="control-group index-ul-group">
+           <label class="control-label">
+               关键字
+           </label>
+           <div class="controls">
+               <input type="text" class="m-wrap" name='order_keywords' value="{$select.order_keywords|default=''}" placeholder="订单号/下单会员/提货码">
+           </div>
+       </div>
+	    <div class="control-group index-ul-group">
+           <label class="control-label">
+               订单总额
+           </label>
+           <div class="controls">
+               <input type="text" name="start_money" value="{$select.start_money|default=''}" class="m-wrap small">
+			   -&nbsp;<input type="text" name="end_money" value="{$select.end_money|default=''}" class="m-wrap small">
+           </div>
+       </div>
+	   <div class="control-group index-ul-group">
+           <label class="control-label">
+               下单时间
+           </label>&nbsp;&nbsp;&nbsp;&nbsp;
+          <!--  <div class="controls">
+               <input type="text" value="{$select.start_time|default=''}" size="16" class="small start_time m-wrap m-ctrl-medium date-picker" id="start_time" name="start_time">
+			   -&nbsp;<input type="text" value="{$select.end_time|default=''}" size="16"  class="small end_time m-wrap m-ctrl-medium date-picker" id="end_time" name="end_time">
+           </div> -->
+           <div class="input-append date date-picker start_time">
+                <input type="text" value="{$select.start_time|default=''}" size="16" class="span9 start_time m-wrap m-ctrl-medium date-picker" id="start_time" name="start_time">
+                <span class="add-on" id="start_time"><i class="icon-calendar"></i></span>
+              </div>
+              <div class="input-append" style="width:20px;margin-left:-12px;margin-right:5px;">
+                <span class="add-on" style='background:#fff;border:none;'>~</span>
+              </div>
+              <div class="input-append date date-picker end_time">
+                <input type="text" value="{$select.end_time|default=''}" size="16" style="width:128px;"  class="span9 end_time m-wrap m-ctrl-medium date-picker" id="end_time" name="end_time">
+                <span class="add-on"><i class="icon-calendar"></i></span>
+              </div>
+       </div>
+   	</li>
+	<li>
+       <div class="control-group index-ul-group">
+           <label class="control-label">
+               订单状态
+           </label>
+           <div class="controls">
+              <select class="m-wrap js-cat select-query" name="order_status">
+                 	<option value="-1">订单状态</option>
+					<volist name="query_status['status']" id="vo">
+							<option value="{$key}" <present name="select.order_status"><eq name='select.order_status' value='$key'>selected="selected"</eq></present>>{$vo}</option>
+					</volist>
+					
+                </select>
+           </div>
+       </div>
+	    <div class="control-group index-ul-group">
+           <label class="control-label">
+               支付状态
+           </label>
+           <div class="controls">
+               <select class="m-wrap js-cat select-query" name="pay_status" style='width:282px;'>
+                 	<option value="-1">支付状态</option>
+					<volist name="query_status['pay_status']" id="vo">
+							<option value="{$key}" <present name="select.pay_status"><eq name='select.pay_status' value='$key'>selected="selected"</eq></present>>{$vo}</option>
+					</volist>
+                </select>
+           </div>
+       </div>
+	   <div class="control-group index-ul-group">
+           <label class="control-label">
+               发货状态
+           </label>
+           <div class="controls">
+              <select class="m-wrap js-cat select-query" name="receipt_status">
+                 	    <option value="-1">发货状态</option>
+						<volist name="query_status['shipping_status']" id="vo">
+							<option value="{$key}" <present name="select.receipt_status"><eq name='select.receipt_status' value='$key'>selected="selected"</eq></present>>{$vo}</option>
+					    </volist>
+                </select>
+           </div>
+       </div>
+   	</li>
+	<li>
+       <div class="control-group index-ul-group">
+           <label class="control-label">
+               付款方式
+           </label>
+           <div class="controls">
+               <select class="m-wrap js-cat select-query" name="pay_type">
+                 	    <option value="">支付方式</option>
+						<volist name="pays" id="vo">
+							<option value="{$vo.code}" <present name="select.pay_type"><eq name='select.pay_type' value='$vo.code'>selected="selected"</eq></present>>{$vo.name}</option>
+					    </volist>
+                </select>
+           </div>
+       </div>
+	    <div class="control-group index-ul-group">
+           <label class="control-label">
+               订单来源
+           </label>
+           <div class="controls">
+              <select class="m-wrap js-cat select-query" name="order_source" style="width:282px;">
+                 	    <option value="-1">订单来源</option>
+						<volist name="query_status['source']" id="vo">
+							<option value="{$key}" <present name="select.order_source"><eq name='select.order_source' value='$key'>selected="selected"</eq></present>>{$vo}</option>
+					    </volist>
+                </select>
+           </div>
+       </div>
+	   <div class="control-group index-ul-group">
+           <label class="control-label">
+               配送方式
+           </label>
+           <div class="controls">
+               <select class="m-wrap js-cat select-query" name="send_type">
+                 	<option value="-1">配送方式</option>
+					<option value="1" <eq name='select.send_type' value='1'>selected="selected"</eq>>普通物流</option>
+					<option value="2" <eq name='select.send_type' value='2'>selected="selected"</eq>>送货上门</option>
+					<option value="0" <eq name='select.send_type' value='0'>selected="selected"</eq>>门店自提</option>
+                </select>
+           </div>
+       </div>
+   	</li>
+	<li>
+       <div class="control-group index-ul-group">
+           <label class="control-label">
+               门店名称
+           </label>
+           <div class="controls">
+               <select class="m-wrap js-cat select-query" name="stores">
+                 	    <option value="-1">全部门店</option>
+						<volist name="stores" id="vo">
+							<option value="{$vo.stores_id}" <present name="select.stores"><eq name='select.stores' value='$vo.stores_id'>selected="selected"</eq></present>>{$vo.name}</option>
+					    </volist>
+                </select>
+           </div>
+       </div>
+   	</li>
+	<li>
+       <div class="control-group index-ul-group">
+           <label class="control-label">
+               
+           </label>
+           <div class="controls">
+           	<input type = 'hidden' name = 'uid' value = "{$Think.get.uid}"/>
+              <button type="submit" class="btn green">搜索</button>
+			  <a href="{:U('Order/index')}" class="btn green">重置</a>
+           </div>
+       </div>
+   	</li>
+   </ul>	  
+</form>

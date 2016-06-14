@@ -1,0 +1,63 @@
+<div class="menuList">
+    <h2>我的好货</h2>
+    <ul>
+
+        <li class="title">
+            <a class="item">账户管理</a>
+        </li>
+
+        <li <eq name="userSelCurrent" value="baseinfo">class="active"</eq>>
+            <a href="{:U('I/index')}" class="item">个人中心</a>
+        </li>
+
+        <li <eq name="userSelCurrent" value="usersafe">class="active"</eq>>
+            <a href="{:U('I/usersafe')}" class="item">账户安全</a>
+        </li>
+
+        <li <eq name="userSelCurrent" value="recaddress">class="active"</eq>>
+        <a href="{:U('I/recaddress')}" class="item">收货地址</a>
+        </li>
+
+        <li <eq name="userSelCurrent" value="collect">class="active"</eq>>
+            <a href="{:U('Collect/myCollect')}" class="item">我的收藏</a>
+        </li>
+
+        <li class="hr">
+            <hr />
+        </li>
+
+        <li class="title">
+            <a class="item">交易管理</a>
+        </li>
+
+        <li <eq name="userSelCurrent" value="order">class="active"</eq>>
+            <a href="{:U('Order/index')}" class="item">我的订单</a>
+        </li>
+
+        <li <eq name="userSelCurrent" value="coupon">class="active"</eq>>
+        <a href="{:U('I/coupon')}" class="item">我的优惠劵</a>
+        </li>
+
+        <li <eq name="userSelCurrent" value="refund">class="active"</eq>>
+            <a href="{:U('Refund/index')}" class="item">退款/退货</a>
+        </li>
+
+        <li <eq name="userSelCurrent" value="integral">class="active"</eq>>
+        <a href="{:U('I/integral')}" class="item">我的好货币</a>
+        </li>
+        <li class="hr">
+            <hr />
+        </li>
+        <li class="title">
+            <a class="item">反馈推荐</a>
+        </li>
+
+        <li <eq name="userSelCurrent" value="opinion">class="active"</eq>>
+            <a href="{:U('I/opinion')}" class="item">意见反馈</a>
+        </li>
+
+        <li <eq name="userSelCurrent" value="recommend">class="active"</eq>>
+            <a href="{:U('I/recommend')}" class="item">我要推荐</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,53 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><empty name="info.gr_id">添加<else/>编辑</empty>菜单分组</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="from_edit" action="{:U('MenubarGroup/update')}" method="post" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">分组名称<span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" name="name" class="m-wrap" value="{$info.name}"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">图标</label>
+                <div class="controls">
+                    <input type="text" id="icon" name="icon" class="m-wrap" value="{$info.icon|default='icon-file-text'}"/>
+                    <span class="help-inline">
+                        <span id="group-icon" style="font-size:18px;margin-left:10px;"><i class="{$info.icon|default='icon-file-text'}" ></i></span>
+                        <a href="#icon-view" data-toggle="modal">查看图标示例</a>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="hidden" name="gr_id" value="{$info.gr_id}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="{:U('MenubarGroup/index')}">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="icon-view" class="modal hide" style="width:700px;">
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button"></button>
+        <h3>图标示例</h3>
+    </div>
+    <div class="modal-body">
+        <include file="Common:icon" />
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        seajs.use(['controller/menubar/groupController'],function(group){
+            group.edit();
+        });
+    </script>
+</block>

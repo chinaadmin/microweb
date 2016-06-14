@@ -1,0 +1,42 @@
+<extend name="Common:base" />
+<block name="css">
+<link type="text/css" rel="stylesheet"
+    href="__CSS__/App/home/data-page.css">
+<link type="text/css" rel="stylesheet"
+    href="__CSS__/App/home/opinion-page.css">
+</block>
+<block name="content">
+<div id="content">
+    <include file="I/common" />
+    <form id = 'suggestForm'  action = ''>
+	<div class="data_box">
+		<h2>尊敬的用户：</h2>
+		<div class="massage-box">您好，感谢您对必好货的信任和支持！网站需要改进的地方还有很多，我们深知必好货的进步与未来离不开您宝贵的意见和建议，于此，我们表示由衷感谢。</div>
+		<div class="advise-box">
+			您的建议是关于：
+			<div class="check-box">
+				<span>
+					<input type="checkbox" name = 'type[]'  value = '1' >网站体验需改进&nbsp;&nbsp;
+					<input type="checkbox"   name = 'type[]'   value = '2' >网站缺失（bug）&nbsp;&nbsp;
+					<input type="checkbox"   name = 'type[]'   value = '3' >商品不满意&nbsp;&nbsp;
+					<input type="checkbox"   name = 'type[]'   value = '4' >我也不知道选什么&nbsp;&nbsp;
+				</span>
+			</div>
+		</div>
+		<div class="advise-content">
+			<span>您的建议内容是：</span>
+			<textarea class="text-box"   name = 'content'></textarea>
+		</div>
+		<div class="present-box">
+			<span>您的联系邮箱:<input type="text" class="email-box"
+				placeholder="您的邮箱"  name = 'email'></span><a href="javascript:void(0);" class="btn1" id = 'a_submit'>提交</a>
+		</div>
+	</div>
+	</form>
+</div>
+</block>
+<block name="js"> <script type="text/javascript">
+    seajs.use('controller/IController', function(IController) {
+    	IController.suggestion();
+    });
+</script> </block>

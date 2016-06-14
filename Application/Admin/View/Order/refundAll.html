@@ -1,0 +1,140 @@
+<extend name="Common:base" />
+<block name="css"><load href="__CSS__/App/admin/order/order.css"/></block>
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">退款退貨</div>
+        </div>
+        <div class="portlet-body">
+			<ul class="breadcrumb">
+				<li>
+					<a href="{:U('Order/index')}">订单管理</a>
+					<span class="icon-angle-right"></span>
+					退款退貨
+				</li>
+			</ul>
+			<div class="row-fluid">
+
+					<div class="span12">
+
+						<div id="form_wizard_1" class="portlet box blue">
+
+							<div class="portlet-title">
+
+								<div class="caption">
+
+									<i class="icon-reorder"></i>订单号：{$data[0]['orderSn']}</span>
+
+								</div>
+							</div>
+
+							<div class="portlet-body form">
+								<form id="refund_form" onsubmit='toSubmit()' id="refundAll" class="form-horizontal" method="post" action="__CONTROLLER__/doAllRefund" novalidate="novalidate">
+									<input type="hidden" name="order_id" value="{$orderInfo.order_id}"/>
+									<input type="hidden" name="uid" value="{$orderInfo.uid}"/>
+									<div class="form-wizard">
+										<div class="navbar steps">
+										<foreach name="data" item="vo">
+											<div class="navbar-inner" style="border:1px solid #eee;">
+                                               <div class="goods-left">
+                                               	<img src="{$vo.photo}">
+												<span>
+												   {$vo.name}
+												  <p style='margin-top:5px; font-weight:bolder;'>￥{$vo.price}X{$vo.maxNum}</p>
+												</span>
+                                               </div>
+												<div class="goods-right">
+													￥{$vo['price']*$vo['maxNum']}
+												</div>
+
+											</div>
+
+											</foreach>
+
+										</div>
+
+									
+										<div class="tab-content">
+											<div id="tab1" class="tab-pane active">
+		                                        <ul class="breadcrumb">
+													<li>
+													
+													</li>
+				                                </ul>											
+												<div class="control-group">
+													<label class="control-label">退款金额<span class="required">*</span></label>
+													<div class="controls">
+														<input type = 'text' name="max_refund_money" class = 'maxRefundMoney' readonly  value="{$maxRefundMoney}" />
+													</div>
+
+												</div>
+
+                                                <div class="control-group">
+													<label class="control-label">退款原因</label>
+													<div class="controls">
+														<select name="reasons">
+															<option value="0">请选择</option>
+															<volist name="reason" id="vo">
+																<option value="{$vo.name}">{$vo.value}</option>
+															</volist>
+														</select>
+													</div>
+												</div>
+
+												<div class="control-group">
+													<label class="control-label">操作</label>
+													<div class="controls">
+														<label class="checkbox">
+														<input type="checkbox" value="1" name="refund_status"/> 同意退款退货
+														</label>
+														<label class="checkbox">
+														<input type="checkbox" value="1" name="receipt"/> 已收货
+														</label>
+													</div>
+												</div>
+
+												<div class="control-group">
+													<label class="control-label">退货描述</label>
+													<div class="controls">
+														<textarea name="mark" class="span4 m-wrap"></textarea>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+										<div class="form-actions clearfix">
+											<button type="submit" class="btn blue button-next">
+											确定 
+											</button>
+											<!-- <input type="submit" class="btn blue button-next" value="提交" /> -->
+											<a class="btn blue button-next" href="{:U('Order/index')}">
+											取消
+											</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+        </div>	
+    </div>	
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+    	var goods_price = "{$data['goods_price']}";
+        seajs.use(['controller/order/orderController'],function(main){
+          main.info();
+        });
+    </script>
+    <script type="text/javascript">
+    	function toSubmit(){
+    		if(confirm('是否确认退款退货？')){
+    			$('#refundAll').submit();
+    		}
+    	}
+    </script>
+</block>

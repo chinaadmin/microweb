@@ -1,0 +1,113 @@
+<extend name="Common:base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">编辑店员资料</div>
+        </div>
+        <div class="portlet-body form">
+            <form id="user_edit" action="{:U('edit_stores_user')}" method="post" class="form-horizontal">
+          <notempty name = 'stores_id'>
+            <div class="control-group">
+                <label class="control-label">所属门店:</label>
+                <div class="controls">
+                    <select class="m-wrap span12" name="stores_id"  style="width:223px;" <MyTag:rule name="Stores/change_stores_permission"><else/>disabled</MyTag:rule> >
+                            <option value="-1">所属门店</option>
+                            {~$storesList = $__this__->showStoresList()}
+                            <volist name = 'storesList'  id = 'storesListId'>
+                                <option value="{$storesListId.stores_id}"  <eq name = 'stores_id' value = '$storesListId.stores_id'>selected</eq>>{$storesListId.name}</option>
+                            </volist>
+                     </select>
+                </div>
+            </div>
+            </notempty>
+            <div class="control-group">
+                <label class="control-label">帐号:</label>
+					<div class="controls">
+						<input type="text" name="username" class="m-wrap" value="{$info.username}"  disabled/>
+					</div>
+		   </div>
+		   
+            <div class="control-group">
+                <label class="control-label">真实姓名:</label>
+                    <div class="controls">
+                        <input type="text" name="nickname" class="m-wrap" value="{$info.nickname}" />
+                    </div>
+           </div>
+           
+            <div class="control-group">
+                <label class="control-label">联系电话:</label>
+                <div class="controls">
+                    <input type="text" name="mobile" class="m-wrap" value="{$info.mobile}" />
+                </div>
+           </div>
+
+          <div class="control-group">
+                <label class="control-label">性别:</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="sex" value="1" <eq name="info.sex" value="1">checked</eq>/>
+                        男
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="sex" value="2" <eq name="info.sex" value="2">checked</eq>/>
+                        女
+                    </label>
+                </div>
+            </div>
+           
+            <div class="control-group">
+                <label class="control-label">邮箱:</label>
+                    <div class="controls">
+                        <input type="text" name="email" class="m-wrap" value="{$info.email}" />
+                    </div>
+          </div>
+          
+        <div class="control-group">
+                <label class="control-label">状态</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="status" value="0" <eq name="info.status" value="0">checked</eq>/>
+                        禁用
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" <eq name="info.status" value="1">checked</eq>/>
+                        启用
+                    </label>
+                </div>
+            </div>
+            
+       <notempty name = 'Think.get.expand'> 
+	         <div class="control-group">
+	                <label class="control-label">密码:</label>
+	                    <div class="controls">
+	                        <input type="password" name="password" class="m-wrap" value="" />
+	                    </div>
+	          </div>
+	         
+	         
+	        <div class="control-group">
+	                <label class="control-label">确认密码:</label>
+	                    <div class="controls">
+	                        <input type="password" name="confirmPassword" class="m-wrap" value="" />
+	                    </div>
+	          </div>
+          </notempty>
+			<div class="form-actions">
+			    <input type="hidden" name="uid" class="m-wrap" value="{$Think.get.uid}"/>
+                <button type="submit" class="btn blue">提交</button>
+                <a class="btn" href="javascript:location.href = document.referrer">返回</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+      var ifOpenSidebar = '{$ifOpenSidebar}';
+      seajs.use(['controller/stores/userinfo'],function(main){
+        main.userinfo({ifOpenSidebar:ifOpenSidebar});
+      });
+    </script>
+</block>
