@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/usetting.css"/>
+
+
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script src="/js/user/userS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/user/userC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/user/user.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+  <title>账户安全</title>
+</head>
+<body ng-app="app" ng-controller="ucenterC">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="#" class="btnBack backNoText" ng-back="ucenter" ><i class="icon icon-back marR4"></i></a>
+          <span class="title">
+            用户中心
+          </span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content top48">
+    	<div class="usersBox itemBox">
+        <div class="title"><span class="text">账户安全等级<em ng-bind="secLevel"></em></span>
+          <span class="tips">请设置下列项目保护账号</span>
+        </div>
+    	</div>
+      <div class="usersBox itemBox">
+        <div class="item" ng-click="toPage('bindPhone')">
+          <span class="text">绑定手机</span>
+          <i class="icon arrow"></i>
+        </div>
+        <div class="item" ng-click="toPage('changePassword')">
+          <span class="text">登陆密码</span>
+          <i class="icon arrow"></i>
+        </div>
+
+      </div>
+
+      <div class="submit"><a class="btn" ng-show="myVal" ng-click="logout()">退出账号</a></div>
+    </div>
+  </div>
+</body>
+</html>

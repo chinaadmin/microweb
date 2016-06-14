@@ -1,0 +1,353 @@
+
+<style>
+@charset "utf-8";
+body,ul,p,strong,span,h4 { margin: 0; padding: 0; }
+li { list-style: none; }
+a { text-decoration: none; }
+.clearF {zoom:1;}
+.clearF:after{content:"";height:0;visibility:hidden;display:block;clear:both;}
+             /*第一栏*/ 
+.center { border: 1px solid #497DBC; width: 9.6cm; height: auto; margin: 10px auto; }
+.one_pic { width: 9.6cm; height: 1.5cm; border-bottom: 1px solid #497DBC; }
+.viw_left { width: 4.8cm; height: 1.5cm; border-right: 1px solid #497DBC; float: left; }
+.viw_left .logo_pd { width: 1.71cm; height: 0.95cm; display: block; float: left; padding: 0.3cm 0 0 0.1cm; }
+.viw_left img { width: 1.71cm; height: 0.95cm; }
+.address { width: 2.7cm; height: 1.03cm; float: left; padding: 0.3cm 0.1cm 0; }
+.address img { width: 0.35cm; height: 0.33cm; }
+.viw_left .address span { font-size: 13px; }
+
+.viw_right { width: 4.7cm; height: 1.5cm; float: left;}
+.viw_right img { width: 4.4cm; height: 1.2cm; padding: 0.2cm 0.2cm 0; }
+
+
+         /* 第二栏*/
+.two_pic { width: 9.6cm; height: 1cm; border-bottom: 1px solid #497DBC; } 
+.two_pic .two_pic_left { border-right: 1px solid #497DBC; float: left; width: 6.2cm; height: 0.8cm; padding: 0.1cm 0.1cm; }
+.two_pic .two_pic_left p { font-size: 13px; }
+.two_pic .two_pic_right strong { font-size: 13px; }
+.two_pic .two_pic_right { float: left; width: 2.8cm; height: 1cm; padding: 0 0.1cm;} 
+.stop { padding-left: 1.2cm; font-size: 13px; } 
+
+
+.three_pic { width: 9.6cm; height: 2cm; border-bottom: 1px solid #497DBC; } 
+.three_pic .three_pic_left p { font-size: 13px; padding-bottom: 0.2cm; } 
+.three_pic .three_pic_right { border-bottom: 1px solid #497DBC; float: left; width: 2.96cm; height: 1cm; padding: 0 0.1cm;} 
+.three_pic .three_pic_left { border-right: 1px solid #497DBC; float: left; width: 6.2cm; height: 1.2cm; padding: 0.4cm 0.1cm; }
+.three_pic_right p { width: 2.8cm; height: 1cm;}
+.three_pic_right strong { font-size: 12px; }
+.three_pic_right span { }
+.lineH { height: 0.5cm; font-size: 14px; display: block; padding-left: 1.2cm; }
+.tonable { padding-left: 0.5cm; }
+
+
+
+.four_pic { border-bottom: 1px solid #497DBC; width: 9.6cm; height: 0.5cm; }
+.four_pic li { float: left; width: 2.38cm; height: 0.5cm; border-right: 1px solid #497DBC; text-align: center; font-size: 13px; line-height: 0.5cm; }
+.four_pic .nan { border-right: none; }
+.fontZ li {  font-family: arial; font-weight: bold; }
+
+.six_pic { border-bottom: 1px solid #497DBC; width: 9.6cm; height: 0.5cm; }
+.six_pic span { font-size: 13px; }
+.six_pic .six_pic_left { width: 7.1cm; height: 0.5cm; line-height: 0.5cm; border-right: 1px solid #497DBC; float: left; padding-left: 0.1cm;}
+.six_pic .six_pic_right { width: 2.15cm; height: 0.5cm; line-height: 0.5cm; float: left; padding-left: 0.1cm;}
+
+
+
+    /*  第七栏*/
+
+.seven_pic { width: 9.6cm; height: 2cm; border-bottom: 1px solid #497DBC; position: relative; }
+.seven_pic_left { width: 4.6cm; height: 1.8cm; position: absolute; left: 0; top: 0; border-right: 1px solid #497DBC; padding: 0.1cm; }
+.seven_pic_right { width: 4.77cm; height: 2cm; position: absolute; right: 0; top: 0; }
+.seven_pic_left p { font-size: 13px; padding-bottom: 0.1cm }
+.right_top { width: 4.77cm; height: 1.2cm; border-bottom: 1px solid #497DBC; }
+.right_top .right_top_L { width: 2.16cm; height: 1.2cm; font-size: 13px; border-right: 1px solid #497DBC; float: left; padding: 0 0.1cm; position: relative;}
+.right_top .right_top_R { width: 2.18cm; height: 0.8cm; float: left; font-size: 13px; padding: 0.1cm; }
+.right_top_L .pad { padding-left: 0.1cm; }
+.right_top_L .opin{ padding-left: 0.8cm; }
+.right_top_L .kang { position: absolute; right: 0.1cm; bottom: 0; font-size: 10px; }
+.right_btm { width: 4.6cm; height: 0.8cm; font-size: 13px; }
+.right_btm strong { padding-left: 0.1cm; }
+
+
+      /* 第八栏 */
+
+.eight_pic { width: 9.6cm; height: 0.5cm; }
+.eight_pic p { font-size: 13px; text-align: center; height: 0.5cm; line-height: 0.5cm; }        
+.eight_pic span { padding-right: 0.1cm; }
+
+
+
+.cllter_bg { border: 1px solid #497DBC; margin: 20px auto; width: 9.6cm; height: auto; }
+.cllter_bg .viw_right { position: relative; }
+.cllter_bg .viw_right img { width: 3cm; height: 1.4cm; padding: 1px 0 0 1px;}
+.cllter_bg .viw_right .show { width: 1.8cm; height: 1.4cm; position: absolute; left: 3cm; top: 0; }
+.cllter_bg .viw_right .show p { padding: 0.1cm 0 0.1cm 0.1cm; }
+.cllter_bg .viw_right .show .padleft { text-align: center; }
+.cllter_bg .viw_right strong { font-size: 12px; }
+
+
+.cllter_bg .three_bg { width: 9.6cm; height: 1cm; border-bottom: 1px solid #497DBC; }
+.cllter_bg .three_bg .three_bg_left { float: left; width: 9.5cm; height: 0.9cm; padding: 0.1cm 0 0 0.1cm;}
+.cllter_bg .three_bg .three_bg_left p { font-size: 13px; overflow: hidden; }
+
+
+.sree_bg { width: 9.6cm; height: 3cm; border-bottom: 1px solid #497DBC; }
+.sree_bg_left { width: 7.2cm; height: 3cm; border-right: 1px solid #497DBC; float: left; }
+.sree_bg_left .bg_top { width: 7.2cm; height: 1cm; border-bottom: 1px solid #497DBC; }
+.bg_top .two_show p { font-size: 13px; padding: 0.1cm 0 0 0.1cm;}
+
+.bg_btm { width: 7.2cm; height: 2cm; }
+.bg_btm p { padding: 0.1cm 0 0 0.1cm; font-size: 13px; }
+.bg_btm span { padding-left: 0.1cm; }
+
+.sree_bg_right { width: 2.3cm; height: 3cm; float: left; }
+.sree_bg_right img { width: 2.36cm; height: 2.4cm; display: block; }
+.sree_bg_right p { width: 2.15cm; height: 0.5cm; line-height: 0.5cm; display: block; text-align: center; margin-left:0.1cm; position: relative; }
+.sree_bg_right span { width: 2.15cm; height: 0.5cm; position: absolute; left: 0; top: 1px; color: #fff; font-size: 13px; z-index: 100; }
+.sree_bg_right .imgeS { width: 2.15cm; height: 0.5cm; padding: 0;  z-index: 99; }
+
+
+.stop_bg { width: 9.6cm; height: 0.5cm; }
+.stop_bg p { text-align: center; font-size: 12px; height: 0.5cm; line-height: 0.5cm;}
+
+table,tbody, tr, td { padding: 0; margin: 0; }
+.td_style { width: 100px; height: 20px; border: none; }
+
+
+</style>
+
+
+<!-- <input type="button" value="打印" /> -->
+<div class="center">
+	       <!-- 第一栏 -->
+	<div class="one_pic clearF">
+		<div class="viw_left">
+			<a href="javascript:;" class="logo_pd"><img alt="1" src="http://www.t-bihaohuo.cn/Mobile/mobile/images/waycill/logo.png"></a>
+			<div class="address">
+				<p>
+					<a href="javascript:;"><img alt="3" src="http://www.t-bihaohuo.cn/Mobile/mobile/images/waycill/nb.png"></a>
+					<strong><span>：</span>95353</strong>
+				</p>
+			    <p><span>www.deppon.com</span></p>
+			</div>
+		</div>
+		<div class="viw_right">
+			<a href="javascript:;"><img alt="2" src="http://www.tp-bihaohuo.cn/BarCode/index/text/{$input['mailNo'] | default = 1234567890}"></a>
+		</div>
+	</div>
+	       <!-- 第二栏 -->
+    <div class="two_pic clearF">
+    	<div class="two_pic_left">
+    		<p>
+    			<strong>寄件</strong>:
+    			<span>{$input['senderName']}</span>
+    		</p>
+    		<p>
+    			<strong>电话</strong>:
+    			<span>{$input['senderMobile']}</span>
+    		</p>
+    	</div>
+    	<div class="two_pic_right">
+    		<p><strong>原寄地</strong>:</p>
+    		<span class="stop">{$input['senderProvinceName']}</span>
+    	</div>
+    </div>
+
+            <!-- 第三栏 -->
+    <div class="three_pic clearF">
+    	<div class="three_pic_left">
+    		<p>
+    			<strong>收件</strong>:
+    			<span>{$input['receiverName']}</span>
+                <span class="tonable">{$input['receiverMobile']}</span>
+    		</p>
+            <p>{$input['receiverAddress']}</p>
+    	</div>
+    	<div class="three_pic_right">
+    		<p>
+    			<strong>目的地</strong>:
+    		    <span class="lineH">{$input['receiverProvince']}</span>
+    		</p>
+    		<!-- <p> -->
+    			<strong>运输方式</strong>:
+    		    <span class="lineH">空运</span>
+    		<!-- </p> -->
+    	</div>
+    </div>
+
+            <!-- 第四栏 -->
+    <div class="four_pic fontZ">
+    	<ul class="clearF">
+    		<li>件数</li>
+    		<li>计费重量</li>
+    		<li>运费</li>
+    		<li class="nan">费用合计</li>
+    	</ul>
+    </div>
+             <!-- 第五栏 -->
+    <div class="four_pic">
+    	<ul class="clearF">
+    		<li>{$input['packageCount']}</li>
+    		<li>{$input['packageWeight']}</li>
+    		<li>{$input['freight']}</li>
+    		<li class="nan">{$input['totalCost']}</li>
+    	</ul>
+    </div>
+
+          <!-- 第六栏 -->
+    <div class="six_pic clearF">
+		<span class="six_pic_left">
+			<strong>付款方式</strong>:
+			<span>{$input['payType']}</span>
+		</span>
+		<span class="six_pic_right">
+			<strong>收件员</strong>:
+			<span></span>
+		</span>
+    </div>
+
+        <!-- 第七栏 -->
+    <div class="seven_pic clearF">
+    	<div class="seven_pic_left">
+    		<p>
+    			<strong>保价金额</strong>:
+    			<span>{$input['SupportValue']}</span>
+    		</p>
+    		<p>
+    			<strong>代收货款</strong>:
+    			<span>{$input['accountMount']}</span>
+    		</p>
+    		<p>
+    			<strong>代收账号</strong>:
+    			<span>{$input['account']}</span>
+    		</p>
+    	</div>
+    	<div class="seven_pic_right">
+    		<div class="right_top">
+    			<div class="right_top_L">
+    				<p><strong>收方签名</strong>:</p>
+                    <span class="opin"></span>
+                    <p class="kang">
+                       <span><strong class="pad">月</strong></span>
+                       <span><strong class="pad">日</strong></span>
+                    </p>
+    			</div>
+    			<div class="right_top_R">
+    				<strong>派件员</strong>:
+                    <span></span>
+    			</div>
+    		</div>
+    		<div class="right_btm"><strong>备注栏</strong>: <span></span></div>
+    	</div>
+    </div>
+
+              <!-- 第八栏 -->
+    <div class="eight_pic">
+        <p>
+            <span>上联为德邦快递存根联</span>
+            <span>下联为收件客户存根联</span>
+        </p>
+    </div>
+
+</div>
+
+<div class="cllter_bg">
+    <div class="one_pic clearF">
+        <div class="viw_left">
+            <a href="javascript:;" class="logo_pd"><img alt="1" src="http://www.t-bihaohuo.cn/Mobile/mobile/images/waycill/logo.png"></a>
+            <div class="address">
+                <p>
+                    <a href="javascript:;"><img alt="3" src="http://www.t-bihaohuo.cn/Mobile/mobile/images/waycill/nb.png"></a>
+                    <strong><span>：</span>95353</strong>
+                </p>
+                <p><span>www.deppon.com</span></p>
+            </div>
+        </div>
+        <div class="viw_right">
+            <a href="javascript:;"><img alt="2" src="http://www.tp-bihaohuo.cn/BarCode/index/text/{$input['mailNo'] | default = 1234567890}"></a>
+            <div class="show">
+                <p><strong>件数</strong>:</p>
+                <p class="padleft"><span>1-1</span></p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="three_bg clearF">
+        <div class="three_bg_left">
+            <p>
+                <strong>收件</strong>:
+                <span>{$input['receiverName']}</span>
+                <span class="tonable">{$input['receiverMobile']}</span>
+            </p>
+            <p>{$input['receiverAddress']}</p>
+        </div>
+        <div class="three_bg_right"></div>
+    </div>
+
+
+    <div class="sree_bg">
+        <div class="sree_bg_left">
+            <div class="bg_top">
+                <div class="two_show">
+                    <p>
+                        <strong>寄件</strong>:
+                        <span>{$input['senderName']}</span>
+                        <span>{$input['senderMobile']}</span>
+                        <span>{$input['senderProvinceName']}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="bg_btm">
+                <p><strong>货物名称</strong>:</p>
+                <p>
+                    <span>{$input['cargoName']}</span><span>x1</span>
+                    <span></span><span></span>
+                </p>
+            </div>
+        </div>
+        <div class="sree_bg_right">
+            <img alt="1" src="http://www.t-bihaohuo.cn/Mobile/mobile/images/waycill/app.png">
+            <p>
+                <img class="imgeS" src="../../images/waycill/black.jpg" alt="">
+                <span>官方APP</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="stop_bg">
+        <p><span>此运单仅供德邦签约客户使用</span>,<span>相关责任业务以双方合同为主。</span>
+        </p>
+    </div>
+</div>
+
+
+<!-- <table border="1" width="500"> -->
+    <!-- <thead>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </thead> -->
+    <!-- <tbody>
+        <tr>
+            <td class="td_style">
+                <div class="viw_left">
+                    <a class="logo_pd" href="javascript:;"><img src="http://www.t-bihaohuo.cn/Mobile/mobile/images/waycill/logo.png" alt="1"></a>
+                    <div class="address">
+                        <p>
+                            <a href="javascript:;"><img src="http://www.t-bihaohuo.cn/Mobile/mobile/images/waycill/nb.png" alt="3"></a>
+                            <strong><span>：</span>95353</strong>
+                        </p>
+                        <p><span>www.deppon.com</span></p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="viw_right">
+                    <a href="javascript:;"><img src="http://www.t-bihaohuo.cn/Mobile/mobile/images/waycill/tm.png" alt="2"></a>
+                </div>
+            </td>
+        </tr>
+    </tbody> -->
+<!-- </table> -->
+

@@ -1,0 +1,55 @@
+i, em { font-style: normal; }
+.content { padding: 0; }
+.content .couponBox { background-color: #fff; }
+.content .couponBox .tab { padding: 12px 0; background-color: #fff; border-bottom: 1px solid #ccc; }
+.content .couponBox .tab span { line-height: 24px; text-align: center; cursor: pointer; }
+.content .couponBox .tab span.active { color: #ff8400; }
+.content .couponBox .tab span.m { border-left: 1px solid #ccc; border-right: 1px solid #ccc; }
+.content .couponBox ul { margin: 0; }
+.content .couponBox .list { padding: 16px;background-color: #f4f4f4;}
+
+.content .couponBox .list li{
+	margin-top: 16px;
+}
+.content .couponBox .list li:first-child{
+	margin-top: 0;
+}
+.content .couponBox .list .wrap { font-size: 0; background-color: #ff8400; position: relative; padding: 8px 0; }
+.content .couponBox .list .wrap .num { width: 36%; display: inline-block; font-size: 14px; max-width: 40%; vertical-align: middle; padding-left: 16px; font-size: 24px; color: #693900; }
+.content .couponBox .list .wrap .num em { font-size: 36px; }
+.content .couponBox .list .wrap .info { width: 64%; display: inline-block; font-size: 14px; vertical-align: middle; padding-right: 16px; }
+.content .couponBox .list .wrap p { margin-bottom: 0; }
+.content .couponBox .list .wrap p:first-child { background-color: rgba(0, 0, 0, 0.3); padding-left: 8px; color: #fff; line-height: 24px; margin-bottom: 8px; }
+.content .couponBox .list .wrap p span { font-size: 12px; }
+.content .couponBox .list .wrap .hot {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 64px;
+	height: 64px;
+	background-image: url(../../images/coupon-hot.png);
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 100%;
+}
+.content .couponBox .list .wrap.used{
+	background-color: #ccc;	
+}
+.content .couponBox .list .wrap.used .num{
+	color: #666;
+}
+
+.content .couponBox .list .wrap.used .tip {
+	background-image: url("/images/used.png");
+	background-position: center center;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	height: 100%;
+	position: absolute;
+	right: 16px;
+	top: 0;
+	width: 96px;
+}
+.content .couponBox .list .wrap.used.pass .tip{
+	background-image: url("/images/passover.png");
+}

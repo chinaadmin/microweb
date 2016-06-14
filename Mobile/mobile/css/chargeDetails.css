@@ -1,0 +1,128 @@
+@charset "utf-8";
+
+body, p, span { margin: 0; padding: 0; }
+.container { padding: 0px; }
+.fexbag_pic {
+	width: 100%;
+	padding: 25px 20px;
+	border-bottom: 1px solid #ccc;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+.fexbag-left {
+	width: 50%;
+	text-align: center;
+	display: inline-block;
+	/*display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;*/
+}
+.fexbag-left span {
+	width: 100px;
+	height: 100px;
+	background-color: #23B800;
+	border-radius: 50px;
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	color: #fff;
+	border: 2px solid #fff; 
+}
+.fexbag-left i {
+    width: 100%;
+    display: inline-table; 
+}
+.iHeight { 
+	width: 100%; 
+	position: absolute;
+	left: 0px;
+	bottom: 10px;
+}
+.iHeight p { 
+	width: 100%;
+	padding-bottom: 5px; 
+	display: inline-block;
+}
+.lineH { line-height: 100px; }
+
+.fexbag-right {
+	width: 50%;
+	text-align: center;
+	display: inline-block;
+}
+.fexbag-right span {
+	width: 100px;
+	height: 100px;
+	background-color: #23B800;
+	border-radius: 50px;
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	color: #fff;
+	border: 2px solid #fff; 
+}
+
+.navigation { 
+	width: 100%;
+	padding: 0 10px;
+	margin-top: 10px; 
+}
+.navigation p {
+	width: 100%;
+}
+.navigation span {
+	width: 32%;
+	display: inline-block;
+	text-align: center;
+	padding-left: 4px;
+	/*margin-right: 10px;*/
+}
+.navigation .navigation-p i {
+	width: 88px;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #ccc;
+	display: inline-block;
+	background-color: #F8F7F7; 
+}
+.navigation .active {
+	color: #23B800;
+	display: inline-block;
+}
+.navigation-p {
+	margin-bottom: 10px;
+}
+.navigation-min {
+	background-color: #fff;
+	padding: 10px 0;
+}
+.navigation-min p {
+	padding-bottom: 10px;
+}
+.navigation .navigation-min i {
+	width: 88px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #ccc;
+	display: inline-block;
+	background-color: #F8F7F7; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

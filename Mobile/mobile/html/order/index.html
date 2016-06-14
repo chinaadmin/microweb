@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/orderDetail.css"/>
+
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script src="/js/order/orderS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/order/orderC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/order/order.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+  <title>我的订单</title>
+</head>
+<body ng-app="app" ng-controller="orderC">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="#" class="btnBack backNoText" ng-back = "memcenter"><i class="icon icon-back marR4"></i></a>
+          <span class="title">
+            我的订单
+          </span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content orderlist">
+      <div class="navBox">
+        <span ng-click="switch(0)" ng-class="act==0?'active':''"><a>全部</a></span>
+        <span ng-click="switch(1)" ng-class="act==1?'active':''"><a>待付款</a></span>
+        <span ng-click="switch(5)" ng-class="act==5?'active':''"><a>待发货</a></span>
+        <span ng-click="switch(2)" ng-class="act==2?'active':''"><a>待收货</a></span>
+        <span ng-click="switch(3)" ng-class="act==3?'active':''"><a>已完成</a></span>
+        <!-- <span ng-click="switch(6)" ng-class="act==6?'active':''"><a>待评论</a></span> -->
+      </div>
+
+              <div class="orderItem sort-box"  ng-repeat="(key, value) in order">
+                <div class="sort-topbar">
+                  <p>
+                    <span>
+                      订单号
+                      <b class="colorBlack marL4" ng-bind="value.orderSn"></b>
+                    </span>
+                    <span><a ng-bind="value.statusName"></a></span>
+                  </p>
+                </div>
+                <div class="sort-item" ng-repeat="(k, v) in value.goods" ng-hide="k>1&&!value.show">
+                   <div class="sort-img" ng-click="detail(value)">
+                     <a href="#"><img ng-src="{{v.photo}}" err-src="../../images/list_00.jpg" class="img-responsive img-size"></a>
+                   </div>
+                   <div class="sort-title">
+                     <h4><a ng-click="detail(value)" href="#" ng-bind="v.name"></a></h4>
+                     <div class="sort-price">
+                       <p>
+                          <span ng-bind="'￥'+v.price"></span>
+						  <i ng-if="value.status != 6">
+							<a class="btn float-R" ng-show="v.comment_status == 1" ng-click="comments(value)">待评论</a>
+						  </i>
+                       </p>
+                       <p class="standard">
+                          <!--<em >
+                            <i class="text-noline" ng-repeat="(k, vc) in v.normsList" ng-bind="vc.name+' : '+vc.value"></i>
+                          </em> -->
+                          <em></em>
+                       <em ng-bind="'x'+v.number"></em>
+                       </p>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div class="sort-item-d">
+                   <p ng-show="value.goods.length>2&&!value.show"><span ng-click="value.show = !value.show">显示其余<i ng-bind="value.goods.length-2"></i>件</span></p>
+                   <p><span>共<i ng-bind="value.goods.length"></i>件商品，实付：￥<i ng-bind="value.price"></i></span></p>
+                 </div>
+                
+                 <div class="sort-footer">
+                  <p class="text-right noMar">
+                  <a class="btn btn-no" ng-show="value.btnCancel  == '1'" ng-click="cancel(value)">取消订单</a>
+                  <a class="btn btn-Ye" ng-show="value.btnPay     == '1'" ng-click="pay(value)">立即付款</a>
+                  <a class="btn btn-Ye" ng-if="value.btnReceipt =='1' ||value.status=='6' "  ng-click="togtics(value.goods[0].recId)">查看物流</a>
+                  <a class="btn btn-no" ng-show="value.btnDel     == '1'" ng-click="del(value)">删除订单</a>
+                  <a class="btn btn-Ye" ng-show="value.btnReceipt == '1'" ng-click="sure(value)">确认收货</a>
+                  <!-- <a class="btn " ng-show="value.btnDel     == '1'" ng-click="comments(value)">待评论</a> -->
+                 <!--  <span ng-click="switch(6)" ng-class="act==6?'active':''"><a>待评论</a></span> -->
+                  <!--a class="btn "       ng-show="value.btnReturns == '1'" ng-click="refund()">退款/退货</a-->
+                  <!-- <a class="btn btn-Ye" ng-show="value.btnShow    == '1'" ng-click="detail(value)">查看订单</a> -->
+                  </p>
+                 </div>
+
+              </div>
+
+              <p><a class="btn more" ng-click="more()" ng-show="hasMore">... 点击加载更多 ...</a></p>
+
+              <div class="empty" ng-hide="hasRes">
+                <div class="w">
+                  <p>
+                    <img src="../../images/paymentempty.png" width="128"></p>
+                  <p>
+                    <span ng-bind="noRes">暂无订单</span>
+                  </p>
+                  <p>
+                    <a class="btn" ng-click="toMin()">去抢购</a>
+                  </p>
+                </div>
+                <span class="i"></span>
+              </div>
+    </div>
+  </div>
+  <message></message>
+</body>
+</html>

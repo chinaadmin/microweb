@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="/css/bootstrap.css"/>
+  <link rel="stylesheet" media="screen" href="/css/commonExt.css"/>
+
+	<meta charset="utf-8">
+	<script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="/js/home/indexS.js?t=02" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/home/indexC.js?t=2" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		var app = angular.module('app', ["ui.router","app.controllers","app.services","app.dataStore","ngTouch"])
+		.run(function () {		
+			
+		})
+	</script>
+
+
+
+
+</head>
+<body ng-app="app" ng-controller="authC">
+	<p ng-bind="xmsg"></p>
+	 <message></message>	
+</body>
+</html>

@@ -1,0 +1,257 @@
+a, a:hover { color: inherit; outline: none; }
+i, em { font-style: normal; }
+.view .content { padding: 0; background-color: #eee; padding-top: 48px; }
+.view .content p { margin: 0 }
+.box { background-color: #fff; }
+.box p { min-height: 40px; line-height: 40px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: unset; }
+.box .bLeft { float: left; text-align: right; padding: 0 8px; color: #ccc; width: 72px; }
+.box .bRight > div, .box .bLeft > div { }
+.payInf .box { margin-top: 12px; }
+.view .content .orderItem.sort-box { background-color: #fff; margin-top: 16px; }
+.view .content .sort-box .sort-item { display: -webkit-box; display: flex; display: -webkit-flex; font-size: 0; padding: 12px 0; width: 100%;border-bottom:#e5e5e5 solid 1px; }
+.view .content .sort-box .sort-item:last-child { border-bottom-width: 0; }
+.view .content .sort-box .sort-img { max-width: 142px; display: inline-block; margin: 0; width: 44%; vertical-align: middle; padding-left: 8px; }
+.view .content .sort-box .sort-img img { max-width: 120px; display: inline-block; }
+.view .content .sort-box .sort-title { -webkit-box-flex: 1; flex: 1; -webkit-flex: 1; font-size: 14px; vertical-align: middle; margin: 0 2%; }
+.view .content .sort-box .sort-title .itwrap { width: 100%; display: inline-block; }
+.view .content .sort-box .sort-title h4 { margin-bottom: 16px; margin-left: 6px; font-size: 16px; height: 50px; overflow: hidden; }
+.view .content .sort-box .sort-title h4 a { text-decoration: none; color: #333; }
+.view .content .sort-box .sort-title .sort-price p { color: #ff8400; font-size: 20px; margin-bottom: 4px; line-height: 1; height: 32px; line-height: 32px; padding: 0; }
+.sort-price>h4>em{float:right}
+
+.view .content .sort-box .sort-title .sort-price{position:relative}
+.view .content .sort-box .sort-title .sort-price .refund{position:absolute;left:0px;top:-10px;}
+
+.view .content .sort-box .sort-title .sort-price s { margin-left: 6px; color: #999; }
+.view .content .sort-box .sort-title .sort-price .standard { font-size: 14px; color: #666; display: -webkit-box; display: flex; display: -webkit-flex; height: 16px; line-height: 16px; }
+.view .content .sort-box .sort-title .sort-price .standard em { font-style: normal; }
+.view .content .sort-box .sort-title .sort-price .standard em:first-child {width:100%; -webkit-box-flex: 1; flex: 1; -webkit-flex: 1; display: inherit; }
+.view .content .sort-box .sort-title .sort-price .standard em i{margin-right:5px;}
+.view .content .sort-box .sort-topbar { border-bottom: 1px dashed #ccc; }
+.view .content .sort-box .sort-topbar p {position:relative; display: -webkit-box; display: flex; display: -webkit-flex; height: 48px; line-height: 48px; padding: 0 16px; color: #999; margin: 0; }
+.view .content .sort-box .sort-topbar p>span:first-child { list-style: none;width:78%;}
+.view .content .sort-box .sort-topbar p i.allB{border:#ff8400 solid 1px;color:#ff8400;float:right;height:25px;line-height:25px;padding:0 2px 2px 2px;cursor:pointer;position: absolute;right:10px;top:15px;}
+.view .content .sort-box .sort-topbar p>span:last-child a { background-color: #eee; color: #222; padding: 4px 8px; }
+.view .content .sort-box .sort-footer { line-height: 48px; padding: 0 16px; }
+.view .content .sort-box .sort-footer .btn { border-radius: 0; border: 1px solid #ccc; margin: 0 0 0 8px; }
+.view .content .sort-box .sort-footer .btn.btn-Ye { border: 1px solid #ff8411; background-color: #ff8400; color: #fff; }
+.view .content .sort-box .sort-item-d { padding: 8px 16px; line-height: 36px; border-top: 1px solid #eee; text-align: right; }
+.view .content .sort-box .sort-item-d p:first-child { border-bottom: 1px solid #eee; color: rgba(255, 135, 0, 0.82); text-align: center; }
+.view .content .statistics { background-color: #fff; line-height: 42px; margin-top: 12px; padding-right: 16px; text-align: right; }
+.view .content .statistics span { color: #999; margin: 0 8px 0 16px; }
+.view .content .orderControl { background-color: #fff; padding: 16px 0; text-align: center; border-top: 8px solid #f4f4f4; border-bottom: 8px solid #f4f4f4; display: -webkit-box; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; }
+.view .content .orderControl .btn { margin: auto 16px; border: 1px solid #ccc; line-height: 36px; font-size: 18px; box-flex: 1; -webkit-box-flex: 1; -webkit-flex: 1; -moz-flex: 1; -ms-flex: 1; -o-flex: 1; flex: 1; display: list-item; list-style: none; }
+.view .content .orderControl .btn.btn-Ye { border: 1px solid #ff8411; background-color: #ff8400; color: #fff; }
+.view .content.orderlist .navBox { line-height: 48px; background-color: #fff; display: -webkit-box; display: flex; display: -webkit-flex; box-shadow: 0 1px 2px 0 #ccc }
+.view .content.orderlist .navBox span { -webkit-box-flex: 1; flex: 1; -webkit-flex: 1; display: list-item; list-style: none; text-align: center; }
+.view .content.orderlist .navBox span.active { background-color: #ff8400; color: #fff; }
+.view .content.orderlist .navBox span a { width: 100%; }
+.view .content.orderlist p a.more { width: 100%; text-align: center; border-radius: 0; }
+.view .content.orderlist .empty { text-align: center; padding-top: 96px; }
+.view .content.orderlist .empty p { line-height: 48px; }
+.view .content.orderlist .empty .w { display: inline-block; vertical-align: middle; }
+.view .content.orderlist .empty .w .btn { border: 1px solid #ccc; width: 96px; }
+.view .content.orderlist .empty span.i { display: inline-block; height: 100%; vertical-align: middle; width: 1px; }
+.view .content.checkOrder .box { box-shadow: 0 2px 2px 0 #ccc; }
+.view .content.checkOrder .box .boxTitle { font-size: 14 px; }
+.view .content.checkOrder .box p { border-bottom: 1px solid #eee; padding: 0 16px; }
+.view .content.checkOrder .box p:last-child { border-bottom-width: 0; }
+.view .content.checkOrder .box p select { border: none; width: 100%; margin-left: -4px; }
+.view .content.checkOrder .box .pays { padding-left: 32px; }
+.view .content.checkOrder .box .pays p { padding-left: 0; line-height: 40px; }
+.view .content.checkOrder .box .pays img { background-color: #ff8400; height: 32px; width: 32px; display: inline-block; margin-right: 8px; box-shadow: 0 0 3px 0 #333; border-radius: 48px; vertical-align: middle; }
+.view .content.checkOrder .box.invoice p { display: -webkit-box; display: flex; display: -webkit-flex; }
+.view .content.checkOrder .box.invoice span { -webkit-box-flex: 1; flex: 1; -webkit-flex: 1; display: inherit; }
+.view .content.checkOrder .box.invoice select { width: auto; text-align: right; margin: 0; padding-right: 8px; border-right: 24px solid #ff8400; color: #ff8400; }
+.view .content.checkOrder .box.orderItem .sort-img-item { padding: 16px; font-size: 0; position: relative; }
+.view .content.checkOrder .box.orderItem .sort-img-item a { width: 22%; display: inline-block; font-size: 14px; vertical-align: middle; }
+.view .content.checkOrder .box.orderItem .sort-img-item a:last-child { color: #999; margin-top: -12px; position: absolute; right: 12px; text-align: right; top: 50%; vertical-align: middle; width: auto; font-size: 12px; }
+.view .content.checkOrder .box.total { border-top: 8px solid #f4f4f4; margin-bottom: 48px; }
+.view .content.checkOrder .box.total p { display: flex; display: -webkit-flex; text-align: right; }
+.view .content.checkOrder .box.total p span { display: inline-block; width: 72px; }
+.view .content.checkOrder .box.total p em { flex: 1; -webkit-flex: 1; padding-right: 8px; font-size: 18px; font-style: normal; color: #ff8400; }
+.view .content.checkOrder .pickup { padding: 16px 0; }
+.view .content.checkOrder .pickup p { color: #999; padding-left: 48px; }
+.view .content.checkOrder .pickup p a { color: #666; }
+.view .content.checkOrder .pickup p b { min-width: 72px; display: inline-block; }
+.view .content.checkOrder .pickup p:last-child { white-space: normal; height: auto; line-height: 20px; padding-top: 8px; padding-bottom: 8px; color: #333; background-image: url(../../images/location.png); background-repeat: no-repeat; background-size: 32px; background-position: 8px 50%; }
+.view .content.checkOrder .pickup p:last-child span { width: 100%; display: inline-block; }
+.view .content.checkOrder .deliveryWay { padding: 0 0 0; }
+.view .content.checkOrder .deliveryWay p:first-child { border-width: 0; line-height: 48px; height: 48px; }
+.view .content.checkOrder .deliveryWay .self { border-top: 1px dashed #ccc; padding: 12px 12px 0 12px; }
+.view .content.checkOrder .deliveryWay p.item { border-width: 0; line-height: 24px; height: 24px; }
+.view .content.checkOrder .deliveryWay p.item:last-child { height: auto; overflow: auto; white-space: normal; padding-bottom: 8px; }
+.view .content.checkOrder .deliveryWay i { font-size: 14px; }
+.view .content.checkOrder .payWay { border-top: 1px dashed #ccc; }
+.view .content.checkOrder .payWay p { white-space: normal; height: auto; padding: 8px 16px; }
+.view .content.checkOrder .payWay p a { font-size: 14px; }
+.view .content.checkOrder .invoice { padding: 8px 0; }
+.view .content.checkOrder .invoice i { font-size: 14px; cursor: pointer; }
+.view .content.checkOrder .coupon  em { font-size: 13px; color: #fff; background-color: red; padding: 2px 4px; border-radius: 4px; }
+.view .content.checkOrder .userfeedback { margin-top: 16px; padding: 8px; }
+.view .content.checkOrder .userfeedback textarea { width: 100%; resize: none; border: none; height: 48px; }
+.view .content.checkOrder .coupon { border-top: 1px dashed #ccc; padding: 8px 0; }
+.view .content.checkOrder .coupon i { font-size: 14px; cursor: pointer; }
+.view .content.checkOrder .integral { border-top: 1px dashed #ccc; padding: 8px 0; }
+.view .content.checkOrder .integral i { font-size: 14px; cursor: pointer; }
+.view .content.checkOrder .bestcoin { border-top: 1px dashed #ccc; padding-top: 8px; }
+.view .content.checkOrder .bestcoin p { border-color: #f4f4f4; }
+.view .content.checkOrder .bestcoin.box i { background-image: url(../../images/right-n.png); background-size: 100%; border-radius: 36px; cursor: pointer; font-size: 14px; height: 24px; margin-top: 8px; width: 24px; }
+.view .content.checkOrder .bestcoin i.active { background-color: #ff8400; background-image: url(../../images/right-y.png); }
+.view .content.checkOrder .bestcoin em { font-size: 14px; cursor: pointer; color: #999; }
+.view .content.checkOrder .bestcoin p input { padding: 0 8px; height: 24px; line-height: 24px; display: inline-block; vertical-align: middle; margin: 0 8px; width: 64px; box-shadow: 0 0 2px 0 #ccc inset; border: 1px solid #ccc; }
+.view .content.checkOrder .bestcoin p:first-child { height: 48px; border-width: 0; }
+.view .content.checkOrder .bestcoin p.msg { background-color: #fafafa; }
+.view .content.checkOrder .payto { display: -webkit-box; display: flex; display: -webkit-flex; padding-top: 0; padding-bottom: 0; line-height: 48px; font-size: 14px; height: 48px; background-color: #eee; position: fixed; bottom: 0; left: 0; width: 100%; }
+.view .content.checkOrder .payto span { -webkit-box-flex: 1; flex: 1; -webkit-flex: 1; padding-left: 16px; display: inherit; vertical-align: middle; }
+.view .content.checkOrder .payto span em { font-style: normal; font-size: 18px; color: #ff8400; }
+.view .content.checkOrder .payto .btn { background-color: #ff8400; border-radius: 0; line-height: 48px; height: 100%; padding: 0 16px; color: #fff; }
+.view .content.checkOrder .box i { background-image: url(../../images/arrow-right.png); background-repeat: no-repeat; background-position: right center; background-size: 14px; padding-right: 20px; font-size: 14px; }
+.view .content .failBox { text-align: center; padding: 16px; background-color: #fff; margin-top: 16px; box-shadow: 0 2px 2px 0 #ccc; }
+.view .content .failBox img { width: 64px; height: 64px; background-color: #FF0000; display: inline-block; border-radius: 64px; margin-bottom: 16px; }
+.view .content .failBox p { text-align: center; }
+.view .content .sort-box .sort-footer.btnline { padding: 0 0 0 8px; }
+.view .content .sort-box .sort-footer.btnline p { display: flex; display: -webkit-flex; }
+.view .content .sort-box .sort-footer.btnline p span { flex: 1; -webkit-flex: 1; }
+.view .content .sort-box .sort-footer.btnline p .btn { background-color: #ff0000; border: none; color: #fff; padding: 0 16px; line-height: 48px; }
+.view .content.invoice h2 { font-size: 18px; font-weight: bold; line-height: 32px; color: #666; background-color: #fff; margin: 0; padding: 8px 16px; border-bottom: 1px dashed #ccc; }
+.view .content.invoice p { background-color: #fff; margin: 0; padding: 0 16px; }
+.view .content.invoice p input { border: 0 solid #ccc; border-bottom-width: 1px; padding: 20px 4px 0 4px; width: 100%; display: inline-block; }
+.view .content.invoice p span { margin-top: 8px; cursor: pointer; }
+.view .content.invoice p:last-child { padding: 16px; text-align: center; padding-top: 64px; }
+.view .content.invoice p a.btn { width: 128px; background-color: #eee; line-height: 24px; }
+.view .content.invoice p a.btn:first-child { background-color: #ff8400; margin-right: 16px; color: #fff; }
+.view .content.invoice p.item { line-height: 36px; border-bottom: 1px solid #eee; }
+.view .content.invoiceInfo .wrap { padding: 32px 16px; background-color: #fff; }
+.view .content.invoiceInfo .wrap p { color: #999; font-size: 14px; padding: 4px 0; }
+.view .content.invoiceInfo .wrap p span { color: #333; font-size: 16px; }
+.view .content.psstyle ul { margin: 0; background-color: #fff; }
+.view .content.psstyle h2 { font-size: 18px; font-weight: bold; line-height: 32px; color: #666; background-color: #fff; margin: 0; padding: 8px 16px; border-bottom: 1px solid #f4f4f4; }
+.view .content.psstyle p { padding: 16px; background-color: #fff; }
+.view .content.psstyle p.select { text-align: center; }
+.view .content.psstyle p.select span { border: 1px solid #ccc; line-height: 36px; margin-right: 12px; cursor: pointer; border-radius: 4px; font-size: 16px; }
+.view .content.psstyle p.select span a { padding: 0 16px; width: 100%; display: inline-block; }
+.view .content.psstyle p.select span.active { background-image: url(../../images/selectRight.png); background-repeat: no-repeat; background-position: 8px center; background-size: 16px; border-color: #ff8400; color: #ff8400; text-indent: 4px; }
+.view .content.psstyle p.select span:last-child { margin: 0; }
+.view .content.psstyle p a.btn { background-color: #ff8400; width: 100%; color: #fff; line-height: 24px; font-size: 16px; }
+.view .content.psstyle .addressList { border-bottom: 1px solid #eee; border-top: 1px solid #eee; }
+.view .content.psstyle .addressList li { padding: 8px 16px; padding-left: 48px; }
+.view .content.psstyle .addressList li.item { border-bottom: 1px solid #eee; }
+.view .content.psstyle .addressList li:last-child {  border: medium none; outline: medium none; margin-right: 16px; width: 100%;}
+.view .content.psstyle .addressList li.active { background-image: url(../../images/cartRight.png); background-position: 12px center; background-repeat: no-repeat; background-size: 24px; }
+.view .content.psstyle .addressList select { border: none; background-color: #fff; vertical-align: middle; padding: 16px; background-image: url("../../images/arrow-down.png"); background-position: right center; background-repeat: no-repeat; background-size: 20px auto; width: 74%;}
+.view .content.payby h2 { font-size: 18px; line-height: 32px; color: #666; background-color: #f4f4f4; margin: 0; padding: 8px 16px; border-bottom: 1px solid #f4f4f4; }
+.view .content.payby p { background-color: #fff; }
+.view .content.payby p.select { border-bottom: 1px solid #eee; }
+.view .content.payby p .item { background-position: 8px center; background-repeat: no-repeat; background-size: 32px auto; border-bottom: 1px dashed #eee; display: inline-block; line-height: 48px; padding-left: 48px; position: relative; width: 100%; }
+.view .content.payby p .item.wx { background-image: url(../../images/wx.png); }
+.view .content.payby p .item.ye { background-image: url(../../images/ye.png); }
+.view .content.payby p .item:last-child { border-bottom-width: 0; }
+.view .content.payby p .item em { background-color: #eee; border-radius: 320px; height: 100%; margin-right: 12px; width: 24px; position: absolute; right: 0; top: 0; background-image: url(../../images/right-n.png); background-size: 100%; background-repeat: no-repeat; background-position: left center; background-color: #fff; }
+.view .content.payby p .item.active em { background-image: url(../../images/right-y.png); }
+.view .content.payby p .item em:before { color: transparent; content: "√"; font-size: 16px; position: absolute; right: 10px; top: -10px; }
+.view .content.payby p:last-child { padding: 36px 16px; }
+.view .content.payby p a.btn { background-color: #ff8400; width: 100%; color: #fff; line-height: 24px; font-size: 16px; }
+.view .content.coupon h2 { font-size: 18px; line-height: 32px; color: #666; background-color: #f4f4f4; margin: 0; padding: 8px 16px; border-bottom: 1px solid #f4f4f4; }
+.view .content.coupon h2 p:first-child { font-size: 14px; }
+.view .content.coupon h2 p { background-color: transparent; }
+.view .content.coupon p { background-color: #fff; }
+.view .content.coupon ul { background-color: #fff; margin: 0; box-shadow: 0 2px 2px 0 #ccc; }
+.view .content.coupon ul li { padding: 16px 0 16px 64px; line-height: 24px; overflow: hidden; border-bottom: 1px solid #eee; background-image: url(../../images/right-n.png); background-repeat: no-repeat; background-position: 16px 50%; background-size: 24px; }
+.view .content.coupon ul li.active { background-image: url(../../images/right-y.png); }
+.view .content.coupon ul li:last-child { border-bottom-width: 0; }
+.view .content.coupon ul li span { display: inline-block; width: 100%; }
+.view .content.coupon ul li span:first-child { font-size: 16px; }
+.view .content.coupon>p:last-child { padding: 0 16px; margin-top: 36px; border-bottom: 6px solid #f4f4f4; border-top: 6px solid #f4f4f4; }
+.view .content.coupon p a.btn { width: 100%; background-color: #ff8400; text-align: center; color: #fff; line-height: 28px; font-size: 18px; margin: 8px 0; }
+.view .content.address .list { padding: 16px 0; background-color: #f4f4f4; border-top: 16px solid #eee; color: #444; line-height: 24px; }
+.view .content.address .list .wrap { padding: 12px 0; border-bottom: 1px solid #eee; background-color: #fff; height: 86px; }
+.view .content.address .list .wrap:last-child { border-bottom-width: 0; }
+.view .content.address .list .wrap .m.selected { width: 16px; visibility: hidden; }
+.view .content.address .list .wrap.active .m.selected { background-image: url(../../images/cartRight.png); background-repeat: no-repeat; background-position: center; background-size: 24px; width: 56px; visibility: visible; }
+.view .content.address .list .wrap .m { width: 56px; text-align: center; }
+.view .content.address .list .wrap .m span { color: red; }
+.view .content.address .list .wrap .m.editer { background-image: url(../../images/tianxie.png); background-repeat: no-repeat; background-position: center; }
+.view .content.address .list .wrap i { color: #fff; background-color: red; padding: 2px 4px; border-radius: 3px; }
+.view .content.address p { padding: 16px; background-color: #fff; border-top: 8px solid #f4f4f4; border-bottom: 8px solid #f4f4f4; margin-top: 16px; }
+.view .content.address p a.btn { background-color: #ff8400; color: #fff; width: 100%; font-size: 18px; }
+.view .content.recAdd p { border-bottom: 1px solid #eee; padding: 0 16px; }
+.view .content.recAdd p span { width: 72px; display: inline-block; }
+.view .content.recAdd p span.flexOne { display: list-item; }
+.view .content.recAdd p input { border: medium none; height: 100%; outline: medium none; width: 100%; display: inline-block; vertical-align: middle; }
+.view .content.recAdd p select { outline: none; border: none; background-image: url(../../images/arrow-down.png); background-repeat: no-repeat; background-position: right center; background-size: 20px; background-color: #fff; }
+.view .content.recAdd .edit p a { padding-left: 42px; display: inline-block; display: inline-block; width: 100%; background-repeat: no-repeat; background-position: left; background-size: 24px; }
+.view .content.recAdd .edit p a.address { background-image: url(../../images/right-n.png); }
+.view .content.recAdd .edit p a.address.active { background-image: url(../../images/right-y.png); }
+.view .content.recAdd > p:last-child { padding: 16px; background-color: #fff; border-top: 8px solid #f4f4f4; border-bottom: 8px solid #f4f4f4; margin-top: 16px; }
+.view .content.recAdd p a.btn { background-color: #ff8400; color: #fff; width: 100%; font-size: 18px; margin-right: 8px; text-align: center; }
+.view .content.recAdd p a.btn:last-child { margin-left: 8px; margin-right: 0; }
+.view .content.recAdd p a.btn:first-child { margin-left: 0; }
+.view .content.detail .userInf .box { line-height: 56px; height: 56px; background-color: #fff; box-shadow: 0 2px 2px 0 #ccc; }
+.view .content.detail .userInf .box p { line-height: 56px; height: 56px; border-bottom-width: 0; }
+.view .content.detail .userInf p { line-height: 1; border-bottom-width: 0; }
+.view .content.detail .userInf .payNum { background-color: #fff; text-align: center; padding: 16px; border-bottom: 1px dashed #eee; }
+.view .content.detail .userInf .payNum b { line-height: 32px; font-size: 24px; }
+.view .content.detail .bRight p { padding-right: 16px; }
+.view .content.detail .iBox { box-shadow: 0 2px 2px 0 #ccc; }
+.iBox .box .bRight > div, .iBox .box .bLeft > div { border-bottom-width: 0; }
+
+.view .content.detail .orderItem { box-shadow: 0 2px 2px 0 #ccc; }
+
+.view .content.detail .address { background-color: #fff; padding: 16px; padding-left: 48px; box-shadow: 0 2px 2px 0 #ccc; line-height: 24px; }
+.view .content.detail .address b { font-style: normal; font-weight: normal; }
+.view .content.detail .address p:first-child { font-size: 15px; }
+.view .content.detail .delivery { background-color: #fff; padding: 0 16px; box-shadow: 0 2px 2px 0 #ccc; line-height: 1.6; }
+.view .content.detail .delivery .title { line-height: 48px; font-size: 14px; color: #999; }
+.view .content.detail .delivery .deliveryContent { padding-top: 16px; padding-bottom: 16px; border-top: 1px solid #eee; }
+.view .content.detail .delivery b { font-size: 16px; font-weight: normal; }
+.view .content.detail .postscript { padding: 0; background-color: #fff; box-shadow: 0 2px 2px 0 #ccc; padding-right: 8px; width: 100%; overflow: hidden; padding-top: 16px; margin-top: 16px; }
+.view .content.detail .postscript .mwrap { padding-bottom: 32px; }
+.view .content.detail .postscript .title { color: #999; padding-left: 16px; width: 72px; min-width: 72px; }
+.view .content.detail .postscript .mcontent { word-wrap: break-word; padding-left: 80px; padding-right: 8px; margin-top: -20px; }
+.view .content.detail .payInf hr { margin: 0; background-color: #eee; height: 1px; border-color: #fff; border-right-width: 16px; border-left-width: 16px; border-style: solid; }
+.view .content.detail .payInf .bLeft { padding-left: 16px; width: 96px; text-align: left; }
+.view .content.detail .statistics { line-height: 24px; padding: 16px; box-shadow: 0 2px 2px 0 #ccc; }
+.view .content.detail .statistics p:first-child b { color: #333; }
+.view .content.detail .statistics p span { margin-left: 0; }
+.view .content.detail .statistics b { font-size: 18px; font-weight: normal; color: #ff8400; }
+.view .content.detail .statistics p:last-child span { margin: 0; }
+.view .content.detail .refundBtn { border: 1px solid #ff8400; border-radius: 2px; cursor: pointer; float: right; font-size: 14px; line-height: 24px; margin-right: 16px; margin-top: 4px; padding: 0 8px; }
+.view .content.detail .refund { color: #999; font-size: 14px; }
+
+.setColor { color: #ff8400; }
+.btnColor { background-color: #ff8400; width: 68px; height: 32px; color: #fff; border-radius: 0; border: 1px solid #ff8411;}
+
+
+
+.filter-mcment { border-bottom: 1px solid #ccc; }
+.filter-mcment .p-img { 
+	width: 38px; 
+	height: 38px; 
+	border-radius: 128px;
+	margin-right: 15px; 
+}
+.filter-mcment p { padding: 10px; margin: 0; font-weight: bold; font-family: arial; font-size: 14px; }
+.filter-mcment a { padding: 0 0 20px 20px; display: inline-block; }
+.filter-time { padding-right: 10px; }
+.set-img { width: 80px; height: 80px; border: 1px solid #ccc; }
+.iHeight { height: 38px !important; line-height: 38px !important; display: inline-block; }
+
+.sort-price-em { float: right; color: #626060; }
+.float-R { float: right; border: 1px solid #ff8411; background-color: #FF8400; color: #fff; border-radius: 0;}
+
+.deliverySpace{
+    float:left;
+    display:inline-block;
+    padding-bottom:32px;
+}
+.lassmessage{border-bottom:1px solid #EEEEEE;color:red;position:relative;}
+.lassmessage p a{margin:0px;padding:0px;position:absolute;right:0px;top:0px;color:#333333;font-size:24px;}
+
+
+
+
+
+
+
+

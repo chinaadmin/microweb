@@ -1,0 +1,383 @@
+
+
+.container { padding: 0px; }
+
+.new-pic {
+	position: relative;
+}
+.friend { width: auto; }
+.friend img { width: 100%; }
+.comtent {
+	width: 100%;
+	position: absolute;
+	bottom: 50px;
+	left: 0;
+	text-align: center;
+	padding: 0 22%;
+	margin-left: 10px;
+}
+.comtent input {
+	border: 2px solid #ff930b;
+	width: 100%;
+	padding: 10px 0;
+	margin-bottom: 40px;
+	border-radius: 18px;
+	padding-left: 20px;
+}
+.comtent button {
+	width: 100%;
+	background-color: #ff930b;
+	color: #ffffff;
+	padding: 8px 0px;
+	font-size: 22px;
+	border-radius: 18px;
+	border: 1px solid #ffffff;
+	/*box-shadow: 0 0 2px 0 #333;*/
+}
+
+
+.bgcWhite {
+	position: relative;
+}
+.radio-pic {
+	background-image: url(../images/frient@xa.png);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+    background-position: 0 center;
+	padding: 20px;
+	font-size: 16px;
+} 
+.radio-pic h4 {
+	padding-bottom: 10px;
+}
+.radio-pic .radio_bg {
+	padding-bottom: 10px;
+}
+.radio-pic .radio_bg p{
+	
+}
+.radio-pic .radio_bg span{
+	background-image: url(../images/mr_@2x.png);
+	background-repeat: no-repeat;
+	padding: 10px;
+    border-radius: 16px;
+    background-size: 100% auto;
+    background-position: 0 center;
+	/*display: inline-block;*/
+	margin-right: 10%;
+}
+.radio-pic .radio_bg .active {
+	background-image: url(../images/xz_@2x.png);
+}
+
+
+.list-box {
+	position: relative;
+}
+.results-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(../images/Results@8x.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.res-bg-pd {
+	padding: 45% 10%;
+	margin-bottom: 44px; 
+}
+.filter_show {
+	background-image: url(../images/chiter@2x.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width: 100%;
+	/*height: 250px;*/
+	text-align: center;
+	position: relative;
+}
+.filter_show .filter_show-p {
+	padding-bottom: 20px;
+}
+.filter_show .filter_show-p span {
+	padding: 10px 15px;
+	display: inline-block;
+	background-color: #e2b34e;
+	border-radius: 10px;
+	color: #ffffff;
+
+}
+.filter_show img {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 30px;
+	height: 30px;
+}
+.filter_fox {
+	max-height: 260px;
+	min-height: 240px;
+}
+.filter_show .filter_fox h2 {
+	padding-top: 34px;
+	color: #f55348;
+	padding-left: 20px;
+}
+.filter_show-bx {
+	background-image: url(../images/jiangbg@.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin: 36px 10% 15px;
+}
+.filter_show-bx p {
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+}
+.filter_show-bx span {
+	display: inline-block;
+	color: #ffffff;
+	font-size: 24px;
+	padding-top: 10px;
+}
+
+.filter-bug {
+
+}
+.filter-bug h2 {
+	padding-top: 34px;
+	padding-left: 20px;
+}
+.filter-bug p {
+	height: 162px;
+	padding: 40px 12px 0;
+}
+
+
+
+
+
+.reslts .reslts-box {
+	margin-bottom: 20px;
+}
+.reslts .reslts-box img {
+	width: 100%;
+	height: 100%;
+}
+.reslts .reslts-fix {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.reslts-z1 {
+	background-image: url(../images/fdsv@fd.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+    /*background-position: 0 center;*/
+	margin: 0 15px;
+}
+.reslts-z1 h4 {
+	text-align: center;
+	margin-bottom: 0px;
+	padding: 11px 0;
+	height: 41px;
+	/*line-height: 41px;*/
+}
+.reslts-z2 {
+	background-image: url(../images/result@_11.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+    background-position: 0 center;
+    margin: 0 15px;
+}
+.reslts-z2 i {
+	font-size: 40px;
+	color: #b91e1e;
+}
+.reslts-z2 p {
+	height: 100%;
+	min-height: 260px;
+	margin: 0px;
+	padding: 22px;
+	font-size: 16px;
+	line-height: 30px;
+}
+.reslts .reslts-fix img {
+	width: 100%;
+	height: 100%;
+	padding: 0 15px 15px;
+	max-width: 90px;
+}
+.reslts-bom {
+	margin: 30px 0px;
+	text-align: center;
+}
+.reslts-bom p {
+	padding: 0 15%;
+}
+.reslts-bom button {
+	padding: 14px 18px;
+	border: none;
+	background-color: #ff930b;
+	color: #ffffff;
+	width: 100%;
+	font-size: 22px;
+	border-radius: 16px;
+}
+.reslts-bom a {
+	border-bottom: 1px solid #818080;
+	padding: 6px 10px;
+	display: inline-block;
+	font-size: 16px;
+	margin-top: 10px;
+	color: #23527c;
+	/*width: 100%;*/
+}
+
+.radio-bom {
+	margin: 38px 0px;
+	text-align: center;
+}
+.radio-bom p {
+	padding: 0 10%;
+}
+.radio-bom button {
+	padding: 14px 18px;
+	border: none;
+	background-color: #ff930b;
+	color: #ffffff;
+	width: 100%;
+	font-size: 18px;
+	border-radius: 16px;
+}
+
+.fix-bg {
+	position: absolute;
+	top: -66px;
+	left: 0px;
+}
+.fix-bg img {
+	width: 18px;
+	height: 18px;
+}
+
+.luckyDraw {
+	position: relative;
+}
+.luckyDraw img {
+	width: 100%;
+	height: auto;
+   border:10px solid white;
+}
+.lucky-fix {
+	/*position: absolute;
+	bottom: 0px;
+	left: 0px;*/
+	color: #ffffff;
+	width: 100%;
+}
+.lucky-fix h4 {
+	font-size: 20px;
+	padding-bottom: 6px;
+}
+.lucky-fix p {
+	font-size: 14px;
+}
+
+
+
+.setBg-pic {
+	background-image: url(../images/load@fil.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 100%;
+}
+#lottery{
+	width: 100%;
+	height: 100%;
+	padding: 45% 10% 5%;
+}
+#lottery .setFont {
+	color: #ffffff;
+	font-size: 20px;
+	padding-bottom: 10px;
+}
+#lottery i {
+	font-size: 28px;
+}
+#lottery table {
+	width:100%;
+	margin: auto auto 20px;
+}
+#lottery table td{
+	width: 30%;
+	height: 80px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 24px;
+	border:1px solid transparent;
+	border-left:none;
+}
+#lottery table td a{
+	/*width: 80px;*/
+	height: 80px;
+	/*line-height: 80px;*/
+	display: block;
+	text-decoration: none;
+	/*background-color: #ff9511;*/
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+#lottery table td a.notstart {
+	background-image: url(../images/kscj_@2x.png);
+	background-size:90% 90%;
+	background-position:center;
+}
+#lottery table td a.start {
+	background-image: url(../images/stopdraw_@2x.png);
+	background-size:90% 90%;
+	background-position:center;
+}
+.lottery p {
+	margin: 0px;dsag_@active
+}
+#lottery table td.active img{
+	border-color: #ff8dc9;
+}
+
+.receive {
+
+}
+.receive p {
+	background-color: #ffffff;
+	margin-top: 15px;
+	padding: 15px;
+}
+.receive input {
+	border: none;
+	width: 100%;
+	padding-left: 10px;
+}
+.receive_p {
+	text-align: center;
+}
+.receive_p i {
+	color: #ffa029;
+	font-size: 16px;
+	padding: 10px 38px;
+}
+.bottom_show{
+	padding-top:30px;
+	text-align:center;
+}
+.bottom_show a{
+	display:inline-block;
+	color:yellow;
+	font-size:20px;
+	font-weight:bold;
+}
+
+
+

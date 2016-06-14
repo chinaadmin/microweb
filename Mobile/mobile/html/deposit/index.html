@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/deposit.css" />
+  <link rel="stylesheet" media="screen"  href="../../css/mobiscroll_date.css" rel="stylesheet" />
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=8446546" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/deposit/jquery.min.js" ></script> 
+  <script src="/js/deposit/deposit.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/deposit/depositC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/deposit/depositS.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="app" ng-controller="depositC" ng-cloak>
+		<!--begin-->
+		<header class="activityHead">
+      <div class="container">
+          <a href="javascript:history.go(-1);" class="goBack"></a>
+          <h1 class="title">记账单</h1>
+      </div>
+    </header>
+		<div class="container">
+			     <div class="data">
+			     	    <div class="row">
+									  <div class="col-xs-3"><datachoose></datachoose></div>
+									  <div class="col-xs-6"><div class="money"><span>{{money|currency:'¥'}}</span><span>余额</span></div></div>
+									   <div class="col-xs-3"><div class="go-bank" ng-click="goBank()"><span>马上</span><span>充值</span></div></div>
+								</div>
+								<div class="line"><span class="up"></span></div>
+			     </div>
+			     
+		</div>
+		<footer>
+				<!--记录-->
+								<div class="money_Tab">
+												<div>
+													  <!-- Nav tabs -->
+													   
+													  	<ul class="nav nav-tabs" role="tablist">
+														    <li class="active col-xs-6"><a href="#home"  data-toggle="tab">充值</a></li>
+														    <li class="col-xs-6"><a href="#profile"   data-toggle="tab">挥金</a></li>
+													      </ul>
+													
+													  <!-- Tab panes -->
+													  <div class="tab-content">
+													    <div class="tab-pane active text-center" id="home">
+													    		  <div class="row" ng-repeat="(key,value) in history">
+													    		  	     <div class="col-xs-4">{{value.addTime | date:'MM年dd月' }}</div>
+													    		  	     <div class="col-xs-4">{{'+'+value.money}}</div>
+													    		  	     <div class="col-xs-4">充值</div>
+													    		  </div>
+													    		  <div class="row" ng-show="!history.length"><span>暂无充值历史</span></div>
+													    		  
+													    </div>
+													   
+													    <div class="tab-pane text-center" id="profile">
+													    		<div class="row" ng-repeat="(key,value) in payHistory">
+													    		  	     <div class="col-xs-4">{{value.payTime | date:'MM月dd日' }}</div>
+													    		  	     <div class="col-xs-4">{{'-'+value.money}}</div>
+													    		  	     <div class="col-xs-4">消费</div>
+													    		  </div>
+													    		  <div class="row" ng-show="!payHistory.length"><span>暂无消费记录</span></div>
+													    </div>
+													  </div>
+												</div>
+								</div>
+								
+		</footer>
+	</body>
+</html>
+<script type="text/javascript">
+			$('#myTabs a').click(function (e) {
+			  e.preventDefault()
+			  $(this).tab('show')
+			})
+</script>

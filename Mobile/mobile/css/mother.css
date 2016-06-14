@@ -1,0 +1,13 @@
+body{font-family: "microsoft yahei";}
+.header-box + .container{padding-top:48px;}
+.container{
+	padding-left:0;
+	padding-right:0;
+	text-align: center;
+}
+
+
+.container img{
+	max-width:100%;
+	/*margin:0 auto;*/
+}

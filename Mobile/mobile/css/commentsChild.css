@@ -1,0 +1,49 @@
+a, a:hover { color: inherit; outline: none; }
+i, em { font-style: normal; }
+.view .content { padding: 0; background-color: #eee; padding-top: 48px; }
+.view .content p { margin: 0 }
+.box { background-color: #fff; }
+.box p { min-height: 40px; line-height: 40px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: unset; }
+.box .bLeft { float: left; text-align: right; padding: 0 8px; color: #ccc; width: 72px; }
+.box .bRight > div, .box .bLeft > div { }
+.payInf .box { margin-top: 12px; }
+
+
+.orderItem.sort-box { background-color: #fff; margin-top: 16px; }
+.sort-box .sort-item { display: -webkit-box; display: flex; display: -webkit-flex; font-size: 0; padding: 12px 0; width: 100%; }
+.sort-box .sort-item:last-child { border-bottom-width: 0; }
+.sort-box .sort-img { max-width: 142px; display: inline-block; margin: 0; vertical-align: middle; padding-left: 8px; }
+.sort-box .sort-img img { max-width: 90px; display: inline-block; }
+
+.sort-box .sort-title { -webkit-box-flex: 1; flex: 1; -webkit-flex: 1; font-size: 14px; vertical-align: middle; }
+.sort-box .sort-title .sort-p{ 
+	font-size: 16px; 
+	margin-bottom: 4px;
+	padding-top: 30px;
+}
+.sort-box .sort-title .sort-p span { 
+	display: inline-block;
+}
+
+.sort-text { width: 100%; border: none; border-top: 1px solid #ccc; padding: 5px; }
+.sort-p img { width: 26px; height: 28px;  display: inline-block; }
+.sort-i { height: 30px; display: inline-block; }
+.filter { background-color: #E8E6E6; }
+
+
+.bottom-pic { 
+	width: 100%; 
+	line-height: 48px; 
+	text-align: center; 
+	background-color: red; 
+	font-size: 20px; 
+	color: #fff;  
+	margin-top: 14px;
+}
+.filter-p { padding: 0 10px 10px; }
+.filter-p-span { padding-right: 10px; }
+.filter-p img { width: 30px; height: 30px; display: inline-block;}
+
+
+
+

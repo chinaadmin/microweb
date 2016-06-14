@@ -1,0 +1,33 @@
+i,em{font-style: normal;}
+
+.content .refundIndex { background-color: #eee; overflow: hidden; }
+.content .refundIndex .sort-box { background-color: #fff; box-shadow: 0 2px 2px 0 #ccc;}
+.content .refundIndex .sort-box .sort-footer p span:first-child { margin-right: 16px; }
+.content .refundIndex .sort-box .sort-footer p span b { font-size: 16px; font-weight: normal; }
+.content .refundIndex .sort-box .sort-footer p span a { color: #ff8400; }
+
+.content .refundIndex .sort-box .sort-topbar p > span:last-child a{
+	background-color: transparent;
+	color: #ff8400;
+}
+.content .refundIndex .sort-box .sort-footer p{
+
+}
+
+.view .content .sort-box .sort-footer {
+  line-height: 36px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.content .refundIndex .sort-box .sort-footer p:last-child{
+	line-height: 1;
+	margin: 0;
+}
+.content .refundIndex .sort-box .sort-footer a.btn{
+	background-color: #ff8400;
+	color: #fff;
+	border-color: #ff8400;
+}
+
+.sort-footer{height:50px;}
+.btn-q{background:#ff8400!important;display:inline-block;color:#fff;position:absolute;right:20px;bottom:10px;}

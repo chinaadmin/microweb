@@ -1,0 +1,109 @@
+i,em{font-style: normal;}
+.view .content { padding: 0; background-color: #eee; }
+.box { background-color: #fff; }
+.box p { margin: 0; height: 42px; line-height: 42px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: unset; }
+.box .bLeft { float: left; text-align: right; padding: 0 8px; color: #999; }
+.box .bRight > div, .box .bLeft > div { border-bottom: 1px solid #eee; }
+.box .bRight p { text-indent: 16px; }
+.content .btn { background-color: #ff8400; color: #fff; line-height: 24px; width: 100%; }
+.content select { border: none; outline: none; }
+
+.msgBox { background-color: rgba(0, 0, 0, 0.6); height: 100%; left: 0; position: fixed; top: 0; width: 100%; text-align: center; }
+.msgBox .wrap { background-color: #fff; border-radius: 3px; margin: 240px auto 0; width: 240px; }
+.msgBox .wrap h3 { font-size: 16px; margin-bottom: 0; padding: 16px 0; }
+.msgBox .btnBox { border-top: 1px solid #ccc; display: flex; display: -webkit-flex; }
+.msgBox .btnBox .btn { flex: 1; -webkit-flex: 1; border: none; border-right: 1px solid #ccc; border-radius: 0; }
+.msgBox .btnBox .btn:last-child { border-right-width: 0; color: #ff8400; }
+
+
+.content .addressBox { background-color: #fff; padding: 12px; }
+.content .addressBox .addressItem { display: flex; display: -webkit-flex; border-top: 1px solid #eee; padding-top: 10px; }
+.content .addressBox .addressItem .info { flex: 1; }
+.content .addressBox .addressItem .info p:last-child { width: 80%; }
+.content .addressBox .addressItem:first-child { border-top-width: 0px; padding-top: 0; }
+.content .addressBox .addressItem .doEdit { padding: 32px; position: relative; }
+.content .addressBox .addressItem .doEdit span { position: absolute; top: 50%; right: 20%; line-height: 24px; height: 24px; display: inline-block; margin-top: -12px; }
+.userExtract>p { padding: 0 16px; }
+.content .like-btn.btn { border-radius: 0; background-color: #fff; color: #333; border: none; color: #ff8400; line-height: 32px; }
+
+
+
+
+.content .userInf input {
+	border: medium none;
+	float: left;
+	height: 100%;
+	width: 100%;
+}
+
+.view .content.address a{
+	color: inherit;
+}
+
+.view .content.address .list { padding: 16px 0; background-color: #f4f4f4; border-top: 16px solid #eee; color: #444; line-height: 24px; }
+.view .content.address .list .wrap { padding: 12px 16px; border-bottom: 1px solid #eee; background-color: #fff; height: 96px; }
+.view .content.address .list .wrap:last-child { border-bottom-width: 0; }
+.view .content.address .list .wrap.active { background-color: #ff8400; color: #fff; overflow: hidden;}
+
+.view .content.address .list .wrap >span{
+	max-height: 48px;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.view .content.address p { padding: 16px; background-color: #fff; border-top: 8px solid #f4f4f4; border-bottom: 8px solid #f4f4f4; margin-top: 16px; }
+.view .content.address p a.btn { background-color: #ff8400; color: #fff; width: 100%; font-size: 18px; }
+.view .content.recAdd p { border-bottom: 1px solid #eee; padding: 0 16px; }
+.view .content.recAdd p span { width: 72px; display: inline-block;vertical-align: middle; }
+.view .content.recAdd p span.flexOne{
+	display: list-item;
+}
+.view .content.recAdd p input {
+	border: medium none;	
+	height: 24px;
+	outline: medium none;
+	width: 100%;
+	line-height: 24px;
+	vertical-align: middle;
+}
+.view .content.recAdd p select {
+	outline: none;
+	border: none;
+	background-image: url(../../images/arrow-down.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-size: 20px;
+}
+.view .content.recAdd .edit p a {
+	padding-left: 42px;
+	display: inline-block;
+	display: inline-block;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 24px;
+}
+.view .content.recAdd .edit p a.address{
+	background-image: url(../../images/right-n.png);
+}
+.view .content.recAdd .edit p a.address.active {
+	
+	background-image: url(../../images/right-y.png);
+}
+.view .content.recAdd > p:last-child {
+	padding: 16px;
+	background-color: #fff;
+	border-top: 8px solid #f4f4f4;
+	border-bottom: 8px solid #f4f4f4;
+	margin-top: 16px;
+}
+.view .content.recAdd p a.btn { background-color: #ff8400; color: #fff; width: 100%; font-size: 18px; margin-right: 8px; }
+.view .content.recAdd p a.btn:last-child { margin-left: 8px; margin-right: 0; }
+.view .content.recAdd p a.btn:first-child { margin-left: 0; }
+
+.view .content.address,
+.view .content.recAdd { padding-bottom: 78px }
+.view .content.address p.addLocation,
+.view .content.recAdd p.addLocation { position: fixed; bottom: 0; left: 0; width: 100%; margin: 0; height: 78px; border-bottom-width: 0; }
+
+

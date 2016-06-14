@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/messagePush.css" />
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=8446546" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/messagePush/messagePush.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/messagePush/messagePushC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/messagePush/messagePushS.js" type="text/javascript" charset="utf-8"></script>
+  
+	</head>
+	<body class="grey" ng-app="app" ng-controller="indexC" ng-cloak>
+		<!--begin-->
+		<!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="#" class="btnBack backNoText" ng-back="order"><i class="icon icon-back marR4"></i></a>
+          <span class="title">
+               消息中心
+          </span>
+        </div>
+      </div>
+    </header>
+		 <section class="container">
+		 	   <div class="myListBg">
+		 	   	  <div class="list-group">
+						     <div >
+						     	 
+						     	     <a class="list-group-item"  href="./newStores.html?name_id=1">
+											    <div class="media">
+											      <div class="media-left media-top">
+											      	 <span class="badge" ng-bind="count[0].count" ng-if="count[0].count>0"></span>
+											        <img class="media-object" src="../../images/zxyh@2x.png" alt=""/>
+											      </div>
+											      <div class="media-body">
+											      	 <h3>{{Title[0]}}<span>{{count[0].addtime}}</span></h3>
+											         <div>{{count[0].push_brief}}</div>
+											      </div>
+											    </div>
+											  </a>
+											  
+											  <a class="list-group-item"  href="./newStores.html?name_id=2">
+											    <div class="media">
+											      <div class="media-left media-top">
+											      	 <span class="badge" ng-bind="count[1].count" ng-if="count[1].count>0"></span>
+											        <img class="media-object" src="../../images/new@2x.png" alt=""/>
+											      </div>
+											      <div class="media-body">
+											      	 <h3>{{Title[1]}}<span>{{count[1].addtime}}</span></h3>
+											         <div>{{count[1].push_brief}}</div>
+											      </div>
+											    </div>
+											  </a>
+											  
+											  <!-- <a class="list-group-item"  ng-click="ban();"> -->
+											  <a class="list-group-item" href="./newNotes.html?name_id=3">
+											    <div class="media">
+											      <div class="media-left media-top">
+											      	 <span class="badge" ng-bind="count[2].count" ng-if="count[2].count>0"></span>
+											        <img class="media-object" src="../../images/xxtz@2x.png" alt=""/>
+											      </div>
+											      <div class="media-body">
+											      	 <h3>{{Title[2]}}<span>{{count[2].addtime}}</span></h3>
+											         <div>{{count[2].push_brief}}</div>
+											      </div>
+											    </div>
+											  </a>
+											  
+											  <a class="list-group-item"  href="./logistics.html?name_id=4">
+											    <div class="media">
+											      <div class="media-left media-top">
+											      	 <span class="badge" ng-bind="count[3].count" ng-if="count[3].count>0"></span>
+											        <img class="media-object" src="../../images/icon_logistics@2x.png" alt=""/>
+											      </div>
+											      <div class="media-body">
+											      	 <h3>{{Title[3]}}<span>{{count[3].addtime}}</span></h3>
+											         <div>{{count[3].push_brief}}</div>
+											      </div>
+											    </div>
+											  </a>
+											  
+											  <a class="list-group-item" ng-click="ban();">
+											    <div class="media">
+											      <div class="media-left media-top">
+											      	 <span class="badge" ng-bind="count[4].count" ng-if="count[4].count>0"></span>
+											        <img class="media-object" src="../../images/msg@2x.png" alt=""/>
+											      </div>
+											      <div class="media-body">
+											      	 <h3>{{Title[4]}}<span>{{count[4].addtime}}</span></h3>
+											         <div>{{count[4].push_brief}}</div>
+											      </div>
+											    </div>
+											  </a>
+											  
+											  <a class="list-group-item" ng-click="ban();">
+											    <div class="media">
+											      <div class="media-left media-top">
+											      	 <span class="badge" ng-bind="count[5].count" ng-if="count[5].count>0"></span>
+											        <img class="media-object" src="../../images/icon_commissioner@2x.png" alt=""/>
+											      </div>
+											      <div class="media-body">
+											      	 <h3>{{Title[5]}}<span>{{count[5].addtime}}</span></h3>
+											         <div>{{count[5].push_brief}}</div>
+											      </div>
+											    </div>
+											  </a>
+						     </div>
+						 
+						</div>
+		 	   </div>
+		 	    <message></message>
+		 </section>
+		 <script type="text/javascript">
+	function onBridgeReady(){
+ WeixinJSBridge.call('hideOptionMenu');
+}
+
+if (typeof WeixinJSBridge == "undefined"){
+    if( document.addEventListener ){
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+    }else if (document.attachEvent){
+        document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+    }
+}else{
+    onBridgeReady();
+}
+</script>
+	</body>
+</html>

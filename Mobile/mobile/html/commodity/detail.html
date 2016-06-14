@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+	<meta charset="utf-8">
+	<meta name="description" content="NIM- Responsive One Page Creative Template" />
+	<meta name="keywords" content=""/>
+	<meta name="author" content="Metrothenes" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+	<link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+	<link rel="stylesheet" media="screen" href="../../css/commodity.css"/>
+
+  <link rel="stylesheet" media="screen" href="../../css/angular/angular-carousel.min.css"/>
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+
+  
+  <script src="/js/plugin/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=8446546" type="text/javascript" charset="utf-8"></script>
+  
+
+  <script src="/js/home/angular-carousel.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/commodity/commodityS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/commodity/commodityC.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+	var ngmodule = ["ui.router", "app.controllers", "app.services", "angular-carousel", "ngTouch", "ngSanitize", "app.dataStore","app.wechat"]
+	var app = angular.module('app', ngmodule).run(function() {})
+  </script>
+  
+  <title>商品详情</title>
+</head>
+<body ng-app="app" ng-controller="detailC" class="detail"  ng-loading style="display:none" >
+	    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a class="btnBack backNoText" ng-click="back()"> <i class="icon icon-back marR4"></i>
+          </a>
+          <span class="title">商品详情</span>
+        </div>
+      </div>
+    </header>
+	<div id="content" class="view">
+		<div class=" container content">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+			        <ul rn-carousel class="image" rn-carousel-auto-slide rn-carousel-easing rn-carousel-duration="720" ng-swipe-left="prevSlide()" ng-swipe-right="nextSlide()" >
+			        	<li ng-repeat="item in detail.photo">
+			        		<div class="layer">
+			        			<img ng-src="{{item.middle}}" alt="{{item.middle}}" style="width:100%;" />        
+			        		</div>
+			        	</li>
+			        </ul>
+			        <img src="/images/detail_00.png" alt="" style="width:100%;" >        
+				</div>
+				<!-- Add Pagination -->
+				<div class="swiper-pagination"></div>
+				<div class="pName clearfix flex">
+					<div class="dt J_name_content flexOne">
+						<span class="p-name-content" ng-bind="detail.name"></span>
+					</div>
+					<div class="share-box">
+						<a ng-click="fav()">
+							<img ng-src="{{page.image}}" err-src="../../images/fav.png" class="star-img">
+							<span>收藏</span>
+						</a>
+						<a ng-click="share()" style="display:none;">
+							<img src="../../images/share.png" class="share-img">
+							<span>分享</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="price-box">
+				<p>
+					<span class="label-like">会员价：</span> <b class="price-cl" ng-bind="'￥'+detail.price"></b> <del ng-bind="'￥'+detail.marketPrice"></del>
+				</p>
+				<p class="announcement colorYe"><span>
+					门店500米内免费配送上门
+				</span></p>
+			</div>
+
+			<div class="selectBox">
+				<a ng-repeat="(key, value) in detail.norms.norms_value" class="flex">
+					<span class="label-like" ng-bind="value.parent_name+'：'" style="padding-top: 12px;"></span>
+					<span class="product flexOne" >
+						<span ng-repeat="(k, v) in value.value" ng-class="v.select?'select':''" ng-click="select(v,value.value,key)">
+							<img ng-src="{{v.photo}}" alt="{{v.norms_value}}" width="32" height="32" ng-show="v.photo">
+							<i ng-bind="v.norms_value" ng-show="!v.photo"></i>	
+						</span>
+					</span>
+				</a>
+				<hr>
+				<a class="flex number">
+					<span class="label-like">数量：</span>
+					<span ng-class="'flexOne'">
+					<i ng-click="sub()">-</i>
+						<input type="text" ng-model="detail.number">
+					<i ng-click="add()">+</i>
+					</span>
+				</a>
+			</div>
+
+			<!-- <div class="filter-pg">
+				<div class="filter-top"><h4>商品评价（<i ng-bind="commentList.total"></i>）</h4></div>
+				<div class="filter-mcment">
+					<p>
+						<span class="filter-img"><img ng-src="{{commentList.data[0].head_pic}}" src="../../images/share.png" alt=""></span>
+					    <span class="filter-user" ng-bind="commentList.data[0].comment_name"></span>
+					</p>
+					<p><span ng-bind="commentList.data[0].content"></span></p>
+					<p><span ng-bind="commentList.data[0].add_time"></span></p>
+				</div>
+				<div class="filter-but">
+				   <a href="/html/refund/evaluation.html?gid={{detail.goods_id}}" ng-click="minter()"><button class="btn text-right">查看全部评价</button></a>
+				</div>
+			</div> -->
+
+
+
+
+			<!-- <div class="moreDrop">
+				<hr>
+				<p>
+					<span>继续拖动查看更多详情</span>
+				</p>
+			</div> -->
+
+			<div class="detailTab">
+				<div class="tabItem" ng-click="tab(0)" ng-class="{true: 'active', false: ''}[active]">
+					<span>图文详情</span>
+				</div>
+				<div class="tabItem line"></div>
+				<div class="tabItem" ng-if = "detail.attr.length>0"  ng-click="tab(1)" ng-class="{true: 'active', false: ''}[sactive]">
+					<span>产品参数</span>
+				</div>
+			</div>
+			<div class="eva-img-box" ng-show="active">
+				<div ng-bind-html="detail.content" ></div>
+
+			</div>
+			<div class="standard standardBox" ng-show="sactive">
+				<div class="xwrap">
+				<p ng-repeat="(key, value) in detail.attr"> <span ng-bind="value.name+' : '+value.value">
+				</span></p>
+				</div>
+			</div>
+			<div class="vpayControl flex">
+      			<span class="flexOne cartNum active"   ng-click="toPage('cart')"><a ng-bind="page.count">0</a></span>
+				<a class="btn flexOne addc"   ng-click="addToCart()">加入购物车</a>
+				<a class="btn flexOne btn-Ye" ng-click="buy()">立即购买</a>
+			</div>	
+		</div>
+	</div>
+
+  <!--div class="msgBox" ng-show="page.msg">
+    <div class="wrap">
+      <h3>尚未登陆，请先登陆asd再进行操作！</h3>
+      <div class="btnBox">
+        <a class="btn btnCancle" ng-click="page.msg=!page.msg">取消</a>
+        <a class="btn btnSure" ng-click="toPage('login')">确定</a>
+      </div>
+    </div>
+  </div-->
+
+  <message></message>
+
+</body>
+
+

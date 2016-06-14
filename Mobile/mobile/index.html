@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+ <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" media="screen" href="/bower_components/bootstrap/3.3.0/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="/css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="/css/homeExt.css"/>
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="/js/plugin/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=8446546" type="text/javascript" charset="utf-8"></script>
+  <!-- 定位本客户端ip与位置<script src="http://pv.sohu.com/cityjson?ie=utf-8" type="text/javascript" charset="utf-8"></script> -->
+ <!-- me-lazyload.js -->
+  <script src="/bower_components/me-lazyload/me-lazyload.js" type="text/javascript" charset="utf-8"></script>	
+  <script>
+  	var	tmpAddJs = ['me-lazyload'];
+  </script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>  
+
+  <script src="/js/home/indexS.js?t=8446546" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/home/indexC.js?t=86" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/index.js?t=8446546" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/socket.io.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+      // 连接服务端
+      var socket = io('http://workerman.net:2120');
+      // uid可以是自己网站的用户id，以便针对uid推送以及统计在线人数
+      uid = 123;
+      // socket连接后以uid登录
+      socket.on('connect', function(){
+        socket.emit('login', uid);
+      });
+      // 后端推送来消息时
+      socket.on('new_msg', function(msg){
+          // alert(msg);
+          console.log("收到消息："+msg);
+      });
+      // 后端推送来在线数据时
+      socket.on('update_online_count', function(online_stat){
+          console.log(online_stat);
+      });
+   </script>
+
+
+<!-- Swiper  css-->
+<link rel="stylesheet" media="screen" href="/bower_components/swiper/3.1.7/swiper.min.css"/>
+  <title>必好货商城</title>
+</head>
+<body ng-app="app" ng-controller="indexC" ng-loading style="display:none" class="home" >
+  <div class="view" id="view">
+    <!-- 头部 -->
+    <div id="setColor"></div>
+    <header class="header-box">
+      <div class="container">
+
+        <div class="search-box flex">
+          <div class="logo-box">
+            <em ng-class="active"><i ng-bind="ByLngLat.city.name"></i></em>
+          </div>
+
+          <div class="search-input flexOne">
+            <div class="icon-logo">
+            <form action="#">
+              <input class="form-control icon-search" type="search" ng-model="page.search" ng-enter="onEnter()">
+            </form>
+            </div>
+          </div>
+
+         <div class="filter-box">
+               <a href="/html/messagePush/index.html"><img src="../../images/msg_@2x.png" alt=""></a>
+               <div class="round" ng-show="msgStatus"></div>
+          </div>
+        </div>
+        <div class="linck_up">
+          <div class="tertar">
+            <ul class="downup">
+              <li>
+                  <span ng-click="minu()">全城</span>
+              </li>
+              <li ng-repeat="(k, v) in area.puy.data">
+                  <span ng-bind="v.county_name" ng-click="toTop(v.county_name)"></span>
+              </li>
+            </ul>
+            <div class="avigation">
+              <p class="">
+                <span class="">当前城市：<i ng-bind="LngLat.city.name"></i></span>
+                <a href="/html/gatarea.html"><em class="">切换</em></a>
+              </p>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </header>
+
+    <!--  内容 -->
+    <div id="content" class="container content" style="padding-top:0;">
+      <!-- banner轮播图 -->
+      <!--   <ul rn-carousel class="image" rn-carousel-auto-slide rn-carousel-easing rn-carousel-duration="720" ng-swipe-left="prevSlide()" ng-swipe-right="nextSlide()" >
+          <li ng-repeat="item in slides">
+            <div class="layer">             
+              <a ng-href="{{item.href}}">
+                <img ng-src="{{item.photo?item.photo:'../images/banner.jpg'}}"  style="width:100%; height:100%; " /> 
+              </a>       
+            </div>
+          </li>
+        </ul>
+        <img src="../images/banner.jpg" alt="" style="width:100%;"> -->
+       <!-- 轮播start --> 
+ 		  <div class = 'banner-box'>
+	 		   <!-- Swiper -->
+		    <div class="swiper-container" >
+		        <div class="swiper-wrapper">
+		        </div>
+		        <!-- Add Pagination -->
+		        <div class="swiper-pagination"></div>
+		    </div>
+        <!-- <div class="opacity_out">
+          <img src="../../images/tion-up.png" alt="">
+        </div> -->
+	    </div>
+
+        <!-- 轮播end -->
+      <div class="brands categorys">
+        <ul>
+          <li class="item" ng-repeat="(k, v) in categorys">
+            <a ng-click="categorysClick(v,$event)">
+              <img err-src="../../images/classify.png" lazy-src="{{v.photo}}" >
+              <span ng-bind="v.featName"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+                 <!-- 秒杀一 -->
+      <div class="spike" ng-show="1" ng-repeat="(k, v) in activity">
+        <div ng-if = "v.type == 3 && v.timeType == 0">
+          <p class="spike_time">
+            <span class="time_up" ng-bind="v.name">秒杀</span>
+            <!-- <span class="time-min">12点场</span> -->
+            <span class="time-ofin" ng-show="1">
+                <span class="" ng-bind="v.iHours">00</span>
+                <span class="" ng-bind="v.iMinuter">00</span>
+                <span class="" ng-bind="v.iSeconds">00</span>
+            </span>
+            <i class="time_mun" ng-show="v.option">该商品促销已过期</i>
+            <a href="/html/list/listTime.html?promotionId={{v.promotionId}}" class="time_pull">查看更多&nbsp>></a>
+          </p>
+          <ul class="spike_scoat suny" >
+            <li ng-repeat="goods in v.goods">
+              <div class="spike_hider">
+                  <a href="/html/commodity/detail.html?gid={{goods.goodsId}}" >
+                     <img ng-src="{{goods.photo}}" err-src="../../images/classify.png" alt="Responsive image" ng-imagescale>
+                     <b class="link-img" ng-bind="goods.discount+' '+'折'">折</b>
+                  </a>
+                  <div class="solit">
+                    <a href="/html/commodity/detail.html?gid={{goods.goodsId}}">
+                      <p class="solit-flids" ng-bind="goods.name"></p>
+                    </a>
+                    <p class="sliter" ng-bind="'￥'+goods.promotionPrice"></p>
+                  </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div ng-if = "v.type == 3 && v.timeType == 1">
+            <p class="spike_time">
+              <span class="time_up" ng-bind="v.name">秒杀</span>
+              <a href="/html/list/listTime.html?promotionId={{v.promotionId}}" class="time_pull">查看更多&nbsp>></a>
+            </p>
+           <ul class="spike_scoat swita">
+            <li ng-repeat="goods in v.goods">
+              <div class="spike_hider">
+                  <div class="spike_oplit">
+                      <h4 class="time_up">嗨抢购</h4>
+                      <p class="spike_oplit-span" ng-bind="goods.name"></p>
+                      <span>
+                         <i class="time_fixe" ng-show="goods.filter">
+                           <b class="pad-3" ng-bind="goods.iHours"></b>
+                           <b class="pad-3" ng-bind="goods.iMinuter"></b>
+                           <b ng-bind="goods.iSeconds"></b>
+                         </i>
+                         <i class="time_mun" ng-show="goods.option">该商品促销已过期</i>
+                      </span>
+                  </div>
+                  <a href="/html/commodity/detail.html?gid={{goods.goodsId}}">
+                     <b class="time_fixe-img">
+                       <i ng-bind="'￥'+goods.promotionPrice"></i>
+                     </b>
+                     <img ng-src="{{goods.photo}}" err-src="../../images/classify.png" alt="Responsive image" ng-imagescale>
+                  </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div ng-if = "v.type == 5">
+          <p class="spike_time">
+            <span class="time_up" ng-bind="v.name">秒杀</span>
+            <a href="/html/list/listTime.html?promotionId={{v.promotionId}}" class="time_pull">查看更多&nbsp>></a>
+          </p>
+          <ul class="spike_scoat suny" >
+            <li ng-repeat="goods in v.goods">
+               <div class="spike_hider">
+                  <a href="/html/commodity/detail.html?gid={{goods.goodsId}}" >
+                     <img lazy-src="{{goods.photo}}" err-src="../../images/classify.png" alt="Responsive image" ng-imagescale>
+                     <b class="fatlick"></b>
+                  </a>
+                  <div class="solit">
+                    <a href="/html/commodity/detail.html?gid={{goods.goodsId}}">
+                      <p class="solit_p" ng-bind="goods.name"></p>
+                    </a>
+                    <p class="sliter" ng-bind="'￥'+goods.price"></p>
+                  </div>
+               </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      
+
+      <div class="show_list">
+        <div class="m_box" ng-repeat="(key, value) in explosions">
+        <!--  <a href="/html/commodity/detail.html?gid={{value.goodsId}}" >-->
+		 <a href="{{value.url}}" >
+            <img ng-src="{{value.photo}}"></a>
+          <div class="item flex">
+            <!-- <a class="flexOne" ng-bind="value.name"></a> -->
+           <!--  <a class="flexOne" ng-bind="value.desc"></a> -->
+          </div>       
+        </div>
+
+      </div>
+
+
+
+
+      <!-- 产品列表 -->
+      <div class="sort_box">
+        <div class="swrap" ng-repeat="(k, recommend) in recommends">
+          <h4>
+            <i ng-bind="recommend.featName">好货推荐</i>
+            <!-- <a href="html/list.html?fid={{recommend.feat}} ">查看更多&nbsp>></a> -->
+          </h4>
+
+          <div class="sort_list">
+
+            <ul class="sort_item" style="float:left">
+              <li ng-repeat="(key, value) in recommend.goods">
+                <div class="wrap">
+                  <a  href="/html/commodity/detail.html?gid={{value.goodsId}}">
+                    <img lazy-src="{{value.photo}}" class="sort-img" alt="Responsive image" ng-imagescale></a>
+                  <div class="sort_description">
+                    <a href="/html/commodity/detail.html?gid={{value.goodsId}}">
+                      <p class="sort_title" ng-bind="value.name"></p>
+                    </a>
+                    <p class="price_box">
+                      <span class="box_left" ng-bind="'￥'+value.price"></span>
+                     <!--  <span class="box_right" ng-bind="'销量:'+value.sales"></span> -->
+                    </p>
+                    <!--img src="../images/hot.png"--></div>
+                </div>
+              </li>
+
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+      <footer class="nav-box">
+        <ul class="flex">
+          <li class="flexOne">
+            <a>
+              <img src="../images/v1.2/home-2@2x.png">
+              <p class="nav-choice colorYe">首页</p>
+            </a>
+          </li>
+          <li class="flexOne">
+            <a ng-click="toPage('classification')">
+              <img ng-src="../images/v1.2/fenlei@2x.png">
+              <p class="nav-choice">分类</p>
+            </a>
+          </li>
+          <li class="flexOne">
+            <a ng-click="page.msgBtn()">
+              <img ng-src="../images/v1.2/cart@2x.png">
+              <p>购物车</p>
+            </a>
+          </li>
+          <li class="flexOne">
+            <a ng-click="toPage('memcenter')">
+              <img ng-src="../images/v1.2/my@2x.png">
+              <p>我</p>
+            </a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+  </div>
+
+
+
+
+  <div class="msgBox" ng-show="page.msg"  style="display:none">
+    <div class="wrap">
+      <h3>尚未登陆，请先登陆再进行操作！</h3>
+      <div class="btnBox">
+        <a class="btn btnCancle" ng-click="page.msg=!page.msg">取消</a>
+        <a class="btn btnSure" ng-click="toPage('cart')">确定</a>
+      </div>
+    </div>
+  </div>
+  <message style="display:none"></message>
+
+<!-- Swiper  css-->
+<script src="/bower_components/swiper/3.1.7/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/index/index.js" type="text/javascript" charset="utf-8"></script> 
+</body>
+</html>

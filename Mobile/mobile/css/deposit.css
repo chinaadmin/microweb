@@ -1,0 +1,392 @@
+
+
+body{
+	font-family: "微软雅黑";
+}
+
+.navbar-default{
+	background:#ff8e01;
+/*	height:45px;*/
+	border:none;
+}
+.navbar-brand{
+	position:absolute;
+	left:1em;
+	top:0;
+	color:#fff!important;
+}
+.navbar{
+	margin-bottom:0;
+	/*min-height:45px;*/
+	color:#fff;
+	/*position: relative;*/
+}
+.navbar-default h3{
+	margin:0;
+	padding:0;
+	line-height:50px;
+	text-align:center;
+}
+.goShare{
+	width:30px;
+	height:30px;
+	background:url(../images/wecharActivily/btn.png) no-repeat -43px -618px;
+	background-size:130px 722px;
+	position:absolute;
+	right:1em;
+	top:0.7em;
+}
+
+/*header*/
+.activityHead{
+	background:#ff8e01;
+	width:100%;
+	height:48px;
+	padding:8px 0;
+	position: fixed;
+	z-index:99;
+	top:0;
+	overflow: hidden;
+}
+
+.activityHead .container{
+	width:94%;
+	margin:0 auto;
+	padding:0;
+}
+.activityHead .container .title{
+	position: absolute;
+	text-align: center;
+	width:100%;
+	top:0;
+	height:48px;
+	line-height: 48px;
+	color: #fff;
+	font-size:16px;
+	margin:0;
+	background: #ff8e01 !important;
+	padding:0;
+	z-index:1;
+	left:0;
+	display: block;
+}
+.activityHead .container .goBack,.goShare{
+	position:relative;
+	display: inline-block;
+	float: left;
+	height:40px;
+	z-index:999;
+}
+.goBack{
+	width:30px;
+	background: url(../images/activity/btn.png) no-repeat -49px -653px;
+	background-size:130px 722px;
+}
+.goShare{
+	display: block;
+	float: right;
+	width:30px;
+	height:30px; overflow: hidden;
+	background: url(../images/activity/btn.png) no-repeat -43px -618px;
+	background-size:130px 722px;
+}
+.activityHead{
+	background:#ff8e01;
+	width:100%;
+	height:44px;
+	padding:6px 0;
+	position: relative;
+	z-index:99;
+	top:0;
+	overflow: hidden;
+}
+
+.activityHead .container{
+	width:94%;
+	margin:0 auto;
+	padding:0;
+}
+.activityHead .container .title{
+	position: absolute;
+	text-align: center;
+	width:100%;
+	top:0;
+	height:44px;
+	line-height: 44px;
+	color: #fff;
+	font-size:18px;
+	font-weight: 700;
+	margin:0;
+	background: #ff8e01 !important;
+	padding:0;
+	z-index:1;
+	left:0;
+	display: block;
+	/*-webkit-user-select: none;禁用手机浏览器的用户选择功能*/ 
+    /*-moz-user-select: none;*/
+}
+
+.container{
+	overflow:hidden;
+	padding:0;
+}
+.container>.data{
+	/*height:380px;*/
+}
+.container>.data>.row,.row>div{
+	padding:0;
+	margin:0;
+}
+
+.date-choose{
+	width:100px;
+	height:100px;
+	background:#ff8e01;
+	border-radius:50%;
+	margin:168px auto 0 auto;
+	font-size:1.5em;
+	color:#fff;
+	text-align: center;
+	letter-spacing: 3px;
+	position: relative;
+}
+.date-choose>span,.go-bank>span,.money>span{
+	display:block;
+	position:relative
+}
+.date-choose>span.yearT{
+	position: absolute;
+	top:22px;
+	left:19px;
+	font-size:0.75em;
+}
+.date-choose>span.monthT{
+	position: absolute;
+	top:40px;
+	left:19px;
+	font-size:1.5em;
+	font-family: Arial;
+}
+.date-choose>span.monthT>.mon{
+	font-size:0.5em;
+	font-weight:bold;
+}
+.go-bank>span{letter-spacing: 8px;}
+.money{
+	width:180px;
+	height:180px;
+	background:#fff;
+	border:#00b7ee solid 10px;
+	border-radius: 50%;
+	margin:28px auto 0 auto;
+	padding-top:50px;
+	font-size:1.8em;
+	color:#404040;
+	text-align: center;
+	font-family: Arial;
+	overflow:hidden;
+}
+.go-bank{
+	width:100px;
+	height:100px;
+	background:#ff8e01;
+	border-radius:50%;
+	margin:168px auto 0 auto;
+	padding-top:20px;
+	font-size:1.5em;
+	color:#fff;
+	text-align: center;
+}
+#USER_AGE{
+	width:100px;
+	height:100px;
+	position: relative;
+    z-index: 11;
+	border-radius:50%;
+	background:none;
+	color:#fff;
+	border:none;
+	padding-left:10px;
+}
+
+.triangleDown{    /*倒三角*/
+	width: 0;
+    height: 0;
+    border-left:8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #fff;
+    position: absolute;
+    bottom:30px;
+    z-index:1;
+    right:7px;
+    -webkit-animation: Date 2s linear infinite;
+}
+@-webkit-keyframes Date{
+	from{transform:rotateY(0)}to{
+		transform:rotateY(180deg)
+	}
+}
+.line{
+	height:20px;
+	border-bottom:#cbcbcb solid 2px;
+	position: relative;
+}
+.line>.up{
+	width:20px;
+	height:20px;
+	border:#cbcbcb solid 1px;
+	display:block;
+	-webkit-transform: rotate(45deg);
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-10px;
+	margin-top:1px;
+	background:#f1f1f1;
+	border-bottom-color:#f1f1f1;
+	border-right-color:#f1f1f1;
+}
+.money_Tab{
+	padding:0 15px;
+}
+.nav-tabs{
+	overflow:hidden;
+	background:#fff;
+	border:none;
+	margin-top:20px;
+	border-radius:6px;
+}
+.nav-tabs>li{
+	padding:0;
+	text-align: center;
+}
+
+.nav-tabs>li>a{
+	margin-right:0;
+	border-radius:0;
+	/*border:#f1f1f1 solid 1px;*/
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+	background:#777;
+	border-color:#777;
+	color:#fff;
+	/*border:none!important;*/
+	/*background:none!important;*/
+	/*border:#777 solid 1px!important;*/
+}
+.nav>li>a{
+	border:none!important;
+}
+.tab-pane>.row{
+	line-height:40px;
+	border-bottom:#e3e3e3 solid 1px;
+}
+.tab-pane>.row:first-child{
+	border-top:#e3e3e3 solid 1px;
+	margin-top:19px;
+}
+.hack-nav{
+	width:100%;
+	height:45px;
+	background:#fff;
+	border:solid 2px #777;
+	border-radius:10px;
+}
+@media screen and (min-width: 325px) {
+	footer>a.explain{
+		left:10%;
+	}
+	footer>a.myList{
+		left:47%;
+	}
+}
+img,.shadow>.window>h3 .tip,.container h1,.copyBtn,.helpHand{ pointer-events: none;}
+
+
+
+
+@media screen and ( min-width:321px) and (max-width:376px){
+	.date-choose{
+		width:90px;
+		height:90px;
+	}
+	#USER_AGE{
+		width:90px;
+		height:90px;
+	}
+	.go-bank{
+		width:90px;
+		height:90px;
+		padding-top:15px;
+	}
+	.go-bank>span{
+		padding-left:8px;
+	}
+	.date-choose>span.monthT{
+		top:37px;
+	}
+	.triangleDown{
+		width: 0;
+	    height: 0;
+	    border-left:5px solid transparent;
+	    border-right: 5px solid transparent;
+	    border-top: 8px solid #fff;
+	    position: absolute;
+	    bottom:26px;
+	    z-index:1;
+	    right:4px;
+	    -webkit-animation: Date 2s linear infinite;
+	}
+}
+
+
+
+
+
+@media screen and (max-width: 321px) {
+	#USER_AGE{
+		width:80px;
+		height:80px;
+	}
+	.date-choose,.go-bank{
+		width:80px;
+		height:80px;
+	}
+	.go-bank{
+		padding-top:12px;
+	}
+	.go-bank>span{
+		padding-left:10px;
+	}
+	.money{
+		width:160px;
+		height:160px;
+	}
+	.date-choose>span.yearT {
+		left:8px;
+	}
+	.date-choose>span.monthT{
+		top:36px;
+		left:12px;
+		font-size:1.3em;
+	}
+	.triangleDown{
+		bottom:20px;
+		right:2px;
+		-webkit-animation: Date 2s linear infinite;
+	}
+	.triangleDown{
+		width: 0;
+	    height: 0;
+	    border-left:5px solid transparent;
+	    border-right: 5px solid transparent;
+	    border-top: 8px solid #fff;
+	    position: absolute;
+	    bottom:20px;
+	    z-index:1;
+	    right:4px;
+	    -webkit-animation: Date 2s linear infinite;
+	}
+}
+
+

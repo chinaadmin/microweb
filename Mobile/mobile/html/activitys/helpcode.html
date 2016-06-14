@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="not-ie helpcodeHtml" lang="en">
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="/bower_components/bootstrap/3.3.0/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/activitys.css?sdaf=1200"/>
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/zepto.min.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="/js/plugin/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=8446546" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/helpcode/helpCodeS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/helpcode/helpCodeC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/helpcode/helpCode.js" type="text/javascript" charset="utf-8"></script>
+  <title>好友助力</title>
+</head>
+<body ng-app="app" ng-controller="helpcodeC" class="helpcodeHtml">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="activityHead">
+      <div class="container">
+          <!--<a href="javascript:history.go(-1);" class="goBack"></a>-->
+          <h1 class="title">好友助力</h1>
+          <!--<a href="#" class="goShare"></a>-->
+      </div>
+    </header>
+    <!--  内容 -->
+
+    <div class="helpContent">
+    	    	
+    				<div class="helpHandDiv"><img src="../../images/activity/helpHand.png" class="helpHand" /></div>
+            <div class="helpCode"><div id="code"><span>{{code}}</span></div></div>
+    				<div class="copyDiv fontYH">温馨提示:长按可复制上方助力码</div>
+    </div>
+    <div class="descript fontYH">
+		     <h2>助力码说明：</h2>
+		     <p>1、进入必好货微信公众号或必好货APP</p>
+		     <p>2、在底部菜单 “好友助力” 可填写助力码</p>
+		     <p>3、成功助力好友加蜜 , 自己可获得5元现金券</p>
+     </div>
+      <div class="commanty" id="mytop">
+          <img src="../../images/opacity.png" alt="">
+          <a href="#" class="download-out login" id="output">
+             <img src="../../images/output.png" alt="">
+          </a>
+      </div>
+     <div class="toLink">
+     		<a href="javascript:void(0);" ng-click="ngDialogShow()" class="left"></a>
+     		<a href="javascript:void(0);" class="right downloadApp" id="downloadApp"></a>
+     </div>
+</div>
+<islook></islook>
+<!--<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" charset="utf-8"></script>-->
+</body>
+</html>

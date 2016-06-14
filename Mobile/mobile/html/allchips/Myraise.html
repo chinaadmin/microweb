@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/Myraise.css"/>
+
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script src="/js/allchips/allchipsS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/allchips/allchipsC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/order/order.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+  <title>我的众筹</title>
+</head>
+<body ng-app="app" ng-controller="myraiseC">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="/html/memcenter.html" class="btnBack backNoText" ><i class="icon icon-back marR4"></i></a>
+          <span class="title">
+            我的众筹
+          </span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content orderlist">
+        <div class="raise" ng-repeat = "(k,oneOrders) in allorders">
+            <div class="raise-bor">
+            	<div class="raise-next">
+                  <div class="sort-topbar flex">
+                      <span class = "flexOne">
+                         <i ng-bind="oneOrders.cdName" class="ng-binding"></i>
+                         <p ng-bind="'('+oneOrders.cdSubName+')'"></p>
+                      </span>
+                      <span class="padin" ng-bind = "'&nbsp;X'+oneOrders.child.length+'&nbsp;'"></span>
+                      <span class="padin-top">总价<em ng-bind="'￥:'+oneOrders.countMoney" class="ng-binding">￥：</em></span>
+                  </div>
+            </div>
+            <div class="solitp" ng-repeat = "(kList,OrdersList) in oneOrders.child">
+               <!-- 订单列表 -->
+	            <div class="solitp-p flex" ng-click = "OrdersList.canShow = !OrdersList.canShow"  ng-init = "OrdersList.canShow = OrdersList.canPay==1 ">
+					<div class="solitp-left flexOne" >
+					  <span>订单号：<i ng-bind = "OrdersList.orderSn"></i></span>
+					  <span><i ng-bind = "OrdersList.term"></i><em class="pull-right" ng-bind = "'￥：'+OrdersList.shouldPay"></em></span>  
+					</div>
+					<div class="solitp-right flex" ng-switch on = "OrdersList.payStatus">
+					  <em  class = "useingBtnGreen" ng-switch-when="1">支付中</em>
+					  <em  class = "useingBtnGreen" ng-switch-when="2">已支付</em>
+					  <em  ng-switch-when="3">申请退款</em>
+					  <em  ng-switch-when="4">已退款</em>
+					  <em  class = "useingBtn"  ng-if = "OrdersList.canPay==1" ng-switch-default ng-click = "goPay(OrdersList);" >待支付</em>
+					  <em  ng-if = "OrdersList.canPay!=1" ng-switch-default >待支付</em>
+					</div>                   
+                </div>
+	            <!-- 订单详情 -->
+	            <div class="raise-prve" ng-repeat = "(goodsK,oneGood) in OrdersList.goods" ng-show = "OrdersList.canShow" >
+					<div class="prve_left">
+						<a href=""><img ng-src="{{oneGood.photo}}" /></a>
+					</div>
+					<div class="prve_right">
+						<h4>
+							<a href="" ng-click="page(OrdersList.orderSn)" ng-bind = "oneGood.name"></a>
+							<em ng-show="oneGood.mail_no" ng-click="toPage(oneOrders.countSn,oneGood)" class="pull-right">查看物流</em>
+						</h4>
+						<p>
+							<span ng-bind="OrdersList.num"></span>
+							<i ng-bind = "'x'+oneGood.num"></i>
+							<i ng-if="oneGood.status==2">
+								<span  ng-show="showTips" ng-click = "receivingConfirm(OrdersList.orderId, oneGood.goods_id);" ng-class = "oneGood.status == 2 ? 'useingBtn' : 'unUseingBtn'" class="pull-right" ng-bind = "deliveryString[oneGood.status]"></span>
+							</i>
+							<i ng-if="oneGood.status!=2">
+								<span  ng-show="showTips" ng-class = "oneGood.status == 2 ? 'useingBtn' : 'unUseingBtn'" class="pull-right" ng-bind = "deliveryString[oneGood.status]"></span>
+							</i>
+						</p>
+					</div>
+    		     </div>
+			</div>
+              <div class="btn_up">
+                  <span class="pull-right" ng-click = "outCrowd(oneOrders.countSn,oneOrders)">取消众筹</span>
+              </div>  		
+            </div>
+        </div>
+    </div>
+  </div>
+  <message></message>
+</body>
+</html>

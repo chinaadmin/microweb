@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/orderDetail.css"/>
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/plugin/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=as" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/order/orderS.js?t=as" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/order/orderC.js?t=as" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/order/check.js?t=as" type="text/javascript" charset="utf-8"></script>
+
+  <title>订单确认</title>
+</head>
+<body ng-app="app" ng-controller="checkC">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="#" class="btnBack backNoText" ng-show="page.showBackbtn" ng-click="back()"> <i class="icon icon-back marR4"></i>
+          </a>
+          <span class="title" ng-hide="page.title">订单确认</span>
+          <span class="title" ng-bind="page.title"></span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content checkOrder" ng-show="layout.index.show">
+      <div class="pickup box">
+        <p class="boxTitle notAddress" ng-show="expression" ng-click="switchLayout('address');" ng-hide="recAddress.list.length">请先添加收货地址</p>
+        <p class="hasddress" ng-click="switchLayout('address');" ng-show="recAddress.list.length">
+          <span> <b>收 货 人：</b> 
+            <a ng-bind="recAddress.default.name"></a>
+            <a class="fr" ng-bind="recAddress.default.mobile"></a>
+          </span>
+          <span> <b>收货地址：</b>
+            <a ng-bind="recAddress.default.localtion+recAddress.default.address"></a>
+          </span>
+        </p>
+      </div>
+
+      <div class="orderItem sort-box box">
+        <div class="sort-topbar">
+          <p>
+            <span>订单信息</span>
+          </p>
+        </div>
+        <div class="sort-item" ng-repeat="(key, value) in (cartBox.goodsList.length>
+          1?[]:cartBox.goodsList)" >
+          <div class="sort-img">
+            <a href="#">
+              <img ng-src="{{value.goods.photo}}" err-src="../../images/list_00.jpg" class="img-responsive img-size"></a>
+          </div>
+          <div class="sort-title">
+            <div class="itwrap">
+            <h4>
+              <a ng-bind="value.goods.name"></a>
+            </h4>
+            <div class="sort-price">
+              <p class="noborder">
+                <span ng-bind="'￥'+value.price"></span>
+              </p>
+              <p class="standard"> <em>
+                 <s class="text-noline"   ng-repeat="(k, v) in value.goods.normsList"  ng-bind="v.name+' : '+v.value"></s>
+              </em> <em ng-bind="'x'+value.number"></em>
+              </p>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="sort-img-item" ng-show="cartBox.goodsList.length>1">
+          <a ng-repeat="(key, value) in (cartBox.goodsList.length>
+            1?cartBox.goodsList.slice(0,3):[])">
+            <img ng-src="{{value.goods.photo}}" err-src="../../images/list_00.jpg" class="img-responsive" alt="{{value.goods.name}}" />
+          </a>
+          <a ng-click="switchLayout('cartList')" >
+            ●●● 共 <em ng-bind="cartBox.goodsList.length"></em>
+            <i>件</i>
+          </a>
+        </div>
+      </div>
+
+      <div class="deliveryWay box marT16">
+        <p class="boxTitle flex">
+          <span class="flexOne">配送方式</span>
+          <i ng-click="switchLayout('psstyle')" ng-bind="psstyle.msg?psstyle.msg:'选择配送方式'"></i>
+        </p>
+        <div ng-show="psstyle.showZore()" class="self">
+          <p class="item flex">
+            <span class="flexOne" ng-bind="psstyle.store.name"></span>
+            <a ng-bind="psstyle.uTime.time"> </a>
+          </p>
+          <p class="item">
+            <span ng-bind="psstyle.store.localtion+' ' +psstyle.store.address"></span>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="invoice box marT16">
+        <p class="boxTitle">
+          <span>发票信息</span>
+          <i ng-click="switchLayout('invoice')" ng-bind="invoice.msg"></i>
+        </p>
+      </div>
+      <div class="coupon box">
+        <p class="boxTitle flex">
+          <span class="flexOne">
+            优惠券
+            <em ng-bind="coupon.hasMsg" ng-show="coupon.hasMsg"></em>
+          </span>
+          <i ng-click="coupon.hasMsg&&switchLayout('coupon')" ng-bind="coupon.msg">无优惠券使用</i>
+        </p>
+      </div>
+
+      <!-- <div class="integral box">
+        <p class="boxTitle flex">
+          <span class="flexOne">
+            可用<em ng-bind="cartBox.integral"></em>积分抵扣<em ng-bind="cartBox.integralPrice"></em>元
+          </span>
+          <i ></i>
+        </p>
+      </div> -->
+
+      <div class="payWay box ">
+        <p class="boxTitle flex">
+          <span class="flexOne">支付方式</span>
+          <i ng-click="switchLayout('payby')" ng-bind="payby.msg?payby.msg:'选择支付方式'"></i>
+        </p>
+      </div>
+      <div class="userfeedback box">
+        <textarea ng-model="page.userfeedback" placeholder="本次交易你想要说些什么？（选填）"></textarea>
+      </div>
+      <div class="bestcoin box d-hide">
+        <!--
+        <p class="boxTitle flex">
+          <span class="flexOne">
+            好货币
+            <em>使用
+              <a ng-bind="bestCoin.maxBcoin"></a>
+              好货币，抵￥
+              <a ng-bind="bestCoin.maxBcoin/100"></a></em> 
+          </span>
+          <i ng-class="bestCoin.usecoin?'active':''" ng-click="bestCoin.use()"></i>
+        </p>
+        <p class="msg" ng-show="bestCoin.usecoin">
+          使用
+          <input type="text" ng-model="bestCoin.bcoin">
+          好货币，抵
+          <em>￥</em>
+          <em ng-bind="bestCoin.coin"></em>
+        </p>
+        -->
+      </div>
+
+      <div class="total box marT16">
+
+        <p>
+          <span>商品总额：</span>
+          <em ng-bind="'￥'+cartBox.goodsPrice"></em>
+        </p>
+        <p>
+          <span>运费：</span>
+          <em ng-bind="'+￥'+cartBox.shipment"></em>
+        </p>
+      </div>
+
+      <div class="payto">
+        <span>
+          应付金额：
+          <em ng-bind="'￥'+cartBox.totalPrice"></em>
+        </span>
+        <a class="btn btn-Ye" ng-click="page.submit()">立即付款</a>
+      </div>
+
+    </div>
+
+    <div class="container content invoice" ng-show="layout.invoice.show">
+      <h2>发票抬头：</h2>     
+      <p>
+        <input type="text" placeholder="个人或单位名称" ng-model="invoice.content">
+        <span class="fr" ng-click="switchLayout('invoiceInfo')">发票须知</span>
+      </p>
+      <p>
+        <a class="btn" ng-click="invoice.get(1)">确定</a>
+        <a class="btn" ng-click="invoice.get()">不开发票</a>
+      </p>
+    </div>
+    <div class="container content invoiceInfo" ng-show="layout.invoiceInfo.show">
+      <div class="wrap">
+        <p>
+          <span>1、发票类型：</span>
+          必好货仅支持开具普通发票。
+        </p>
+        <p>
+          <span>2、发票金额：</span>
+          发票金额不包含运费、优惠券抵扣金额和好货币抵扣金额。
+        </p>
+        <p>
+          <span>3、发票内容：</span>
+          订单中必好货发货的商品，由必好货开具发票，发票内容根据购买的商品信息决定。
+        </p>
+      </div>
+    </div>
+
+    <div class="container content psstyle" ng-show="layout.psstyle.show">
+      <h2>选择配送方式：</h2>
+      <p class="select flex">
+        <span class="flexOne" ng-click="psstyle.select(1)" ng-class="psstyle.page==1?'active':''"><a>普通快递</a></span>
+        <span class="flexOne" ng-click="psstyle.select(2)" ng-class="psstyle.page==2?'active':''"><a>送货上门</a></span>
+        <span class="flexOne" ng-click="psstyle.select(0)" ng-class="psstyle.page==0?'active':''"><a>门店自提</a></span>
+      </p>
+      <p class="msg">        
+        <span ng-show="psstyle.page==1" > <i ng-bind="psstyle.ways[1].remark"></i></span>
+        <span ng-show="psstyle.page==2" >
+        	由附近店&nbsp;&nbsp;<i ng-bind="psstyle.storesDistance.name"></i>&nbsp;&nbsp;免费配送上门(500米)
+        	<span ng-if="psstyle.storesDistance.pmEnd">
+        		,<br> 
+	        	<span class = 'deliverySpace'>配送时间：</span>
+	        	<span class = 'deliverySpace'>
+		        	<i ng-bind="psstyle.storesDistance.pmEnd"></i>点前下单,当日即可安排配送<br/>
+		        	<i ng-bind="psstyle.storesDistance.pmEnd"></i>点后下单,次日安排配送
+	        	</span>
+        	</span>
+        </span>
+        <span ng-show="psstyle.page==0" ng-bind="psstyle.ways[0].remark"><b>由用户自己到所选择的门店自行提货</b></span>
+      </p>
+      <ul class="addressList" ng-show="psstyle.page==0">
+        <li class="item" ng-repeat="(key, value) in psstyle.list" ng-click="psstyle.use(value)" ng-class="value.active">
+          <div>
+            <span ng-bind="value.name"></span><br>
+            <span ng-bind="value.localtion+' '+value.address"></span>
+          </div>
+        </li>
+        <li><div>
+          <span>自提时间</span>
+          <select ng-options="value.time for value in psstyle.time" ng-model="psstyle.uTime">
+            <option value="">选择自提时间</option>
+          </select>
+        </div></li>
+      </ul>
+      <p>
+        <a class="btn" ng-click="psstyle.onSwitch()">确定</a>
+      </p>
+    </div>
+
+    <div class="container content payby" ng-show="layout.payby.show">
+      <h2>支付方式：</h2>
+      <p class="select">
+        <span class="item wx" ng-click="payby.get(0)" ng-class="!payby.currentItem?'active':''">
+          <i>微信支付</i>
+          <em></em>
+        </span>
+        <span class="item ye" ng-click="payby.get(1)" ng-class="payby.currentItem?'active':''">
+          <i>账户余额支付 <a ng-bind="'(当前余额：'+cartBox.money+'元)'"></a> </i>
+          <em></em>
+        </span>
+      </p>
+      <p>
+        <a class="btn" ng-click="switchLayout('index');payby.onSwitch()">确定</a>
+      </p>
+    </div>
+
+    <div class="container content cartList" ng-show="layout.cartList.show">
+      <div class="orderItem sort-box box">
+        <div class="sort-topbar">
+          <p>
+            <span>商品信息</span>
+          </p>
+        </div>
+        <div class="sort-item" ng-repeat="(key, value) in cartBox.goodsList" >
+          <div class="sort-img">
+            <a href="#">
+              <img ng-src="{{value.goods.photo}}" err-src="../../images/list_00.jpg" class="img-responsive img-size"></a>
+          </div>
+          <div class="sort-title">
+            <h4>
+              <a ng-bind="value.goods.name"></a>
+            </h4>
+            <div class="sort-price">
+              <p>
+                <span ng-bind="'￥'+value.goods.price"></span>
+              </p>
+              <p class="standard">
+                 <em >
+                 <s class="text-noline" ng-repeat="(k, v) in value.goods.normsList" ng-bind="v.name+' : '+v.value"></s>
+              </em>
+                <em ng-bind="'x'+value.number"></em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container content coupon" ng-show="layout.coupon.show">
+      <h2>
+        <p>友情提示：一个订单只允许使用一张优惠券</p>
+        <p>可用优惠券：</p>
+      </h2>
+      <ul class="select">
+        <li ng-repeat="(key, value) in coupon.res" ng-click="coupon.select(value)" ng-class="value.active?'active':''">
+          <span>
+            <i ng-bind="value.name"></i>
+          </span>
+          <span>
+            有效期至：
+            <a ng-bind="value.end_time"></a>
+          </span>
+        </li>
+      </ul>
+
+      <p>
+        <a class="btn" ng-click="switchLayout('index');">确定</a>
+      </p>
+    </div>
+
+    <div class="container content address" ng-show="layout.address.show">
+      <div class="list box">
+        <div class="wrap flex" ng-repeat="(key, value) in recAddress.list" ng-class="value.use=='1'?'active':''">
+          <div class="selected m">
+          </div>
+          <div class="mwrap flexOne" ng-click="recAddress.set(value);switchLayout('index')">
+              <div class="item flex">
+                <span class="flexOne">                  
+                  <em ng-bind="value.name"></em>
+                </span>
+                <a ng-bind="value.mobile" style="margin-right:12px;"></a>
+              </div>
+              <span>
+                <i ng-show="value.isDefault=='1'">默认</i>
+                <em ng-bind="value.localtion+value.address"></em>
+              </span>
+          </div>
+          <div class="editer m" ng-click="switchLayout('recAdd',true);recAddress.setAddress(value)">
+            
+          </div>
+        </div>
+      </div>
+      <p class="addLocation">
+        <a class="btn" ng-click="switchLayout('recAdd');addressArea.clear();">添加收货地址</a>
+      </p>
+    </div>
+    <div class="container content recAdd" ng-show="layout.recAdd.show" ng-layload="layout.recAdd.show">
+      <div class="edit box">
+        <form name="recadd" novalidate>
+          <p class="flex">
+            <span>收货人</span>
+            <span class="flexOne" >
+              <input type="text" ng-model="addressArea.username" placeholder="必填"></span>
+          </p>
+          <p class="flex">
+            <span>手机号码</span>
+            <span class="flexOne" >
+              <input type="text" ng-model="addressArea.mobile"   placeholder="必填"  />
+            </span>
+          </p>
+          <p class="flex">
+            <span>所在省份</span>
+            <select class="flexOne" ng-options="area.provice_name for area in addressArea.provice" ng-model = "addressArea.useProvice" >
+              <option value="">请选择</option>
+            </select>
+          </p>
+          <p class="flex">
+            <span>所在城市</span>
+            <select class="flexOne" ng-options="city.city_name for city in addressArea.city" ng-model = "addressArea.useCity">
+              <option value="">请选择</option>
+            </select>
+          </p>
+          <p class="flex">
+            <span>所在地区</span>
+            <select class="flexOne" ng-options="county.county_name for county in addressArea.county" ng-model = "addressArea.useCounty">
+              <option value="">请选择</option>
+            </select>
+          </p>
+
+
+
+
+          <p class="flex">
+            <span>详细地址</span>
+            <span class="flexOne">
+              <input type="text" placeholder="必填" ng-model="addressArea.address"></span>
+          </p>
+          <p>
+            <a class="address" ng-click="addressArea.isDefault=!addressArea.isDefault;addressArea.setDefault()" ng-class="addressArea.isDefault?'active':''">设为默认地址</a>
+          </p>
+          <p>
+            <a ng-click="addressArea.del()" ng-show="recAddress.edit" style="color:red;">删除地址</a>
+          </p>
+        </form>
+      </div>
+      <p class="addLocation">
+        <a class="btn" ng-click="addressArea.add()">保存</a>
+      </p>
+    </div>
+
+  </div>
+  <message></message>
+</body>
+</html>

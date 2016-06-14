@@ -1,0 +1,115 @@
+
+
+.view .container { padding: 0; }
+.view .content .payby h2 { 
+	font-size: 18px; 
+	line-height: 32px; 
+	color: #666; 
+	background-color: #f4f4f4; 
+	margin: 0; 
+	padding: 8px 16px; 
+	border-bottom: 1px solid #f4f4f4; 
+}
+.view .content .payby .payby_top {
+	margin-top: 10px;
+}
+.view .content .payby p { 
+	background-color: #fff; 
+}
+.view .content .payby p.select { 
+	border-bottom: 1px solid #eee;
+	padding: 8px 0; 
+}
+.view .content .payby p .item { 
+	background-position: 8px center; 
+	background-repeat: no-repeat; 
+	background-size: 32px auto; 
+	border-bottom: 1px dashed #eee; 
+	display: inline-block; 
+	line-height: 48px; 
+	padding-left: 48px; 
+	position: relative; 
+	width: 100%; 
+}
+.view .content .payby p .item.wx { 
+	background-image: url(../../images/wx.png); 
+}
+.view .content .payby p .item.ye { 
+	background-image: url(../../images/ye.png); 
+}
+.view .content .payby p .item:last-child { 
+	border-bottom-width: 0; 
+}
+.view .content .payby p .item em { 
+	background-color: #eee; 
+	border-radius: 320px; 
+	height: 100%; 
+	margin-right: 12px; 
+	width: 24px; 
+	position: absolute; 
+	right: 0; 
+	top: 0; 
+	background-image: url(../../images/default_@2x.png); 
+	background-size: 100%; 
+	background-repeat: no-repeat; 
+	background-position: left center; 
+	background-color: #fff; 
+}
+.view .content .payby p .item.active em { 
+	background-image: url(../../images/sel_@2x.png); 
+}
+.view .content .payby p .item em:before { 
+	color: transparent; 
+	content: "√"; 
+	font-size: 16px; 
+	position: absolute; 
+	right: 10px; 
+	top: -10px; 
+}
+.view .content .payby .payby_top p:last-child { 
+	padding:16px; 
+}
+.view .content .payby p a.btn { 
+	background-color: #ff8400;
+	width: 100%; 
+	color: #fff; 
+	line-height: 24px; 
+	font-size: 16px; 
+}
+
+.view .content .payto { 
+	display: -webkit-box; 
+	display: flex; 
+	display: -webkit-flex; 
+	padding-top: 0; 
+	padding-bottom: 0; 
+	line-height: 48px; 
+	font-size: 14px; 
+	height: 48px; 
+	background-color: #fff; 
+	position: fixed; 
+	bottom: 0; 
+	left: 0; 
+	width: 100%; 
+}
+.view .content .payto span { 
+	-webkit-box-flex: 1; 
+	flex: 1; 
+	-webkit-flex: 1; 
+	padding-left: 16px; 
+	display: inherit; 
+	vertical-align: middle; 
+}
+.view .content .payto span em { 
+	font-style: normal; 
+	font-size: 18px; 
+	color: #FF3925; 
+}
+.view .content .payto .btn { 
+	background-color: #FF3925; 
+	border-radius: 0; 
+	line-height: 48px; 
+	height: 100%; 
+	padding: 0 26px; 
+	color: #fff;
+}

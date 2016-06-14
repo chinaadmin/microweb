@@ -1,0 +1,68 @@
+html, body { height: 100%; width: 100%; background-color: #eee; }
+
+.view .content {  padding: 0; }
+.view .content p { margin: 0 }
+
+.view .content .inputBox input { border: 1px solid #ccc; padding: 8px; }
+.view .content .inputBox input:focus { border: 1px solid #ff8400; }
+.view .content .inputBox .full { width: 96%; margin: 12px 2%; }
+.view .content .inputBox .full:first-child{ margin-top: 32px;}
+.view .content .inputBox p { padding: 0 2%; }
+.view .content .inputBox a { color: #ff8400; }
+.view .content .inputBox a.btn { margin-top: 24px; background-color: #ff8400; color: #fff; border-color: #ff8400; }
+.view .content .inputBox a.btn:hover { background-color: #FFAD51; }
+
+.view .content .inputBox select.full { border: 1px solid #ccc; padding: 8px; margin-top: 12px; margin-bottom: 12px; }
+.view .content .inputBox .text { text-indent: 2px; line-height: 24px; }
+.view .content .inputBox .lineGroup {
+	margin-top: 12px;
+	display: -webkit-box;
+	display: flex;
+	display: -webkit-flex;
+}
+.view .content .inputBox .lineGroup input.lite {
+	-webkit-box-flex:1;
+	flex: 1;
+	-webkit-flex: 1;
+	-webkit-appearance: none;
+	border-radius: 0;
+	display: inherit;
+	border-right-width: 0;
+
+}
+.view .content .inputBox .lineGroup .btn {
+	margin-top: 0;
+	border-radius: 0;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	min-width: 96px;
+}
+
+.view .content .inputBox .lineGroup .btn.active {
+  background-color: #ccc;
+  border-color: #ccc;
+  box-shadow: none;
+}
+
+
+.view .content .inputBox .icon {
+	background-position: 6px 50%;
+	background-repeat: no-repeat;
+	background-size: 20px auto;
+}
+.view .content .inputBox .icon.user{
+	background-image: url(../../images/user.png);
+}
+.view .content .inputBox .icon.password{
+	background-image: url(../../images/password.png);
+}
+
+.msgBox {  padding: 16px 0 48px 0; }
+
+.view .content.login .inputBox input { padding-left: 32px; }
+.view .content.login .loginfs { padding: 0 2%; }
+.view .content.login .loginfs img { background-color: gold; border-radius: 64px; display: inline-block; margin: 8px 16px 0 0; min-height: 32px; min-width: 32px; }
+
+.view .content.register .input.phone {  border-bottom-width: 1px; }
+.view .content.register .input.password {  }
+.view .content.register .agreement a { text-decoration: underline; }

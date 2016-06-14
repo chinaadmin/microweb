@@ -1,0 +1,257 @@
+
+
+
+
+#content { padding-bottom: 85px; }
+
+.content.container{
+	padding: 0;
+}
+
+
+body.detail header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+	z-index: 99;
+}
+body.detail .content{
+	padding-top: 48px;
+}
+.swiper-slide { height: auto; }
+.swiper-container { height: auto; background-color: #fff; position: relative;}
+.swiper-container .swiper-wrapper{
+	position: relative;
+}
+.swiper-container .swiper-wrapper ul{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+.swiper-container .swiper-wrapper > img{opacity: 0;}
+.swiper-container .swiper-wrapper .swiper-slide img { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+.swiper-container .swiper-pagination { bottom: 90%; }
+.swiper-container .swiper-pagination .swiper-pagination-bullet-active { background: #FF8C00; }
+
+
+.swiper-container .back-box { display: block; position: absolute; bottom: 89%; background: #cfcfcf; border-radius: 50%; opacity: 0.5; z-index: 1; margin-left: 1rem; }
+.swiper-container .pName { background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5); bottom: 0; position: absolute; width: 100%; z-index: 1; height: 56px; overflow: hidden; color: #ffffff; }
+.swiper-container .pName .dt {
+	padding-left: 16px;
+	font-size: 14px;
+	vertical-align: middle;
+	line-height: 56px;
+}
+.swiper-container .pName .dt span{
+	vertical-align: middle;
+	display: inline-block;
+	max-height: 40px;
+	overflow: hidden;
+	line-height: 20px;
+}
+.swiper-container .pName .share-box {
+	text-align: center;
+	vertical-align: middle;
+	width: 64px;
+}
+.swiper-container .pName .share-box a { display: inline-block; margin-right: 8px; color: #fff; width: 36px; }
+.swiper-container .pName .share-box a img { display: inline-block; width: 32px; vertical-align: middle; }
+.swiper-container .pName .share-box a span { display: inline-block; width: 100%; }
+
+.price-box{background-color:#fff;padding:16px;box-shadow:0 2px 2px 0 #ccc}
+.price-box p{font-size:16px;margin:0}
+.price-box p .price-cl { color: #ff8c00; }
+.price-box p del{font-size:13px;color:#999;margin-left:8px}
+.price-box p.announcement{
+	font-size: 12px;
+	background-image: url(../../images/post.png);
+	background-repeat: no-repeat;
+	background-position: -4px center; 
+	background-size: 24px;
+	padding: 8px 8px 8px 20px;
+	margin-top: 8px;
+}
+
+
+.selectBox {
+	padding: 16px;
+	background-color: #fff;
+	margin-bottom: 16px;
+	border-top: 1px dashed #ccc;
+	box-shadow: 0 2px 2px 0 #ccc
+}
+.selectBox a{
+	width: 100%;
+	margin-top: 8px;
+}
+
+.selectBox a *{vertical-align: middle;font-style: normal;}
+.selectBox a>span:first-child {
+	width: 56px;
+	max-width: 56px;
+}
+.selectBox a .product>span{
+	display: inline-block;
+	padding: 4px;
+}
+.selectBox a .product span.select *{
+	border-color: transparent;
+	outline: 2px solid #ff8400;
+	background-color: #ff8400;
+	color: #fff;
+}
+.selectBox a .product span.select i{
+	outline: none;
+}
+.selectBox a .product span img {
+
+	display: inline-block;
+}
+.selectBox a .product span i {
+	border: 1px solid #ccc;
+	display: inline-block;
+	padding: 6px 12px;
+}
+.selectBox .number{
+	margin-top: 16px;
+}
+.selectBox .number>span:last-child{
+	font-size: 0;
+	margin-top: -6px;
+	text-align: right;
+}
+.selectBox .number i{
+	display: inline-block;
+	width: 28px;
+	text-align: center;
+	background-color: #ddd;
+	line-height: 32px;
+	vertical-align: middle;
+	font-size: 16px;
+	font-weight: bold;
+
+}
+.selectBox .number i:first-child{
+	border-radius: 2px 0 0 2px;
+}
+.selectBox .number i:last-child{
+	border-radius: 0 2px 2px 0;
+}
+.selectBox .number input{
+	line-height: 30px;
+	padding: 0 8px;
+	vertical-align: middle;
+	font-size: 14px;
+	border:1px solid #ddd;
+	width: 56px;
+	text-align: center;
+}
+
+
+
+.filter-pg { margin-bottom: 16px; background-color: #fff; box-shadow: 0 2px 2px 0 #ccc; }
+.filter-mcment { border-bottom: 1px solid #ccc; }
+.filter-mcment img { 
+	width: 44px; 
+	height: 44px; 
+	border-radius: 128px; 
+	margin-right: 15px; 
+}
+.filter-img {}
+.filter-user {}
+.filter-top { 
+	padding: 10px; 
+	border-bottom: 1px solid #ccc;
+}
+.filter-top h4 { padding: 0; margin: 0;  }
+.filter-but { width: 100%; height: 48px; line-height: 48px; position: relative; display: inline-block;}
+.filter-but button { position: absolute; right: 20px; bottom: 4px; display: inline-block; background-color: #DBDADA; } 
+.filter-mcment p { padding: 10px; margin: 0; font-weight: bold; font-family: arial; font-size: 14px; }
+
+
+
+
+
+
+
+
+
+
+
+
+.moreDrop{position:relative;height:41px;line-height:41px;overflow:hidden}
+.moreDrop hr{border-color:#ccc}
+.moreDrop p{position:absolute;top:0;left:0;width:100%;text-align:center;height:100%}
+.moreDrop p span{background-color:#eee;padding:0 10px;font-size:18px;font-weight:500;color:#999}
+
+.detailTab { padding: 0 16px; background-color: #fff; font-size: 0; border-bottom: 1px solid #ccc; }
+.detailTab .tabItem {
+	font-size: 16px;
+	display: inline-block;
+	margin-right: 12px;
+	padding: 16px 0;
+	height: 100%;
+	vertical-align: middle;
+	border-bottom: 1px solid transparent;
+	margin-bottom: -1px;
+}
+.detailTab .tabItem.active{
+	border-color: #ff8400;
+	color: #ff8400;
+}
+.detailTab .tabItem.line { border-right: 1px solid #ccc;  }
+.detailTab .tabItem:last-child { border-right-width: 0; }
+.eva-img-box { background-color: #fff; overflow: hidden; padding: 16px;}
+.eva-img-box img { margin-top: 16px; display: block; height: auto; max-width: 100% }
+.standardBox { overflow: hidden; background-color: #fff; }
+.standardBox .xwrap { margin: 16px; }
+
+
+
+.view .content{
+	margin-bottom: -17px;
+}
+.view .content .vpayControl {
+	background-color: #fff;
+	box-shadow:  0 0 2px 0 #aaa;
+	padding: 16px 0;
+	text-align: center;
+	position: fixed;
+	width: 100%;
+	height: 68px;
+	left: 0;
+	bottom: 0;
+}
+.view .content .vpayControl .btn {
+	margin: auto 16px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	
+}
+.view .content .vpayControl a.addc{
+	margin-right: 0;
+}
+.view .content .vpayControl .cartNum{
+	background-image: url(../../images/d-cart-n.png);
+	background-repeat: no-repeat;
+	background-position: 8px 50%;
+	background-size: auto 100%;
+	text-align: left;
+	text-indent: 16px;
+	height: 36px;
+}
+.view .content .vpayControl .cartNum.active{
+	background-image: url(../../images/d-cart-y.png);
+}
+.view .content .vpayControl .cartNum a {
+	color: #fff;
+	font-size: 11px;
+	vertical-align: top;
+	display: inline-block;
+	line-height: 16px;
+}
+.view .content .vpayControl .btn.btn-Ye{ border: 1px solid #ff8411; background-color: #ff8400; color: #fff; }

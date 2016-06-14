@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/orderDetail.css"/>
+
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/order/order.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/order/orderC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/order/orderS.js" type="text/javascript" charset="utf-8"></script>
+  
+  
+
+
+  <title>订单详情</title>
+</head>
+<body ng-app="app" ng-controller="detailC">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="#" class="btnBack backNoText" ng-back="order"><i class="icon icon-back marR4"></i></a>
+          <span class="title">
+            订单详情
+          </span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content detail">
+        <div class="userInf">
+          <div class="box">
+            <div class="bLeft">
+              <div>
+                <p>订单号</p>
+              </div>
+            </div>
+            <div class="bRight">
+              <div>
+                <p>
+                  <span class="flex"> <i class="flexOne" ng-bind="detail.orderSn"></i>
+                    <a class="colorYe" ng-bind="detail.statusName"></a>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="address marT16" >
+          <div  class="lassmessage" ng-show="istrue">
+            <p><i ng-bind="datas.logistics_info[0].context"></i> <a href="../messagePush/check.html?rec_id={{detail.goods[0].recId}}" > > </a></p>
+            <p><i ng-bind="datas.logistics_info[0].time"></i></p>
+          </div>
+
+          <div>
+            <p><span><b>收货人：</b> <i ng-bind="detail.receiving.username"></i> </span><span ng-bind="detail.receiving.mobile"></span></p>
+            <p>收货地址：<i ng-bind="detail.receiving.localtion+detail.receiving.address"></i></p>
+          </div>
+        </div>
+
+        <div class="orderItem sort-box">
+          <div class="sort-topbar">
+            <p>
+              <span>商品信息</span>
+              <span ng-bind="detail.stores.nameExt" ng-click="storesTips()"></span>
+              <i class="allB" ng-show="refundSta == 1"><span ng-click="refundAll(detail)" >整单退货</span></i>
+            </p>
+          </div>
+          <div class="sort-item" ng-repeat="(key, value) in detail.goods">
+             <div class="sort-img">
+               <a  href="../commodity/detail.html?gid={{value.id}}" ><img  ng-src="{{value.photo}}" err-src="../../images/list_00.jpg" class="img-responsive img-size"></a>
+             </div>
+             <div class="sort-title">
+               <h4><a  href="../commodity/detail.html?gid={{value.id}}" ng-bind="value.name"></a></h4>
+               <div class="sort-price">                 
+                 <p class="standard">                 
+                     
+                   <em>
+                      <i class="text-noline" ng-repeat="(k, v) in value.normsList" ng-bind="v.name+' : '+v.value"></i>
+                   </em> 
+                   <em>x<i ng-bind="value.number"></i></em>
+                 </p>
+                 <p>
+                   <span>
+                     ￥ <i ng-bind="value.price"></i>
+                   </span>
+                   <span class="refundBtn"  ng-show="checkRefundBtn(value)" ng-show="refundSta == 1" ng-if="statusM" ng-click="refund(value)">退款/退货</span>
+                   <span class="refund"  ng-show="value.isRefund=='1'" ng-bind="refundStatusText"></span>
+                 </p>
+               </div>
+             </div>
+           </div>
+        </div>
+
+        <div class="delivery marT16">
+          <p class="title flex">
+            <span class="flexOne">配送信息</span>
+            <span ng-show="detail.shippingType=='0'">门店自提</span>
+            <span ng-show="detail.shippingType=='1'">普通快递</span>
+            <span ng-show="detail.shippingType=='2'">送货上门</span>
+          </p>
+          <div ng-show="detail.shippingType=='0'" class="deliveryContent">
+            <p> <b>配送门店： <i ng-bind="detail.stores.name"></i></b> 
+            </p>
+            <p>
+              配送地址： <i ng-bind="detail.stores.localtion+detail.stores.address"></i>
+              （联系电话：
+              <i ng-bind="detail.stores.mobile"></i>
+              ）
+            </p>
+            <p>
+              自提时间：
+              <i ng-bind="detail.stores.time"></i>
+            </p>
+          </div>
+        </div>
+
+        <div class="payInf iBox">
+          <hr>
+          <div class="box" style="margin-top:0">
+            <div class="bLeft">
+              <div>
+                <p class="colorGrey9">发票信息</p>
+              </div>
+            </div>
+            <div class="bRight">
+              <div>
+                <p class="text-right colorGrey9" ng-bind="detail.needsInvoice=='0'?'不开发票':detail.invoice.invoicePayee+' / 商品详情'"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="postscript" ng-show="detail.postscript">
+            <div class="mwrap">
+
+            <span class="title">用户留言</span>
+            <p  class="mcontent"ng-bind="detail.postscript"></p>
+            
+
+            </div>          
+        </div>
+
+
+        <div class="statistics">
+          <p class="flex"><span>运费: </span><b class="flexOne" ng-bind="detail.shipmentPrice"></b></p>
+          <p class="flex"><span>优惠券抵扣：</span><b class="flexOne" ng-bind="detail.couponPrice"></b></p>
+          <!-- <p class="flex"><span>积分抵扣：</span><span ng-bind="detail.integralPrice"></span></p> -->
+          <p class="flex"><span>积分抵扣：</span><b class="flexOne" ng-bind="detail.integralPrice"></b></p>
+          <p class="flex"><span>实付款(含运费): </span><b class="flexOne">￥<i ng-bind="detail.price"></i></b></p>
+          <p ><span>下单时间：<i ng-bind="detail.addTime"></i></span></p>
+        </div>
+        <div class="orderControl marT16" ng-show="detail.btnCancel=='1'||detail.btnPay=='1'">
+            <a href="#" class="btn" ng-show="detail.btnCancel=='1'" ng-click="cancel()">取消订单</a>
+            <a href="#" class="btn btn-Ye" ng-show="detail.btnPay=='1'" ng-click="pay()">立即付款</a>
+        </div>
+
+  </div>
+  </div>
+  <message></message>
+</body>
+</html>

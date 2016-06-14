@@ -1,0 +1,1099 @@
+.disableSelect{
+-moz-user-select:'-moz-none',
+-moz-user-select:'none',
+-o-user-select:'none',
+-khtml-user-select:'none', 
+-webkit-user-select:'none',
+-ms-user-select:'none',
+user-select:'none' 
+}
+input[type="button"], input[type="submit"], input[type="reset"] {
+-webkit-appearance: none;
+border-raius:0;
+border:0
+}
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  zoom: 1;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+html,body{
+  background-color: #fff;
+}
+.helpcodeHtml{
+	background-color: #f4f4f4;
+}
+/*font*/
+.fontYH{font-family:"Microsoft YaHei";}
+/*dialog*/
+.getIsAwardDialog{
+	background: rgba(0,0,0,0.7);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left:0;
+	top:44px;
+	z-index: 999;
+}
+.getIsAwardDialog_bg{
+	border-radius: 7px;
+	position:relative;
+	text-align: center;
+	width: 250px;
+	padding:10px 10px 20px 10px;
+	margin:100px auto 0;
+	background: #fff;
+}
+.getIsAwardDialog_bg .bird{
+	display:block;
+	width:80px;
+	margin:5px auto;
+}
+.flower{-webkit-tap-highlight-color:rgba(0,0,0,0)}
+.tips_word{
+	width:210px;
+	margin:10px auto;
+	line-height:2;
+}
+.tips_btn{
+	display: block;
+	width:120px;
+	height:35px;
+	text-align: center;
+	line-height: 35px;
+	color:#fff;
+	background: #ff0000;
+	font-weight: 700;
+	font-size: 16px;
+	border-radius: 5px;
+	margin:0 auto;
+}
+.tips_btn:hover{
+	color:#fff;
+}
+.closeX{
+	width:32px;
+	position:absolute;
+	right:10px;
+	height: 32px;
+	background: url(../images/activity/closex.png) no-repeat;
+	background-size: 25px;
+}
+
+/*help friend*/
+
+.helpBg{
+	position: absolute;
+	width:100%;
+	z-index: -1;
+	left:0;
+	top:44px;
+}
+#helpTitle{
+	width:100%;
+	margin:10px auto;
+	float:left;
+	/*background: url(../images/activity/helpTitle.png) no-repeat center;
+	background-size: contain;*/
+	background: url(../images/activity/zl.png) no-repeat transparent center -250px;
+	background-size:300px;
+	height:122px;
+	
+}
+.activityHead{
+	background:#ff8e01;
+	width:100%;
+	height:44px;
+	padding:6px 0;
+	position: relative;
+	z-index:99;
+	top:0;
+	overflow: hidden;
+}
+
+.activityHead .container{
+	width:94%;
+	margin:0 auto;
+	padding:0;
+}
+#getNumber,.hb-img *{
+	-webkit-user-select: none;/*禁用手机浏览器的用户选择功能 */
+    -moz-user-select: none;
+}
+.activityHead .container .title{
+	position: absolute;
+	text-align: center;
+	width:100%;
+	top:0;
+	height:44px;
+	line-height: 44px;
+	color: #fff;
+	font-size:18px;
+	font-weight: 700;
+	margin:0;
+	padding:0;
+	z-index:1;
+	left:0;
+	display: block;
+	-webkit-user-select: none;/*禁用手机浏览器的用户选择功能 */
+    -moz-user-select: none;
+}
+.activityHead .container .goBack,.goShare{
+	position:relative;
+	display: inline-block;
+	font-family: "Microsoft YaHei";
+	float: left;
+	height:30px;
+	z-index:999;
+}
+.goBack{
+	width:30px;
+	background: url(../images/activity/btn.png) no-repeat -38px -499px;
+	background-size:100px 556px;
+}
+.goShare{
+	display: block;
+	float: right;
+	width:30px;
+	height:30px; overflow: hidden;
+	background: url(../images/activity/btn.png) no-repeat -43px -618px;
+	background-size:130px 722px;
+}
+.headerHeight{
+	width: 100%;
+	height:48px;
+	clear: both;
+}
+.addFriendDiv{
+	margin:10px auto;
+	width:165px;
+	position: relative;
+}
+#friendCode{
+	width:120px;
+	float: left;
+	padding:1px 1px 1px 5px;
+	border: 1px solid #ccc;
+}
+#addFriend{
+	background: #ccc;
+	border:0;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	float: left;
+	color:#000000;
+}
+.activitysArea{
+	width:100%;
+	height:300px;
+	background: #f2f2f2;
+	position: fixed;
+	bottom:0;
+}
+.timer{
+	border:0;
+	color:red;
+	width:20px;
+	text-align: center;
+}
+.btnShare{float: right;}
+.divTimer{text-align: center;}
+.animateDiv{position: relative;width:100% }
+.miFeng{
+		position: absolute;
+		z-index:10;
+		left:70%;
+		top:50px;
+		border-radius:50%;
+		width:50px; 
+		height: 50px; 
+		background:red; 
+		font-size:20px; 
+		color:#fff; 
+		font-weight: 700; 
+		line-height:50px; 
+		text-align: center;
+}
+.money{
+		position: absolute;
+		z-index:-1;
+		left:70%;
+		top:50px;
+		border-radius:50%;
+		width:50px; 
+		height: 50px; 
+		background:orange; 
+		font-size:20px; 
+		color:#fff; 
+		font-weight: 700; 
+		line-height:50px; 
+		text-align: center;
+	}
+#dialog{
+	display: none;
+	width:100%;
+	background:rgba(0,0,0,0.4);
+}
+.helpContent{
+	width:90%;
+	margin:20px auto;
+	background:url(../images/activity/bgHelp.png) repeat-x #fff;
+	border-radius: 10px;
+	box-shadow:0px 0px 5px rgba(0,0,0,0.2);
+}
+.copyDiv{
+	font-size: 12px;
+   transform: scale(0.9);
+}
+.helpContent .copyDiv{
+	width: 100%;
+	padding:0 0 5px 0;
+	text-align: center;
+}
+.descript h2{
+	font-size:13px;
+}
+.descript{
+	font-size:12px;
+}
+.helpContent .copyBtn{
+	display: block;
+	width:154px;
+	height: 45px;
+	background: url(../images/activity/copy.png) no-repeat;
+	background-size: 154px 45px;
+	margin:10px auto 0;
+}
+.helpHandDiv{
+	padding:10px 0 0 0;
+}
+.helpHandDiv img{width:70px; height:70px;}
+.helpHand{
+	width:100px;
+	display: block;
+	margin:0 auto;
+	border:4px solid #fff;
+	border-radius:50%;
+}
+.helpCode{
+	text-align: center;
+    padding: 30px 0 10px 0;
+	font-size:22px;
+	font-weight: 700;
+	color: #fff;
+}
+#code{
+	border:2px solid #ff9510;
+	display: block;
+	margin:0 auto;
+	width:80%;
+	height:50px;
+	line-height:50px;
+	border-radius:30px;
+	color:#474747;
+	font-size:24px;
+	background: none;
+	text-align: center;
+	font-weight:normal;
+}
+.descript{
+	width:90%;
+	margin:0 auto;
+}
+.descript h2{
+	font-size:16px;
+}
+.toLink{
+	width:90%; 
+	margin:20px auto 10px;
+}
+.toLink a{
+	display: inline-block;
+	 width: 85px;
+    height: 35px;
+    background: url(../images/activity/islook.png) no-repeat;
+    background-size: 85px 35px;
+}
+.toLink .downloadApp{
+		background: url(../images/activity/downApp.png) no-repeat;
+		background-size: 85px 35px;
+}
+.left{float: left;}
+.right{float: right;}
+.toLink a img{
+	width:100%;
+}
+.addMiDiv{width:100%; float: left;}
+.addMi{
+	width:285px;
+	margin:160px auto 20px;
+	overflow: hidden;
+}
+.helpTextCode{
+	display: inline-block;
+	width:181px;
+	height:40px;
+	border:0;
+	float: left;
+	background: url(../images/activity/addmi_input.png) no-repeat no-repeat;
+	background-size: 181px 40px;
+}
+.helpTextCode::-webkit-input-placeholder{
+	color:#8faab5
+}
+#helpTextCode{
+	display: inline-block;
+	width:170px;
+	height:42px;
+	padding:3px 3px 3px 17px;
+	border:0;
+	float: left;
+	background: none;
+}
+#helpCodeBtn{
+	display: inline-block;
+	width:95px;	
+	padding:3px;
+	height:40px;
+	float: left;
+	margin:0 0 0 6px;
+	background: url(../images/activity/addmiBtn.png) no-repeat no-repeat;
+	background-size: 95px 40px;
+}
+.loadingHelp{
+	position:relative;
+	width:153px;
+	margin:35px auto 0;
+	height:173px;
+}
+.loadingNumber{
+	position: absolute;
+	left:30px;
+	top:5px;
+	width:100px;
+	text-align: center;
+	z-index:4;
+	font-size:24px;
+	color:#fea601;
+}
+.loadingBackground{
+	width:153px;
+	position: absolute;
+	left:0;
+	top:0;	
+	z-index:88;
+	height:173px;
+	overflow: hidden;
+	background:url(../images/activity/bgactive1.png) no-repeat;
+	background-size:150px 173px;
+}
+.loadingBackground1{
+	margin:0 auto;
+	position: absolute;
+	left:4px;
+	top:-3px;
+	z-index:100;
+	width:153px;
+	height:173px;
+	overflow: hidden;	
+	/*background:url(../images/activity/bgHove1.png) no-repeat;*/
+	background-size:150px 173px;
+}
+.addFriendData{
+	width:100%;
+	min-height:40px;
+	margin:0 auto;
+	z-index:5;
+	color:#ffdc37;
+	text-align: center;
+	font-size:14px;
+	position: relative;
+	font-weight:700;
+}
+#canvasImg{display:none}
+.addNumber{
+	width:200px;
+	position: absolute;
+	top:180px;
+	left:35px
+}
+.addFriendData .addPeople{
+	color:#ff4949;
+}
+
+.addFriendData .addPeople span{
+		color:#ffdc37;
+}
+.addFriendData .addPeople,.addFriendData .totalPeople{
+	display: block;
+}
+.addFriendData .leftbox,.addFriendData .rightbox,.addFriendData .lineSprite{
+	float: left;
+}
+.addFriendData .lineSprite{
+	margin:0 10px;
+}
+.dialogBox,.miDialog{
+	width:100%;
+	height: 100%;
+	position: fixed;
+	top: 44px;
+	z-index: 888;
+	background: rgba(0,0,0,0.7);
+}
+.dialogBox{
+	top:0;
+}
+.shareArrow{
+	width:94%;
+	margin:0 auto;
+}
+.shareArrow .arrow{
+	width:40px;
+	float:right;
+}
+.shareTips{
+	width:210px;
+	height:70px;
+	margin:30px auto 0;
+	
+	background:#fff;
+	border-radius:60%;
+}
+.shareTips p{
+	width:200px;
+  display: block;
+  text-align: justify;
+  padding: 12px;
+  margin: 0 auto;
+	font-size:14px;
+	font-weight:700;
+}
+.miDialog{
+	/*display: none;*/
+
+}
+.tipsWord{
+	display: block;
+	position: fixed;
+	top: 50%;
+	margin-top:-155px;
+	width: 100%;
+	z-index: 888;
+}
+.tipsInfo{
+	width:80%;
+	padding:10px 0;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	margin: 40px auto 0;
+	background:#ff8e01;
+}
+.tipsInfo .closed{
+	width:20px;
+	height:20px;
+	display:inline-block;
+	background:url(../images/activity/btn2.png) no-repeat -1px -153px;
+	float:right;
+}
+.picTip{
+	
+}
+.tipInfomation{
+	width:90%;
+	text-align: center;
+	margin:0 auto
+}
+.tipInfomation p{
+	text-align: center;
+	line-height:25px;
+	padding-bottom:10px;
+}
+#cashNum{
+	margin:0 3px 0 0;
+}
+.tipInfomation p .helpCash{
+	color:#ff2674;
+	font-size:24px
+}
+.tipsMoney{
+	width:80%;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	margin:0 auto;
+	padding:20px 0 8px 0;
+	text-align: center;
+	background: #fff;
+}
+.tipsMoneyAlign{
+	width:90%;
+	margin:0 auto;
+	text-align: center;
+}
+.tipsMoney .tipsMoneyAlign p{text-align: center;font-weight:700;font-size:18px; color:#797979}
+.tipsMoney .tipsMoneyAlign p.getFriendThink{text-align: center; line-height: 2; color: #4f4f4f;}
+.tipsMoneyAlign .cashCard{
+	width:65px;
+	height: 65px;
+	line-height: 65px;
+	border-radius: 50%;
+	margin:0 auto 10px;
+	background: #ff0066;
+	color:#fff;
+}
+.tipsMoneyAlign .cashCard #cashNum{
+	font-size:25px;
+}
+.money-hb{
+	position: relative;
+	width:230px;
+	margin:0 auto;
+}
+.money-hb .hb-img{
+	width:230px;
+	height:284px;
+	background: url(../images/activity/hb.png) no-repeat;
+	background-size:230px 284px;
+	margin-top:25px;
+}
+.money-hb .hb-img .endActivity{
+	padding:110px 0 0 0;
+}
+.money-hb .hb-img p{
+	color:#fff;
+	font-weight: 700;
+	text-align: center;
+	font-size:20px;
+}
+.money-hb .hb-img p #getMoney{
+	color:#f4e823;
+}
+#sure-get-hb{
+	display: block;
+	width:100px;
+	position: absolute;
+	left:50%;
+	top:200px;
+	z-index: 55;
+	margin-left:-50px;
+	z-index: 2;
+	height:45px;
+	background: url(../images/activity/hbSure.png) no-repeat;
+	background-size: 100px 42px;
+}
+html.htmlbg,body.activityIndex{
+	background: #ca1946;
+}
+.circleWrap{
+	float: left;
+	width:100%;
+	height:80px;
+	overflow: hidden;
+	background: url(../images/activity/pic_bg@2x.png) no-repeat top center;
+	background-size:100% 80px;
+}
+
+.bannerBox{
+	float: left;
+	position: relative;
+	width:100%;
+	height:120px;
+}
+.bannerWrap{
+		float: left;
+		position: absolute;
+		left:0;
+		top:0;
+		z-index:5;
+		width:100%;
+		height:120px;
+		background: url(../images/activity/pic1@2x.png) no-repeat top center;
+    background-size: 100% 120px;
+}
+.timerBanner{
+		position: absolute;
+		left:0;
+		top:0;
+		z-index:2;
+		width:100%;
+		height:100px;
+		overflow: hidden;
+}
+.bannerLine{
+	float: left;
+	width: 100%;
+	height:7px;
+	overflow: hidden;
+	background: url(../images/activity/bannerShadow.png) no-repeat top center;
+}
+.circleWrap .circleText{
+	width:80%;
+	height:80px;
+	margin:10px auto;
+	border-radius:50%;
+	background: url(../images/activity/text.png) no-repeat center center #e9c500;
+	background-size:200px;
+	color:#ff0000;
+	font-size:22px;
+	font-weight: 700;
+}
+.bannerText{
+	width:60px;
+	height:60px;
+	border-radius:50%;
+	margin:35px auto 0;
+	border:2px solid #fc524b;
+	background:rgba(255,255,255,0.7);
+	font-size:12px;
+	color: #d91d4e;
+	position: relative;
+}
+#getNumber{
+	display: inline-block;
+	width:100%;
+	padding:4px 0 0 0;
+	text-align: center;
+	font-size:24px;
+    font-style: italic;
+	font-weight: 700;
+}
+.bannerText .numberText{
+	position: absolute;
+	right:5px;
+	bottom:10px;
+}
+#timer{
+	display: block;
+	width: 144px;
+	margin:0 auto;
+	text-align: right;
+	padding:26px 0 0 0;
+}
+.balloon{
+	position: relative;
+	width:300px;
+	z-index: 5;
+	height: 150px;
+	float:right;
+	margin-right: 10px;
+	background: url(../images/activity/balloon.png) no-repeat right top;
+	background-size:200px 198px;
+}
+.balloon a{
+	display: block;
+	position:absolute;
+	height:62px;
+	width:62px;
+	
+}
+.balloon a.award{
+	right:137px;
+	top:10px;
+}
+.balloon a.awardList{
+	right:64px;
+	top:40px;
+	
+}
+.balloon a.activityDescript{
+	right:0;
+	top:5px;
+	
+}
+.flowerBox{
+	width: 100%;
+    float: left;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index:999;
+}
+.jinbi{
+	position: absolute;
+	width:30px;
+	z-index:0;
+	opacity:0;
+	left:180px;
+	display: block;
+	bottom:90px;
+	z-index:-1;
+	
+}
+.jinbiAnimate{
+		-moz-animation-duration: 0.8s; 
+    -moz-animation-name: moneyUp;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+    
+		-webkit-animation-duration: 0.8s; 
+    -webkit-animation-name: moneyUp;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+}
+#mfMove{
+	position:absolute;
+	top:300px;
+	left:20px;
+	width:60px;
+	z-index:199;
+}
+#mf,.mf,.mfs{
+	position:absolute;
+	top:0;
+	left:0;
+	width:60px;
+	z-index:99;
+}
+.flowerimg{
+	width: 100%;
+}
+.flower{
+	position: absolute;
+	z-index:11;
+	width:100%;
+	height:144px;
+	background: url(../images/activity/flower@2x.png) repeat-x;
+	background-size:320px 144px;
+	bottom:0;
+}
+
+
+.mf,.mfs{
+	  width:23px;
+	  top:25px;
+	  left:5px;
+	  z-index:88;
+	  position: absolute;
+	  -moz-animation-duration: 0.4s; 
+    -moz-animation-name: x-spin;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-linear;
+	  -webkit-animation-duration: 0.4s; 
+    -webkit-animation-name: x-spin;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-linear;
+}
+.mfs{
+		top:22px;
+	  left:10px;
+	  width: 12px;
+	  height:13px;
+	  
+}
+
+
+/*tip*/
+
+.shadow{
+	background-color:rgba(0,0,0,0.7);
+	height:100%;
+	width:100%;
+	position: fixed;
+	visibility: visible;
+	left:0;
+	top:44px;
+	z-index:555;
+}
+.shadow>.window{
+	width:70%;
+	min-height:10em;
+	background:#fff;
+	border-radius:0.7em;
+	position:absolute;
+	left:50%;
+	top:50%;
+	padding-bottom: 10px;
+margin-top: -7em;
+	margin-left:-35%;
+}
+
+.shadow>.window>h3{
+	background:#FF8E01;
+	color:#FF8E01;
+	border-top-left-radius: 0.4em;
+	border-top-right-radius: 0.4em;
+	height:2em;
+	line-height:2em;
+	font-family: "microsoft yahei";
+	position:relative;
+	margin-top:0;
+}
+.shadow>.window>h3 .tip{
+	background:url(../images/activity/bq_@2x.png) no-repeat center;
+	background-size: 285px 60px;
+	display:inline-block;
+	width:60%;
+	margin:0 auto;
+	height:2em;
+}
+.shadow>.window>h3 .tips{
+	background:url(../images/activity/btn2.png) no-repeat 30px -92px;
+	display:inline-block;
+	width:70%;
+	height:2em;
+}
+.shadow>.window>h3 .closed{
+	width:20px;
+	height:20px;
+	display:inline-block;
+	background:url(../images/activity/btn2.png) no-repeat -1px -153px;
+	position: absolute;
+	right:10px;
+	top:14px;
+}
+.shadow>.window>p{
+	font-size:1.5em;
+	color:#ff8e01;
+	font-family: "microsoft yahei";
+	margin-top:0.5em;
+}
+.commanty {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index:9999;
+}
+.commanty img{
+	width:100%;
+	height:100%;
+}
+.download-out {
+    position: absolute;
+    top: 30px;
+    right: 22px;
+}
+.download-out img {
+	display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+img,.container h1,.copyBtn,.helpHand{ pointer-events: none;-webkit-user-select: none;-moz-user-select: none;}
+.shadow>.window>h3 .tip{ pointer-events: none;}
+@-webkit-keyframes x-spin {
+	
+    0%        { -moz-transform:rotateX(-10deg); 	-webkit-transform: rotateX(-10deg); }
+    30%        { -moz-transform:rotateX(-20deg); 	-webkit-transform: rotateX(-20deg); }
+    50%        { -moz-transform:rotateX(-30deg); -webkit-transform: rotateX(-30deg);}
+    70%        { -moz-transform:rotateX(-40deg); -webkit-transform: rotateX(-40deg); }
+    100%        { -moz-transform:rotateX(-80deg); -webkit-transform: rotateX(-80deg); }
+    /*80%        { -webkit-transform: rotateY(140deg); }
+    100%    { -webkit-transform: rotateY(180deg); }*/
+}
+@-webkit-keyframes moneyUp {
+	
+    0%        { display:block;bottom:140px; opacity:0.2;transform: rotateY(-180deg);-webkit-transform: rotateY(-180deg);z-index:99 }
+    30%        {  display:block;bottom:170px; opacity:0.4;transform: rotateY(-140deg);-webkit-transform: rotateY(-140deg);z-index:99 }
+    50%        {  display:block;bottom:200px; opacity:0.6;transform: rotateY(-130deg);-webkit-transform: rotateY(-130deg);z-index:99 }
+    70%        {  display:block;bottom:230px; opacity:0.8;transform: rotateY(-120deg);-webkit-transform: rotateY(-120deg);z-index:99 }
+    100%        { display:none; bottom:120px; opacity:0;transform: rotateY(0deg);-webkit-transform: rotateY(0deg);z-index:0 }
+    /*80%        { -webkit-transform: rotateY(140deg); }
+    100%    { -webkit-transform: rotateY(180deg); }*/
+}
+
+/*end*/
+@media only screen and (min-width: 370px) and (max-width: 410px) {
+	.loadingHelp{
+		top:40px
+	}
+}
+@media only screen and (min-width: 411px) and (max-width: 450px){
+	.loadingHelp{
+		top:100px
+	}
+}
+@media only screen and (min-width: 451px) and (max-width: 600px){
+	.loadingHelp{
+		top:155px
+	}
+}
+@media only screen and (max-width: 345px) {
+	.addMi{
+	width:285px;
+	margin:140px auto 20px;
+	overflow: hidden;
+}
+
+.loadingHelp{margin:20px auto 0}
+	
+}
+@media only screen and (min-width: 370px) {
+	.addMi{
+	width:330px;
+	margin:170px auto 0;
+	overflow: hidden;
+}
+.helpTextCode{
+	display: inline-block;
+	width:212px;
+	height:48px;
+	border:0;
+	float: left;
+	background: url(../images/activity/addmi_input.png) no-repeat no-repeat;
+	background-size: 212px 48px;
+}
+.helpTextCode::-webkit-input-placeholder{
+	color:#8faab5
+}
+#helpTextCode{
+	display: inline-block;
+	width:190px;
+	height:48px;
+	padding:3px 3px 3px 27px;
+	border:0;
+	float: left;
+	background: none;
+}
+#helpCodeBtn{
+	display: inline-block;
+	width:110px;	
+	padding:3px;
+	height:48px;
+	float: left;
+	margin:0 0 0 6px;
+	background: url(../images/activity/addmiBtn.png) no-repeat no-repeat;
+	background-size: 110px 48px;
+}
+.loadingHelp{margin:32px auto 0}
+	
+}
+@media only screen and (max-height: 480px) {
+	
+	.jinbi{
+		left: 130px;
+        bottom: 80px;
+	}
+}
+@media only screen and (min-width: 630px) {
+	.flower {
+	    height: 287px;
+	    background: url(../images/activity/flower@2x.png) repeat-x;
+	    background-size: 640px 287px;
+	}
+	.jinbi{
+		left: 230px;
+        bottom: 120px;
+	}
+}
+@media only screen and (min-height: 500px) {
+	.flower {
+	   	height: 200px;
+    	background: url(../images/activity/flower@2x.png) repeat-x;
+    	background-size: 100% 200px;
+	}
+	.jinbi {
+    left: 230px;
+    bottom: 180px;
+	}
+	@-webkit-keyframes moneyUp {
+	
+    0%        { display:block;bottom:200px; opacity:0.2;transform: rotateY(-180deg);-webkit-transform: rotateY(-180deg);z-index:99 }
+    30%        {  display:block;bottom:220px; opacity:0.4;transform: rotateY(-140deg);-webkit-transform: rotateY(-140deg);z-index:99 }
+    50%        {  display:block;bottom:240px; opacity:0.6;transform: rotateY(-130deg);-webkit-transform: rotateY(-130deg);z-index:99 }
+    70%        {  display:block;bottom:260px; opacity:0.8;transform: rotateY(-120deg);-webkit-transform: rotateY(-120deg);z-index:99 }
+    100%        { display:none; bottom:180px; opacity:0;transform: rotateY(0deg);-webkit-transform: rotateY(0deg);z-index:0 }
+	}
+}
+@media only screen and (min-height: 600px) {
+	.flower {
+	   height: 271px;
+    	background: url(../images/activity/flower.png) repeat-x;
+    	background-size: 375px 271px;
+	}
+	.jinbi {
+    left: 230px;
+    bottom: 180px;
+	}
+	@-webkit-keyframes moneyUp {
+	
+    0%        { display:block;bottom:200px; opacity:0.2;transform: rotateY(-180deg);-webkit-transform: rotateY(-180deg);z-index:99 }
+    30%        {  display:block;bottom:220px; opacity:0.4;transform: rotateY(-140deg);-webkit-transform: rotateY(-140deg);z-index:99 }
+    50%        {  display:block;bottom:240px; opacity:0.6;transform: rotateY(-130deg);-webkit-transform: rotateY(-130deg);z-index:99 }
+    70%        {  display:block;bottom:260px; opacity:0.8;transform: rotateY(-120deg);-webkit-transform: rotateY(-120deg);z-index:99 }
+    100%        { display:none; bottom:180px; opacity:0;transform: rotateY(0deg);-webkit-transform: rotateY(0deg);z-index:0 }
+	}
+}
+@media only screen and (max-height: 430px) and (max-width: 330px) {
+	.balloon{
+		background-size:152px 150px;
+	}
+	.balloon a{
+		width:48px;
+		height:48px;
+	}
+	.balloon a.award{
+		right:104px;
+	}
+	.balloon a.awardList{
+		right:47px;
+		top:34px;
+	}
+	
+}
+@media only screen and (min-height: 430px) {
+	.balloon{
+		height: 198px;
+	}
+}
+@media only screen and (max-height: 1400px) {
+		.bannerBox{
+			height: 90px;
+		}
+	 .bannerWrap{
+		height:90px;
+		background: url(../images/activity/pic1@2x.png) no-repeat top center;
+    background-size: 100% 90px;
+	}
+	.timerBanner{
+		height:80px;
+	}
+	.circleWrap{
+		height:80px;
+	}
+	#timer{
+		padding:20px 0 0 0
+	}
+	.circleWrap .circleText{
+		height:70px;
+	}
+	.bannerText {
+    width: 50px;
+    height: 50px;
+    margin: 25px auto 0;
+    background: rgba(255,255,255,0.7);
+    font-size: 12px;
+    color: #d91d4e;
+    position: relative;
+}
+#getNumber{
+	font-size:28px
+}
+}
+@media only screen and (max-height: 400px) {
+	.shareTips{
+		    margin: 10px auto 0;
+	}
+	.money-hb .hb-img{
+		margin-top:15px;
+	}
+	@-webkit-keyframes moneyUp {
+	
+    0%        { display:block;bottom:140px; opacity:0.2;transform: rotateY(-180deg);-webkit-transform: rotateY(-180deg);z-index:99 }
+    30%        {  display:block;bottom:160px; opacity:0.4;transform: rotateY(-140deg);-webkit-transform: rotateY(-140deg);z-index:99 }
+    50%        {  display:block;bottom:180px; opacity:0.6;transform: rotateY(-130deg);-webkit-transform: rotateY(-130deg);z-index:99 }
+    70%        {  display:block;bottom:200px; opacity:0.8;transform: rotateY(-120deg);-webkit-transform: rotateY(-120deg);z-index:99 }
+    100%        { display:none; bottom:120px; opacity:0;transform: rotateY(0deg);-webkit-transform: rotateY(0deg);z-index:0 }
+    /*80%        { -webkit-transform: rotateY(140deg); }
+    100%    { -webkit-transform: rotateY(180deg); }*/
+	}
+}

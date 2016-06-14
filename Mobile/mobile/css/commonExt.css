@@ -1,0 +1,287 @@
+@charset "utf-8";
+body { height: 100%; background-color: #f0f0f0; }
+a { outline: none; -moz-outline: none; cursor: pointer; color: #333;}
+a:focus, a:hover { text-decoration: none; color: #333;}
+ul, li { list-style-type: none; padding: 0; }
+input, select { -webkit-appearance: none;}
+input, select, textarea { outline: none; border-radius: 0}
+i,em{font-style: normal;}
+.flex {	
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;	
+}
+.flex  .flexOne {
+	box-flex: 1;
+	-webkit-box-flex:1;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	-o-flex: 1;
+	flex: 1;	
+}
+.flex i.flexOne,
+.flex span.flexOne,
+.flex input.flexOne,
+.flex select.flexOne,
+.flex i.flexOne::after,
+.flex span.flexOne::after,
+.flex input.flexOne::after,
+.flex select.flexOne::after{
+	display: list-item;
+	list-style: none;
+}
+.por{
+	position: relative;
+}
+
+.noMar { margin: 0; }
+.marL4 { margin-left: 4px; }
+.marR4 { margin-right: 4px; }
+.marT16 { margin-top: 16px; }
+.marT32 { margin-top: 32px; }
+.noborder{
+	border: none !important;
+}
+.top48{
+	padding-top: 48px !important;
+}
+.d-hide { display: none; }
+.d-show { display: block; }
+.v-hide { visibility: hidden; }
+.v-show { visibility: visible; }
+
+.fr { float: right; }
+.fl { float: left; }
+
+.colorBlack { color: #000; }
+.colorGrey9 { color: #999; }
+.colorYe { color: #ff8400; }
+.bgcWhite { background-color: #fff; }
+
+.text-noline { text-decoration: none; }
+.text-normal{
+  font-style: normal;
+}
+.clear { clear: both; }
+
+.icon { background-repeat: no-repeat; vertical-align: middle; }
+
+.icon:before { content: ' '; width: 1.5em; display: inline-block; }
+
+.header-box .icon.icon-back { 
+	background-image: url(../images/detail_08.png); 
+	background-position: left center; 
+	background-repeat: no-repeat; 
+}
+.header-box {
+	padding: 16px 0;
+	text-align: center;
+	background-color: #fff;
+	box-shadow: 0 0 2px 0 #333;
+	position: fixed;
+	height: 48px;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 99;
+	background-color:#ff8e00;
+}
+.header-box .container {
+	padding: 0 8px;
+}
+.header-box .activebar .rightNav {
+	display: inline-block;
+	height: 100%;
+	line-height: 48px;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	width: 64px;
+	cursor: pointer;
+}
+.header-box .activebar .activebar-a {
+	background-size: auto 100%; 
+	background-image: url(../images/shezhi@2x.png); 
+	background-position: left center;
+	background-repeat: no-repeat; 
+}
+.view .header-box + .content{
+	padding-top: 48px;
+}
+
+
+.activebar { text-align: left; height: 30px;position:relative;}
+.activebar .backNoText { color: #333; padding: 8px;position: relative;z-index: 100;top: -2px; }
+.delAll{position:absolute;right:5px;top:0;cursor:pointer;}
+.activebar .title {
+	font-size: 16px;
+	left: 0;
+	top: -13px;
+	line-height: 48px;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	vertical-align: middle;
+}
+.activebar .btnRight {
+    float: right;
+    padding-right: 6px;
+}
+.activebar .btnRight i {
+	background-size: auto 100%; 
+	background-image: url(../images/shezhi.png); 
+	background-position: left center;
+	background-repeat: no-repeat; 
+	display: inline-block;
+	width: 18px;
+	height: 18px; 
+}
+
+.msgBox { background-color: rgba(0, 0, 0, 0.6); height: 100%; left: 0; position: fixed; top: 0; width: 100%; text-align: center; z-index: 99;}
+.msgBox .wrap { background-color: #fff; border-radius: 3px; margin: 240px auto 0; width: 240px; }
+.msgBox .wrap h3 {
+	font-size: 16px;
+	margin-bottom: 0;
+	padding: 16px;
+	width: 100%;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+.msgBox .btnBox{
+	border-top: 1px solid #ccc;	
+	width: 100%;
+	font-size: 0;
+}
+.msgBox .btnBox .btn {
+	line-height: 36px;
+	border: none;
+	border-right: 1px solid #ccc;
+	border-radius: 0;
+	width: 50%;
+	display: inline-block;
+	font-size: 14px;
+}
+.msgBox .btnBox .btn:last-child { border-right-width: 0; color: #ff8400; }
+
+.msgBox.ngLoading{
+	background-color: #fff;
+}
+.msgBox.ngLoading img{
+	vertical-align: middle;
+	max-width: 100%;
+	width: 96px;
+	margin-left: -1px;
+	display: inline-block;
+}
+.msgBox.ngLoading span{
+	width: 1px;
+	height:100%;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+
+
+.view .discount .count-p {
+	text-align: center;
+	padding: 15px 0;
+}
+
+.view .discount .suny_pic {
+	margin: 0 20px;
+	border: 1px solid #ccc;
+}
+.view .discount .suny_pic img {
+	width: 100%;
+	height: 100%;
+}
+.view .discount .suny_pic p {
+	width: 100%;
+	padding: 0px 20px;
+	padding-top: 38px;
+}
+.view .discount .suny_pic span {
+	width: 100%;
+	line-height: 32px;
+	background-size: auto 60%; 
+	background-image: url(../images/arrow-right.png); 
+	background-position: right center;
+	background-repeat: no-repeat; 
+	display: inline-block;
+	border-top: 1px solid #ccc;
+}
+
+
+
+
+.btn { color: #333; }
+.btn.noborder{
+  border: none;
+  border-radius: 0;
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 256;
+}
+.overlay .loading{
+	height: 64px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 100%;
+	text-align: center;
+	
+}
+.overlay .loading img{
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	border-radius: 128px;
+	box-shadow: 0 0 16px 0 #ff8400;
+	animation: 1s linear 0s normal none infinite running spin;
+}
+.overlay i{
+	display: inline-block;
+	height: 100%;
+	width: 1px;
+	vertical-align: middle;
+	margin-left: -1px;
+}
+@keyframes spin {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+@keyframes spin {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+.inlineShow{ /*单行显示 多出部分显示省略号*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word ;
+}
+
+.flex .manyLineShow{ /*3行显示 多出部分显示省略号 兼容待解决*/
+	overflow : hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}

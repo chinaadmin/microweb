@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/push.css"/>
+
+
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script src="/js/address/addressS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/address/addressC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/address/address.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+
+
+  <title>我的地推</title>
+</head>
+<body ng-app="app" ng-controller="pushC">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="#" class="btnBack backNoText" ng-back="memcenter" ><i class="icon icon-back marR4"></i></a>
+          <span class="title">
+            我的地推
+          </span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+
+    <div class="container content address">
+      <div class="list box" ng-repeat="(key, value) in contactDetail.data">
+        <div class="wrap">
+		<div class="item flex">
+            <span class="flexOne">
+              <i>头  像:</i>
+			  <img ng-src="{{value.img}}" style="width:50px" />
+            </span>
+          </div>
+          <div class="item flex">
+            <span class="flexOne">
+              <i>联系人：</i>
+              <em ng-bind="value.real_name">广东甘</em>
+            </span>
+          </div>
+          <div class="item flex">
+            <span class="flexOne">
+              <i>联系电话：</i>
+              <em ng-bind="value.mobile">15484856156</em>
+            </span>
+          </div>
+		  <div class="item flex">
+            <span class="flexOne">
+              <i>格言：</i>
+              <em ng-bind="value.motto">广东甘</em>
+            </span>
+          </div>
+          <span>
+            <i>联系邮箱：</i>
+            <em ng-bind="value.email">affj@kfdosf_sa.cn</em>
+          </span>
+        </div>
+      </div>
+    </div>
+  
+    <message></message>
+    <loading></loading>
+  </div>
+</body>
+</html>

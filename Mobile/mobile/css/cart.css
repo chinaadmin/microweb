@@ -1,0 +1,234 @@
+.disableSelect{
+-moz-user-select:'-moz-none',
+-moz-user-select:'none',
+-o-user-select:'none',
+-khtml-user-select:'none', 
+-webkit-user-select:'none',
+-ms-user-select:'none',
+user-select:'none' 
+}
+
+html,body{
+  background-color: #fff;
+}
+.view .content { padding: 0; border-top: 1px solid #eee; }
+
+.view .content .sort-box .cartTip{
+  line-height: 36px;
+  padding-left: 16px;
+  border-bottom: 1px solid #eee;
+}
+.view .content .sort-box .cartTip a{
+  color: #ff8400;
+  border: 1px solid #ff8400;
+  padding: 4px 8px;
+  margin: 0 8px;
+}
+
+.view .content .sort-box .sort-item {
+  display: -webkit-box;
+  display: flex;
+  display: -webkit-flex;
+  border-bottom: 1px solid #eee;
+  font-size: 0;
+  padding: 8px 0;
+}
+.view .content .sort-box .sort-img {
+  max-width: 134px;
+  margin: 0;
+  width: 44%;
+  vertical-align: middle;
+  padding-left: 8px; 
+  flex: 1;
+  -webkit-flex: 1;
+  -webkit-box-flex:1;
+
+}
+.view .content .sort-box .sort-img img { 
+  max-width: 120px; 
+  display: inline-block; 
+}
+.view .content .sort-box .sort-img .h{
+  display: inline-block;
+  height: 100%;
+  width: 1px;
+  vertical-align: middle;
+}
+.view .content .sort-box .sort-title {
+  
+  flex: 1;
+  -webkit-flex: 1;
+  -webkit-box-flex:1;
+  width: 52%;
+  font-size: 14px;
+  vertical-align: middle;
+  /*margin: 0 2%;*/
+}
+.view .content .sort-box .sort-title h4 {
+  margin-bottom: 16px;
+  margin-left: 6px;
+  font-size: 16px;
+}
+.view .content .sort-box .sort-title h4 a { text-decoration: none; color: #333; }
+.view .content .sort-box .sort-title .sort-price p { color: #ff8400; font-size: 20px; margin-bottom: 4px; line-height: 1; }
+.view .content .sort-box .sort-title .sort-price s { margin-left: 5px; color: #999; }
+.view .content .sort-box .sort-title .sort-price s:first-child { margin-left: 0; }
+
+
+.view .content .sort-box .checked-box img { width: 96px; }
+.view .content .sort-box .checked-box .check-item {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 12px 8px 12px 0;
+}
+.view .content .sort-box .checked-box .check-item + a{
+  display: inline-block;
+  vertical-align: middle;
+}
+.view .content .sort-box .checked-box .check-item span{
+  display: inline-block;
+  padding: 10px;
+  border-radius: 16px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 0 center;
+  background-image: url(../../images/right-n.png);
+}
+.view .content .sort-box .checked-box .check-item span.checked {
+  background-image: url(../../images/cartRight.png);
+}
+.view .content .sort-box .sort-title h4 {
+  margin: 6px auto;
+  height: 28px;
+  overflow: hidden;
+  font-size: 13px;
+}
+.view .content .sort-box .sort-title .sort-price p.pprice {
+  font-size: 14px;
+  line-height: 34px;
+  position: relative;
+  height: 34px;
+}
+
+.view .content .sort-box .sort-title .sort-price .normslist{
+  font-size: 12px;
+  height: 24px;
+  overflow: hidden;
+}
+.view .content .sort-box .sort-title .sort-price .normslist .list-span {
+  display: inline-block;
+  line-height: 14px;
+  position: absolute;
+  right: 14px;
+}
+.view .content .sort-box .sort-title .sort-price .normslist .list-span img {
+  width: 24px;
+}
+.view .content .sort-box .sort-title .sort-price p.pprice span {
+  display: inline-block;
+  line-height: 34px;
+  position: absolute;
+  left: 4px;
+  font-size: 18px;
+}
+
+.view .content .sort-box .sort-title .sort-price p.pprice input {
+  display: inline-block;
+  border: 1px solid  #ccc;
+  width: 36px;
+  text-align: center;
+  color: #ff8400;
+  height: 34px;
+  vertical-align: top;
+  border: none;
+}
+.view .content .sort-box .sort-title .sort-price p.pprice em{
+  font-size: 0;
+  height: 34px;
+ /* overflow: hidden;*/
+}
+.view .content .sort-box .sort-title .sort-price p.pprice em *{
+  font-size: 14px;
+}
+.view .content .sort-box .sort-title .sort-price p.pprice i {
+  display: inline-block;
+  border: 1px solid  #ccc;
+  width: 30px;
+  text-align: center;
+  /*background-color: #ddd;*/
+  padding: 1px 0;
+  color: #ff8400;
+  height: 30px;
+  line-height: 24px;
+  vertical-align: middle;
+  font-size: 24px;
+}
+.view .content .sort-box .sort-title .sort-price p.pprice i:first-child{
+  /*border-right-width: 0;*/
+  border-radius: 18px;
+}
+
+.view .content .sort-box .sort-title .sort-price p.pprice i:last-child{
+  /*border-left-width: 0;*/
+  border-radius: 18px;
+}
+
+
+.view .content .sort-box .sort-title .sort-price p.pprice img{
+  width: 24px;
+}
+
+
+
+.cartbox { position: relative; }
+.cartbox .editbox { position: absolute; width: 64px; right: 0; top: 0; height: 100%; z-index: 1; font-size: 16px; background-color: red; color: #fff; text-align: center; line-height: 112px; }
+.cartbox .editbox p span { display: inline-block; width: 100%; }
+
+.cartbox.empty { text-align: center; padding-top: 96px; }
+.cartbox.empty .w { display: inline-block; vertical-align: middle; }
+.cartbox.empty .w .btn { border: 1px solid #ccc; width: 96px; }
+.cartbox.empty span.i { display: inline-block; height: 100%; vertical-align: middle; width: 1px; }
+
+
+
+div.like-footer { padding-top: 122px; }
+footer { position: fixed; bottom: 0; left: 0; width: 100%; box-shadow: 0 0 2px 0 #ccc; background-color: #fff;}
+footer .wrap.container { display: -webkit-box;display: flex; display: -webkit-flex; padding: 0; background-color: #fff; }
+footer p { margin: 0; }
+footer .check-item { display: inline-block; vertical-align: middle; line-height: 56px; margin-left: 16px; cursor: pointer; }
+footer .check-item span {
+  padding: 10px;
+  display: inline-block;
+  vertical-align:middle;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 0 center;
+  background-image: url(../../images/right-n.png);
+}
+footer .check-item span.checked {
+  background-image: url(../../images/cartRight.png);
+}
+footer .inf {
+  flex: 1;
+  -webkit-flex: 1;
+  -webkit-box-flex:1;
+  padding: 8px 16px;
+}
+footer a.btn {
+  background-color: #ff8400;
+  border: medium none;
+  border-radius: 0;
+  line-height: 46px;
+  min-width: 96px;
+  color: #fff;
+}
+footer a.btn:hover{
+  color: #fff;
+}
+.nav-box ul { font-size: 0; margin: 0; border-top: 1px solid #eee;padding: 3px 0; }
+.nav-box ul.not{border: none;}
+.nav-box li { font-size: 12px; width: 33%; text-align: center; margin: 0; }
+.nav-box li a { color: #333; }
+.nav-box li img { width: 100%; max-width: 25px; }
+
+

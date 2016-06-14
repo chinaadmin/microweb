@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+   <link rel="stylesheet" media="screen" href="../../css/successPay.css"/>
+  <title>支付失败</title>
+
+
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/allchips/allchipsS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/allchips/allchipsC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/pay/pay.js" type="text/javascript" charset="utf-8"></script>
+
+
+</head>
+<body ng-app="app" ng-controller="payFC">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="#" class="btnBack backNoText">
+          </a>
+          <span class="title">
+            支付失败
+          </span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content orderlist">
+      <div class="failBox">
+        <img src="../../images/payfail.png" alt="">    
+        <p>
+          <span>没有支付成功，请重新支付</span>
+        </p>
+      </div>
+      <p class="item ">
+         <a class="btn" ng-click="toPay()">重新支付</a>
+      </p>
+
+    </div>
+  </div>
+</body>
+</html>

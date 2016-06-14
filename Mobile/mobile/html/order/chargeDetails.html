@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/chargeDetails.css"/>
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+
+
+  <script src="/js/plugin/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=as" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/accounts/accountsS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/accounts/accountsC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/accounts/accounts.js" type="text/javascript" charset="utf-8"></script>
+
+  <title>充值详情</title>
+</head>
+<body ng-app="app" ng-controller="chargeDetaC">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a class="btnBack backNoText"  ng-click="back()"> <i class="icon icon-back marR4"></i>
+          </a>
+          <span class="title">充值详情</span>
+          <span class="rightNav" ng-show="page.history" ng-click="switchLayout('history')">历史</span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+
+    <div class="container content">
+       <div class="fexbag_pic">
+          <div class="fexbag-left">
+             <span>
+                <div class="iHeight">
+                  <p ng-bind="money">53.33</p>
+                  <i>余额</i>
+                </div>
+             </span>
+          </div>
+          <a ng-click="toPageData()" class="fexbag-right">
+             <span class="lineH">马上充值</span>
+          </a>
+       </div>
+
+       <div class="navigation">
+          <p class="navigation-p">
+             <span><i class="active">全部明细</i></span>
+             <span><i>充值记录</i></span>
+             <span><i>消费记录</i></span>
+          </p>
+          <div class="navigation-min">
+            <p>
+               <span><i>日期</i></span>
+               <span><i>金额</i></span>
+               <span><i>备注</i></span>
+            </p>
+            <p ng-repeat="(key, value) in record">
+               <span><i ng-bind="value.addTime">2015.12.08</i></span>
+               <span><i ng-bind="value.money">+280</i></span>
+               <span><i ng-bind="value.type==2?'消费':'充值'"></i></span>
+            </p>
+          </div>
+       </div>
+    </div>
+    
+  </div>
+  <message></message>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" type="text/css" href="../../css/trytoeat/trytoeat.css"> 
+  
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script src="/js/trytoeat/trytoeatS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/trytoeat/trytoeatC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/trytoeat/trytoeat.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+  <title>试吃</title>
+</head>
+<body ng-app="app" ng-controller="trytoeatC">
+
+
+        <!-- 标题 -->
+    <header class="header-box">
+      <div class="container">
+        <!-- <div class="activebar"> -->
+          <h3 class="title">
+            免费品尝申请
+            <i ng-repeat="item in liu">
+            </i>
+
+          </h3>
+        </div>
+      </div>
+    </header>
+
+    <div class="container content recAdd topll48">
+      <div class="tooer">
+         <p>1.欢迎您加入必好货免费品尝活动的队列中来（本品尝活动仅针对公司，不针对非公司组织的私人聚会）。</p>
+         <p>2.提交信息后，我们会在48小时与您联系，请保持电话畅通。</p>
+      </div>
+    </div>       
+    
+    <div class="container content recAdd">
+      
+      <div class="edit box">
+         
+         <form name="recadd" novalidate>
+             <p class="flex">
+                <span><i class="tolog">*</i>您公司全称 ：</span>
+                <!-- <span class="flexOne" >
+                  <input type="text" ng-model="company" placeholder="请输入公司名称">
+                </span> -->
+				
+                <textarea  class="totext dw flexOne" ng-model="company" placeholder="请输入公司名称">
+                </textarea>
+             </p>
+             <!-- <textarea name="" id="" cols="30" rows="1"></textarea> -->
+             <p class="flex">
+                <span class="flex-span"><i class="tolog">*</i>您公司地址 ：</span>
+
+                <textarea class="totext dw flexOne" ng-model="company_address" placeholder="请输入公司地址">
+                </textarea>  
+             </p>
+
+             <p class="flex">
+                <span><i class="tolog">*</i>您公司人数 ：</span>
+                <select class="flexOne dw" ng-options="numStep.step for numStep in numList" ng-model = "people_num">
+                  <option class="puhei" value="">请选择</option>
+                </select>
+              </p>
+             
+             <p class="flex">
+                <span><i class="tolog">*</i>您所在部门 ：</span>
+                <span class="flexOne dw" >
+                  <input type="text" ng-model="sector" placeholder="请输入您所在的部门"></span>
+             </p>
+
+             <p class="flex">
+                <span><i class="tolog">*</i>您的职位 ：</span>
+                <select class="flexOne dw" ng-options="numStep.stop for numStep in sunList" ng-model = "position" >
+                  <option value="">请选择</option>
+                </select>
+              </p>
+             <p class="flex">
+                <span><i class="tolog">*</i>您的姓名 ：</span>
+                <span class="flexOne dw" >
+                  <input type="text" ng-model="name" placeholder="请输入您的姓名"></span>
+             </p>
+             <p class="flex">
+                <span><i class="tolog">*</i>您的办公地址 ：</span> 
+      				  <textarea cols="" rows="" class="totext dw flexOne" ng-model="office_address"  placeholder="请输入办公地址"></textarea>  
+             </p>
+             <p class="flex">
+                <span><i class="tolog">*</i>您的手机号 ：</span>
+                <span class="flexOne dw" >
+                  <input type="text" ng-model="mobile" placeholder="请输入您的手机号"></span>
+             </p>
+             <p class="flex">
+                <span><i class="tolog">*</i>您的微信号 ：</span>
+                <span class="flexOne dw" >
+                  <input type="text" ng-model="perst" placeholder="请输入您的微信号"></span>
+             </p>
+         </form>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <div class="ter">
+         <form action="">
+             <p class="">
+                <span>验证码</span>
+                <span class="" >
+                  <input type="text" name='pageCode' class="form-control tab" ng-model="pageCode" placeholder="请输入验证码">
+                </span>
+                <span>
+                  <img src="http://act.bihaohuo.cn/Tast/verify" ng-click = 'opp()'; alt="1" id='verify' class="pull-right"> 
+                </span>
+             </p>
+             <p>
+                <input class="btn btn-lg" type="button" ng-click = 'add()'; value="确定" />
+             </p>
+             
+         </form>
+      </div>
+      
+    </div>
+
+    
+    <message></message>
+<script type="text/javascript">
+// 	var body = document.body.clientWidth;
+// 	var objClass = document.getElementsByClassName("dw");
+// 	var length = objClass.length;
+// 	for(i=0; i<length;i++){
+// 		objClass[i].style.width = body-130+"px";
+// 	}
+</script>
+</body>
+</html>

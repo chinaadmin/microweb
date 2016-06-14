@@ -1,0 +1,338 @@
+html, body {
+	height: 100%;
+}
+i, em {
+	font-style: normal;
+}
+
+.view, #content {
+	background-color: #eee;
+	position: relative;
+}
+.aboutbg{
+	background-image: url(../../images/aboutbg.png);
+	background-size:cover ;
+	background-repeat:no-repeat ;
+}
+header {
+	background-color: #fff;
+}
+header .wrap {
+	/*background: url(../images/centerbmg.png) no-repeat;*/
+	background-size: cover;
+	/*text-align: center;*/
+	position: relative;
+	min-height: 198px;
+	/*background-color: #FAAD4D;*/
+	padding-bottom: 10px;
+	margin-top: 48px;
+}
+header .welcome-box {
+	font-size: 16px;
+	color: #333;
+	padding-top: 8px;
+	margin: 0 5% 0 5%;
+}
+header .welcome-box .box-p {
+	background-size: auto 100%; 
+	background-image: url(../images/shezhi@2x.png); 
+	background-position: right center;
+	background-repeat: no-repeat; 
+	padding-right: 20px;
+	height: 20px;
+}
+.flex {
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+}
+.flexOne {
+	box-flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    -o-flex: 1;
+    flex: 1;
+}
+header .welcome-box span {
+    line-height: 64px;
+    background-size: auto 26%; 
+	background-image: url(../images/arrow-right@2x.png); 
+	background-position: right center;
+	background-repeat: no-repeat;
+	margin-right: 5px; 
+}
+header .welcome-logo {
+	background-color: #fff;
+	/*border: 2px solid #fff;*/
+	border-radius: 128px;
+	box-shadow: 0 0 2px 0 #999;
+	height: 64px;
+	margin-right: 16px;
+	width: 64px;
+}
+header .coin {
+	background-color: rgba(0, 0, 0, 0.1);
+	padding: 0;
+	color: #fff;
+	font-size: 0;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 4px 0;
+}
+header .coin span {
+	display: inline-block;
+	width: 50%;
+	text-align: center;
+	font-size: 14px;
+	padding: 8px 0;
+	position: relative;
+}
+header .coin span:first-child {
+	border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+header .coin span b {
+	font-size: 16px;
+}
+header .coin span img {
+	position: absolute;
+	left: 0;
+	top: -10px;
+}
+header .btn-box {
+	top: 36px;
+	height: 48px;
+	line-height: 48px;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+}
+header .btn-box a {
+	background-color: rgb(255, 140, 0);
+	border-radius: 2px;
+	color: #fff;
+	padding: 8px 32px;
+}
+header .btn-box .btn-1 {
+	background: #FF8C00;
+	color: #fff;
+	border-color: #FF8C00;
+	margin-left: 4rem;
+}
+header .order-box {
+	width: 100%;
+	background: none repeat scroll 0 0 #333;
+}
+header .order-box > ul {
+	display: flex;
+	display: -webkit-flex;
+	margin: 0;
+}
+header .order-box li {
+	text-align: center;
+	padding: 6px 0;
+	flex: 1;
+	-webkit-flex: 1;
+}
+header .order-box li img {
+	max-width: 36px;
+	height: auto;
+}
+header .order-box li a {
+	color: #fff;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+header .order-box li p {
+	font-size: 1.5rem;
+	margin: 0;
+}
+.mbox {
+	background-color: #fff;
+	box-shadow: 0 2px 2px 0 #ccc;
+}
+.mbox span.lookforward{
+	line-height: 100px;
+	padding-left: 16px;
+	font-size:11px;
+	color:#8b8b8b;
+}
+.mbox .evaluation span.text{
+	font-size:11px;
+	color:#404040;
+}
+
+.mbox .evaluation {
+	height: 48px;
+	line-height: 48px;
+	color: #666;
+	border-bottom: 1px solid #eee;
+
+}
+
+.mbox .evaluation .eva-num {
+	font-size: 1.4rem;	
+	padding-left: 16px;
+	color: #333;
+	line-height: 48px;
+	height: 48px;
+}
+span.orange{
+	color: orange;
+}
+.mbox .evaluation .index-img {
+	background-image: url(../images/arrow-right.png);
+	background-repeat: no-repeat;
+	background-position: left;
+	height: 100%;
+	width: 32px;
+	background-size: 72%;
+}
+.mbox .evaluation .space-bg {
+	border-bottom: 1px solid #a0a0a0;
+}
+.eva-phone {
+	text-align: center;
+	margin-bottom: 24px;
+}
+.eva-phone .phone-left {
+	display: inline-block;
+	height: 100%;
+	padding-right: 6px;
+}
+.eva-phone .phone-left img {
+	height: 100%;
+	display: block;
+	margin-top: 6px;
+}
+.eva-phone .phone-right {
+	display: inline-block;
+	height: 100%;
+}
+.iHeight {
+	height: 50px;
+}
+.eva-phone .phone-right p {
+	margin: 0px;
+}
+p.eva-phone span:first-child {
+	text-align: center;
+	color: #ff8400;
+	font-size: 24px;
+	line-height: 24px;
+	background-color: transparent;
+	padding: 8px 12px;
+	width: 100%;
+	display: inline-block;
+}
+.phone-num a { /*color: #ff8400;*/ font-size: 22px; }
+.eva-phone .img-title {
+	margin-top: 1.2rem;
+}
+.content .level-box{
+	width:100%;
+	line-height: 40px;
+	color: #666;
+	border-bottom: 8px solid #eee;
+}
+.content .level-box ul{
+	margin-bottom: 0;
+}
+.content .level-box li{
+	height:40px;
+	width: 32.5%;
+	display: inline-block;
+	text-align: center;
+	font-size: 14px;
+}
+
+
+.content .order-box {
+	text-align: center;
+	font-size: 0;
+	width: 100%;
+}
+.content .order-box li {
+	float: left;
+	height:124px;
+	width: 33%;
+	display: inline-block;
+	text-align: center;
+	font-size: 14px;
+	vertical-align: middle;
+	padding-top:24px;
+	
+}
+.content .order-box li.borderR {
+	box-sizing: padding-box;
+	-moz-box-sizing: padding-box;
+	border-right: 1.5px solid #eee;
+
+}
+.content .order-box li.borderB {
+	box-sizing: padding-box;
+	-moz-box-sizing: padding-box;
+	border-bottom: 1.5px solid #eee;
+}
+.content .order-box li.borderL {
+	box-sizing: padding-box;
+	-moz-box-sizing: padding-box;
+	border-left: 1.5px solid #eee;
+}
+.content .order-box li img {
+	width: 100%;
+	max-width: 30px;
+	margin-bottom: 16px;
+}
+.content .order-box li p {
+	margin: 0;
+}
+.content .order-box li span {
+	font-size:11px;
+	color:#8b8b8b;
+}
+.content .introduce{
+	width:100%;
+	height:100%;
+	/*background-color: #f0f0f0;
+	padding-left:16px;*/
+	
+}
+.content .introduce .item{
+	font-size: 13.5px;
+	padding-top:4px;
+}
+.content .introduce .item p{
+	margin: 0;
+	line-height: 26px;
+}
+.aboutbhh{
+	text-align: center;
+	position: absolute;
+	bottom: 100px;
+	width:100%;
+	height:150px;
+	font-size: 11px;
+	color:#fff;
+}
+.aboutbhh .share{
+	margin:15px 0;
+	
+}
+.aboutbhh .share span{
+	padding:8px 15px;
+	background-color:#fff ;
+	color:orange;
+	border-radius:20px;
+}
+.aboutbhh img{
+	width:100px;
+	height:auto;
+}
+

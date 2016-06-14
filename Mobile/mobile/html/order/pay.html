@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/orderDetail.css"/>
+
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  
+
+  <script src="/js/plugin/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=52" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/order/orderS.js?t=as65asasd" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/order/orderC.js?t=as65asasd" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/order/check.js?t=as65asasd" type="text/javascript" charset="utf-8"></script>
+
+  <title>立即支付</title>
+</head>
+<body ng-app="app" ng-controller="payC">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a class="btnBack backNoText" ng-back="order" ><i class="icon icon-back marR4"></i></a>
+          <span class="title">
+            立即支付
+          </span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content detail">
+        <div class="userInf">   
+          <div class="payNum">
+            <p class="colorGrey9">付款金额</p>
+            <p class="colorYe"> <b ng-bind="'￥'+detail.price"></b>
+            </p>
+          </div>   
+          <div class="box">
+
+            <div class="bLeft">
+              <div>
+                <p>订单号</p>
+              </div>
+            </div>
+            <div class="bRight">
+                <p>
+                  <span class="flex"> <i class="flexOne" ng-bind="detail.orderSn"></i>
+                    <i class="colorYe" ng-bind="detail.statusName"></i>
+                  </span>
+                </p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="address marT16">
+          <div>
+            <p class="flex">
+              <span class="flexOne"> <b>收货人：</b>
+                <i ng-bind="detail.receiving.username"></i>
+              </span>
+              <span ng-bind="detail.receiving.mobile"></span>
+            </p>
+            <p>收货地址：<i ng-bind="detail.receiving.localtion+' '+detail.receiving.address"></i></p>
+          </div>
+        </div>
+
+
+        <div class="delivery marT16 content payby">
+          <p class="title" style="margin-bottom:0;">支付方式</p>
+          <div class="select">
+            <p class="select">
+              <span class="item wx" ng-click="payby.get(0)" ng-class="!payby.currentItem?'active':''"> <i>微信支付</i> <em></em>
+              </span>
+              <span class="item ye" ng-click="payby.get(1)" ng-class="payby.currentItem?'active':''"> <i>账户余额支付 <i ng-bind="coin.text"></i></i> <em></em>
+              </span>
+            </p>
+            <p class="d-hide"></p>
+          </div>
+        </div>
+
+
+        <div class="orderControl marT16">
+            <a class="btn btn-Ye" ng-click="payby.pay()">立即付款</a>
+        </div>
+
+  </div>
+  </div>
+  <message></message>
+</body>
+</html>

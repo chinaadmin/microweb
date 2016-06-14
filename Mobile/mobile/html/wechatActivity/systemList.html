@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/premiumList.css" />
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=8446546" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/wechatActivity/activ.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/wechatActivity/activC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/wechatActivity/activS.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="app" ng-controller="systemListC" ng-cloak>
+		<!--begin: 导航条部分-->
+		<header class="activityHead">
+			  <div class="container">
+			  		 <a href="javascript:void(0);" ng-back class="goBack"></a>
+          	 <h1 class="title">系统奖单</h1>
+          	 <!--<a href="javascript:void(0)" class="goShare"></a>-->
+			  </div>
+		</header>
+		<img src="../../images/wecharActivily/bg-02.jpg" alt="" class="myBg" />
+		<div class="container main syms">
+				<div class="form">
+				      <a class="user-custom myListBtn right" href="javascript:void(0);" style="top:1px" ng-click="toMy($event)"></a>
+					       <div class="ListData">
+								     <div class="row title text-center" style="height:50px; line-height:50px">
+								       	     <div class="col-xs-6">奖品</div>
+								       	     <div class="col-xs-6">获奖人</div>
+								     </div>
+								        <div class="scrollTop" id="demo">
+							       	        <div id="demo1">	
+							       	               <div class="row text-center" ng-repeat="(key,value) in List">
+												       	         <div class="col-xs-6">{{value.number | number:1}} 元</div>
+												       	         <div class="col-xs-6" ng-bind="value.mobile"></div>
+							       	     					</div>
+							       	        </div>
+							       	        <div id="demo2">
+							       	        </div>
+						       	    </div>
+								     <span class="left-icon"></span>
+								     <span class="right-icon"></span>
+					       </div>
+				</div>
+		</div>
+	</body>
+</html>
+ <script>
+   var speed=30
+   var demo = document.getElementById('demo');
+   var demo1 = document.getElementById('demo1');
+  		 demo2.innerHTML=demo1.innerHTML
+			   function Marquee(){
+				   if(demo2.offsetTop-demo.scrollTop<=0){
+				   		 demo.scrollTop-=demo1.offsetHeight;
+				   }else{
+				  			 demo.scrollTop++;
+				   }
+   }
+   var timer =setInterval(Marquee,speed)
+   </script>

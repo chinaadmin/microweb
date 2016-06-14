@@ -1,0 +1,230 @@
+@charset "utf-8";
+
+body { height: 100%; background-color: #eee; }
+.view { background-color: #fff; }
+.header-box { text-align: center; padding: 16px 0 0; background-color: #fff; }
+.header-box .container {
+    padding: 0 8px;
+}
+.title {
+	font-size: 16px;
+    left: 0;
+    top: 0;
+    line-height: 48px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle; 
+}
+.search-box {text-align: left; height: 16px;}
+.city-box {
+	color: #333;
+    padding: 8px;
+    position: relative;
+    z-index: 100;
+    top: -2px;
+}
+
+.content { margin-top: 48px; background-color: #fff; }
+.container { padding: 0; }
+.view .content {
+    padding: 0;
+    background-color: #fff;
+    padding-bottom: 48px;
+}
+
+.spike_time { padding:6px 0px; margin: 0; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; }
+.time_up { color: red; font-size: 18px; padding: 0 6px;}
+.time_pull { 
+	display: inline-block; 
+	float: right; 
+	padding-right: 20px;
+	line-height: 30px; 
+}
+
+.spike_scoat { 
+	overflow: hidden; 
+	/*display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex; */
+    border-top: 1px solid #f4f4f4;
+    margin-bottom: 0px; 
+    margin-bottom: 4px;
+    width: 100%;
+   /* display: inline-block;*/
+    -moz-columns: 2;
+    -webkit-columns: 2;
+    columns: 2;
+}
+
+.time-ofin { 
+	background-size: auto 100%;
+	background-image: url(../images/miaosha.png);
+	background-position: left center;
+	width: 92px;
+	display: inline-block;
+}
+
+.time-ofin span {
+	padding: 0 6px; 
+}
+
+.link-img {
+	background-image: url(../images/miao-title.png);
+	background-position: left center;
+	background-size: auto 100%;
+	width: 67px;
+	height: 30px;
+	line-height: 31px;
+	display: inline-block;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	color: #fff;
+	text-align: center;
+}
+
+.time_fixe-img {
+	background:red;
+	/*background-position: left center;
+	background-size: auto 100%;*/
+	width: 58px;
+	height: 58px;
+	line-height: 58px;
+	display: inline-block;
+	position: absolute;
+	right: 0px;
+	bottom: 22px;
+	color: #fff;
+	text-align: center;
+	border-radius: 128px;
+}
+
+.time_fixe-img i{
+    display: inline-block;
+	font-size: 14px;
+}
+
+
+
+.spike .spike_scoat li {
+	text-align: center;
+    font-size: 1.4rem;
+    display: inline-block;
+    flex: 1;
+    background-color: #fff;
+    padding: 4px 2px;
+    width: 100%; 
+    position: relative;
+    height: 100%;
+    display: list-block;
+}
+.spike .spike_scoat li a { 
+	display: inline-block;
+	border-bottom-width: 1px; 
+	position: relative;
+	width: 100%;
+}
+
+
+.time_fixe { 
+	display: inline-block;
+	background-size: auto 100%;
+	background-image: url(../images/miao-22.png);
+	background-position: left center;
+	width: 67px;
+	color: #fff;
+	text-align: center;
+}
+
+.time_fixe b { display: inline-block; font-size: 13px; }
+
+.pad-2 { padding-right: 2px; }
+.pad-3 { padding-right: 6px; }  
+.spike .spike_scoat li img { 
+	width: 100%; 
+	/*height: 100%;*/
+	min-height: 96px;
+	padding: 0 5px;
+	display: inline-block;
+}
+
+.spike .spike_scoat li span {    
+ 	width: 100%;
+    display: inline-block;
+    font-size: 14px;
+    color: #666;
+    padding-bottom: 5px;
+}
+.link-pd { padding-top: 12px; }
+
+.spike .spike_scoat h4 {  margin:0px; padding-bottom: 2px;}
+.solit { width: 100%;}
+.solit-flids { margin: 0; padding-top: 6px; }
+.solit_p { margin: 0; padding-top: 4px; }
+.solit a { width: 100%; height: 48px; overflow: hidden; }
+.sliter { color: #ff8400; font-size: 16px; }
+.spike_hider {
+	background-color: #fff;
+    box-shadow: 0 0 0 0 #ccc;
+    border: 1px solid #f4f4f4;
+    /*display: inline-block;*/
+    width: 100%;
+}
+.spike_oplit { width: 100%; padding: 8px 0; }
+.spike_oplit-span { 
+	width: 100%; 
+	height: 42px; 
+	display: inline-block; 
+	overflow: hidden; 
+	margin: 0; 
+}
+
+.swita {
+	overflow: hidden; 
+	/*display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex; */
+    border-top: 1px solid #f4f4f4;
+    margin-bottom: 0px; 
+    margin-bottom: 4px;
+  /*  display: inline-block;*/
+    /*-moz-columns: 3;
+    -webkit-columns: 3;
+    columns: 3;*/
+   /* height: 195px;*/
+}
+
+.fatlick {
+	background-size: auto 100%;
+	background-image: url(../images/xiangou.png);
+	background-position: left center;
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 0;
+	left: 5px;
+}
+
+.time_mun { width: 160px; display: inline-block; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

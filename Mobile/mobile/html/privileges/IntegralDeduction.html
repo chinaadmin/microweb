@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+	<meta charset="utf-8">
+	<meta name="description" content="NIM- Responsive One Page Creative Template" />
+	<meta name="keywords" content=""/>
+	<meta name="author" content="Metrothenes" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+	<link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+	<link rel="stylesheet" media="screen" href="../../css/fullprivileges.css"/>
+
+	<script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="/../js/user/userS.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/../js/user/userC.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/../js/user/user.js" type="text/javascript" charset="utf-8"></script>
+
+	<title>积分抵扣</title>
+</head>
+<body ng-app="app" ng-controller="memCenterC">
+	<div class="view">
+		<!-- 头部 -->
+		<header class="header-box">
+		    <div class="container">
+		        <div class="activebar">
+		         	<a href="#" class="btnBack backNoText" ng-back="fullprivileges" ><i class="icon icon-back marR4"></i></a>
+		         	<span class="title">
+		            	积分抵扣
+		          	</span>
+		        </div>
+		    </div>
+	    </header>
+		
+		<div class="content">
+			<!--<div class="introduce">
+				<div class="item">
+					<h4 class="">权益介绍</h4>
+					<p>1.免费品尝的商品，数量有限，先到先得；</p>
+					<p>2.适用所有等级会员；</p>
+				</div>
+				<div class="item">
+					<h4>活动详情</h4>
+					<p>1.敬请期待.</p>
+				</div>
+			</div>-->
+
+			<img src="../../images/deduction_android.png" width="100%"/>
+			
+
+
+			
+
+		</div>
+
+	</div>
+
+  <div class="msgBox" ng-show="page.msg" style="display:none">
+    <div class="wrap">
+      <h3>尚未登陆，请先登陆再进行其他操作！</h3>
+      <div class="btnBox">
+        <a class="btn btnCancle" ng-click="page.msg=!page.msg">取消</a>
+        <a class="btn btnSure" ng-click="page.msgBtn()">确定</a>
+      </div>
+    </div>
+  </div>
+
+  <message></message>
+
+</body>
+</html>

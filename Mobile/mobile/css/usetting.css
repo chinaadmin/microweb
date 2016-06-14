@@ -1,0 +1,197 @@
+.view .content.container { padding: 0; }
+
+.itemBox{
+  background-color: #fff;
+  box-shadow: 0 2px 2px 0 #ccc;
+
+}
+
+.itemBox .item,.itemBox .title{
+  line-height: 56px;
+  padding: 0 8px 0 16px;
+  border-bottom: 1px solid #eee;
+  display: -webkit-box;
+  display: flex;
+  display: -webkit-flex;
+}
+.itemBox .item i.arrow{
+  background-image: url(/../../images/arrow-right.png);  
+  background-repeat: no-repeat;
+  background-size: auto 16px;
+  background-position: center;
+  padding-left:16px;
+  width: 28px;
+}
+.itemBox .item:last-child{
+  border-bottom-width: 0;
+}
+
+
+.itemBox .item span.text,.itemBox .title span.text{
+  padding-left: 8px;
+ -webkit-box-flex:1;
+  flex: 1;
+  -webkit-flex:1;;
+  display: inherit;
+  
+}
+.itemBox .item span.edit{
+  color: #ff8400;
+}
+.itemBox .title span.text{
+ 
+  -webkit-box-flex:1;
+  flex: 1;
+  -webkit-flex:1;  
+}
+
+.itemBox .title span.tips{
+  color: #999;
+  font-size: 12px;
+  padding-right: 12px;
+}
+.itemBox em{
+  margin-left: 40px;
+  color: #ff8400;
+  font-style: normal;
+}
+
+.submit{
+  margin-top: 36px;
+  padding: 0 16px;
+}
+
+.submit .btn{
+  border-color: #ff8400;
+  width: 100%;
+  background-color: #ff8400;
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 0;
+  box-shadow: 0 0 2px 0 #ff8400; 
+}
+.usersBox {
+  background-color: #fff;
+  margin: 4px auto;
+  box-shadow: 0 2px 2px 0 #ccc;
+}
+
+.usersBox .remind {  
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  line-height: 30px;
+  border-bottom: 4px solid #eee;
+}
+.usersBox .remind .text {
+	font-size: 11px;
+  color: #5b5b5b;
+  width: 100%;
+  padding-left: 16px;
+  text-align: center;
+  display: inline-block;
+}
+.usersBox .remind i.cancel{
+  background-image: url(/../../images/icon_cancel.png);  
+  background-repeat: no-repeat;
+  background-size: auto 11px;
+  background-position: center;
+  margin-right: 8px;
+  width: 28px;
+}
+.usersBox .item {  
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  line-height: 55px;
+  border-bottom: 1px solid #eee;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.usersBox .item.avatar{
+  line-height: 84px;
+}
+
+.usersBox .item:last-child {
+  border-bottom-width: 0;
+}
+
+.usersBox .item .text {
+  color: #333;
+  width: 100px;
+  padding-left: 16px;
+  text-align: left;
+  display: inline-block;
+}
+
+.usersBox .item .edit {
+  -webkit-box-flex: 1;
+  flex: 1;
+  padding-right: 8px;
+  position: relative;
+  display: inherit;
+  vertical-align: middle;
+}
+.usersBox .item i.arrow{
+  background-image: url(/../../images/arrow-right.png);  
+  background-repeat: no-repeat;
+  background-size: auto 16px;
+  background-position: center;
+  margin-right: 8px;
+  width: 28px;
+}
+
+
+.usersBox .item img { border: 1px dashed #ddd; border-radius: 70px; box-shadow: 0 0 2px 0 #fff0da; height: 70px; margin: 16px; width: 70px; }
+.usersBox .item select.edit { border-width: 0; background-color: #fff;direction: rtl; }
+.usersBox .item .edit input { padding: 0; border-width: 0; width: 100%; line-height: 20px; }
+.usersBox .item .edit i {
+  position: absolute;
+  height: 36px;
+  width: 48px;
+  right: 0;
+  top: 0;
+  background-image: url(/../../images/fill.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 28px;
+  background-color: #f1f1f1;
+  display: none;
+}
+.usersBox .item.avatar .edit span {
+  padding: 8px 16px;
+}
+.usersBox .item.avatar input { position: absolute; width: 100%; height: 100%; left: 0; top: 0; opacity: 0; }
+
+
+.userBox .item span.text {
+  padding-left: 32px;
+  background-image: url(/../../images/uinfo.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: auto 18px;
+}
+
+.securityBox{
+	margin-top: 4px;
+}
+.securityBox  .item span.text {
+  padding-left: 8px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: auto 24px;
+}
+.securityBox  .item span.phone{
+background-image: url(/../../images/phone.png);
+}
+.securityBox  .item span.login{
+  background-image: url(/../../images/login.png);
+}
+
+

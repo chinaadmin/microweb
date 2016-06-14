@@ -1,0 +1,128 @@
+i,em{font-style: normal;}
+.view .content{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.view .content h2 { font-size: 18px; line-height: 32px; color: #333; background-color: #f4f4f4; margin: 0; padding: 8px 16px; border-bottom: 1px solid #f4f4f4; }
+.view .content p { background-color: #fff; }
+.view .content p.select { border-bottom: 1px solid #eee; }
+.view .content p .item { width: 100%; padding-left: 48px; line-height: 48px; border-bottom: 1px dashed #eee; position: relative; display: inline-block; }
+.view .content p .item:last-child { border-bottom-width: 0; }
+.view .content p .item em {
+	background-color: #eee;
+	border-radius: 320px;
+	height: 100%;
+	margin-right: 12px;
+
+	width: 24px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.view .content p .item.active em {
+	background-size: 100%;
+	background-image: url("../../images/right-y.png");
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-color: #fff;
+
+}
+.view .content p .item em:before { color: transparent; content: "√"; font-size: 16px; position: absolute; right: 10px; top: -10px; }
+.view .content p:last-child { margin-top: 36px; padding: 0 16px;background-color: transparent;}
+.view .content p a.btn { background-color: #ff8400; width: 100%; color: #fff; line-height: 24px; font-size: 16px; }
+
+.view .content .refill { padding: 16px; line-height: 24px;font-size: 16px; margin-top: 10px; }
+.view .content .refill span:first-child { font-size: 16px; }
+.view .content .refill input { padding: 0 8px; border: none; text-align: right;width: 100%; }
+
+.view .content .select .item.wx{
+	background-position: 8px center;
+	background-repeat: no-repeat;
+	background-size: 32px auto;
+	background-image: url(../../images/wx.png);
+}
+
+.view .content .amount {
+	padding: 10px;
+}
+.view .content .amount h4 {
+	padding: 0 0 10px 8px;
+	color: #999;
+}
+.view .content .amount ul {
+	width: 100%;
+	margin: 0;
+	/*padding-left: 2px;*/
+}
+.view .content .amount li {
+	width: 32%;
+	display: inline-block;
+	text-align: center;
+	margin-bottom: 15px;
+	padding-left: 8px;
+}
+.view .content .amount .amount_bg {
+	width: 100%;
+	display: inline-block;
+	border: 1px solid #ACACAC;
+	padding: 4px 2px;
+	max-width: 140px;
+	border-radius: 3px;
+	background-color: #ffffff;
+}
+.view .content .amount .active {
+	border: 1px solid #0DC538;
+	color: #0DC538;
+}
+.view .content .amount .amount_bg i {
+	display: inline-block;
+	font-size: 16px;
+}
+.view .content .amount .amount_bg span {
+    display: block;
+    font-size: 12px;
+}
+
+
+
+
+
+.view .content.layout p { background-color: transparent; text-align: center; color: #999; }
+.view .content.layout p img { width: 64px; height: 64px; margin-top: 64px; }
+.view .content.layout p b { color: #333; font-size: 24px; font-weight: normal; }
+.view .content.history .wrap { box-shadow: 0 2px 2px 0 #ccc; }
+
+.view .content .wrap ul { background-color: #fff; padding: 0 16px; }
+.view .content .wrap ul li { border-bottom: 1px solid #eee; padding: 8px 0; }
+.view .content .wrap ul li:last-child { border-bottom-width: 0; }
+.view .content .wrap ul li div span { display: inline-block; width: 100%; vertical-align: middle; font-size: 14px; color: #999; overflow: hidden; -ms-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; }
+.view .content .wrap ul li div span:first-child { font-size: 16px; color: #333; }
+.view .content .wrap ul li > span { vertical-align: middle; color: #02D000; line-height: 44px; }
+.view .content .wrap ul li > span.sub { color: #D00000; }
+
+.view .content .tab { padding-top: 8px; padding-bottom: 8px; box-shadow: 0 2px 2px 0 #ddd }
+.view .content .tab span { line-height: 1.3; }
+.view .content .tab span:first-child a { border-right: 1px solid #eee; display: inline-block; width: 100%; }
+.view .content .tab span em { display: inline-block; width: 100%; }
+.view .content .wrap .tab { width: 100%; padding: 0; }
+.view .content.currency h2 { padding: 0; border-bottom: 12px solid #f4f4f4;margin: 0 16px; }
+.view .content.currency .tab .btn {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	font-size: 16px;
+	border: none;
+	border-radius: 0;
+	display: list-item;
+	list-style: none;
+}
+.view .content.currency .tab .btn::after {
+	display: list-item;
+	list-style: none;
+}
+.view .content.currency .tab .btn.m {
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+}
+.view .content.currency .tab .btn:active { border-radius: 0; }
+.view .content.currency .tab .btn.active { background-color: #ff8400; color: #fff; border-color: #ff8400; border-radius: 0; box-shadow: 0 0 0 0 #fff; }

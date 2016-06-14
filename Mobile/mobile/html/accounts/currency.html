@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/accounts.css"/>
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+
+
+  <script src="/js/plugin/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=as" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/accounts/accountsS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/accounts/accountsC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/accounts/accounts.js" type="text/javascript" charset="utf-8"></script>
+
+  <title>充值</title>
+</head>
+<body ng-app="app" ng-controller="currencyC">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a class="btnBack backNoText"  ng-back> <i class="icon icon-back marR4"></i>
+          </a>
+          <span class="title" > 好货币查询</span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+
+    <div class="container content history currency">
+    <p class="refill tab flex">
+      <span class="flexOne text-center"> 
+        <a><b class="colorYe" ng-bind="page.coin.current">0</b>
+        <em>当前好货币</em></a>
+      </span>
+      <span class="flexOne text-center">
+        <a><b class="colorYe" ng-bind="page.coin.pass">0</b>
+        <em>即将到期</em></a>
+      </span>
+    </p>
+ 	  <div class="wrap">
+ 	  	<h2>
+       <span class="tab flex">
+          <a ng-click="page.tab(1)" ng-class="page.index==1?'active':''" class="btn flexOne  "> 全部 </a>
+          <a ng-click="page.tab(2)" ng-class="page.index==2?'active':''" class="btn flexOne m"> 收入 </a>
+          <a ng-click="page.tab(3)" ng-class="page.index==3?'active':''" class="btn flexOne  "> 消费 </a>
+       </span> 
+      </h2>
+
+ 	  	<ul  ng-show="page.index == 1">
+ 	  		<li class="flex" ng-repeat="(key, value) in page.coin.data[0]">
+ 	  			<div  class="flexOne">
+ 	  				<span ng-bind="value.remark">充值</span>
+ 	  				<span ng-bind="value.add_time">2015-05-02 14:00:00</span>
+ 	  			</div>
+ 	  			<span ng-bind="value.credits" ng-class="value.sub">+100</span>
+ 	  		</li>
+        <li ng-show="!page.coin.data[0].length">
+          <p class="text-center"><span>暂无好货币</span></p>
+        </li>
+ 	  	</ul>
+
+
+
+      <ul  ng-show="page.index == 2">
+        <li class="flex" ng-repeat="(key, value) in page.coin.data[1]">
+          <div  class="flexOne">
+            <span ng-bind="value.remark">充值</span>
+            <span ng-bind="value.add_time">2015-05-02 14:00:00</span>
+          </div>
+          <span ng-bind="value.credits">+100</span>
+        </li>
+        <li ng-show="!page.coin.data[1].length">
+          <p class="text-center">
+            <span>暂无收入</span>
+          </p>
+        </li>
+      </ul>
+
+      <ul  ng-show="page.index == 3">
+        <li class="flex" ng-repeat="(key, value) in page.coin.data[2]">
+          <div  class="flexOne">
+            <span ng-bind="value.remark" >代支付</span>
+            <span  ng-bind="value.add_time" >2015-05-02 14:00:00</span>
+          </div>
+          <span class="sub"  ng-bind="value.credits">-100</span>
+        </li>
+        <li ng-show="!page.coin.data[2].length">
+          <p class="text-center">
+            <span>暂无消费记录</span>
+          </p>
+        </li>
+      </ul>
+
+ 	  </div>
+    </div>
+
+  </div>
+</body>
+</html>

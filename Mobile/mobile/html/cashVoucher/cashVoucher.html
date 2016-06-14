@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/reqRefund.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/cashVoucher.css"/>
+
+
+
+
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/cashVoucher/cashVoucherS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/cashVoucher/cashVoucherC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/cashVoucher/cashVoucher.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+  <title>领取优惠券</title>
+</head>
+
+
+<body ng-app="app" ng-controller="cashVoucherC">
+              <!-- 头部开始 -->
+  <div class="header">
+          <div class="js-mp-info share-mp-info ">
+              <a class="page-mp-info" href="http://wap.koudaitong.com/v2/showcase/homepage?kdt_id=2824868">
+                  <img class="mp-image" src="../../images/logo_11.png">
+                  <i class="mp-nickname">必好货</i>
+              </a>
+              <!-- <div class="links">
+                  <span class="js-search mp-search search-icon"></span>
+                  <a class="mp-homepage" href="http://wap.koudaitong.com/v2/showcase/usercenter?kdt_id=2824868">我的记录</a>
+              </div> -->
+          </div>
+  </div> 
+              <!--  头部结束  -->
+  
+
+              <!--  内容部分开始  1  -->
+
+  <div class="content container" ng-show="mytop">
+      <div class="content-body">
+            <!-- 已过期/已失效 -->
+          <div class="promote-card promote-code">
+              <div class="clearfix">
+                  <h1 class="pull-left font-size-16 promote-card-name">
+                      <span ng-bind="cashVoucher.data.name"></span>
+                  </h1>
+              </div>
+              <p class="center promote-value">
+                  <span class="promote-value-sign">￥</span>
+                  <span ng-bind="cashVoucher.data.money"></span>       
+              </p>
+              <p class="center font-size-14 promote-limit" ng-bind="cashVoucher.data.rulStr"></p>
+              <p class="center font-size-14 transparent-color">有效日期：
+                  <span ng-bind="cashVoucher.data.startTime"></span> ~ 
+                  <span ng-bind="cashVoucher.data.endTime"></span>    
+              </p>
+
+              <div class="dot"></div>
+          </div>
+          <div class="get-promote-card">
+              <div class="font-size-12 center promote-num-limit" ng-bind="cashVoucher.data.limitStr"></div>
+              <a href="javascript:void(0)" class="btn btn-block btn-green js-get-promote-btn" ng-click="recieveCode()" data-type="code">点击领取</a>
+          </div>
+
+          <div class="promote-desc js-promote-desc" style="display: block;">
+              <h2 class="font-size-14 c-gray-dark promote-desc-title">使用说明</h2>
+              <div class="block">
+                   <div class="block-item clearfix">
+                        <span class="js-desc-detail" ng-bind="cashVoucher.data.remark">
+                        </span>
+                        <a class="c-blue more-desc pull-right js-more-desc" href="javascript:void(0)">更多</a>
+                   </div>
+              </div>
+          </div>
+          <div class="success-layer js-success-layer" style="display:none;"></div>
+      </div>         
+      <div id="shop-nav"></div>    
+  </div> 
+              <!--   内容部分结束  1  -->
+
+
+              <!--   内容部分开始  2  -->
+  <div class="content container" ng-show="mylick" ng-init = 'mylick = false'>
+    <div class="content-body">
+        <!-- 已过期/已失效 -->
+        <div class="promote-card promote-code">
+            <div class="clearfix">
+                <h1 class="pull-left font-size-16 promote-card-name">
+                <span ng-bind="cashVoucher.data.money"></span>
+                <span>元现金券</span>
+                </h1>
+            </div>
+
+            <div class="promote-detail center">
+                
+            
+                <p class="current-code">领取成功</p>
+                <p class="font-size-14">价值￥
+                   <span ng-bind="cashVoucher.data.money"></span> /
+                   <span ng-bind="cashVoucher.data.rulStr"></span>           
+                </p>
+            </div>
+            <p class="center font-size-14 transparent-color">
+            有效日期：
+            <span ng-bind="cashVoucher.data.startTime"></span> - 
+            <span ng-bind="cashVoucher.data.endTime"></span>    
+            </p>
+            <div class="dot"></div>
+        </div>
+        <div class="get-promote-card">
+                                <!-- 三种情况: 1:多商品跳至promocard/goodslist 2:单商品跳至商品详情页 3.全站通用优惠券跳至商品主页 -->
+            <a ng-if='gid' href="/html/commodity/detail.html?gid={{gid}}" class="btn btn-block btn-green">立即使用</a>
+            <a ng-if='!gid' href="/" class="btn btn-block btn-green">立即使用</a>                    
+            <div class="hide-alert-box  js-alert-box">
+                <div class="sync-alert-box js-sync-alert-box">
+                    <a href="javascript:void(0)" class="js-cancel c-gray-dark close-alert"></a>
+            
+                </div>
+            </div>
+            <p class="center">
+                <a href="../coupon/index.html" class="font-size-12 c-blue promote-card-list-link">查看我的卡券</a>
+            </p>
+        </div>
+
+                    
+        <!-- <div class="promote-for-shop">
+            <div class="block">
+                <a href="http://wap.koudaitong.com/v2/ump/coupon/verifyinfo?code=285855014652" class="block-item clearfix">
+                    <span class="pull-left">卡券二维码</span>
+                    <span class="pull-right code-icon"></span>
+                </a>
+            </div>
+        </div>  -->       
+        <div class="promote-desc js-promote-desc" style="display: block;">
+            <h2 class="font-size-14 c-gray-dark promote-desc-title">使用说明</h2>
+            <div class="block">
+                <div class="block-item clearfix">
+                    <span class="js-desc-detail" ng-bind="cashVoucher.data.remark"></span>
+                    <a class="c-blue more-desc pull-right js-more-desc" href="javascript:void(0)">更多</a>
+                </div>
+            </div>
+        </div>    
+    </div>
+            
+    <div id="shop-nav"></div>    
+  </div>
+
+               <!--  内容部分结束  2  -->
+  
+                 <!-- 底部开始 -->
+  <div class="">
+      <div class="footer">
+          <div class="copyright">
+              <div class="ft-links">
+                  <a href="/" target="_blank">商城主页</a>
+                  <a href="/html/memcenter.html" target="_blank">会员中心</a>
+                  <a href="/Mall_UI/html/contact.html" class="js-open-follow">关注我们</a>
+                  <a href="/Mall_UI/html/distribution.html" target="_blank">配送服务</a>
+              </div>
+
+          </div>
+      </div>
+  </div> 
+                 <!--  底部结束  -->
+  <message></message>
+
+</body>
+</html>

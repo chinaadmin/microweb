@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/friendTes.css"/>
+<script src="/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/cart/cartS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/cart/cartC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/cart/cart.js" type="text/javascript" charset="utf-8"></script>
+
+  <title>密友测试</title>
+</head>
+<body ng-app="app" ng-controller="friendC" class="cart" ng-loading style="display:none" >
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a class="btnBack backNoText"  ng-click="back()"> <i class="icon icon-back marR4"></i>
+          </a>
+          <span class="title">密友测试</span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content bgcWhite " >
+      <div class="new-pic" ng-show="isfriend">
+          <div class="friend"><img src="../../images/jgdb_@2x.png"></div>
+          <div class="comtent">
+              <input type="text" ng-model="ersend" placeholder="输入 “蜜” 友的名字">
+              <p><button ng-click="submit()">开始测试</button></p> 
+          </div>
+      </div>
+      <div class="radio-pic" ng-hide="isfriend">
+          <h4>选择题；以下选项(二选一) 是：</h4>
+          <div class="radio_bg">
+             <p>1.你是密友较喜欢吃什么口感的食物？</p>
+             <p>A. 甜食<span value='A' ng-click="tt($event,0,0)" class="pull-right topic"></span></p>
+             <p>B. 酸辣<span value='B' ng-click="tt($event,1,1)" class="pull-right topic"></span></p>
+          </div>
+          <div class="radio_bg">
+             <p>2.你的密友较喜欢什么花？</p>
+             <p>A. 油菜花<span value='A' ng-click="tt($event,0,2)" class="pull-right topic"></span></p>
+             <p>B. 薰衣草<span value='B' ng-click="tt($event,1,3)" class="pull-right topic"></span></p>
+          </div>
+          <div class="radio_bg">
+             <p>3.你的密友在你心中的形象是什么样？</p>
+             <p>A. 自信、开朗<span value='A' ng-click="tt($event,0,4)" class="pull-right topic"></span></p>
+             <p>B. 温柔、内向<span value='B' ng-click="tt($event,1,5)" class="pull-right topic"></span></p>
+          </div>
+          <div class="radio_bg">
+             <p>4.你与密友一起最爱谈论的话题是什么？</p>
+             <p>A. 男朋友、型男<span value='A' ng-click="tt($event,0,6)"  class="pull-right topic"></span></p>
+             <p>B. 书籍、电影<span value='B' ng-click="tt($event,1,7)"  class="pull-right topic"></span></p>
+          </div>
+          <div class="radio_bg">
+             <p>5.你的密友喜欢什么色调？</p>
+             <p>A. 暖色调<span value='A' ng-click="tt($event,0,8)"  class="pull-right topic"></span></p>
+             <p>B. 冷色调<span value='B' ng-click="tt($event,1,9)"  class="pull-right topic"></span></p>
+          </div>
+          <div class="radio_bg">
+             <p>6.假如你密友喝醉时你会用什么为她醒酒？</p>
+             <p>A. 蜂蜜<span value='A' ng-click="tt($event,0,10)"  class="pull-right topic"></span></p>
+             <p>B. 牛奶<span value='B' ng-click="tt($event,1,11)"  class="pull-right topic"></span></p>
+          </div>
+          <div class="radio_bg">
+             <p>7.你密友最爱喝的饮料是什么？</p>
+             <p>A. 碳酸饮料<span value='A' ng-click="tt($event,0,12)"  class="pull-right topic"></span></p>
+             <p>B. 营养饮品<span value='B' ng-click="tt($event,1,13)"  class="pull-right topic"></span></p>
+          </div>
+          <div class="radio-bom">
+             <p><button ng-click="submitQuestion()">提交测试</button></p>
+          </div>
+      </div>
+    </div>
+  
+
+  </div>
+<message></message>
+</body>
+</html>

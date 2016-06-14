@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+
+  <link rel="stylesheet" type="text/css" href="../../css/togistics.css">
+  
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script src="/js/togistics/togisticsS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/togistics/togisticsC.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/togistics/togistics.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+  <title>物流</title>
+</head>
+<body ng-app="app" ng-controller="togisticsC">
+
+
+        <!-- 头部 -->
+    <div>
+      <header class="header-box">
+        <div class="container">
+          <div class="activebar">
+            <a href="#" ng-back="order" class="btnBack backNoText">
+              <i class="icon icon-back marR4"></i>
+            </a>
+            <i class="icon"></i>
+            <span class="title">
+              查看物流
+              <i ng-repeat="item in liu">
+              </i>
+
+            </span>
+          </div>
+        </div>
+      </header>
+    </div>
+             <!--  头部开始  -->
+    
+    <div>
+        <div id="content" class="container content detail">
+            <div class="sort-item" ng-click="detail(value)">
+                  <div class="sort-img-1">
+                    <a href="#">
+                      <img err-src="../../images/wuliu.jpg" ng-src="{{value.photo}}" class="img-responsive img-size"></a>
+                  </div>
+                  <div class="sort-title">
+                    <h2>
+                      <a class="ng-binding" href="#" >申通快递</a>
+                    </h2>
+                    <span class="bing_top">运单编号:<b ng-bind="togistics.mailNo"></b>
+                    </span>
+                  </div>
+            </div>
+
+            <!--  头部结束  -->
+         
+            <!--  中间部分开始  -->
+    
+           <div class="orderItem sort-box">
+              <div class="sort-topbar">
+                <p>
+                  <span>
+                    商品信息
+                  </span>
+                  <span ng-click="storesTips()" ng-bind="detail.stores.nameExt" class="ng-binding"></span>
+                </p>
+              </div>
+
+              <div class="sort-item ng-scope" ng-repeat="(key, value) in togistics.goodsList" >
+               <div class="sort-img">
+                 <a href="../commodity/detail.html?gid={{value.id}}"><img class="img-responsive img-size" err-src="../../images/list_00.jpg" ng-src="{{value.pic}}"></a>
+               </div>
+               <div class="sort-title">
+               <h4><a href="../commodity/detail.html?gid={{value.id}}" class="ng-binding"><p ng-bind="value.name" ></p></a></h4>
+                 <div class="sort-price">                  
+                       
+                   <!-- <em class="em-perv">
+                    <span ng-bind="value.norms_value.name" ></span>
+                   </em> --> 
+
+                   <p>
+                     <span>
+                       ￥ <i ng-bind="value.goods_price" class="ng-binding"></i>
+                     </span>
+                     <em class="em-nevt">X<i ng-bind="value.number" class="ng-binding"></i></em>
+
+                   </p>
+              
+                 </div>
+
+               </div>
+              </div>
+           </div>
+        
+            <!--  中间部分结束  -->
+
+           <div class="suny-wei">
+                <p>
+                  <span>物流跟踪</span>
+                </p>
+           </div>
+
+           <div class="prossbarBox" ng-repeat="(key, value) in togistics.traceList" >
+            
+             <div class="item flex ng-scope" >
+                <div class="line">
+                  <span></span>
+                  <span class="point"></span>
+                  <span></span>
+                </div>
+                <div class="msg flexOne">
+                  <p class="ng-binding" ng-bind="value.remark" ></p>
+                  <p class="ng-binding" ng-bind="value.accept_time" ></p>
+                </div>
+             </div>
+             <div class="item flex ng-scope" >
+                <div class="line">
+                  <span></span>
+                  <span class="point"></span>
+                  <span></span>
+                </div>
+                <div class="msg flexOne">
+                  <p class="ng-binding" ng-bind="value.remark" ></p>
+                
+                  <p class="ng-binding" ng-bind="value.accept_time" ></p>
+                </div>
+             </div>
+           </div>
+           <div class="boot-pic"></div>
+
+        </div>
+    </div>
+    <message></message>
+</body>
+</html>

@@ -1,0 +1,236 @@
+body{font-family: "microsoft yahei";}
+.header-box + .container{padding-top:48px;}
+.container{
+	padding-left:0;
+	padding-right:0;
+}
+
+
+.list-group-item{padding-top:15px;}
+
+.media{overflow:visible}
+.media-left{position:relative;}
+.media-left .badge{position:absolute;right:2px;top:-7px;}
+.badge {
+	border-radius: 50%;
+	width: 23px;
+	height: 23px;
+	background: #FF5C62;
+	color: #fff;
+	font-size:0.875em;
+	padding:5px;
+}
+.media>.media-left>img{
+	max-width:66px;
+}
+.media>.media-left>p{
+	height:1.5em;
+	background:rgba(0,0,0,0.7);
+	position: absolute;
+	left:0;
+	bottom:0;
+	color:#fff;
+	text-align:center;
+	width:100px;
+	margin:0;
+	font-size:0.75em;
+}
+.media .media-body{
+	padding-left:10px;
+}
+.media .media-body>h3{
+	font-size:1em;
+	color:#404040;
+	margin:10px 0 15px 0;
+	position: relative;
+}
+.media .media-body>h3>span{
+	position:absolute;
+	right:0;
+	top:7px;
+	font-size:0.625em;
+	color:#7b7b7b;
+}
+.media .media-body>div{
+	font-size:1em;
+	color:#7b7b7b;
+	width:100%;
+	height:20px;
+	overflow:hidden;text-overflow:ellipsis
+}
+.list-group-item{
+	border-top:none;
+	margin-bottom:0;
+	background:#fff;
+}
+.media .media-footer{
+	border-top:#e5e5e5 solid 1px;
+}
+
+
+.message .Stores{
+	border:#e5e5e5 solid 1px;
+	margin-bottom:20px;
+	background:#fff;
+	padding:10px;
+}
+.message .Stores>.media-top>img{width:100%;}
+.message .list-group-item{padding:20px 0 0 0;}
+.message p.text-center{color:#6e6e6e}
+
+
+.list-group>div.smile{text-align:center;margin-top:6em;}
+.list-group>div.smile>img{margin-bottom:2em;}
+.list-group>div.smile p{color:#565351}
+
+
+.logistics .media>.media-top{
+	height:30px;
+	line-height:30px;
+	font-size:1.1em;
+	margin-bottom:10px;
+	font-weight:bold;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.logistics .media>.media-body{
+	padding-left:10px;
+}
+.logistics .media>.media-footer{
+	margin-top:15px;
+	padding-top:15px;
+}
+
+.logistics .list-group p.text-center{
+	padding:10px 0 10px 0;
+	margin-bottom:0;
+	font-size:1em;
+	color:#6e6e6e;
+	
+}
+
+.orderst{color:#EC7F15}
+
+
+.checkCon{
+	padding:48px 0 0 0;
+	margin:0 auto;
+	border-bottom:#e5e5e5 solid 1px;
+}
+.checkHead{
+	padding:20px;
+	background:#fff;
+}
+.checkHead .media-left{
+	position:relative;
+}
+.checkHead>.media h4{
+	font-size:1.1em;
+	font-weight:bold;
+}
+.checkHead>.media>.media-left img{
+	max-width:100px;
+	max-height:100px;
+	border:#e5e5e5 solid 1px;
+	width:100px;
+	height:100px;
+}
+.checkHead>.media>.media-body{
+	padding-left:10px;
+}
+.checkHead>.media>.media-body>.media-heading span{
+	color:#00B83F;
+}
+.checkHead>.media>.media-body>div>ul>li{
+	line-height:21px;
+}
+.msgInfo{
+	background:#fff;
+	border-top:#e5e5e5 solid 1px;
+	padding:10px;
+	margin-top:20px;
+}
+.msgInfo h4{
+	border-bottom:#e5e5e5 solid 1px;
+	padding-bottom:10px;
+}
+.msgL .item{display:flex;max-height:91px;}
+.msgL .line{
+	width:15em;
+	max-width:48px;
+}
+.msgL .line span{
+	width:2px;
+	height:27px;
+	background:#ddd;
+	display:block;
+	margin:0 auto;
+	position: relative;
+}
+.msgL .item:first-child .line span:first-child{
+	visibility:hidden;
+}
+.msgL .item:first-child .line .point{
+	background:#46C33B;
+	border:#fff solid 2px;
+	box-shadow: 0 0 0px 2px #C8EDC4;
+	z-index: 99;
+}
+.msgL .item .line span.point{
+	width:14px;
+	height:14px;
+	border-radius: 24px;
+}
+.msgL .item .msgP{
+	padding-top:20px;
+	border-bottom:#e5e5e5 solid 1px;
+	width:100%;
+}
+.msgL .item:first-child .msgP{
+	color:#46C33B
+}
+.msgL .item .msgP p{
+	margin-bottom:5px;
+}
+
+
+
+
+.read{
+	color:#999!important;
+}
+
+/*tool*/
+.right{float:right;}
+.left{float:left}
+.pdl-0{padding-left:0px!important}
+.pdt-5{padding-top:5px;}
+.pdt-5{padding-top:10px;}
+.pdt-15{padding-top:15px;}
+
+
+.bdN{background:none;}
+.borN{border:none;}
+
+.colorGreen{color:#46C33B}
+
+/*@media*/
+@media  screen and (min-width:769px ) {
+		.media>.media-left>img{
+			max-width:150px;
+		}
+}
+@media screen and (max-width:321px ) {
+		.media>.media-left>img{
+			max-width:60px;
+		}
+		.media-top,.media-body{
+			max-height:80px;
+			/*overflow:hidden;*/
+		}
+		.media-top img,.media-body img{
+			max-height:95px;
+		}
+}
+

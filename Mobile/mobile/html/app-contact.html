@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="not-ie" lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="description" content="NIM- Responsive One Page Creative Template" />
+<meta name="keywords" content=""/>
+<meta name="author" content="Metrothenes" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" media="screen" href="../css/bootstrap.min.css"/>
+<link rel="stylesheet" media="screen" href="../css/app-con.css"/>
+<link rel="stylesheet" media="screen" href="../css/common.css"/>
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+
+<script>
+	//获取短信验证码
+	$(document).ready(function(){
+			var validCode = true;
+			$(".msgs").click(function(){
+			var time = 30;
+			var code = $(".msgs");
+			
+			if (validCode) {
+				validCode = false;
+				code.addClass("msgs1");
+				var t = setInterval(function() {
+					time--;
+					code.html(time + "秒");
+					if (time == 0) {
+						clearInterval(t);
+						code.html("重新获取");
+						validCode = true;
+						code.removeClass("msgs1");
+
+					}
+				}, 1000)
+			}
+			});
+		$(".btn-sta").click(function(){
+			$(this).css("background","#e37500");
+		})
+		})
+</script>
+<title>我的必好货</title>
+</head>
+<body>
+	<div class="view">
+		<!--头部-->
+		<header>
+			<div class="logo-new">
+			<img src="../images/con_00.png">
+			</div>
+			<div class="title-box">
+				填写联系信息
+			</div>
+			<div class="clearfix"></div>
+		</header>
+		<div class="space-bg"></div>
+		<!--内容-->
+		<div id="content">
+			<from>
+			<div class="inp"><label>真实姓名:</label><input type="text"></div>	
+			<div class="inp"><label>手机号:</label><input type="text"></div>	
+			<div class="inp"><label>验证码:</label><div class="code-box"><input type="text" class="code"><button class="code-btn msgs">获取验证码</button><div class="clearfix"></div></div></div>	
+			<a href="app-question.html"><input type="submit" class="btn-sta " data-transition="fade" value="马上开始"></a>
+			</from>
+			
+		</div>
+		<!--/*尾部*/-->
+		<footer>
+     
+   		</footer>
+	</div>
+</body>
+</html>

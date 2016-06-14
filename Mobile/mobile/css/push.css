@@ -1,0 +1,16 @@
+@charset "utf-8"; 
+
+body { margin: 0; padding: 0; }
+
+.centent { padding-top: 48px; }
+.view .address { padding: 0; background-color: #eee; }
+.address .list { 
+	border: 1px solid #fefefe;
+	margin-top: 10px; 
+	background-color: #fff;
+	line-height: 26px;
+}
+.address .list .wrap { padding: 12px 16px; }
+
+
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="not-ie" lang="en">
+<head>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="utf-8">
+  <meta name="description" content="NIM- Responsive One Page Creative Template" />
+  <meta name="keywords" content=""/>
+  <meta name="author" content="Metrothenes" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/commonExt.css"/>
+  <link rel="stylesheet" media="screen" href="../../css/orderDetail.css"/>
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/dataStore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/interface.js" type="text/javascript" charset="utf-8"></script>
+
+  
+  <script src="/js/plugin/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/ngWechat.js?t=8446546" type="text/javascript" charset="utf-8"></script>
+  
+
+  <script src="/js/home/angular-carousel.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/commodity/commodityS.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/commodity/commodityC.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+  var ngmodule = ["ui.router", "app.controllers", "app.services", "angular-carousel", "ngTouch", "ngSanitize", "app.dataStore","app.wechat"]
+  var app = angular.module('app', ngmodule).run(function() {})
+  </script>
+
+
+
+  <title>评论</title>
+</head>
+<body ng-app="app" ng-controller="comment">
+  <div class="view">
+    <!-- 头部 -->
+    <header class="header-box">
+      <div class="container">
+        <div class="activebar">
+          <a href="#" class="btnBack backNoText" ng-back = "memcenter"><i class="icon icon-back marR4"></i></a>
+          <span class="title">
+            评论
+          </span>
+        </div>
+      </div>
+    </header>
+    <!--  内容 -->
+    <div id="content" class="container content orderlist">
+      
+
+              <div class="orderItem sort-box">
+                <div class="filter-mcment" ng-repeat="(key, value) in commentList.data">
+                  <p>
+                    <span class="filter-img"><img ng-src="{{value.head_pic}}" class="p-img" src="../../images/share.png" alt=""></span>
+                      <span class="filter-user" ng-bind="value.comment_name"></span>
+                  </p>
+                  <p><span ng-bind="value.content">接地极翻绿</span></p>
+                  <p>
+                    <span ng-bind="value.add_time" class="filter-time"></span>
+                    <span ng-repeat="(k, v) in commentList.data.norms_value" ng-bind="v.name" ng-bind="v.value"></span>
+                  </p>
+                  <a ng-show="" href=""><img class="set-img" src="../../images/share.png" alt=""></a>
+                </div>
+
+              </div>
+    </div>
+  </div>
+  <message></message>
+</body>
+</html>
